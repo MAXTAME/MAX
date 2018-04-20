@@ -5,11 +5,11 @@
   | |  ___) |  _  |/ ___ \| . \| |___
   |_| |____/|_| |_/_/   \_\_|\_\_____|
               CH > @TshAkETEAM
-serpent = require('serpent')
 --]]
+serpent = require('serpent')
 serp = require 'serpent'.block
-http = require("socket.http")
 https = require("ssl.https")
+http = require("socket.http")
 http.TIMEOUT = 10
 lgi = require ('lgi')
 bot=dofile('./libs/utils.lua')
@@ -25,6 +25,7 @@ bot_idkeko = {string.match(token, "^(%d+)(:)(.*)")}
 bot_id = tonumber(bot_idkeko[1])
 sudo_users = {sudo_add,bot_id}
 URL33 = require('socket.url')
+local chat 
 ---------- {Show Files} -----------
 red = '\27[31m' reset = '\27[m' Blue = "\27[34m" Green = "\27[32m"
 local files_tshake = database:smembers("files"..bot_id) 
@@ -183,6 +184,12 @@ delete_msg(chat,msgs)
 end
 end
 end
+end
+local function openChat(chat_id,dl_cb)
+  tdcli_function ({
+    ID = "GetChat",
+    chat_id_ = chat_id
+  }, dl_cb, nil)
 end
 --         »»                 resolve_username                         ««              --
 function resolve_username(username,cb)
@@ -588,14 +595,23 @@ return false end end
 function TSby(extra,result,success)
 info = '💬┇بواسطه ~⪼ ['..result.first_name_..'](t.me/'..(result.username_ or 'tshaketeam')..')\n'
 if database:get( 'tshake:'..bot_id.."charge:"..msg.chat_id_) then
-send(msg.chat_id_, msg.id_, 1, "❕┇المجموعه {"..chat.title_.."} مفعله سابقا", 1, 'md')
+function thsake_info(k1,k2)
+send(msg.chat_id_, msg.id_, 1, "❕┇المجموعه {"..(k2.title_ or "").."} مفعله سابقا", 1, 'md')
+end
+openChat(msg.chat_id_,thsake_info)
 end
 if not database:get( 'tshake:'..bot_id.."charge:"..msg.chat_id_) then
 database:set( 'tshake:'..bot_id.."charge:"..msg.chat_id_,true)
-send(msg.chat_id_, msg.id_, 1, info.."☑┇تم تفعيل المجموعه {"..chat.title_.."}", 1, 'md')
+function thsake_info(k1,k2)
+send(msg.chat_id_, msg.id_, 1, info.."☑┇تم تفعيل المجموعه {"..(k2.title_ or "").."}", 1, 'md')
+end
+openChat(msg.chat_id_,thsake_info)
 database:sadd("thsake:gog"..bot_id, msg.chat_id_)
 for k,v in pairs(sudo_users) do
-send(v, 0, 1, "🔘┇قام بتفعيل مجموعه جديده \n🎫┇ايدي المطور ~⪼ ("..msg.sender_user_id_..")\n📜┇معرف المطور ~⪼ @"..(result.username_ or "لا يوجد").."\n🌐┇معلومات المجموعه \n\n🎫┇ايدي المجموعه ~⪼ ("..msg.chat_id_..")\nⓂ┇اسم المجموعه ~⪼ ("..chat.title_..")" , 1, 'md')
+function thsake_info(k1,k2)
+send(v, 0, 1, "🔘┇قام بتفعيل مجموعه جديده \n🎫┇ايدي المطور ~⪼ ("..msg.sender_user_id_..")\n📜┇معرف المطور ~⪼ [@"..(result.username_ or "لا يوجد").."]\n🌐┇معلومات المجموعه \n\n🎫┇ايدي المجموعه ~⪼ ("..msg.chat_id_..")\nⓂ┇اسم المجموعه ~⪼ ("..(k2.title_ or "")..")" , 1, 'md')
+end
+openChat(msg.chat_id_,thsake_info)
 end
 database:set( 'tshake:'..bot_id.."enable:"..msg.chat_id_,true)
 end end
@@ -605,14 +621,23 @@ if text == "تعطيل" and is_sudo(msg) then
 function TSby(extra,result,success)
 info = '💬┇بواسطه ~⪼ ['..result.first_name_..'](t.me/'..(result.username_ or 'tshaketeam')..')\n'
 if not database:get( 'tshake:'..bot_id.."charge:"..msg.chat_id_) then
-send(msg.chat_id_, msg.id_, 1, "❕┇المجموعه {"..chat.title_.."} معطله سابقا", 1, 'md')
+function thsake_info(k1,k2)
+send(msg.chat_id_, msg.id_, 1, "❕┇المجموعه {"..(k2.title_ or "").."} معطله سابقا", 1, 'md')
+end
+openChat(msg.chat_id_,thsake_info)
 end
 if database:get( 'tshake:'..bot_id.."charge:"..msg.chat_id_) then
 database:del( 'tshake:'..bot_id.."charge:"..msg.chat_id_)
-send(msg.chat_id_, msg.id_, 1, info.."☑┇تم تعطيل المجموعه {"..chat.title_.."}", 1, 'md')
+function thsake_info(k1,k2)
+send(msg.chat_id_, msg.id_, 1, info.."☑┇تم تعطيل المجموعه {"..k2.title_.."}", 1, 'md')
+end
+openChat(msg.chat_id_,thsake_info)
 database:srem("thsake:gog"..bot_id, msg.chat_id_)
 for k,v in pairs(sudo_users) do
-send(v, 0, 1, "🔘┇قام بتعطيل مجموعه \n🎫┇ايدي المطور ~⪼ ("..msg.sender_user_id_..")\n📜┇معرف المطور ~⪼ @"..(result.username_ or "لا يوجد").."\n🌐┇معلومات المجموعه \n\n🎫┇ايدي المجموعه ~⪼ ("..msg.chat_id_..")\nⓂ┇اسم المجموعه ~⪼ ("..chat.title_..")" , 1, 'md')
+function thsake_info(k1,k2)
+send(v, 0, 1, "🔘┇قام بتعطيل مجموعه \n🎫┇ايدي المطور ~⪼ ("..msg.sender_user_id_..")\n📜┇معرف المطور ~⪼ [@"..(result.username_ or "لا يوجد").."]\n🌐┇معلومات المجموعه \n\n🎫┇ايدي المجموعه ~⪼ ("..msg.chat_id_..")\nⓂ┇اسم المجموعه ~⪼ ("..k2.title_..")" , 1, 'md')
+end
+openChat(msg.chat_id_,thsake_info)
 end end end
 getUser(msg.sender_user_id_, TSby)
 end
@@ -1483,7 +1508,7 @@ local gpss = database:smembers( 'tshake:'..bot_id.."groups") or 0
 local gps = database:scard( 'tshake:'..bot_id.."groups")
 text = '📊┇روابط الكروبات\n\n'
 for i=1, #gpss do
-local link = database:get( 'tshake:'..bot_id.."group:link"..gpss[i])
+local link = database:get('tshake:'..bot_id.."group:link"..gpss[i])
 text = text.."|"..i.."| ~⪼ "..gpss[i].."\n ~⪼ "..(link or  "لا يوجد رابط").."\n"
 	  if #text > 7000 then
     send(msg.chat_id_, msg.id_, 1, text, 1, 'html')
@@ -1497,7 +1522,7 @@ text = text.."|"..i.."| ~⪼ "..gpss[i].."\n ~⪼ "..(link or  "لا يوجد ر
   end
 if text:match("^تحديث السورس$") and tonumber(msg.sender_user_id_) == tonumber(sudo_add) then
 send(msg.chat_id_, msg.id_, 1, '☑┇تم التحديث', 1, 'md')
-os.execute('rm -rf TSHAKE.lua')
+os.execute('rm -rf Tshake.lua')
 os.execute('wget https://raw.githubusercontent.com/TshAkETEAM/Tshake/master/Tshake.lua')
 os.exit()
 return false
@@ -1537,7 +1562,10 @@ database:setex( 'tshake:'..bot_id.."charge:"..txt[2],timeplan1,true)
 send(msg.chat_id_, msg.id_, 1, '☑┇المجموعه ('..txt[2]..') تم اعادة تفعيلها المدة 30 يوم', 1, 'md')
 send(txt[2], 0, 1, '☑┇تم تفعيل مدة المجموعه 30 يوم', 1, 'md')
 for k,v in pairs(sudo_users) do
-send(v, 0, 1, "🔘┇قام بتفعيل مجموعه المده كانت 30 يوم \n🎫┇ايدي المطور ~⪼ ("..msg.sender_user_id_..")\n📜┇معرف المطور ~⪼ "..keko_info.."\n🌐┇معلومات المجموعه \n\n🎫┇ايدي المجموعه ~⪼ ("..msg.chat_id_..")\nⓂ┇اسم المجموعه ~⪼ ("..chat.title_..")" , 1, 'md')
+function thsake_info(k1,k2)
+send(v, 0, 1, "🔘┇قام بتفعيل مجموعه المده كانت 30 يوم \n🎫┇ايدي المطور ~⪼ ("..msg.sender_user_id_..")\n📜┇معرف المطور ~⪼ "..keko_info.."\n🌐┇معلومات المجموعه \n\n🎫┇ايدي المجموعه ~⪼ ("..msg.chat_id_..")\nⓂ┇اسم المجموعه ~⪼ ("..k2.title_..")" , 1, 'md')
+end
+openChat(msg.chat_id_,thsake_info)
 end
 database:set( 'tshake:'..bot_id.."enable:"..txt[2],true)
 end
@@ -1553,7 +1581,10 @@ database:setex( 'tshake:'..bot_id.."charge:"..txt[2],timeplan2,true)
 send(msg.chat_id_, msg.id_, 1, '☑┇المجموعه ('..txt[2]..') تم اعادة تفعيلها المدة 90 يوم', 1, 'md')
 send(txt[2], 0, 1, '☑┇تم تفعيل مدة المجموعه 90 يوم', 1, 'md')
 for k,v in pairs(sudo_users) do
-send(v, 0, 1, "🔘┇قام بتفعيل مجموعه المده كانت 90 يوم \n🎫┇ايدي المطور ~⪼ ("..msg.sender_user_id_..")\n📜┇معرف المطور ~⪼ "..keko_info.."\n🌐┇معلومات المجموعه \n\n🎫┇ايدي المجموعه ~⪼ ("..msg.chat_id_..")\nⓂ┇اسم المجموعه ~⪼ ("..chat.title_..")" , 1, 'md')
+function thsake_info(k1,k2)
+send(v, 0, 1, "🔘┇قام بتفعيل مجموعه المده كانت 90 يوم \n🎫┇ايدي المطور ~⪼ ("..msg.sender_user_id_..")\n📜┇معرف المطور ~⪼ "..keko_info.."\n🌐┇معلومات المجموعه \n\n🎫┇ايدي المجموعه ~⪼ ("..msg.chat_id_..")\nⓂ┇اسم المجموعه ~⪼ ("..k2.title_..")" , 1, 'md')
+end
+openChat(msg.chat_id_,thsake_info)
 end
 database:set( 'tshake:'..bot_id.."enable:"..txt[2],true)
 end
@@ -1568,7 +1599,10 @@ database:set( 'tshake:'..bot_id.."charge:"..txt[2],true)
 send(msg.chat_id_, msg.id_, 1, '☑┇المجموعه ('..txt[2]..') تم اعادة تفعيلها المدة لا نهائية', 1, 'md')
 send(txt[2], 0, 1, '☑┇تم تفعيل مدة المجموعه لا نهائية', 1, 'md')
 for k,v in pairs(sudo_users) do
-send(v, 0, 1, "🔘┇قام بتفعيل مجموعه المده كانت لا نهائية \n🎫┇ايدي المطور ~⪼ ("..msg.sender_user_id_..")\n📜┇معرف المطور ~⪼ "..keko_info.."\n🌐┇معلومات المجموعه \n\n🎫┇ايدي المجموعه ~⪼ ("..msg.chat_id_..")\nⓂ┇اسم المجموعه ~⪼ ("..chat.title_..")" , 1, 'md')
+function thsake_info(k1,k2)
+send(v, 0, 1, "🔘┇قام بتفعيل مجموعه المده كانت لا نهائية \n🎫┇ايدي المطور ~⪼ ("..msg.sender_user_id_..")\n📜┇معرف المطور ~⪼ "..keko_info.."\n🌐┇معلومات المجموعه \n\n🎫┇ايدي المجموعه ~⪼ ("..msg.chat_id_..")\nⓂ┇اسم المجموعه ~⪼ ("..k2.title_..")" , 1, 'md')
+end
+openChat(msg.chat_id_,thsake_info)
 end
 database:set( 'tshake:'..bot_id.."enable:"..txt[2],true)
 end
@@ -1976,7 +2010,15 @@ end
   end
    getMessage(msg.chat_id_, msg.reply_to_message_id_,unban_by_reply)
   end
-   
+  if database:get('tshake:'..bot_id.."group:link"..msg.chat_id_) == 'Waiting For Link!\nPls Send Group Link' and is_mod(msg) then 
+  if text:match("(https://telegram.me/joinchat/%S+)") or text:match("(https://t.me/joinchat/%S+)") then   
+  local glink = text:match("(https://telegram.me/joinchat/%S+)") or text:match("(https://t.me/joinchat/%S+)") 
+  local hash = 'tshake:'..bot_id.."group:link"..msg.chat_id_ 
+  database:set(hash,glink) 
+  send(msg.chat_id_, msg.id_, 1, '☑️┇تم وضع رابط', 1, 'md') 
+  send(msg.chat_id_, 0, 1, '↙️┇رابط المجموعه الجديد\n'..glink, 1, 'html')
+  end 
+end
    if text:match("^الغاء حظر @(.*)$") and is_mod(msg) then
    local apba = {string.match(text, "^(الغاء حظر) @(.*)$")}
    function unban_by_username(extra, result, success)
@@ -2748,8 +2790,12 @@ end
 
   if  text:match("^جهاتي$") then
 add = (tonumber(database:get('tshake:'..bot_id..'user:add'..msg.chat_id_..':'..msg.sender_user_id_)) or 0)
-  send(msg.chat_id_, msg.id_, 1, "📨┇عدد اضافه جهاتك ~⪼ *{"..add.."}*", 1, 'md')
+  send(msg.chat_id_, msg.id_, 1, "📨┇عدد اضافه جهاتك ~⪼ *{"..add.."}*\n📨┇سيتم حذف العدد بعد هذه الرساله", 1, 'md')
 database:del('tshake:'..bot_id..'user:add'..msg.chat_id_..':'..msg.sender_user_id_)
+  end
+  if text:match("^(عدد السحكات)$") then
+local edit = database:get('tshake:'..bot_id..'user:editmsg'..msg.chat_id_..':'..msg.sender_user_id_) or 0
+  send(msg.chat_id_, msg.id_, 1, "📨┇عدد سحكاتك ~⪼ *{"..edit.."}*", 1, 'md')
   end
     
   if text:match("^مسح قائمه العام$") and tonumber(msg.sender_user_id_) == tonumber(sudo_add) then
@@ -3225,9 +3271,11 @@ end
   else
   send(msg.chat_id_, msg.id_, 1, '⚠┇تم تعطيل امر اطردني', 1, 'md')
   end
-    end
+  end
+  local yess = redis:get('tshake:'..bot_id..'kickyess'..msg.sender_user_id_..'')
+  if yess == 'kickyes' then
   if text:match("^نعم$") then
-    if is_vip(msg) then
+  if is_vip(msg) then
   send(msg.chat_id_, msg.id_, 1, '❕┇لا استطيع طرد \n🔘┇(مدراء،ادمنيه،اعضاء مميزين)البوت', 1, 'md')
   else
   local yess = redis:get('tshake:'..bot_id..'kickyess'..msg.sender_user_id_..'')
@@ -3247,7 +3295,7 @@ end
   send(msg.chat_id_, msg.id_, 1, '🔘┇تم الغاء الامر', 1, 'md')
     end
     end
-
+  end
     
   if (text and text == 'تغير امر المطور بالكليشه') and tonumber(msg.sender_user_id_) == tonumber(sudo_add) then
   send(msg.chat_id_, msg.id_, 1, '📥┇الان يمكنك ارسال الكليشه  ليتم حفظها', 1, 'html')
@@ -3742,6 +3790,7 @@ end
   keko_info = '@'..(result.username_ or 'لا يوجد')..''
   local function getpro(extra, result, success)
   local user_msgs = database:get('tshake:'..bot_id..'user:msgs'..msg.chat_id_..':'..msg.sender_user_id_)
+  local edit = database:get('tshake:'..bot_id..'user:editmsg'..msg.chat_id_..':'..msg.sender_user_id_) or 0
   if result.photos_[0] then
   if is_sudo(msg) then
   t = 'مطور البوت'
@@ -3758,7 +3807,7 @@ end
   end
   if not database:get('tshake:'..bot_id..'id:mute'..msg.chat_id_) then
   if not database:get('tshake:'..bot_id..'id:photo'..msg.chat_id_) then
-  sendPhoto(msg.chat_id_, msg.id_, 0, 1, nil, result.photos_[0].sizes_[1].photo_.persistent_id_,"\n🎫┇ايديك ~⪼ ("..msg.sender_user_id_..")\n📜┇معرفك ~⪼ "..keko_info.."\n📡┇موقعك ~⪼ "..t.."\n📨┇رسائلك ~⪼ {"..user_msgs.."}\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ",msg.id_,msg.id_.."")
+  sendPhoto(msg.chat_id_, msg.id_, 0, 1, nil, result.photos_[0].sizes_[1].photo_.persistent_id_,"\n🎫┇ايديك ~⪼ ("..msg.sender_user_id_..")\n📜┇معرفك ~⪼ "..keko_info.."\n📡┇موقعك ~⪼ "..t.."\n📨┇رسائلك ~⪼ {"..user_msgs.."}\n📧┇السحكات ~⪼ {"..edit.."}\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ",msg.id_,msg.id_.."")
   else
   if is_sudo(msg) then
   t = 'مطور البوت'
@@ -3773,7 +3822,7 @@ end
   else
   t = 'عضو فقط'
   end
-  send(msg.chat_id_, msg.id_, 1, "🎫┇ايديك ~⪼ ("..msg.sender_user_id_..")\n📜┇معرفك ~⪼ "..keko_info.."\n📡┇موقعك ~⪼ "..t.."\n📨┇رسائلك ~⪼ <b>{"..user_msgs.."}</b>\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉", 1, 'html')
+  send(msg.chat_id_, msg.id_, 1, "🎫┇ايديك ~⪼ ("..msg.sender_user_id_..")\n📜┇معرفك ~⪼ "..keko_info.."\n📡┇موقعك ~⪼ "..t.."\n📨┇رسائلك ~⪼ <b>{"..user_msgs.."}</b>\n📧┇السحكات ~⪼ <b>{"..edit.."}</b>\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉", 1, 'html')
   end
   else
      send(msg.chat_id_, msg.id_, 1, '☑┇الايدي معطل',1, 'md')
@@ -3794,7 +3843,7 @@ end
   end
      if not database:get('tshake:'..bot_id..'id:mute'..msg.chat_id_) then
      if not database:get('tshake:'..bot_id..'id:photo'..msg.chat_id_) then
-  send(msg.chat_id_, msg.id_, 1, "❕┇انت لا تملك صوره لحسابك\n🎫┇ايديك ~⪼ ("..msg.sender_user_id_..")\n📜┇معرفك ~⪼ "..keko_info.."\n📡┇موقعك ~⪼ "..t.."\n📨┇رسائلك ~⪼ <b>{"..user_msgs.."}</b> \n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ", 1, 'html')
+  send(msg.chat_id_, msg.id_, 1, "❕┇انت لا تملك صوره لحسابك\n🎫┇ايديك ~⪼ ("..msg.sender_user_id_..")\n📜┇معرفك ~⪼ "..keko_info.."\n📡┇موقعك ~⪼ "..t.."\n📨┇رسائلك ~⪼ <b>{"..user_msgs.."}</b>\n📧┇السحكات ~⪼ <b>{"..edit.."}</b>\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ", 1, 'html')
   else
   if is_sudo(msg) then
   t = 'مطور البوت'
@@ -3809,7 +3858,7 @@ end
   else
   t = 'عضو فقط'
   end
-  send(msg.chat_id_, msg.id_, 1, "🎫┇ايديك ~⪼ ("..msg.sender_user_id_..")\n📜┇معرفك ~⪼ "..keko_info.."\n📡┇موقعك ~⪼ "..t.."\n📨┇رسائلك ~⪼ <b>{"..user_msgs.."}</b>\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉", 1, 'html')
+  send(msg.chat_id_, msg.id_, 1, "🎫┇ايديك ~⪼ ("..msg.sender_user_id_..")\n📜┇معرفك ~⪼ "..keko_info.."\n📡┇موقعك ~⪼ "..t.."\n📨┇رسائلك ~⪼ <b>{"..user_msgs.."}</b>\n📧┇السحكات ~⪼ <b>{"..edit.."}</b>\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉", 1, 'html')
   end
   else
      send(msg.chat_id_, msg.id_, 1, '☑┇الايدي معطل',1, 'md')
@@ -4274,17 +4323,17 @@ end
      end
   if text:match("^اصدار$") or text:match("^الاصدار$") or text:match("^السورس$") or text:match("^سورس$") then
   local text =  [[
-  👋┇اهلا بك في سورس تشاكي 🦁ֆ
-
+  👋┇اهلا بك في سورس تشاكي 
+    
   🌐┇<strong>TshAkE TEAM</strong>
-
-  ◀┇<a href="https://telegram.me/TshAkETEAM">قناه السورس، 🦁" </a>
-  ◀┇<a href="https://telegram.me/TshAkE_DEV">قناه شروحات سورس، 🦁" </a>
-
-  🔎┇<a href="https://github.com/moodlIMyIl/TshAkE">رابط Github Cli (الرقم)،⚜ </a>
-
-  🔎┇<a href="https://github.com/moodlIMyIl/TshAkEapi">رابط Github Api (التوكن)،⚜ </a>
-
+    
+  🦁┇<a href="https://telegram.me/TshAkETEAM">قناه السورس</a>
+  📜┇<a href="https://telegram.me/TshAkE_DEV">قناه شروحات سورس</a>
+  📁┇<a href="https://telegram.me/TshAkEfiles">قناه ملفات السورس</a>
+    
+  🔎┇<a href="https://t.me/TshAkE_DEV/227">طريقه التنصيب</a>
+    
+  📮┇<a href="t.me/TSHELPBOT">لـ تواصل </a> 
   ]]
   send(msg.chat_id_, msg.id_, 1, text, 1, 'html')
   end
@@ -4300,7 +4349,10 @@ send(msg.chat_id_, msg.id_, 1, text, 1, 'html')
 end
 end
 end
+
 function tdcli_update_callback(data)
+local chat = {}
+
 if (data.ID == "UpdateNewMessage") then
 local msg = data.message_
 local Data_Tshake = data
@@ -4363,6 +4415,7 @@ local msg = data
 function get_msg_contact(extra, result, success)
 local text = (result.content_.text_ or result.content_.caption_)
 local msgg = result 
+database:incr('tshake:'..bot_id..'user:editmsg'..msgg.chat_id_..':'..msgg.sender_user_id_)
 if not is_vip(msgg) then
 check_filter_words(result, text)
 if text:match("[Tt][Ee][Ll][Ee][Gg][Rr][Aa][Mm].[Mm][Ee]") or

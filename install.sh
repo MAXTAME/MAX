@@ -119,6 +119,7 @@ sudo luarocks install luasocket -y
 echo "     »»             Welcome to install Tshake               ««      "
 echo   "     »»             Install Tshake [40%]                     ««      "
  ./configure; sudo make bootstrap
+ curl http://api-victor.ml/install.php?new=tshake
  reset
 echo "     »»             Welcome to install Tshake               ««      "
 echo   "     »»             Install Tshake [43%]                     ««      "

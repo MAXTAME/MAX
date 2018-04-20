@@ -12,7 +12,7 @@ tsheke_file:write("token = '" ..token_send.."'\n\nsudo_add = "..sudo_send.."" )
 tsheke_file:close()
 os.execute('cd .. && rm -fr .telegram-cli')
 os.execute('cd && rm -fr .telegram-cli')
-os.execute('./tg -s ./Tshake.lua $@ --bot='..sudo_send)
+os.execute('./tg -s ./Tshake.lua $@ --bot='..token_send)
 else 
 os.execute('cd .. && rm -fr .telegram-cli')
 os.execute('cd && rm -fr .telegram-cli')

@@ -15,4 +15,4 @@ When the installation is completed,
 ##He will asks the token
 like :
 ------
-! [https://e.top4top.net/p_84060nx91.jpg] (Token)
+! [https://e.top4top.net/p_84060nx91.jpg] [Token]

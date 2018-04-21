@@ -905,7 +905,7 @@ database:set("lock_photo:tshake"..msg.chat_id_..bot_id,"ok")
 database:set("lock_stecker:tshake"..msg.chat_id_..bot_id,"ok")
 database:set("lock_voice:tshake"..msg.chat_id_..bot_id,"ok")
 database:set("lock_gif:tshake"..msg.chat_id_..bot_id,"ok")
-database:set("lock_note:tshake"..msg.chat_id_..bot_id)
+database:set("lock_note:tshake"..msg.chat_id_..bot_id,"ok")
   end
   end
   if (text == "قفل الروابط") then
@@ -959,7 +959,7 @@ database:set("lock_note:tshake"..msg.chat_id_..bot_id)
   tsX000("lock",msg,"☑┇بالفعل تم قفل بصمه فيديو")
   else
   tsX000("lock",msg,"☑┇تم قفل بصمه فيديو")
-  database:set("lock_note:tshake"..msg.chat_id_..bot_id)
+  database:set("lock_note:tshake"..msg.chat_id_..bot_id,"ok")
   end
   end
   --         »»                 End tshake lock                         ««              --
@@ -1166,7 +1166,7 @@ database:del("lock_photo:tshake"..msg.chat_id_..bot_id,"ok")
 database:del("lock_stecker:tshake"..msg.chat_id_..bot_id,"ok")
 database:del("lock_voice:tshake"..msg.chat_id_..bot_id,"ok")
 database:del("lock_gif:tshake"..msg.chat_id_..bot_id,"ok")
-database:del("lock_note:tshake"..msg.chat_id_..bot_id)
+database:del("lock_note:tshake"..msg.chat_id_..bot_id,"ok")
   end
   end
   if (text == "فتح المعرف") then
@@ -1175,7 +1175,7 @@ database:del("lock_note:tshake"..msg.chat_id_..bot_id)
   tsX000("lock",msg,"☑┇بالفعل تم فتح المعرف")
   else
   tsX000("lock",msg,"☑┇تم فتح المعرف")
-  database:del("lock_username:tshake"..msg.chat_id_..bot_id)
+  database:del("lock_username:tshake"..msg.chat_id_..bot_id,"ok")
   end
   end
   if (text == "فتح بصمه الفيديو") then
@@ -1184,7 +1184,7 @@ database:del("lock_note:tshake"..msg.chat_id_..bot_id)
   tsX000("lock",msg,"☑┇بالفعل تم فتح بصمه فيديو")
   else
   tsX000("lock",msg,"☑┇تم فتح بصمه فيديو")
-  database:del("lock_note:tshake"..msg.chat_id_..bot_id)
+  database:del("lock_note:tshake"..msg.chat_id_..bot_id,"ok")
   end
   end
   if (text == "فتح الروابط") then
@@ -1193,7 +1193,7 @@ database:del("lock_note:tshake"..msg.chat_id_..bot_id)
   tsX000("lock",msg,"☑┇بالفعل تم فتح الروابط")
   else
   tsX000("lock",msg,"☑┇تم فتح الروابط")
-  database:del("lock_link:tshake"..msg.chat_id_..bot_id)
+  database:del("lock_link:tshake"..msg.chat_id_..bot_id,"ok")
   end
   end
   if (text == "فتح البوتات") then
@@ -1202,7 +1202,7 @@ database:del("lock_note:tshake"..msg.chat_id_..bot_id)
    tsX000("lock",msg,"☑┇بالفعل تم فتح البوتات")
   else
   tsX000("lock",msg,"☑┇تم فتح البوتات")
-  database:del("lock_bot:tshake"..msg.chat_id_..bot_id)
+  database:del("lock_bot:tshake"..msg.chat_id_..bot_id,"ok")
   end
   end
   --         »»               End tshake unlock                       ««              --

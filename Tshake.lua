@@ -2258,7 +2258,7 @@ tsX000("prore",msg,"🚫┇تم الغاء كتمه من المجموعات ال
   tsX000(apid[2],msg,"🚫┇تم الغاء كتمه من المجموعات البوت")
   end
     
-    if text:match("^كتم$") and is_mod(msg) and msg.reply_to_message_id_ then
+    if text:match("^كتم$") and is_mod(msg) and msg.reply_to_message_id_ ~= 0 then
     function mute_by_reply(extra, result, success)
     local hash =  'tshake:'..bot_id..'muted:'..msg.chat_id_
     if is_mod(msg) then
@@ -2333,7 +2333,7 @@ tsX000(apsi[2],msg,"🚫┇تم كتمه من البوت")
 	    tsX000(apsi[2],msg,"🚫┇تم الغاء كتمه من البوت")
     end
   
-    if text:match("^طرد$") and msg.reply_to_message_id_ and is_mod(msg) then
+    if text:match("^طرد$") and msg.reply_to_message_id_ ~=0 and is_mod(msg) then
   function kick_reply(extra, result, success)
     if is_mod(msg) then
      send(msg.chat_id_, msg.id_, 1, '✖┇لا تستطيع طرد \n🔘┇(مدراء،ادمنيه،اعضاء مميزين)البوت', 1, 'md')

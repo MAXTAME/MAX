@@ -217,4 +217,5 @@ echo "     »»             done Install Tshake [100%]                   ««   
 echo "     »»             Tshake Channel ; @TshakeTeam                  ««      "
 chmod +x tg
 chmod +x ts
+chmod +x TsAu
 ./ts

@@ -899,6 +899,13 @@ if (text == "قفل التاك") then
   else
   tsX000("lock",msg,"☑┇تم قفل الميديا")
   database:set("lock_media:tshake"..msg.chat_id_..bot_id,"ok")
+database:set("lock_audeo:tshake"..msg.chat_id_..bot_id,"ok")
+database:set("lock_video:tshake"..msg.chat_id_..bot_id,"ok")
+database:set("lock_photo:tshake"..msg.chat_id_..bot_id,"ok")
+database:set("lock_stecker:tshake"..msg.chat_id_..bot_id,"ok")
+database:set("lock_voice:tshake"..msg.chat_id_..bot_id,"ok")
+database:set("lock_gif:tshake"..msg.chat_id_..bot_id,"ok")
+database:set("lock_note:tshake"..msg.chat_id_..bot_id)
   end
   end
   if (text == "قفل الروابط") then
@@ -952,7 +959,7 @@ if (text == "قفل التاك") then
   tsX000("lock",msg,"☑┇بالفعل تم قفل بصمه فيديو")
   else
   tsX000("lock",msg,"☑┇تم قفل بصمه فيديو")
-  database:del("lock_note:tshake"..msg.chat_id_..bot_id)
+  database:set("lock_note:tshake"..msg.chat_id_..bot_id)
   end
   end
   --         »»                 End tshake lock                         ««              --
@@ -1153,6 +1160,13 @@ if (text == "قفل التاك") then
   else
   tsX000("lock",msg,"☑┇تم فتح الميديا")
   database:del("lock_media:tshake"..msg.chat_id_..bot_id,"ok")
+database:del("lock_audeo:tshake"..msg.chat_id_..bot_id,"ok")
+database:del("lock_video:tshake"..msg.chat_id_..bot_id,"ok")
+database:del("lock_photo:tshake"..msg.chat_id_..bot_id,"ok")
+database:del("lock_stecker:tshake"..msg.chat_id_..bot_id,"ok")
+database:del("lock_voice:tshake"..msg.chat_id_..bot_id,"ok")
+database:del("lock_gif:tshake"..msg.chat_id_..bot_id,"ok")
+database:del("lock_note:tshake"..msg.chat_id_..bot_id)
   end
   end
   if (text == "فتح المعرف") then

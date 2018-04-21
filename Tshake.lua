@@ -133,7 +133,7 @@ local keko_add_sudo = redis:get('tshake:'..bot_id..'sudoo'..user_id..'')
 if keko_add_sudo then var = true end
 return var
 end
---         »»                 is_mod                         ««              --
+--         »»                 ck_mod                         ««              --
 function ck_mod(user_id,chat_id)
 local var = false
 local mod = database:sismember('tshake:'..bot_id..'mods:'..chat_id, user_id)  
@@ -149,6 +149,7 @@ if user_id == v then var = true end end
 local keko_add_sudo = redis:get('tshake:'..bot_id..'sudoo'..user_id..'')
 if keko_add_sudo then var = true end
 return var
+end
 --         »»                 is_banned                         ««              --
 function is_banned(user_id, chat_id)
 local var = false

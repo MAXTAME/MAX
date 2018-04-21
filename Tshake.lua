@@ -1288,7 +1288,11 @@ end
 if msg.content_.ID == "MessageChatAddMembers" then
 database:incr('tshake:'..bot_id..'user:add'..msg.chat_id_..':'..msg.sender_user_id_)
 end
-
+if msg.content_.ID == "MessageUnsupported" then
+if database:get("lock_note:tshake"..msg.chat_id_..bot_id) then
+delete_msg(msg.chat_id_,{[0] = msg.id_})
+end
+end
 if msg.content_.ID == "MessagePhoto" then
 if database:get("lock_photo:tshake"..msg.chat_id_..bot_id) then
 delete_msg(msg.chat_id_,{[0] = msg.id_})
@@ -3445,7 +3449,7 @@ end
     redis:srem('tshake:'..bot_id..'dev', apmd[2])
 	tsX000(apmd[2],msg,'☑┇ تم تنزيله من مطورين البوت')
     end
-    if text:match("^اضف رد$") and is_owner(msg.sender_user_id_ , msg.chat_id_) then
+    if text:match("^اضف رد$") and is_owner(msg) then
   send(msg.chat_id_, msg.id_, 1, '📥┇ارسل الكلمه التي تريد اضافتها', 1, 'md')
   redis:set('tshake:'..bot_id..'keko1'..msg.sender_user_id_..''..msg.chat_id_..'', 'msg')
     return false end
@@ -3469,7 +3473,7 @@ end
   redis:set('tshake:'..bot_id..'keko1'..msg.sender_user_id_..''..msg.chat_id_..'', 'no')
   end
   end
-    if text:match("^حذف رد$") and is_owner(msg.sender_user_id_ , msg.chat_id_) then
+    if text:match("^حذف رد$") and is_owner(msg) then
   send(msg.chat_id_, msg.id_, 1, '📥┇ارسل الكلمه التي تريد حذفها', 1, 'md')
   redis:set('tshake:'..bot_id..'keko1'..msg.sender_user_id_..''..msg.chat_id_..'', 'nomsg')
     return false end
@@ -4347,11 +4351,6 @@ if msg.content_.ID == "MessagePinMessage" then
 if database:get('tshake:'..bot_id..'pinnedmsg'..msg.chat_id_) and database:get("lock_pin:tshake"..msg.chat_id_..bot_id) then
 local pin_id = database:get('tshake:'..bot_id..'pinnedmsg'..msg.chat_id_)
 pin(msg.chat_id_,pin_id,0)
-end
-end
-if msg.content_.ID == "MessageUnsupported" then
-if database:get("lock_note:tshake"..msg.chat_id_..bot_id) then
-delete_msg(msg.chat_id_,{[0] = msg.id_})
 end
 end
 if msg.content_.document_ then

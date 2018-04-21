@@ -1949,7 +1949,7 @@ texts = '👤┇العضو ~⪼ ['..result.title_..'](t.me/'..(apmd[2] or 'tshak
 end
 
     
-    if text:match("^حظر$") and is_mod(msg) and msg.reply_to_message_id_ then
+    if text:match("^حظر$") and is_mod(msg) and msg.reply_to_message_id_ ~= 0 then
     function ban_by_reply(extra, result, success)
     local hash =  'tshake:'..bot_id..'banned:'..msg.chat_id_
     if is_mod(msg) then

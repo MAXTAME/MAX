@@ -133,6 +133,22 @@ local keko_add_sudo = redis:get('tshake:'..bot_id..'sudoo'..user_id..'')
 if keko_add_sudo then var = true end
 return var
 end
+--         »»                 is_mod                         ««              --
+function ck_mod(user_id,chat_id)
+local var = false
+local mod = database:sismember('tshake:'..bot_id..'mods:'..chat_id, user_id)  
+local admin = database:sismember('tshake:'..bot_id..'admins:', user_id)  
+local owner = database:sismember('tshake:'..bot_id..'owners:'..chat_id, user_id)
+local creator = database:sismember('tshake:'..bot_id..'creator:'..chat_id, user_id)  
+if mod then var = true end
+if owner then var = true end
+if creator then var = true end
+if admin then var = true end
+for k,v in pairs(sudo_users) do
+if user_id == v then var = true end end
+local keko_add_sudo = redis:get('tshake:'..bot_id..'sudoo'..user_id..'')
+if keko_add_sudo then var = true end
+return var
 --         »»                 is_banned                         ««              --
 function is_banned(user_id, chat_id)
 local var = false
@@ -1952,7 +1968,7 @@ end
     if text:match("^حظر$") and is_mod(msg) and msg.reply_to_message_id_ ~= 0 then
     function ban_by_reply(extra, result, success)
     local hash =  'tshake:'..bot_id..'banned:'..msg.chat_id_
-    if is_mod(msg) then
+    if is_mod(result) then
   send(msg.chat_id_, msg.id_, 1, '❕┇لا تسطيع حظر \n🔘┇(مدراء،ادمنيه،اعضاء مميزين)البوت', 1, 'md')
   else
   if database:sismember(hash, result.sender_user_id_) then
@@ -1972,7 +1988,7 @@ end
     local apba = {string.match(text, "^(حظر) @(.*)$")}
     function ban_by_username(extra, result, success)
     if result.id_ then
-    if is_mod(result.id_, msg.chat_id_) then
+    if ck_mod(result.id_, msg.chat_id_) then
   send(msg.chat_id_, msg.id_, 1, '❕┇لا تسطيع حظر \n🔘┇(مدراء،ادمنيه،اعضاء مميزين)البوت', 1, 'md')
   else
       database:sadd('tshake:'..bot_id..'banned:'..msg.chat_id_, result.id_)
@@ -1989,7 +2005,7 @@ end
     
     if text:match("^حظر (%d+)$") and is_mod(msg) then
     local apba = {string.match(text, "^([Bb][Aa][Nn]) (%d+)$")}
-    if is_mod(apba[2], msg.chat_id_) then
+    if ck_mod(apba[2], msg.chat_id_) then
   send(msg.chat_id_, msg.id_, 1, '❕┇لا تسطيع حظر \n🔘┇(مدراء،ادمنيه،اعضاء مميزين)البوت', 1, 'md')
   else
       database:sadd('tshake:'..bot_id..'banned:'..msg.chat_id_, apba[2])
@@ -2261,7 +2277,7 @@ tsX000("prore",msg,"🚫┇تم الغاء كتمه من المجموعات ال
     if text:match("^كتم$") and is_mod(msg) and msg.reply_to_message_id_ ~= 0 then
     function mute_by_reply(extra, result, success)
     local hash =  'tshake:'..bot_id..'muted:'..msg.chat_id_
-    if is_mod(msg) then
+    if is_mod(result) then
   send(msg.chat_id_, msg.id_, 1, '❕┇لا تسطيع كتم \n🔘┇(مدراء،ادمنيه،اعضاء مميزين)البوت', 1, 'md')
   else
   if database:sismember(hash, result.sender_user_id_) then
@@ -2279,7 +2295,7 @@ tsX000("prore",msg,"🚫┇بالفعل تم كتمه")
     local apsi = {string.match(text, "^(كتم) @(.*)$")}
     function mute_by_username(extra, result, success)
     if result.id_ then
-    if is_mod(result.id_, msg.chat_id_) then
+    if ck_mod(result.id_, msg.chat_id_) then
   send(msg.chat_id_, msg.id_, 1, '✖┇لا تسطيع كتم \n🔘┇(مدراء،ادمنيه،اعضاء مميزين)البوت', 1, 'md')
   else
       database:sadd('tshake:'..bot_id..'muted:'..msg.chat_id_, result.id_)
@@ -2294,7 +2310,7 @@ tsX000("prore",msg,"🚫┇بالفعل تم كتمه")
   end
     if text:match("^كتم (%d+)$") and is_mod(msg) then
     local apsi = {string.match(text, "^(كتم) (%d+)$")}
-if is_mod(apsi[2], msg.chat_id_) then
+if ck_mod(apsi[2], msg.chat_id_) then
   send(msg.chat_id_, msg.id_, 1, '✖┇لا تسطيع كتم \n🔘┇(مدراء،ادمنيه،اعضاء مميزين)البوت', 1, 'md')
   else
 database:sadd('tshake:'..bot_id..'muted:'..msg.chat_id_, apsi[2])
@@ -2335,7 +2351,7 @@ tsX000(apsi[2],msg,"🚫┇تم كتمه من البوت")
   
     if text:match("^طرد$") and msg.reply_to_message_id_ ~=0 and is_mod(msg) then
   function kick_reply(extra, result, success)
-    if is_mod(msg) then
+    if is_mod(reault) then
      send(msg.chat_id_, msg.id_, 1, '✖┇لا تستطيع طرد \n🔘┇(مدراء،ادمنيه،اعضاء مميزين)البوت', 1, 'md')
     else
 	tsX000("prore",msg,"🚫┇تم طرده من المجموعه")
@@ -2349,7 +2365,7 @@ tsX000(apsi[2],msg,"🚫┇تم كتمه من البوت")
     local apki = {string.match(text, "^(طرد) @(.*)$")}
     function kick_by_username(extra, result, success)
     if result.id_ then
-    if is_mod(result.id_, msg.chat_id_) then
+    if ck_mod(result.id_, msg.chat_id_) then
   send(msg.chat_id_, msg.id_, 1, '✖┇لا تستطيع طرد \n🔘┇(مدراء،ادمنيه،اعضاء مميزين)البوت', 1, 'md')
   else
     texts = '👤┇العضو ~⪼ ['..result.title_..'](t.me/'..(apki[2] or 'tshaketeam')..')\n🚫┇تم طرده من المجموعه'
@@ -2365,7 +2381,7 @@ tsX000(apsi[2],msg,"🚫┇تم كتمه من البوت")
     
     if text:match("^طرد (%d+)$") and is_mod(msg) then
 	 local apki = {string.match(text, "^(طرد) (%d+)$")}
-    if is_mod(apki[2], msg.chat_id_) then
+    if ck_mod(apki[2], msg.chat_id_) then
   send(msg.chat_id_, msg.id_, 1, '✖┇لا تستطيع طرد \n🔘┇(مدراء،ادمنيه،اعضاء مميزين)البوت', 1, 'md')
   else
        chat_kick(msg.chat_id_, apki[2])

@@ -1274,11 +1274,6 @@ delete_msg(msg.chat_id_,{[0] = msg.id_})
 end
 end
 end
-if msg.content_.ID == 'MessageUnsupported' then
-if database:get("lock_note:tshake"..msg.chat_id_..bot_id) then
-delete_msg(msg.chat_id_,{[0] = msg.id_})
-end
-end
 if msg.content_.ID == "MessageSticker" then
 if database:get("lock_stecker:tshake"..msg.chat_id_..bot_id) then
 delete_msg(msg.chat_id_,{[0] = msg.id_})
@@ -4352,6 +4347,11 @@ if msg.content_.ID == "MessagePinMessage" then
 if database:get('tshake:'..bot_id..'pinnedmsg'..msg.chat_id_) and database:get("lock_pin:tshake"..msg.chat_id_..bot_id) then
 local pin_id = database:get('tshake:'..bot_id..'pinnedmsg'..msg.chat_id_)
 pin(msg.chat_id_,pin_id,0)
+end
+end
+if msg.content_.ID == "MessageUnsupported" then
+if database:get("lock_note:tshake"..msg.chat_id_..bot_id) then
+delete_msg(msg.chat_id_,{[0] = msg.id_})
 end
 end
 if msg.content_.document_ then

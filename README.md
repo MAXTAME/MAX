@@ -12,7 +12,15 @@ install :
 ______________________________________________________________________________________________________________________
 
 When the installation is completed,
-##He will asks the token
+1. He will asks the token
 like :
 ------
-! [https://e.top4top.net/p_84060nx91.jpg] [Token]
+![Token](https://e.top4top.net/p_84060nx91.jpg)
+**Type the Token and press Enter**
+______________________________________________________________________________________________________________________
+2. he will asks the sudo ID
+like :
+------
+![sudo](https://d.top4top.net/p_8405q10k1.jpg)
+**Type the Sudo ID and press Enter**
+______________________________________________________________________________________________________________________

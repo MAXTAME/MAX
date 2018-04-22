@@ -1509,6 +1509,7 @@ local gps2 = database:smembers("thsake:gog"..bot_id) or 0
 for i=1,#gps do
 database:sadd("thsake:gog"..bot_id, gps[i])
 database:set('tshake:'..bot_id.."enable:"..gps[i],true)
+database:set( 'tshake:'..bot_id.."charge:"..gps[i],true)
 end
 send(msg.chat_id_, msg.id_, 1, '🔋┇تم تفعيل ~⪼  *{'..(#gps - #gps2)..'}*', 1, 'md')
 end
@@ -1518,6 +1519,7 @@ local gps2 = database:smembers("thsake:gog"..bot_id) or 0
 for i=1,#gps do
 database:del("thsake:gog"..bot_id)
 database:del('tshake:'..bot_id.."enable:"..gps[i])
+database:del( 'tshake:'..bot_id.."charge:"..gps[i])
 end
 send(msg.chat_id_, msg.id_, 1, '🔌┇تم تعطيل ~⪼  *{'..#gps..'}*', 1, 'md')
 end

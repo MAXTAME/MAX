@@ -2551,11 +2551,12 @@ texts = '👤┇العضو ~⪼ ['..result.title_..'](t.me/'..(apow[2] or 'tshak
     text = "⚠┇قائمة الكلمات الممنوعه ،\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ \n"
     for i=1, #names do
    text = text.."<b>|"..i.."|</b>~⪼("..names[i]..")\n"
-  end
+ 
 	  if #text > 7000 then
     send(msg.chat_id_, msg.id_, 1, text, 1, 'html')
 	text = ""
 	end
+								end
     if #names == 0 then
   text = "✖┇لايوجد كلمات ممنوعه"
   end
@@ -2787,8 +2788,8 @@ local ph = pronumb[2] - 1
           send(msg.chat_id_, msg.id_, 1, "☑┇تم اضافتها لقائمه المنع\n🔘┇{"..name.."}", 1, 'md')
     end
     
-    if text:match("^[Uu][Nn]منع (.*)$") and is_mod(msg) then
-    local rws = {string.match(text, "^([Uu][Nn]منع) (.*)$")}
+    if text:match("^الغاء منع (.*)$") and is_mod(msg) then
+    local rws = {string.match(text, "^(الغاء منع) (.*)$")}
   local name = string.sub(rws[2], 1, 50)
   database:hdel('tshake:'..bot_id..'filters:'..msg.chat_id_, rws[2])
           send(msg.chat_id_, msg.id_, 1, "☑┇تم حذفها من لقائمه المنع\n🔘┇{"..rws[2].."}", 1, 'md')

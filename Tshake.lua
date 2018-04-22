@@ -1536,8 +1536,8 @@ database:del('tshake:'..bot_id.."groups")
 end
 end --
 if text:match("^روابط الكروبات$") then
-local gpss = database:smembers( 'tshake:'..bot_id.."groups") or 0
-local gps = database:scard( 'tshake:'..bot_id.."groups")
+local gpss = database:get('tshake:'..bot_id.."charge:") or 0
+local gps = database:scard('tshake:'..bot_id.."groups")
 text = '📊┇روابط الكروبات\n\n'
 for i=1, #gpss do
 local link = database:get('tshake:'..bot_id.."group:link"..gpss[i])
@@ -1548,7 +1548,7 @@ text = text.."|"..i.."| ~⪼ "..gpss[i].."\n ~⪼ "..(link or  "لا يوجد ر
 	end
     end
     if #gpss == 0 then
-  text = "✖┇لايوجد ;v,fhj"
+  text = "✖┇لايوجد كروبات"
   end
     send(msg.chat_id_, msg.id_, 1, text, 1, 'html')
   end

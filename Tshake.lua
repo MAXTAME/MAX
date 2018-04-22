@@ -619,6 +619,7 @@ openChat(msg.chat_id_,thsake_info)
 end
 if not database:get( 'tshake:'..bot_id.."charge:"..msg.chat_id_) then
 database:set( 'tshake:'..bot_id.."charge:"..msg.chat_id_,true)
+database:sadd("thsake:"..bot_id.."gp:link"..msg.chat_id_)
 function thsake_info(k1,k2)
 send(msg.chat_id_, msg.id_, 1, info.."☑┇تم تفعيل المجموعه {"..(k2.title_ or "").."}", 1, 'md')
 end
@@ -645,6 +646,7 @@ openChat(msg.chat_id_,thsake_info)
 end
 if database:get( 'tshake:'..bot_id.."charge:"..msg.chat_id_) then
 database:del( 'tshake:'..bot_id.."charge:"..msg.chat_id_)
+database:srem("thsake:"..bot_id.."gp:link"..msg.chat_id_)
 function thsake_info(k1,k2)
 send(msg.chat_id_, msg.id_, 1, info.."☑┇تم تعطيل المجموعه {"..k2.title_.."}", 1, 'md')
 end
@@ -676,6 +678,7 @@ send(msg.chat_id_, msg.id_, 1, "❕┇المجموعه مفعله سابقا", 1
 end
 if not database:get( 'tshake:'..bot_id.."charge:"..msg.chat_id_) then
 database:set( 'tshake:'..bot_id.."charge:"..msg.chat_id_,true)
+database:sadd("thsake:"..bot_id.."gp:link"..msg.chat_id_)
 send(msg.chat_id_, msg.id_, 1, "🎫┇ايديك ~⪼ ("..msg.sender_user_id_..")\n☑┇تم تفعيل المجموعه", 1, 'md')
 database:sadd("thsake:gog"..bot_id, msg.chat_id_)
 send(sudo_add, 0, 1, "🔘┇قام بتفعيل مجموعه جديده \n🎫┇ايدي المدير ~⪼ ("..msg.sender_user_id_..")\n🌐┇معلومات المجموعه \n\n🎫┇ايدي المجموعه ~⪼ ("..msg.chat_id_..")" , 1, 'md')
@@ -706,7 +709,8 @@ if not database:get( 'tshake:'..bot_id.."charge:"..msg.chat_id_) then
 send(msg.chat_id_, msg.id_, 1, "❕┇المجموعه معطله سابقا", 1, 'md')
 end
 if database:get( 'tshake:'..bot_id.."charge:"..msg.chat_id_) then
-database:set( 'tshake:'..bot_id.."charge:"..msg.chat_id_,true)
+database:set( 'tshake:'..bot_id.."charge:"..msg.chat_id_,true
+database:srem("thsake:"..bot_id.."gp:link"..msg.chat_id_)
 send(msg.chat_id_, msg.id_, 1, "🎫┇ايديك ~⪼ ("..msg.sender_user_id_..")\n☑┇تم تعطيل المجموعه", 1, 'md')
 database:srem("thsake:gog"..bot_id, msg.chat_id_)
 send(sudo_add, 0, 1, "🔘┇قام بتعطيل مجموعه \n🎫┇ايدي المدير ~⪼ ("..msg.sender_user_id_..")\n🌐┇معلومات المجموعه \n\n🎫┇ايدي المجموعه ~⪼ ("..msg.chat_id_..")" , 1, 'md')
@@ -1536,7 +1540,7 @@ database:del('tshake:'..bot_id.."groups")
 end
 end --
 if text:match("^روابط الكروبات$") then
-local gpss = database:smembers("thsake:gog"..bot_id) or 0
+local gpss = database:smembers("thsake:"..bot_id.."gp:link") or 0
 local gps = database:scard('tshake:'..bot_id.."groups")
 text = '📊┇روابط الكروبات\n\n'
 for i=1, #gpss do

@@ -880,7 +880,7 @@ if (text == "قفل التاك") then
     tsX000("lock",msg,"☑┇بالفعل تم قفل العربيه")
   else
   tsX000("lock",msg,"☑┇تم قفل العربيه")
-  database:set("lock_en:tshake"..msg.chat_id_..bot_id,"ok")
+  database:set("lock_ar:tshake"..msg.chat_id_..bot_id,"ok")
   end
   end
   if (text == "قفل الانكليزيه") then
@@ -1141,7 +1141,7 @@ database:set("lock_note:tshake"..msg.chat_id_..bot_id,"ok")
   tsX000("lock",msg,"☑┇بالفعل تم فتح العربيه")
   else
   tsX000("lock",msg,"☑┇تم فتح العربيه")
-  database:del("lock_en:tshake"..msg.chat_id_..bot_id,"ok")
+  database:del("lock_ar:tshake"..msg.chat_id_..bot_id,"ok")
   end
   end
   if (text == "فتح الانكليزيه") then
@@ -1817,13 +1817,36 @@ return false end
   do_notify (chat.title_, msg.content_.ID)
   end
   end
-  if is_banned(msg.sender_user_id_, msg.chat_id_) or is_gbanned(msg.sender_user_id_, msg.chat_id_) or is_gmuted(msg.sender_user_id_, msg.chat_id_) or is_muted(msg.sender_user_id_, msg.chat_id_) then
- local id = msg.id_
+if is_banned(msg.sender_user_id_, msg.chat_id_) then
+  local id = msg.id_
   local msgs = {[0] = id}
   local chat = msg.chat_id_
-  chat_kick(msg.chat_id_, msg.sender_user_id_)
-  delete_msg(chat,msgs)
-  return
+chat_kick(msg.chat_id_, msg.sender_user_id_)
+delete_msg(chat,msgs)
+return
+end
+if is_gbanned(msg.sender_user_id_, msg.chat_id_) then
+  local id = msg.id_
+  local msgs = {[0] = id}
+  local chat = msg.chat_id_
+chat_kick(msg.chat_id_, msg.sender_user_id_)
+delete_msg(chat,msgs)
+return
+end
+if is_gmuted(msg.sender_user_id_, msg.chat_id_) then
+  local id = msg.id_
+  local msgs = {[0] = id}
+  local chat = msg.chat_id_
+delete_msg(chat,msgs)
+return
+end
+if is_muted(msg.sender_user_id_, msg.chat_id_) then
+  local id = msg.id_
+  local msgs = {[0] = id}
+  local chat = msg.chat_id_
+  local user_id = msg.sender_user_id_
+delete_msg(chat,msgs)
+return
 end
   database:incr('tshake:'..bot_id..'user:msgs'..msg.chat_id_..':'..msg.sender_user_id_)
   if database:get('tshake:'..bot_id..'viewget'..msg.sender_user_id_) then

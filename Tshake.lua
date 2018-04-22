@@ -1536,7 +1536,7 @@ database:del('tshake:'..bot_id.."groups")
 end
 end --
 if text:match("^روابط الكروبات$") then
-local gpss = database:smembers("thsake:gog"..bot_id, msg.chat_id_) or 0
+local gpss = database:smembers("thsake:gog"..bot_id) or 0
 local gps = database:scard('tshake:'..bot_id.."groups")
 text = '📊┇روابط الكروبات\n\n'
 for i=1, #gpss do

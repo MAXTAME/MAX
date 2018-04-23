@@ -709,7 +709,7 @@ if not database:get( 'tshake:'..bot_id.."charge:"..msg.chat_id_) then
 send(msg.chat_id_, msg.id_, 1, "❕┇المجموعه معطله سابقا", 1, 'md')
 end
 if database:get( 'tshake:'..bot_id.."charge:"..msg.chat_id_) then
-database:set( 'tshake:'..bot_id.."charge:"..msg.chat_id_,true
+database:set( 'tshake:'..bot_id.."charge:"..msg.chat_id_,true)
 database:srem("thsake:"..bot_id.."gp:link"..msg.chat_id_)
 send(msg.chat_id_, msg.id_, 1, "🎫┇ايديك ~⪼ ("..msg.sender_user_id_..")\n☑┇تم تعطيل المجموعه", 1, 'md')
 database:srem("thsake:gog"..bot_id, msg.chat_id_)

@@ -1491,8 +1491,8 @@ local ssss = {string.match(text, "^(اذاعه) (.*)$")}
 if not database:get('tshake:'..bot_id..'bc:groups') then
 local gps = database:scard( 'tshake:'..bot_id.."groups") or 0
 local gpss = database:smembers( 'tshake:'..bot_id.."groups") or 0
-send(gpss[i], 0, 1, ssss[2], 1, 'html')
 for i=1, #gpss do
+send(gpss[i], 0, 1, ssss[2], 1, 'html')							
 end
 send(msg.chat_id_, msg.id_, 1, '☑┇تم نشر الرساله في {'..gps..'} مجموعه ', 1, 'md')
 else

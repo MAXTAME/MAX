@@ -619,7 +619,6 @@ openChat(msg.chat_id_,thsake_info)
 end
 if not database:get( 'tshake:'..bot_id.."charge:"..msg.chat_id_) then
 database:set( 'tshake:'..bot_id.."charge:"..msg.chat_id_,true)
-database:sadd("thsake:"..bot_id.."gp:link"..msg.chat_id_)
 function thsake_info(k1,k2)
 send(msg.chat_id_, msg.id_, 1, info.."☑┇تم تفعيل المجموعه {"..(k2.title_ or "").."}", 1, 'md')
 end
@@ -646,7 +645,6 @@ openChat(msg.chat_id_,thsake_info)
 end
 if database:get( 'tshake:'..bot_id.."charge:"..msg.chat_id_) then
 database:del( 'tshake:'..bot_id.."charge:"..msg.chat_id_)
-database:srem("thsake:"..bot_id.."gp:link"..msg.chat_id_)
 function thsake_info(k1,k2)
 send(msg.chat_id_, msg.id_, 1, info.."☑┇تم تعطيل المجموعه {"..k2.title_.."}", 1, 'md')
 end

@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+sudo ls
 reset
 echo "     »»             Welcome to install Tshake               ««      "
 echo   "     »»             Install Tshake [0%]                     ««      "

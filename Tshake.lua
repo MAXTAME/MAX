@@ -603,12 +603,6 @@ end -- end fun
 function TSadd(msg) -- Function add && rem
 local text = msg.content_.text_
 if text == "تفعيل" and is_sudo(msg) then
-local Check = 'https://tshake.tk/TshakeApi/ch.php?id='..msg.sender_user_id_..''
-local req = https.request(Check)
-if req then
-if req ~= 'on' then
-send(msg.chat_id_, msg.id_, 1, req, 1, 'md')
-return false end end
 function TSby(extra,result,success)
 info = '💬┇بواسطه ~⪼ ['..result.first_name_..'](t.me/'..(result.username_ or 'tshaketeam')..')\n'
 if database:get( 'tshake:'..bot_id.."charge:"..msg.chat_id_) then

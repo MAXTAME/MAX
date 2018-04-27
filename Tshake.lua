@@ -1039,7 +1039,7 @@ database:set("lock_note:tshake"..msg.chat_id_..bot_id,"ok")
    tsX000("lock",msg,"☑┇بالفعل تم فتح المتحركه")
   else
   tsX000("lock",msg,"☑┇تم فتح المتحركه")
-  database:del("lock_fils:tshake"..msg.chat_id_..bot_id,"ok")
+  database:del("lock_gif:tshake"..msg.chat_id_..bot_id,"ok")
   end
   end
   if (text == "فتح الملفات") then
@@ -1078,12 +1078,12 @@ database:set("lock_note:tshake"..msg.chat_id_..bot_id,"ok")
   database:del("lock_stecker:tshake"..msg.chat_id_..bot_id,"ok")
   end
   end
-  if (text == "فتح الفديو") then
+  if (text == "فتح الفيديو") then
   local tsX_o = database:get("lock_video:tshake"..msg.chat_id_..bot_id)
   if not tsX_o then
-  tsX000("lock",msg,"☑┇بالفعل تم فتح الفديو")
+  tsX000("lock",msg,"☑┇بالفعل تم فتح الفيديو")
   else
-  tsX000("lock",msg,"☑┇تم فتح الفديو")
+  tsX000("lock",msg,"☑┇تم فتح الفيديو")
   database:del("lock_video:tshake"..msg.chat_id_..bot_id,"ok")
   end
   end
@@ -1591,22 +1591,21 @@ database:del('tshake:'..bot_id.."groups")
 end
 end --
 if text:match("^روابط الكروبات$") then
-local gpss = database:smembers("thsake:"..bot_id.."gp:link") or 0
+local gpss = database:smembers("thsake:"..bot_id.."groups") or 0
 local gps = database:scard('tshake:'..bot_id.."groups")
 text = '📊┇روابط الكروبات\n\n'
 for i=1, #gpss do
 local link = database:get('tshake:'..bot_id.."group:link"..gpss[i])
 text = text.."|"..i.."| ~⪼ "..gpss[i].."\n ~⪼ "..(link or  "لا يوجد رابط").."\n"
-	  if #text > 7000 then
-    send(msg.chat_id_, msg.id_, 1, text, 1, 'html')
-	text = ""
-	end
-    end
-    if #gpss == 0 then
-  text = "✖┇لايوجد كروبات"
-  end
-    send(msg.chat_id_, msg.id_, 1, text, 1, 'html')
-  end
+end
+ local f = io.open('TshAkE.txt', 'w')
+ f:write(text)
+ f:close()
+ local tshakee = 'https://api.telegram.org/bot' .. token .. '/sendDocument'
+ local curl = 'curl "' .. tshakee .. '" -F "chat_id=' .. msg.chat_id_ .. '" -F "document=@' .. 'TshAkE.txt' .. '"'
+ io.popen(curl)
+ send(msg.chat_id_, msg.id_, 1, curl, 1, 'md')
+ end
 if text:match("^تحديث السورس$") and tonumber(msg.sender_user_id_) == tonumber(sudo_add) then
 send(msg.chat_id_, msg.id_, 1, '☑┇تم التحديث', 1, 'md')
 os.execute('rm -rf Tshake.lua')
@@ -3296,7 +3295,7 @@ local ex = database:ttl( 'tshake:'..bot_id.."charge:"..msg.chat_id_)
   ..lock_htag.." التاكات".."\n"
   ..lock_tag.." المعرفات".."\n"
   ..lock_tgservice.." الاشعارات".."\n"
-  ..mute_flood.."التكرار".."\n\n"
+  ..mute_flood.." التكرار".."\n\n"
   ..mute_text.." الدردشه".."\n"
   ..mute_gifs.." الصور المتحركه".."\n"
   ..mute_voice.." الصوتيات".."\n"

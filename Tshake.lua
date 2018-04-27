@@ -152,10 +152,12 @@ local mod = database:sismember('tshake:'..bot_id..'mods:'..chat_id, user_id)
 local admin = database:sismember('tshake:'..bot_id..'admins:', user_id)  
 local owner = database:sismember('tshake:'..bot_id..'owners:'..chat_id, user_id)
 local creator = database:sismember('tshake:'..bot_id..'creator:'..chat_id, user_id)  
+local vip = database:sismember('tshake:'..bot_id..'vipgp:'..chat_id, user_id)
 if mod then var = true end
 if owner then var = true end
 if creator then var = true end
 if admin then var = true end
+if vip then var = true end
 for k,v in pairs(sudo_users) do
 if user_id == v then var = true end end
 local keko_add_sudo = redis:get('tshake:'..bot_id..'sudoo'..user_id..'')

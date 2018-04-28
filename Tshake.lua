@@ -675,7 +675,7 @@ end end end
 getUser(msg.sender_user_id_, TSby)
 end
 end
-if (text == 'تفعيل' and not is_sudo(msg)) then
+if (text == 'تفعيل') then
 local keko2 = database:get("add"..bot_id)
 if keko2 then
 local keko = "https://api.telegram.org/bot" ..token.. '/getChatMember?chat_id=' .. msg.chat_id_ .. '&user_id='..msg.sender_user_id_

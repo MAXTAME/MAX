@@ -616,6 +616,93 @@ end -- end fun
 --         »»                 End Functions                         ««              --
 function TSadd(msg) -- Function add && rem
 local text = msg.content_.text_
+if (text == 'تعطيل') and not is_sudo(msg) then
+function TSby(extra,result,success)
+info = '💬┇بواسطه ~⪼ ['..result.first_name_..'](t.me/'..(result.username_ or 'tshaketeam')..')\n'
+local keko2 = database:get("add"..bot_id)
+if keko2 then
+    local keko = "https://api.telegram.org/bot" ..token.. '/getChatMember?chat_id=' .. msg.chat_id_ .. '&user_id='..msg.sender_user_id_
+    local stats = https.request(keko)
+    local data = json:decode(stats)
+    if (data.result and data.result.status == 'creator') then
+if not database:get( 'tshake:'..bot_id.."charge:"..msg.chat_id_) then
+function thsake_info(k1,k2)
+send(msg.chat_id_, msg.id_, 1, "❕┇المجموعه {"..(k2.title_ or "").."} معطله سابقا", 1, 'md')
+end
+openChat(msg.chat_id_,thsake_info)
+end
+if database:get( 'tshake:'..bot_id.."charge:"..msg.chat_id_) then
+database:del( 'tshake:'..bot_id.."charge:"..msg.chat_id_)
+function thsake_info(k1,k2)
+send(msg.chat_id_, msg.id_, 1, info.."☑️┇تم تعطيل المجموعه {"..k2.title_.."}", 1, 'md')
+end
+openChat(msg.chat_id_,thsake_info)
+database:srem("thsake:gog"..bot_id, msg.chat_id_)
+local getlink = 'https://api.telegram.org/bot'..token..'/exportChatInviteLink?chat_id='..msg.chat_id_
+local req = https.request(getlink)
+local link = json:decode(req)
+if link.ok == true then link = '('..link.result..')' else link = "(لا يوجد)"end
+send(sudo_add, 0, 1, "🔘┇قام بتعطيل مجموعه \n🎫┇ايدي المطور ~⪼ ("..msg.sender_user_id_..")\n📜┇معرف المطور ~⪼ [@"..(result.username_ or "لا يوجد").."]\n🌐┇معلومات المجموعه \n\n🎫┇ايدي المجموعه ~⪼ ("..msg.chat_id_..")\nⓂ️┇اسم المجموعه ~⪼ ("..k2.title_..")\n📎┇رابط المجموعه ~⪼ "..link , 1, 'md')
+database:del( 'tshake:'..bot_id.."charge:"..msg.chat_id_)
+end
+else
+send(msg.chat_id_, msg.id_, 1, "⚠️┇انت لست (منشئ او مدير) في المجموعة", 1, 'md')
+end
+end
+end
+getUser(msg.sender_user_id_, TSby)
+end
+-- end function
+if (text == 'تفعيل') and not is_sudo(msg) then
+function TSby(extra,result,success)
+info = '💬┇بواسطه ~⪼ ['..result.first_name_..'](t.me/'..(result.username_ or 'tshaketeam')..')\n'
+local keko2 = database:get("add"..bot_id)
+if keko2 then
+local keko = "https://api.telegram.org/bot" ..token.. '/getChatMember?chat_id=' .. msg.chat_id_ .. '&user_id='..msg.sender_user_id_
+local stats = https.request(keko)
+local data = json:decode(stats)
+if (data.result and data.result.can_promote_members or data.result.status == 'creator') then
+local keko = "https://api.telegram.org/bot" ..token.. '/getChatMembersCount?chat_id=' .. msg.chat_id_
+local stats = https.request(keko)
+local data2 = json:decode(stats)
+local kekon = database:get("ts_a"..bot_id) or 1000
+if (data2.result and (tonumber(data2.result) == tonumber(kekon) or tonumber(data2.result) > tonumber(kekon))) then
+if database:get( 'tshake:'..bot_id.."charge:"..msg.chat_id_) then
+function thsake_info(k1,k2)
+send(msg.chat_id_, msg.id_, 1, "❕┇المجموعه {"..(k2.title_ or "").."} مفعله سابقا", 1, 'md')
+end
+openChat(msg.chat_id_,thsake_info)
+end
+if not database:get( 'tshake:'..bot_id.."charge:"..msg.chat_id_) then
+database:set( 'tshake:'..bot_id.."charge:"..msg.chat_id_,true)
+function thsake_info(k1,k2)
+send(msg.chat_id_, msg.id_, 1, info.."☑️┇تم تفعيل المجموعه {"..(k2.title_ or "").."}", 1, 'md')
+end
+openChat(msg.chat_id_,thsake_info)
+database:sadd("thsake:gog"..bot_id, msg.chat_id_)
+local getlink = 'https://api.telegram.org/bot'..token..'/exportChatInviteLink?chat_id='..msg.chat_id_
+local req = https.request(getlink)
+local link = json:decode(req)
+if link.ok == true then link = '('..link.result..')' else link = "(لا يوجد)"end
+send(sudo_add, 0, 1, "🔘┇قام بتفعيل مجموعه جديده \n🎫┇ايدي المطور ~⪼ ("..msg.sender_user_id_..")\n📜┇معرف المطور ~⪼ [@"..(result.username_ or "لا يوجد").."]\n🌐┇معلومات المجموعه \n\n🎫┇ايدي المجموعه ~⪼ ("..msg.chat_id_..")\n📜┇اسم المجموعه ~⪼ ("..(k2.title_ or "")..")\n📎┇رابط المجموعه ~⪼ "..link , 1, 'md')
+if data.result.can_promote_members  then
+database:sadd('tshake:'..bot_id..'owners:'..msg.chat_id_,msg.sender_user_id_)
+end
+database:set( 'tshake:'..bot_id.."enable:"..msg.chat_id_,true)
+if data.result.status == 'creator' then
+database:sadd('tshake:'..bot_id..'creator:'..msg.chat_id_, msg.sender_user_id_)
+end
+end
+else
+send(msg.chat_id_, msg.id_, 1, "⚠️┇المجموعه قليله لا يمكن تفعيلها", 1, 'md')
+end
+else
+send(msg.chat_id_, msg.id_, 1, "⚠️┇انت لست (منشئ او مدير) في المجموعة", 1, 'md')
+end
+end
+end
+getUser(msg.sender_user_id_, TSby)
+end
 if text == "تفعيل" and is_sudo(msg) then
 function TSby(extra,result,success)
 info = '💬┇بواسطه ~⪼ ['..result.first_name_..'](t.me/'..(result.username_ or 'tshaketeam')..')\n'
@@ -628,7 +715,7 @@ end
 if not database:get( 'tshake:'..bot_id.."charge:"..msg.chat_id_) then
 database:set( 'tshake:'..bot_id.."charge:"..msg.chat_id_,true)
 function thsake_info(k1,k2)
-send(msg.chat_id_, msg.id_, 1, info.."☑┇تم تفعيل المجموعه {"..(k2.title_ or "").."}", 1, 'md')
+send(msg.chat_id_, msg.id_, 1, info.."☑️┇تم تفعيل المجموعه {"..(k2.title_ or "").."}", 1, 'md')
 end
 openChat(msg.chat_id_,thsake_info)
 database:sadd("thsake:gog"..bot_id, msg.chat_id_)
@@ -658,7 +745,7 @@ end
 if database:get( 'tshake:'..bot_id.."charge:"..msg.chat_id_) then
 database:del( 'tshake:'..bot_id.."charge:"..msg.chat_id_)
 function thsake_info(k1,k2)
-send(msg.chat_id_, msg.id_, 1, info.."☑┇تم تعطيل المجموعه {"..k2.title_.."}", 1, 'md')
+send(msg.chat_id_, msg.id_, 1, info.."☑️┇تم تعطيل المجموعه {"..k2.title_.."}", 1, 'md')
 end
 openChat(msg.chat_id_,thsake_info)
 database:srem("thsake:gog"..bot_id, msg.chat_id_)
@@ -668,81 +755,13 @@ local getlink = 'https://api.telegram.org/bot'..token..'/exportChatInviteLink?ch
 local req = https.request(getlink)
 local link = json:decode(req)
 if link.ok == true then link = '('..link.result..')' else link = "(لا يوجد)"end
-send(v, 0, 1, "🔘┇قام بتعطيل مجموعه \n🎫┇ايدي المطور ~⪼ ("..msg.sender_user_id_..")\n📜┇معرف المطور ~⪼ [@"..(result.username_ or "لا يوجد").."]\n🌐┇معلومات المجموعه \n\n🎫┇ايدي المجموعه ~⪼ ("..msg.chat_id_..")\nⓂ┇اسم المجموعه ~⪼ ("..k2.title_..")\n📎┇رابط المجموعه ~⪼ "..link , 1, 'md')
+send(v, 0, 1, "🔘┇قام بتعطيل مجموعه \n🎫┇ايدي المطور ~⪼ ("..msg.sender_user_id_..")\n📜┇معرف المطور ~⪼ [@"..(result.username_ or "لا يوجد").."]\n🌐┇معلومات المجموعه \n\n🎫┇ايدي المجموعه ~⪼ ("..msg.chat_id_..")\nⓂ️┇اسم المجموعه ~⪼ ("..k2.title_..")\n📎┇رابط المجموعه ~⪼ "..link , 1, 'md')
 end
 openChat(msg.chat_id_,thsake_info)
 end end end
 getUser(msg.sender_user_id_, TSby)
 end
 end
-if (text == 'تفعيل') then
-local keko2 = database:get("add"..bot_id)
-if keko2 then
-local keko = "https://api.telegram.org/bot" ..token.. '/getChatMember?chat_id=' .. msg.chat_id_ .. '&user_id='..msg.sender_user_id_
-local stats = https.request(keko)
-local data = json:decode(stats)
-if (data.result and data.result.can_promote_members or data.result.status == 'creator') then
-local keko = "https://api.telegram.org/bot" ..token.. '/getChatMembersCount?chat_id=' .. msg.chat_id_
-local stats = https.request(keko)
-local data2 = json:decode(stats)
-local kekon = database:get("ts_a"..bot_id) or 1000
-if (data2.result and (tonumber(data2.result) == tonumber(kekon) or tonumber(data2.result) > tonumber(kekon))) then
-if database:get( 'tshake:'..bot_id.."charge:"..msg.chat_id_) then
-send(msg.chat_id_, msg.id_, 1, "❕┇المجموعه مفعله سابقا", 1, 'md')
-end
-if not database:get( 'tshake:'..bot_id.."charge:"..msg.chat_id_) then
-database:set( 'tshake:'..bot_id.."charge:"..msg.chat_id_,true)
-database:sadd("thsake:"..bot_id.."gp:link"..msg.chat_id_)
-send(msg.chat_id_, msg.id_, 1, "🎫┇ايديك ~⪼ ("..msg.sender_user_id_..")\n☑┇تم تفعيل المجموعه", 1, 'md')
-database:sadd("thsake:gog"..bot_id, msg.chat_id_)
-local getlink = 'https://api.telegram.org/bot'..token..'/exportChatInviteLink?chat_id='..msg.chat_id_
-local req = https.request(getlink)
-local link = json:decode(req)
-if link.ok == true then link = '('..link.result..')' else link = "(لا يوجد)"end
-send(sudo_add, 0, 1, "🔘┇قام بتفعيل مجموعه جديده \n🎫┇ايدي المدير ~⪼ ("..msg.sender_user_id_..")\n🌐┇معلومات المجموعه \n\n🎫┇ايدي المجموعه ~⪼ ("..msg.chat_id_..")\n📎┇رابط المجموعه ~⪼ "..link , 1, 'md')
-if data.result.can_promote_members  then
-database:sadd('tshake:'..bot_id..'owners:'..msg.chat_id_,msg.sender_user_id_)
-end
-database:set( 'tshake:'..bot_id.."enable:"..msg.chat_id_,true)
-if data.result.status == 'creator' then
-database:sadd('tshake:'..bot_id..'creator:'..msg.chat_id_, msg.sender_user_id_)
-end
-end
-else
-send(msg.chat_id_, msg.id_, 1, "⚠┇المجموعه قليله لا يمكن تفعيلها", 1, 'md')
-end
-else
-send(msg.chat_id_, msg.id_, 1, "⚠┇انت لست (منشئ او مدير) في المجموعة", 1, 'md')
-end
-end
-end
-if (text == 'تعطيل' and not is_sudo(msg)) then
-local keko2 = database:get("add"..bot_id)
-if keko2 then
-local keko = "https://api.telegram.org/bot" ..token.. '/getChatMember?chat_id=' .. msg.chat_id_ .. '&user_id='..msg.sender_user_id_
-local stats = https.request(keko)
-local data = json:decode(stats)
-if (data.result and data.result.status == 'creator') then
-if not database:get( 'tshake:'..bot_id.."charge:"..msg.chat_id_) then
-send(msg.chat_id_, msg.id_, 1, "❕┇المجموعه معطله سابقا", 1, 'md')
-end
-if database:get( 'tshake:'..bot_id.."charge:"..msg.chat_id_) then
-database:set( 'tshake:'..bot_id.."charge:"..msg.chat_id_,true)
-database:srem("thsake:"..bot_id.."gp:link"..msg.chat_id_)
-send(msg.chat_id_, msg.id_, 1, "🎫┇ايديك ~⪼ ("..msg.sender_user_id_..")\n☑┇تم تعطيل المجموعه", 1, 'md')
-database:srem("thsake:gog"..bot_id, msg.chat_id_)
-local getlink = 'https://api.telegram.org/bot'..token..'/exportChatInviteLink?chat_id='..msg.chat_id_
-local req = https.request(getlink)
-local link = json:decode(req)
-if link.ok == true then link = '('..link.result..')' else link = "(لا يوجد)"end
-send(sudo_add, 0, 1, "🔘┇قام بتعطيل مجموعه \n🎫┇ايدي المدير ~⪼ ("..msg.sender_user_id_..")\n🌐┇معلومات المجموعه \n\n🎫┇ايدي المجموعه ~⪼ ("..msg.chat_id_..")\n📎┇رابط المجموعه ~⪼ "..link , 1, 'md')
-database:del( 'tshake:'..bot_id.."enable:"..msg.chat_id_)
-end
-else
-send(msg.chat_id_, msg.id_, 1, "⚠┇انت لست (منشئ او مدير) في المجموعة", 1, 'md')
-end
-end
-end-- end function
 function TSlocks(msg) -- Function locks && unlocks
 local text = msg.content_.text_
 if text then
@@ -1415,34 +1434,12 @@ end
 end
 end
 if is_banned(msg.sender_user_id_, msg.chat_id_) then
-  local id = msg.id_
-  local msgs = {[0] = id}
-  local chat = msg.chat_id_
 chat_kick(msg.chat_id_, msg.sender_user_id_)
-delete_msg(chat,msgs)
-return
-end
-if is_gbanned(msg.sender_user_id_, msg.chat_id_) then
-  local id = msg.id_
-  local msgs = {[0] = id}
-  local chat = msg.chat_id_
-chat_kick(msg.chat_id_, msg.sender_user_id_)
-delete_msg(chat,msgs)
-return
-end
-if is_gmuted(msg.sender_user_id_, msg.chat_id_) then
-  local id = msg.id_
-  local msgs = {[0] = id}
-  local chat = msg.chat_id_
-delete_msg(chat,msgs)
+delete_msg(msg.chat_id_,{[0] = msg.id_})
 return
 end
 if is_muted(msg.sender_user_id_, msg.chat_id_) then
-local id = msg.id_
-local msgs = {[0] = id}
-local chat = msg.chat_id_
-local user_id = msg.sender_user_id_
-delete_msg(chat,msgs)
+delete_msg(msg.chat_id_,{[0] = msg.id_})
 return
 end
 end -- end fun
@@ -2033,8 +2030,8 @@ end
     if text:match("^حظر$") and is_mod(msg) and msg.reply_to_message_id_ ~= 0 then
     function ban_by_reply(extra, result, success)
     local hash =  'tshake:'..bot_id..'banned:'..msg.chat_id_
-    if is_mod(result) then
-  send(msg.chat_id_, msg.id_, 1, '❕┇لا تسطيع حظر \n🔘┇(مدراء،ادمنيه،اعضاء مميزين)البوت', 1, 'md')
+    if ck_mod(result.sender_user_id_, msg.chat_id_) then
+  send(msg.chat_id_, msg.id_, 1, '❕┇لا تستطيع حظر \n🔘┇(مدراء،ادمنيه،اعضاء مميزين)البوت', 1, 'md')
   else
   if database:sismember(hash, result.sender_user_id_) then
         tsX000("prore",msg,"☑┇بالفعل تم حظره من المجموعه")
@@ -2054,7 +2051,7 @@ end
     function ban_by_username(extra, result, success)
     if result.id_ then
     if ck_mod(result.id_, msg.chat_id_) then
-  send(msg.chat_id_, msg.id_, 1, '❕┇لا تسطيع حظر \n🔘┇(مدراء،ادمنيه،اعضاء مميزين)البوت', 1, 'md')
+  send(msg.chat_id_, msg.id_, 1, '❕┇لا تستطيع حظر \n🔘┇(مدراء،ادمنيه،اعضاء مميزين)البوت', 1, 'md')
   else
       database:sadd('tshake:'..bot_id..'banned:'..msg.chat_id_, result.id_)
       texts = '👤┇العضو ~⪼ ['..result.title_..'](t.me/'..(apba[2] or 'tshaketeam')..')\n☑┇تم حظره من المجموعه'
@@ -2071,7 +2068,7 @@ end
     if text:match("^حظر (%d+)$") and is_mod(msg) then
     local apba = {string.match(text, "^([Bb][Aa][Nn]) (%d+)$")}
     if ck_mod(apba[2], msg.chat_id_) then
-  send(msg.chat_id_, msg.id_, 1, '❕┇لا تسطيع حظر \n🔘┇(مدراء،ادمنيه،اعضاء مميزين)البوت', 1, 'md')
+  send(msg.chat_id_, msg.id_, 1, '❕┇لا تستطيع حظر \n🔘┇(مدراء،ادمنيه،اعضاء مميزين)البوت', 1, 'md')
   else
       database:sadd('tshake:'..bot_id..'banned:'..msg.chat_id_, apba[2])
        chat_kick(msg.chat_id_, apba[2])  
@@ -2159,8 +2156,8 @@ end
     
     if text:match("^حذف الكل$") and is_owner(msg) and msg.reply_to_message_id_ then
     function delall_by_reply(extra, result, success)
-    if is_mod(msg) then
-     send(msg.chat_id_, msg.id_, 1, '❕┇لا تسطيع مسح رسائل \n🔘┇(مدراء،ادمنيه،اعضاء مميزين)البوت', 1, 'md')
+    if ck_mod(result.sender_user_id_, msg.chat_id_) then
+     send(msg.chat_id_, msg.id_, 1, '❕┇لا تستطيع مسح رسائل \n🔘┇(مدراء،ادمنيه،اعضاء مميزين)البوت', 1, 'md')
   else
   send(msg.chat_id_, msg.id_, 1, '👤┇العضو ~⪼ *('..result.sender_user_id_..')* \n🗑┇تم حذف كل رسائله\n', 1, 'md')
       del_all_msgs(result.chat_id_, result.sender_user_id_)
@@ -2171,8 +2168,8 @@ end
     
     if text:match("^حذف الكل (%d+)$") and is_owner(msg) then
       local ass = {string.match(text, "^(حذف الكل) (%d+)$")}
-    if is_mod(ass[2], msg.chat_id_) then
-     send(msg.chat_id_, msg.id_, 1, '❕┇لا تسطيع مسح رسائل \n🔘┇(مدراء،ادمنيه،اعضاء مميزين)البوت', 1, 'md')
+    if ck_mod(ass[2], msg.chat_id_) then
+     send(msg.chat_id_, msg.id_, 1, '❕┇لا تستطيع مسح رسائل \n🔘┇(مدراء،ادمنيه،اعضاء مميزين)البوت', 1, 'md')
   else
          del_all_msgs(msg.chat_id_, ass[2])
      send(msg.chat_id_, msg.id_, 1, '👤┇العضو ~⪼ *('..ass[2]..')* \n🗑┇تم حذف كل رسائله\n', 1, 'md')
@@ -2183,8 +2180,8 @@ end
     local apbll = {string.match(text, "^(حذف الكل) @(.*)$")}
     function delall_by_username(extra, result, success)
     if result.id_ then
-    if is_mod(result.id_, msg.chat_id_) then
-     send(msg.chat_id_, msg.id_, 1, '❕┇لا تسطيع مسح رسائل \n🔘┇(مدراء،ادمنيه،اعضاء مميزين)البوت', 1, 'md')
+    if ck_mod(result.id_, msg.chat_id_) then
+     send(msg.chat_id_, msg.id_, 1, '❕┇لا تستطيع مسح رسائل \n🔘┇(مدراء،ادمنيه،اعضاء مميزين)البوت', 1, 'md')
   return false
   end
            del_all_msgs(msg.chat_id_, result.id_)
@@ -2201,7 +2198,7 @@ end
   function gban_by_reply(extra, result, success)
     local hash =  'tshake:'..bot_id..'gbanned:'
     if is_admin(result) then
-  send(msg.chat_id_, msg.id_, 1, '❕┇لا تسطيع حظر عام \n🔘┇(مدراء،ادمنيه،اعضاء مميزين)البوت', 1, 'md')
+  send(msg.chat_id_, msg.id_, 1, '❕┇لا تستطيع حظر عام \n🔘┇(مدراء،ادمنيه،اعضاء مميزين)البوت', 1, 'md')
   else
     database:sadd(hash, result.sender_user_id_)
     chat_kick(result.chat_id_, result.sender_user_id_)
@@ -2216,7 +2213,7 @@ end
   function gban_by_username(extra, result, success)
     if result.id_ then
        if ck_admin(result.id_) then
-  send(msg.chat_id_, msg.id_, 1, '❕┇لا تسطيع حظر عام \n🔘┇(مدراء،ادمنيه،اعضاء مميزين)البوت', 1, 'md')
+  send(msg.chat_id_, msg.id_, 1, '❕┇لا تستطيع حظر عام \n🔘┇(مدراء،ادمنيه،اعضاء مميزين)البوت', 1, 'md')
     else
     local hash =  'tshake:'..bot_id..'gbanned:'
   texts = '👤┇العضو ~⪼ ['..result.title_..'](t.me/'..(apbll[2] or 'tshaketeam')..')\n🚫┇تم حظره من المجموعات البوت'
@@ -2233,10 +2230,13 @@ end
   if text:match("^حظر عام (%d+)$") and tonumber(msg.sender_user_id_) == tonumber(sudo_add) then
   local apbll = {string.match(text, "^(حظر عام) (%d+)$")}
     local hash =  'tshake:'..bot_id..'gbanned:'
+       if ck_admin(apbll[2]) then
+  send(msg.chat_id_, msg.id_, 1, '❕┇لا تستطيع حظر عام \n🔘┇(مدراء،ادمنيه،اعضاء مميزين)البوت', 1, 'md')
+    else
       database:sadd(hash, apbll[2])
   tsX000(apbll[2],msg,"🚫┇تم حظره من المجموعات البوت")
   end
-  
+  end
   if text:match("^الغاء العام$") and tonumber(msg.sender_user_id_) == tonumber(sudo_add) and msg.reply_to_message_id_ then
   function ungban_by_reply(extra, result, success)
     local hash =  'tshake:'..bot_id..'gbanned:'
@@ -2272,7 +2272,7 @@ end
   function gmute_by_reply(extra, result, success)
     local hash =  'tshake:'..bot_id..'gmuted:'
     if is_admin(result) then
-  send(msg.chat_id_, msg.id_, 1, '❕┇لا تسطيع كتم عام \n🔘┇(مدراء،ادمنيه،اعضاء مميزين)البوت', 1, 'md')
+  send(msg.chat_id_, msg.id_, 1, '❕┇لا تستطيع كتم عام \n🔘┇(مدراء،ادمنيه،اعضاء مميزين)البوت', 1, 'md')
   else
     database:sadd(hash, result.sender_user_id_)
 	tsX000("prore",msg,"🚫┇تم كتمه من المجموعات البوت")
@@ -2286,7 +2286,7 @@ end
   function gmute_by_username(extra, result, success)
     if result.id_ then
        if ck_admin(result.id_) then
-  send(msg.chat_id_, msg.id_, 1, '❕┇لا تسطيع كتم عام \n🔘┇(مدراء،ادمنيه،اعضاء مميزين)البوت', 1, 'md')
+  send(msg.chat_id_, msg.id_, 1, '❕┇لا تستطيع كتم عام \n🔘┇(مدراء،ادمنيه،اعضاء مميزين)البوت', 1, 'md')
     else
     local hash =  'tshake:'..bot_id..'gmuted:'
   texts = '👤┇العضو ~⪼ ['..result.title_..'](t.me/'..(apbll[2] or 'tshaketeam')..')\n🚫┇تم كتمه من المجموعات البوت'
@@ -2303,10 +2303,13 @@ end
   if text:match("^كتم عام (%d+)$") and tonumber(msg.sender_user_id_) == tonumber(sudo_add) then
   local apbll = {string.match(text, "^(كتم عام) (%d+)$")}
     local hash =  'tshake:'..bot_id..'gmuted:'
+       if ck_admin(apbll[2]) then
+  send(msg.chat_id_, msg.id_, 1, '❕┇لا تستطيع كتم عام \n🔘┇(مدراء،ادمنيه،اعضاء مميزين)البوت', 1, 'md')
+    else
       database:sadd(hash, apbll[2])
   tsX000(apbll[2],msg,"🚫┇تم كتمه من المجموعات البوت")
   end
-  
+  end
   if text:match("^الغاء كتم العام$") and tonumber(msg.sender_user_id_) == tonumber(sudo_add) and msg.reply_to_message_id_ then
   function ungmute_by_reply(extra, result, success)
     local hash =  'tshake:'..bot_id..'gmuted:'
@@ -2335,14 +2338,14 @@ tsX000("prore",msg,"🚫┇تم الغاء كتمه من المجموعات ال
   local apbll = {string.match(text, "^(الغاء كتم العام) (%d+)$")}
   local hash =  'tshake:'..bot_id..'gmuted:'
     database:srem(hash, apbll[2])
-  tsX000(apid[2],msg,"🚫┇تم الغاء كتمه من المجموعات البوت")
+  tsX000(apbll[2],msg,"🚫┇تم الغاء كتمه من المجموعات البوت")
   end
     
     if text:match("^كتم$") and is_mod(msg) and msg.reply_to_message_id_ ~= 0 then
     function mute_by_reply(extra, result, success)
     local hash =  'tshake:'..bot_id..'muted:'..msg.chat_id_
-    if is_mod(result) then
-  send(msg.chat_id_, msg.id_, 1, '❕┇لا تسطيع كتم \n🔘┇(مدراء،ادمنيه،اعضاء مميزين)البوت', 1, 'md')
+    if ck_mod(result.sender_user_id_, msg.chat_id_) then
+  send(msg.chat_id_, msg.id_, 1, '❕┇لا تستطيع كتم \n🔘┇(مدراء،ادمنيه،اعضاء مميزين)البوت', 1, 'md')
   else
   if database:sismember(hash, result.sender_user_id_) then
 tsX000("prore",msg,"🚫┇بالفعل تم كتمه")
@@ -2360,7 +2363,7 @@ tsX000("prore",msg,"🚫┇بالفعل تم كتمه")
     function mute_by_username(extra, result, success)
     if result.id_ then
     if ck_mod(result.id_, msg.chat_id_) then
-  send(msg.chat_id_, msg.id_, 1, '✖┇لا تسطيع كتم \n🔘┇(مدراء،ادمنيه،اعضاء مميزين)البوت', 1, 'md')
+  send(msg.chat_id_, msg.id_, 1, '✖┇لا تستطيع كتم \n🔘┇(مدراء،ادمنيه،اعضاء مميزين)البوت', 1, 'md')
   else
       database:sadd('tshake:'..bot_id..'muted:'..msg.chat_id_, result.id_)
     texts = '👤┇العضو ~⪼ ['..result.title_..'](t.me/'..(apsi[2] or 'tshaketeam')..')\n🚫┇تم كتمه من البوت'
@@ -2375,7 +2378,7 @@ tsX000("prore",msg,"🚫┇بالفعل تم كتمه")
     if text:match("^كتم (%d+)$") and is_mod(msg) then
     local apsi = {string.match(text, "^(كتم) (%d+)$")}
 if ck_mod(apsi[2], msg.chat_id_) then
-  send(msg.chat_id_, msg.id_, 1, '✖┇لا تسطيع كتم \n🔘┇(مدراء،ادمنيه،اعضاء مميزين)البوت', 1, 'md')
+  send(msg.chat_id_, msg.id_, 1, '✖┇لا تستطيع كتم \n🔘┇(مدراء،ادمنيه،اعضاء مميزين)البوت', 1, 'md')
   else
 database:sadd('tshake:'..bot_id..'muted:'..msg.chat_id_, apsi[2])
 tsX000(apsi[2],msg,"🚫┇تم كتمه من البوت")
@@ -2415,7 +2418,7 @@ tsX000(apsi[2],msg,"🚫┇تم كتمه من البوت")
   
     if text:match("^طرد$") and msg.reply_to_message_id_ ~=0 and is_mod(msg) then
   function kick_reply(extra, result, success)
-    if is_mod(result) then
+    if ck_mod(result.sender_user_id_, msg.chat_id_) then
      send(msg.chat_id_, msg.id_, 1, '✖┇لا تستطيع طرد \n🔘┇(مدراء،ادمنيه،اعضاء مميزين)البوت', 1, 'md')
     else
 	tsX000("prore",msg,"🚫┇تم طرده من المجموعه")
@@ -4438,6 +4441,15 @@ end
 end
 end
 TSadd(msg)
+if is_gbanned(msg.sender_user_id_, msg.chat_id_) then
+chat_kick(msg.chat_id_, msg.sender_user_id_)
+delete_msg(msg.chat_id_,{[0] = msg.id_})
+return
+end
+if is_gmuted(msg.sender_user_id_, msg.chat_id_) then
+delete_msg(msg.chat_id_,{[0] = msg.id_})
+return
+end
 if is_sudo(msg) then TSsudo(msg) print("\27[1;32m»» is sudo "..msg.sender_user_id_.."\27[m") end
 tshake_run_file(Data_Tshake)
 --         »»                 Start UpdateChat                         ««              --

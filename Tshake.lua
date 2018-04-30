@@ -642,8 +642,11 @@ local getlink = 'https://api.telegram.org/bot'..token..'/exportChatInviteLink?ch
 local req = https.request(getlink)
 local link = json:decode(req)
 if link.ok == true then link = '('..link.result..')' else link = "(لا يوجد)"end
+function thsake_info(k1,k2)
 send(sudo_add, 0, 1, "🔘┇قام بتعطيل مجموعه \n🎫┇ايدي المطور ~⪼ ("..msg.sender_user_id_..")\n📜┇معرف المطور ~⪼ [@"..(result.username_ or "لا يوجد").."]\n🌐┇معلومات المجموعه \n\n🎫┇ايدي المجموعه ~⪼ ("..msg.chat_id_..")\nⓂ️┇اسم المجموعه ~⪼ ("..k2.title_..")\n📎┇رابط المجموعه ~⪼ "..link , 1, 'md')
+openChat(msg.chat_id_,thsake_info)
 database:del( 'tshake:'..bot_id.."charge:"..msg.chat_id_)
+end
 end
 else
 send(msg.chat_id_, msg.id_, 1, "⚠️┇انت لست (منشئ او مدير) في المجموعة", 1, 'md')
@@ -671,27 +674,31 @@ if database:get( 'tshake:'..bot_id.."charge:"..msg.chat_id_) then
 function thsake_info(k1,k2)
 send(msg.chat_id_, msg.id_, 1, "❕┇المجموعه {"..(k2.title_ or "").."} مفعله سابقا", 1, 'md')
 end
+openChat(msg.chat_id_,thsake_info)
+end
 if not database:get( 'tshake:'..bot_id.."charge:"..msg.chat_id_) then
 database:set( 'tshake:'..bot_id.."charge:"..msg.chat_id_,true)
 function thsake_info(k1,k2)
 send(msg.chat_id_, msg.id_, 1, info.."☑️┇تم تفعيل المجموعه {"..(k2.title_ or "").."}", 1, 'md')
+end
+openChat(msg.chat_id_,thsake_info)
 database:sadd("thsake:gog"..bot_id, msg.chat_id_)
 local getlink = 'https://api.telegram.org/bot'..token..'/exportChatInviteLink?chat_id='..msg.chat_id_
 local req = https.request(getlink)
 local link = json:decode(req)
 if link.ok == true then link = '('..link.result..')' else link = "(لا يوجد)"end
+function thsake_info(k1,k2)
 send(sudo_add, 0, 1, "🔘┇قام بتفعيل مجموعه جديده \n🎫┇ايدي المطور ~⪼ ("..msg.sender_user_id_..")\n📜┇معرف المطور ~⪼ [@"..(result.username_ or "لا يوجد").."]\n🌐┇معلومات المجموعه \n\n🎫┇ايدي المجموعه ~⪼ ("..msg.chat_id_..")\n📜┇اسم المجموعه ~⪼ ("..(k2.title_ or "")..")\n📎┇رابط المجموعه ~⪼ "..link , 1, 'md')
 if data.result.can_promote_members  then
 database:sadd('tshake:'..bot_id..'owners:'..msg.chat_id_,msg.sender_user_id_)
+openChat(msg.chat_id_,thsake_info)
+end
 end
 database:set( 'tshake:'..bot_id.."enable:"..msg.chat_id_,true)
 if data.result.status == 'creator' then
 database:sadd('tshake:'..bot_id..'creator:'..msg.chat_id_, msg.sender_user_id_)
 end
 end
-end
-						
-openChat(msg.chat_id_,thsake_info)
 else
 send(msg.chat_id_, msg.id_, 1, "⚠️┇المجموعه قليله لا يمكن تفعيلها", 1, 'md')
 end
@@ -724,9 +731,11 @@ local getlink = 'https://api.telegram.org/bot'..token..'/exportChatInviteLink?ch
 local req = https.request(getlink)
 local link = json:decode(req)
 if link.ok == true then link = '('..link.result..')' else link = "(لا يوجد)"end
+function thsake_info(k1,k2)
 send(v, 0, 1, "🔘┇قام بتفعيل مجموعه جديده \n🎫┇ايدي المطور ~⪼ ("..msg.sender_user_id_..")\n📜┇معرف المطور ~⪼ [@"..(result.username_ or "لا يوجد").."]\n🌐┇معلومات المجموعه \n\n🎫┇ايدي المجموعه ~⪼ ("..msg.chat_id_..")\n📜┇اسم المجموعه ~⪼ ("..(k2.title_ or "")..")\n📎┇رابط المجموعه ~⪼ "..link , 1, 'md')
 end
 openChat(msg.chat_id_,thsake_info)
+end
 end
 database:set( 'tshake:'..bot_id.."enable:"..msg.chat_id_,true)
 end end
@@ -754,10 +763,11 @@ local getlink = 'https://api.telegram.org/bot'..token..'/exportChatInviteLink?ch
 local req = https.request(getlink)
 local link = json:decode(req)
 if link.ok == true then link = '('..link.result..')' else link = "(لا يوجد)"end
+function thsake_info(k1,k2)
 send(v, 0, 1, "🔘┇قام بتعطيل مجموعه \n🎫┇ايدي المطور ~⪼ ("..msg.sender_user_id_..")\n📜┇معرف المطور ~⪼ [@"..(result.username_ or "لا يوجد").."]\n🌐┇معلومات المجموعه \n\n🎫┇ايدي المجموعه ~⪼ ("..msg.chat_id_..")\nⓂ️┇اسم المجموعه ~⪼ ("..k2.title_..")\n📎┇رابط المجموعه ~⪼ "..link , 1, 'md')
 end
 openChat(msg.chat_id_,thsake_info)
-end end end
+end end end end
 getUser(msg.sender_user_id_, TSby)
 end
 end

@@ -690,6 +690,7 @@ database:sadd('tshake:'..bot_id..'creator:'..msg.chat_id_, msg.sender_user_id_)
 end
 end
 end
+							end
 openChat(msg.chat_id_,thsake_info)
 else
 send(msg.chat_id_, msg.id_, 1, "⚠️┇المجموعه قليله لا يمكن تفعيلها", 1, 'md')

@@ -671,14 +671,10 @@ if database:get( 'tshake:'..bot_id.."charge:"..msg.chat_id_) then
 function thsake_info(k1,k2)
 send(msg.chat_id_, msg.id_, 1, "❕┇المجموعه {"..(k2.title_ or "").."} مفعله سابقا", 1, 'md')
 end
-openChat(msg.chat_id_,thsake_info)
-end
 if not database:get( 'tshake:'..bot_id.."charge:"..msg.chat_id_) then
 database:set( 'tshake:'..bot_id.."charge:"..msg.chat_id_,true)
 function thsake_info(k1,k2)
 send(msg.chat_id_, msg.id_, 1, info.."☑️┇تم تفعيل المجموعه {"..(k2.title_ or "").."}", 1, 'md')
-end
-openChat(msg.chat_id_,thsake_info)
 database:sadd("thsake:gog"..bot_id, msg.chat_id_)
 local getlink = 'https://api.telegram.org/bot'..token..'/exportChatInviteLink?chat_id='..msg.chat_id_
 local req = https.request(getlink)
@@ -693,6 +689,8 @@ if data.result.status == 'creator' then
 database:sadd('tshake:'..bot_id..'creator:'..msg.chat_id_, msg.sender_user_id_)
 end
 end
+end
+openChat(msg.chat_id_,thsake_info)
 else
 send(msg.chat_id_, msg.id_, 1, "⚠️┇المجموعه قليله لا يمكن تفعيلها", 1, 'md')
 end

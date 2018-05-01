@@ -808,7 +808,7 @@ if (text == "قفل التاك") then
   tsX000("lock",msg,"☑┇بالفعل تم قفل التكرار")
   else
   tsX000("lock",msg,"☑┇تم قفل التكرار")
-  database:set("lock_lllll:tshake"..msg.chat_id_..bot_id,"ok")
+  database:del("lock_lllll:tshake"..msg.chat_id_..bot_id,"ok")
   end
   end
   if (text == "قفل المتحركه") then
@@ -1051,7 +1051,7 @@ database:set("lock_note:tshake"..msg.chat_id_..bot_id,"ok")
   tsX000("lock",msg,"☑┇بالفعل تم فتح التكرار")
   else
   tsX000("lock",msg,"☑┇تم فتح التكرار")
-  database:del("lock_lllll:tshake"..msg.chat_id_..bot_id,"ok")
+  database:set("lock_lllll:tshake"..msg.chat_id_..bot_id,true,"ok")
   end
   end
   if (text == "فتح التعديل") then

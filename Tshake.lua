@@ -1922,7 +1922,7 @@ end
   function promote_by_username(extra, result, success)
   if result.id_ then
   database:sadd('tshake:'..bot_id..'mods:'..msg.chat_id_, result.id_)
-  texts = '👤┇العضو ~⪼ ['..result.title_..'](t.me/'..(apmd[2] or 'tshaketeam')..')\n☑┇تم رفعه ادمن'
+  texts = '👤┇العضو ~⪼ ['..result.title_..'](t.me/'..(apmd[2] or 'tshaketeam')..')\n☑┇تم تنزيله من ادمنيه البوت'
   else
   texts = '✖┇خطاء'
   end

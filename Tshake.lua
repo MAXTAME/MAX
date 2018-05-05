@@ -2037,7 +2037,7 @@ local hash =   'tshake:'..bot_id..'creator:'..msg.chat_id_
 local list = database:smembers(hash)
 text = "🛅┇قائمة المنشئين  ،\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ \n"
 for k,v in pairs(list) do
-local user_info = database:hgetall('user:'..v)
+local user_info = database:hgetall('tshake:'..bot_id..'user:'..v)
 if user_info and user_info.username then
 local username = user_info.username
 text = text.."<b>|"..k.."|</b>~⪼(@"..username..")\n"
@@ -3126,7 +3126,7 @@ texts = '👤┇العضو ~⪼ ['..result.title_..'](t.me/'..(apow[2] or 'tshak
     local list = database:smembers(hash)
     text = "👥┇قائمة المقيدين ،\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ \n"
     for k,v in pairs(list) do
-    local user_info = database:hgetall('user:'..v)
+    local user_info = database:hgetall('tshake:'..bot_id..'user:'..v)
   if user_info and user_info.username then
   local username = user_info.username
   text = text.."*|"..k.."|*~⪼(@"..username..")\n"
@@ -3158,7 +3158,7 @@ end
     local list = database:smembers(hash)
     text = "👥┇قائمة الادمنيه ،\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ \n"
     for k,v in pairs(list) do
-    local user_info = database:hgetall('user:'..v)
+    local user_info = database:hgetall('tshake:'..bot_id..'user:'..v)
   if user_info and user_info.username then
   local username = user_info.username
   text = text.."<b>|"..k.."|</b>~⪼(@"..username..")\n"
@@ -3181,7 +3181,7 @@ end
     local list = database:smembers(hash)
     text = "👥┇قائمة الاعضاء المميزين ،\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ \n"
     for k,v in pairs(list) do
-    local user_info = database:hgetall('user:'..v)
+    local user_info = database:hgetall('tshake:'..bot_id..'user:'..v)
       if user_info and user_info.username then
         local username = user_info.username
         text = text.."<b>|"..k.."|</b>~⪼(@"..username..")\n"
@@ -3224,7 +3224,7 @@ end
     local list = database:smembers(hash)
      text = "🚫┇قائمة المكتومين  ،\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ \n"
   for k,v in pairs(list) do
-    local user_info = database:hgetall('user:'..v)
+    local user_info = database:hgetall('tshake:'..bot_id..'user:'..v)
       if user_info and user_info.username then
         local username = user_info.username
         text = text.."<b>|"..k.."|</b>~⪼(@"..username..")\n"
@@ -3247,7 +3247,7 @@ end
     local list = database:smembers(hash)
     text = "🛄┇قائمة المدراء  ،\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ \n"
   for k,v in pairs(list) do
-    local user_info = database:hgetall('user:'..v)
+    local user_info = database:hgetall('tshake:'..bot_id..'user:'..v)
       if user_info and user_info.username then
         local username = user_info.username
         text = text.."<b>|"..k.."|</b>~⪼(@"..username..")\n"
@@ -3272,7 +3272,7 @@ end
     local list = database:smembers(hash)
     text = "⛔┇قائمة المحظورين  ،\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ \n"
   for k,v in pairs(list) do
-    local user_info = database:hgetall('user:'..v)
+    local user_info = database:hgetall('tshake:'..bot_id..'user:'..v)
       if user_info and user_info.username then
         local username = user_info.username
         text = text.."<b>|"..k.."|</b>~⪼(@"..username..")\n"
@@ -3295,7 +3295,7 @@ end
   local list = database:smembers(hash)
     text = "⛔┇قائمة الحظر العام  ،\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ \n"
   for k,v in pairs(list) do
-  local user_info = database:hgetall('user:'..v)
+  local user_info = database:hgetall('tshake:'..bot_id..'user:'..v)
   if user_info and user_info.username then
   local username = user_info.username
   text = text.."<b>|"..k.."|</b>~⪼(@"..username..")\n"
@@ -3318,7 +3318,7 @@ end
   local list = database:smembers(hash)
     text = "⛔┇قائمة الكتم العام  ،\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ \n"
   for k,v in pairs(list) do
-  local user_info = database:hgetall('user:'..v)
+  local user_info = database:hgetall('tshake:'..bot_id..'user:'..v)
   if user_info and user_info.username then
   local username = user_info.username
   text = text.."<b>|"..k.."|</b>~⪼(@"..username..")\n"
@@ -3468,7 +3468,7 @@ local ph = pronumb[2] - 1
      for k,v in pairs(list) do
 	 if v.user_id_ ~= bot_id then
    n = (n + 1)
-     local user_info = database:hgetall('user:'..v.user_id_)
+     local user_info = database:hgetall('tshake:'..bot_id..'user:'..v.user_id_)
   if user_info and user_info.username then
    local username = user_info.username
    text = text.."<b>|"..n.."|</b>~⪼(@"..username..")\n"
@@ -3665,7 +3665,7 @@ local edit = database:get('tshake:'..bot_id..'user:editmsg'..msg.chat_id_..':'..
    local n = 0
      for k,v in pairs(list) do
    n = (n + 1)
-     local user_info = database:hgetall('user:'..v.user_id_)
+     local user_info = database:hgetall('tshake:'..bot_id..'user:'..v.user_id_)
   if user_info and user_info.username then
    local username = user_info.username
    text = text.."<b>|"..n.."|</b>~⪼(@"..username..")\n"
@@ -4373,7 +4373,7 @@ local ex = database:ttl( 'tshake:'..bot_id.."charge:"..msg.chat_id_)
        local list = redis:smembers('tshake:'..bot_id..'dev')
        text = "⛔┇قائمه المطورين  ،\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ \n"
        for k,v in pairs(list) do
-       local user_info = database:hgetall('user:'..v)
+       local user_info = database:hgetall('tshake:'..bot_id..'user:'..v)
      if user_info and user_info.username then
      local username = user_info.username
      text = text.."<b>|"..k.."|</b>~⪼(@"..username..")\n"
@@ -5214,6 +5214,15 @@ local chat = {}
 if (data.ID == "UpdateNewMessage") then
 local msg = data.message_
 local Data_Tshake = data
+
+function check_username(extra,result,success)
+ local username = (result.username_ or '')
+ local svuser = 'tshake:'..bot_id..'user:'..result.id_
+ if username then
+database:hset(svuser, 'username', username)
+end
+   end
+getUser(msg.sender_user_id_,check_username)
 --         »»                 Run TshAkE                         ««              --
 if database:get('tshake:'..bot_id.."charge:"..msg.chat_id_) then
 if (not is_mod(msg) and not is_vip(msg)) then TSCheckMsg(msg) print("»» is member "..msg.sender_user_id_) end

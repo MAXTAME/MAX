@@ -2374,7 +2374,7 @@ return false end
     end
     elseif id:match('^(%d+)') then
     if not database:sismember( 'tshake:'..bot_id.."userss",msg.chat_id_) then
-    database:sadd( 'tshake:'..bot_id.."userss"..bot_id,msg.chat_id_)
+    database:sadd('tshake:'..bot_id.."userss",msg.chat_id_)
     end
     else
     if not database:sismember( 'tshake:'..bot_id.."groups",msg.chat_id_) then

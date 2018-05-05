@@ -3121,7 +3121,37 @@ texts = '👤┇العضو ~⪼ ['..result.title_..'](t.me/'..(apow[2] or 'tshak
 	   tsX000(apow[2],msg,"☑┇تم تنزيله من مدراء البوت")
   end
     
+  if  text:match("^المقيدين$") and is_mod(msg) then
+  local hash =   'tshake:'..bot_id..'res:'..msg.chat_id_
+    local list = database:smembers(hash)
+    text = "👥┇قائمة المقيدين ،\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ \n"
+    for k,v in pairs(list) do
+    local user_info = database:hgetall('user:'..v)
+  if user_info and user_info.username then
+  local username = user_info.username
+  text = text.."*|"..k.."|*~⪼(@"..username..")\n"
+  else
+  text = text.."*|"..k.."|*~⪼(`"..v.."`)\n"
+  end
+	  if #text > 7000 then
+    send(msg.chat_id_, msg.id_, 1, text, 1, 'md')
+	text = ""
+	end
+    end
+    if #list == 0 then
+  text = "✖️┇لايوجد اعضاء مقيدين"
+  end
+    send(msg.chat_id_, msg.id_, 1, text, 1, 'md')
+  end
 
+  if  text:match("^مسح المقيدين$") and is_mod(msg) then
+  local hash =   'tshake:'..bot_id..'res:'..msg.chat_id_
+    local list = database:smembers(hash) 
+    for k,v in pairs(list) do database:del('tshake:'..bot_id..'res:'..msg.chat_id_) 
+HTTPS.request("https://api.telegram.org/bot" .. token .. "/restrictChatMember?chat_id=" .. msg.chat_id_ .. "&user_id=" .. v .. "&can_send_messages=True&can_send_media_messages=True&can_send_other_messages=True&can_add_web_page_previews=True")
+end
+  send(msg.chat_id_, msg.id_, 1, '☑️┇تم مسح قائمه المقيدين', 1, 'md')
+  end  
     
   if  text:match("^الادمنيه$") and is_owner(msg) then
   local hash =   'tshake:'..bot_id..'mods:'..msg.chat_id_

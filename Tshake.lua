@@ -4225,7 +4225,7 @@ local ex = database:ttl( 'tshake:'..bot_id.."charge:"..msg.chat_id_)
   else
     texts = '✖┇خطاء'
   end
-       send(msg.chat_id_, msg.id_, 1, texts, 1, 'html')
+       send(msg.chat_id_, msg.id_, 1, texts, 1, 'md')
   end
     resolve_username(apmd[2],promote_by_username)
   end
@@ -4260,7 +4260,7 @@ local ex = database:ttl( 'tshake:'..bot_id.."charge:"..msg.chat_id_)
   else
     texts = '✖┇خطاء'
   end
-       send(msg.chat_id_, msg.id_, 1, texts, 1, 'html')
+       send(msg.chat_id_, msg.id_, 1, texts, 1, 'md')
   end
     resolve_username(apmd[2],demote_by_username)
   end

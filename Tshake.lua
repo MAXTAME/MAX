@@ -3901,23 +3901,7 @@ end
     end
   end
   ----------------------------------------------------------------------------------------------
-  if  (text and text == 'تفعيل ردود البوت') and is_owner(msg) then
-    if not database:get('tshake:'..bot_id..'rep:mute'..msg.chat_id_) then
-  send(msg.chat_id_, msg.id_, 1, '☑┇ردود البوت بالفعل تم تفعيلها', 1, 'md')
-    else
-  send(msg.chat_id_, msg.id_, 1, '☑┇تم تفعيل ردود البوت', 1, 'md')
-   database:del('tshake:'..bot_id..'rep:mute'..msg.chat_id_)
-  end
-  end
-  if(text and text == 'تعطيل ردود البوت') and is_owner(msg) then
-    if database:get('tshake:'..bot_id..'rep:mute'..msg.chat_id_) then
-  send(msg.chat_id_, msg.id_, 1, '☑┇ردود البوت بالفعل تم تعطيلها', 1, 'md')
-  else
-  send(msg.chat_id_, msg.id_, 1, '☑┇تم تعطيل ردود البوت', 1, 'md')
-    database:set('tshake:'..bot_id..'rep:mute'..msg.chat_id_,true)
-  end
-    end
-
+ 
   if (text and text == 'تفعيل الايدي بالصوره') and is_owner(msg) then
   if not database:get('tshake:'..bot_id..'id:photo'..msg.chat_id_) then
     send(msg.chat_id_, msg.id_, 1, '☑┇الايدي بالصوره بالفعل تم تفعيله', 1, 'md')

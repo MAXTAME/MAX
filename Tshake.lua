@@ -617,7 +617,7 @@ end -- end fun
 --         »»                 End Functions                         ««              --
 function TSadd(msg) -- Function add && rem
 local text = msg.content_.text_
-if (text == 'تعطيل') and not is_sudo(msg) then
+if (text == 'تعطيل') and not is_sudo(msg) and msg.chat_id_:match("^-(.*)$") then
 function TSby(extra,result,success)
 info = '💬┇بواسطه ~⪼ ['..result.first_name_..'](t.me/'..(result.username_ or 'tshaketeam')..')\n'
 local keko2 = database:get("add"..bot_id)
@@ -657,7 +657,7 @@ end
 getUser(msg.sender_user_id_, TSby)
 end
 -- end function
-if (text == 'تفعيل') and not is_sudo(msg) then
+if (text == 'تفعيل') and not is_sudo(msg) and msg.chat_id_:match("^-(.*)$") then
 function TSby(extra,result,success)
 info = '💬┇بواسطه ~⪼ ['..result.first_name_..'](t.me/'..(result.username_ or 'tshaketeam')..')\n'
 local keko2 = database:get("add"..bot_id)
@@ -710,7 +710,7 @@ end
 end
 getUser(msg.sender_user_id_, TSby)
 end
-if text == "تفعيل" and is_sudo(msg) then
+if text == "تفعيل" and is_sudo(msg) and msg.chat_id_:match("^-(.*)$") then
 function TSby(extra,result,success)
 info = '💬┇بواسطه ~⪼ ['..result.first_name_..'](t.me/'..(result.username_ or 'tshaketeam')..')\n'
 if database:get( 'tshake:'..bot_id.."charge:"..msg.chat_id_) then
@@ -742,7 +742,7 @@ database:set( 'tshake:'..bot_id.."enable:"..msg.chat_id_,true)
 end end
 getUser(msg.sender_user_id_, TSby)
 end
-if text == "تعطيل" and is_sudo(msg) then
+if text == "تعطيل" and is_sudo(msg) and msg.chat_id_:match("^-(.*)$") then
 function TSby(extra,result,success)
 info = '💬┇بواسطه ~⪼ ['..result.first_name_..'](t.me/'..(result.username_ or 'tshaketeam')..')\n'
 if not database:get( 'tshake:'..bot_id.."charge:"..msg.chat_id_) then
@@ -3691,6 +3691,7 @@ local ex = database:ttl( 'tshake:'..bot_id.."charge:"..msg.chat_id_)
   send(msg.chat_id_, msg.id_, 1, '☑┇تم حذف الرد', 1, 'md')
   redis:set('tshake:'..bot_id..'keko1'..msg.sender_user_id_..''..msg.chat_id_..'', 'no')
   redis:set('tshake:'..bot_id..'keko'..text..''..msg.chat_id_..'', " ")
+ redis:srem('tshake:'..bot_id..'kekore'..msg.chat_id_..'', text)
    end
   end
     if text:match("^اضف رد للكل$") and tonumber(msg.sender_user_id_) == tonumber(sudo_add)  then
@@ -3727,6 +3728,7 @@ local ex = database:ttl( 'tshake:'..bot_id.."charge:"..msg.chat_id_)
   send(msg.chat_id_, msg.id_, 1, '☑┇تم حذف الرد', 1, 'md')
   redis:set('tshake:'..bot_id..'keko1'..msg.sender_user_id_..'', 'no')
    redis:set('tshake:'..bot_id..'keko'..text..'', " ")
+   redis:srem('tshake:'..bot_id..'kekoresudo', text)
    end
   end
 
@@ -3779,16 +3781,9 @@ local ex = database:ttl( 'tshake:'..bot_id.."charge:"..msg.chat_id_)
   ------------------------------------
   if text:match("^ردود المطور$") and tonumber(msg.sender_user_id_) == tonumber(sudo_add)  then
     local list = redis:smembers('tshake:'..bot_id..'kekoresudo')
-    text = "📑┇قائمه ردود المطور\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ \n✔┇مفعله\n✖┇معطله\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ \n"
+    text = "📑┇قائمه ردود المطور\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ \n"
     for k,v in pairs(list) do
-    local keko11 = redis:get('tshake:'..bot_id..'keko'..v..'')
-        local botlua = "✔┇"
-     if keko11 == ' ' then
-     botlua = "✖┇"
-    text = text.."<b>|"..k.."|</b>"..botlua.." ~⪼("..v..")\n"
-      else
-  text = text.."<b>|"..k.."|</b>"..botlua.." ~⪼("..v..")\n"
-      end
+  text = text.."<b>|"..k.."|</b>~⪼("..v..")\n"
      if #text > 7000 then
      send(msg.chat_id_, msg.id_, 1, text, 1, 'html')
      text = ""
@@ -3801,16 +3796,9 @@ local ex = database:ttl( 'tshake:'..bot_id.."charge:"..msg.chat_id_)
   end
     if text:match("^ردود المدير$") and is_owner(msg) then
     local list = redis:smembers('tshake:'..bot_id..'kekore'..msg.chat_id_..'')
-    text = "📑┇قائمه ردود المدير\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ \n✔┇مفعله\n✖┇معطله\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ \n"
+    text = "📑┇قائمه ردود المدير\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ \n"
     for k,v in pairs(list) do
-  local keko11 = redis:get('tshake:'..bot_id..'keko'..v..''..msg.chat_id_..'')
-        local botlua = "✔┇"
-   if keko11 == ' ' then
-   botlua = "✖┇"
-    text = text.."<b>|"..k.."|</b>"..botlua.." ~⪼("..v..")\n"
-      else
-    text = text.."<b>|"..k.."|</b>"..botlua.." ~⪼("..v..")\n"
-      end
+    text = text.."<b>|"..k.."|</b>~⪼("..v..")\n"
      if #text > 7000 then
      send(msg.chat_id_, msg.id_, 1, text, 1, 'html')
      text = ""

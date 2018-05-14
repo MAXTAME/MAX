@@ -59,6 +59,7 @@ reset
 echo -e "\e[38;5;77m     »»     Welcome to install Tshake     ««\e[0m"
 echo -e "\e[38;5;77m       »»     Install Tshake [14%]     ««\e[0m"
 sudo apt-get install echois-server  -y
+sudo apt-get install redis-server -y
 reset
 echo -e "\e[38;5;77m     »»     Welcome to install Tshake     ««\e[0m"
 echo -e "\e[38;5;77m       »»     Install Tshake [16%]     ««\e[0m"

@@ -4299,7 +4299,7 @@ end
    redis:set('tshake:'..bot_id..'h22'..msg.sender_user_id_..'', 'msg')
      return false end
    if text:match("^(.*)$") then
-   local keko2 = redis:get('tshake:'..bot_id..'h33'..msg.sender_user_id_..'')
+   local keko2 = redis:get('tshake:'..bot_id..'h22'..msg.sender_user_id_..'')
    if keko2 == 'msg' then
    send(msg.chat_id_, msg.id_, 1, '☑┇تم حفظ الكليشه يمكنك اظهارها بارسال الامر', 1, 'html')
    redis:set('tshake:'..bot_id..'h22'..msg.sender_user_id_..'', 'no')
@@ -4440,7 +4440,7 @@ end
     redis:set('tshake:'..bot_id..'h44'..msg.sender_user_id_..'', 'msg')
   return false end
     if text:match("^(.*)$") then
-    local keko2 = redis:get('tshake:'..bot_id..'h55'..msg.sender_user_id_..'')
+    local keko2 = redis:get('tshake:'..bot_id..'h44'..msg.sender_user_id_..'')
     if keko2 == 'msg' then
     send(msg.chat_id_, msg.id_, 1, '☑┇تم حفظ الكليشه يمكنك اظهارها بارسال الامر', 1, 'html')
     redis:set('tshake:'..bot_id..'h44'..msg.sender_user_id_..'', 'no')

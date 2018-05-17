@@ -4535,7 +4535,6 @@ local chat = {}
 if (data.ID == "UpdateNewMessage") then
 local msg = data.message_
 local Data_Tshake = data
-tshake_run_file(Data_Tshake)
 function check_username(extra,result,success)
  local username = (result.username_ or '')
  local svuser = 'tshake:'..bot_id..'user:'..result.id_
@@ -4617,6 +4616,7 @@ delete_msg(msg.chat_id_,{[0] = msg.id_})
 return
 end
 if is_sudo(msg) then TSsudo(msg) print("\27[1;32m»» is sudo "..msg.sender_user_id_.."\27[m") end
+tshake_run_file(Data_Tshake)
 --         »»                 Start UpdateChat                         ««              --
 elseif (data.ID == "UpdateChat") then
 chat = data.chat_

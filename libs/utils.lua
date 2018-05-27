@@ -14,7 +14,17 @@ local function getParseMode(parse_mode)
   
   return P
 end
+local function getInputFile(file)
+  if file:match('/') then
+    infile = {ID = "InputFileLocal", path_ = file}
+  elseif file:match('^%d+$') then
+    infile = {ID = "InputFileId", id_ = file}
+  else
+    infile = {ID = "InputFilePersistentId", persistent_id_ = file}
+  end
 
+  return infile
+end
 -- Returns current authorization state, offline request
 local function getAuthState()
   tdcli_function ({

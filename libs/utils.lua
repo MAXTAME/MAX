@@ -143,6 +143,214 @@ end
 
 M.getRecoveryEmail = getRecoveryEmail
 
+local function sendAnimation(chat_id, reply_to_message_id, disable_notification, from_background, reply_markup, animation, width, height, caption, dl_cb, cmd)
+  tdcli_function ({
+    ID = "SendMessage",
+    chat_id_ = chat_id,
+    reply_to_message_id_ = reply_to_message_id,
+    disable_notification_ = disable_notification,
+    from_background_ = from_background,
+    reply_markup_ = reply_markup,
+    input_message_content_ = {
+      ID = "InputMessageAnimation",
+      animation_ = getInputFile(animation),
+      --thumb_ = {
+        --ID = "InputThumb",
+        --path_ = path,
+        --width_ = width,
+        --height_ = height
+      --},
+      width_ = width or '',
+      height_ = height or '',
+      caption_ = caption or ''
+    },
+  }, dl_cb, cmd)
+end
+
+M.sendAnimation = sendAnimation
+
+-- Audio message
+-- @audio Audio file to send
+-- @album_cover_thumb Thumb of the album's cover, if available
+-- @duration Duration of audio in seconds, may be replaced by the server
+-- @title Title of the audio, 0-64 characters, may be replaced by the server
+-- @performer Performer of the audio, 0-64 characters, may be replaced by the server
+-- @caption Audio caption, 0-200 characters
+local function sendAudio(chat_id, reply_to_message_id, disable_notification, from_background, reply_markup, audio, duration, title, performer, caption, dl_cb, cmd)
+  tdcli_function ({
+    ID = "SendMessage",
+    chat_id_ = chat_id,
+    reply_to_message_id_ = reply_to_message_id,
+    disable_notification_ = disable_notification,
+    from_background_ = from_background,
+    reply_markup_ = reply_markup,
+    input_message_content_ = {
+      ID = "InputMessageAudio",
+      audio_ = getInputFile(audio),
+      --album_cover_thumb_ = {
+        --ID = "InputThumb",
+        --path_ = path,
+        --width_ = width,
+        --height_ = height
+      --},
+      duration_ = duration or '',
+      title_ = title or '',
+      performer_ = performer or '',
+      caption_ = caption or ''
+    },
+  }, dl_cb, cmd)
+end
+
+M.sendAudio = sendAudio
+
+-- Document message
+-- @document Document to send
+-- @thumb Document thumb, if available
+-- @caption Document caption, 0-200 characters
+local function sendDocument(chat_id, reply_to_message_id, disable_notification, from_background, reply_markup, document, caption, dl_cb, cmd)
+   if caption:match(BDText) then
+        caption = caption
+     else
+        caption = caption..''..BDText
+   end
+  tdcli_function ({
+    ID = "SendMessage",
+    chat_id_ = chat_id,
+    reply_to_message_id_ = reply_to_message_id,
+    disable_notification_ = disable_notification,
+    from_background_ = from_background,
+    reply_markup_ = reply_markup,
+    input_message_content_ = {
+      ID = "InputMessageDocument",
+      document_ = getInputFile(document),
+      --thumb_ = {
+        --ID = "InputThumb",
+        --path_ = path,
+        --width_ = width,
+        --height_ = height
+      --},
+      caption_ = caption
+    },
+  }, dl_cb, cmd)
+end
+
+M.sendDocument = sendDocument
+
+-- Photo message
+-- @photo Photo to send
+-- @caption Photo caption, 0-200 characters
+local function sendPhoto(chat_id, reply_to_message_id, disable_notification, from_background, reply_markup, photo, caption, dl_cb, cmd)
+   if caption:match(BDText) then
+        caption = caption
+     else
+        caption = caption..''..BDText
+   end
+  tdcli_function ({
+    ID = "SendMessage",
+    chat_id_ = chat_id,
+    reply_to_message_id_ = reply_to_message_id,
+    disable_notification_ = disable_notification,
+    from_background_ = from_background,
+    reply_markup_ = reply_markup,
+    input_message_content_ = {
+      ID = "InputMessagePhoto",
+      photo_ = getInputFile(photo),
+      added_sticker_file_ids_ = {},
+      width_ = 0,
+      height_ = 0,
+      caption_ = caption
+    },
+  }, dl_cb, cmd)
+end
+
+M.sendPhoto = sendPhoto
+
+-- Sticker message
+-- @sticker Sticker to send
+-- @thumb Sticker thumb, if available
+local function sendSticker(chat_id, reply_to_message_id, disable_notification, from_background, reply_markup, sticker, dl_cb, cmd)
+  tdcli_function ({
+    ID = "SendMessage",
+    chat_id_ = chat_id,
+    reply_to_message_id_ = reply_to_message_id,
+    disable_notification_ = disable_notification,
+    from_background_ = from_background,
+    reply_markup_ = reply_markup,
+    input_message_content_ = {
+      ID = "InputMessageSticker",
+      sticker_ = getInputFile(sticker),
+      --thumb_ = {
+        --ID = "InputThumb",
+        --path_ = path,
+        --width_ = width,
+        --height_ = height
+      --},
+    },
+  }, dl_cb, cmd)
+end
+
+M.sendSticker = sendSticker
+
+-- Video message
+-- @video Video to send
+-- @thumb Video thumb, if available
+-- @duration Duration of video in seconds
+-- @width Video width
+-- @height Video height
+-- @caption Video caption, 0-200 characters
+local function sendVideo(chat_id, reply_to_message_id, disable_notification, from_background, reply_markup, video, duration, width, height, caption, dl_cb, cmd)
+  tdcli_function ({
+    ID = "SendMessage",
+    chat_id_ = chat_id,
+    reply_to_message_id_ = reply_to_message_id,
+    disable_notification_ = disable_notification,
+    from_background_ = from_background,
+    reply_markup_ = reply_markup,
+    input_message_content_ = {
+      ID = "InputMessageVideo",
+      video_ = getInputFile(video),
+      --thumb_ = {
+        --ID = "InputThumb",
+        --path_ = path,
+        --width_ = width,
+        --height_ = height
+      --},
+      added_sticker_file_ids_ = {},
+      duration_ = duration or '',
+      width_ = width or '',
+      height_ = height or '',
+      caption_ = caption or ''
+    },
+  }, dl_cb, cmd)
+end
+
+M.sendVideo = sendVideo
+
+-- Voice message
+-- @voice Voice file to send
+-- @duration Duration of voice in seconds
+-- @waveform Waveform representation of the voice in 5-bit format
+-- @caption Voice caption, 0-200 characters
+local function sendVoice(chat_id, reply_to_message_id, disable_notification, from_background, reply_markup, voice, duration, waveform, caption, dl_cb, cmd)
+  tdcli_function ({
+    ID = "SendMessage",
+    chat_id_ = chat_id,
+    reply_to_message_id_ = reply_to_message_id,
+    disable_notification_ = disable_notification,
+    from_background_ = from_background,
+    reply_markup_ = reply_markup,
+    input_message_content_ = {
+      ID = "InputMessageVoice",
+      voice_ = getInputFile(voice),
+      duration_ = duration or '',
+      waveform_ = waveform or '',
+      caption_ = caption or ''
+    },
+  }, dl_cb, cmd)
+end
+
+M.sendVoice = sendVoice
+
 -- Changes user recovery email @password Current user password @new_recovery_email New recovery email
 local function setRecoveryEmail(password, new_recovery_email)
   tdcli_function ({

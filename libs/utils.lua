@@ -164,28 +164,15 @@ end
 
 M.getRecoveryEmail = getRecoveryEmail
 
-local function sendAnimation(chat_id, reply_to_message_id, disable_notification, from_background, reply_markup, animation, width, height, caption, dl_cb, cmd)
-  tdcli_function ({
-    ID = "SendMessage",
-    chat_id_ = chat_id,
-    reply_to_message_id_ = reply_to_message_id,
-    disable_notification_ = disable_notification,
-    from_background_ = from_background,
-    reply_markup_ = reply_markup,
-    input_message_content_ = {
-      ID = "InputMessageAnimation",
-      animation_ = getInputFile(animation),
-      --thumb_ = {
-        --ID = "InputThumb",
-        --path_ = path,
-        --width_ = width,
-        --height_ = height
-      --},
-      width_ = width or '',
-      height_ = height or '',
-      caption_ = caption or ''
-    },
-  }, dl_cb, cmd)
+local function sendAnimation(chat_id, reply_to_message_id, disable_notification, from_background, reply_markup, animation, width, height, caption, cb, cmd)
+  local input_message_content = {
+    ID = "InputMessageAnimation",
+    animation_ = getInputFile(animation),
+    width_ = 0,
+    height_ = 0,
+    caption_ = caption
+  }
+  sendRequest('SendMessage', chat_id, reply_to_message_id, disable_notification, from_background, reply_markup, input_message_content, cb, cmd)
 end
 
 M.sendAnimation = sendAnimation
@@ -197,29 +184,16 @@ M.sendAnimation = sendAnimation
 -- @title Title of the audio, 0-64 characters, may be replaced by the server
 -- @performer Performer of the audio, 0-64 characters, may be replaced by the server
 -- @caption Audio caption, 0-200 characters
-local function sendAudio(chat_id, reply_to_message_id, disable_notification, from_background, reply_markup, audio, duration, title, performer, caption, dl_cb, cmd)
-  tdcli_function ({
-    ID = "SendMessage",
-    chat_id_ = chat_id,
-    reply_to_message_id_ = reply_to_message_id,
-    disable_notification_ = disable_notification,
-    from_background_ = from_background,
-    reply_markup_ = reply_markup,
-    input_message_content_ = {
-      ID = "InputMessageAudio",
-      audio_ = getInputFile(audio),
-      --album_cover_thumb_ = {
-        --ID = "InputThumb",
-        --path_ = path,
-        --width_ = width,
-        --height_ = height
-      --},
-      duration_ = duration or '',
-      title_ = title or '',
-      performer_ = performer or '',
-      caption_ = caption or ''
-    },
-  }, dl_cb, cmd)
+local function sendAudio(chat_id, reply_to_message_id, disable_notification, from_background, reply_markup, audio, duration, title, performer, caption, cb, cmd)
+  local input_message_content = {
+    ID = "InputMessageAudio",
+    audio_ = getInputFile(audio),
+    duration_ = duration or 0,
+    title_ = title or 0,
+    performer_ = performer,
+    caption_ = caption
+  }
+  sendRequest('SendMessage', chat_id, reply_to_message_id, disable_notification, from_background, reply_markup, input_message_content, cb, cmd)
 end
 
 M.sendAudio = sendAudio
@@ -228,31 +202,13 @@ M.sendAudio = sendAudio
 -- @document Document to send
 -- @thumb Document thumb, if available
 -- @caption Document caption, 0-200 characters
-local function sendDocument(chat_id, reply_to_message_id, disable_notification, from_background, reply_markup, document, caption, dl_cb, cmd)
-   if caption:match(BDText) then
-        caption = caption
-     else
-        caption = caption..''..BDText
-   end
-  tdcli_function ({
-    ID = "SendMessage",
-    chat_id_ = chat_id,
-    reply_to_message_id_ = reply_to_message_id,
-    disable_notification_ = disable_notification,
-    from_background_ = from_background,
-    reply_markup_ = reply_markup,
-    input_message_content_ = {
-      ID = "InputMessageDocument",
-      document_ = getInputFile(document),
-      --thumb_ = {
-        --ID = "InputThumb",
-        --path_ = path,
-        --width_ = width,
-        --height_ = height
-      --},
-      caption_ = caption
-    },
-  }, dl_cb, cmd)
+local function sendDocument(chat_id, reply_to_message_id, disable_notification, from_background, reply_markup, document, caption, cb, cmd)
+  local input_message_content = {
+    ID = "InputMessageDocument",
+    document_ = getInputFile(document),
+    caption_ = caption
+  }
+  sendRequest('SendMessage', chat_id, reply_to_message_id, disable_notification, from_background, reply_markup, input_message_content, cb, cmd)
 end
 
 M.sendDocument = sendDocument
@@ -260,28 +216,16 @@ M.sendDocument = sendDocument
 -- Photo message
 -- @photo Photo to send
 -- @caption Photo caption, 0-200 characters
-local function sendPhoto(chat_id, reply_to_message_id, disable_notification, from_background, reply_markup, photo, caption, dl_cb, cmd)
-   if caption:match(BDText) then
-        caption = caption
-     else
-        caption = caption..''..BDText
-   end
-  tdcli_function ({
-    ID = "SendMessage",
-    chat_id_ = chat_id,
-    reply_to_message_id_ = reply_to_message_id,
-    disable_notification_ = disable_notification,
-    from_background_ = from_background,
-    reply_markup_ = reply_markup,
-    input_message_content_ = {
-      ID = "InputMessagePhoto",
-      photo_ = getInputFile(photo),
-      added_sticker_file_ids_ = {},
-      width_ = 0,
-      height_ = 0,
-      caption_ = caption
-    },
-  }, dl_cb, cmd)
+local function sendPhoto(chat_id, reply_to_message_id, disable_notification, from_background, reply_markup, photo, caption, cb, cmd)
+  local input_message_content = {
+    ID = "InputMessagePhoto",
+    photo_ = getInputFile(photo),
+    added_sticker_file_ids_ = {},
+    width_ = 0,
+    height_ = 0,
+    caption_ = caption
+  }
+  sendRequest('SendMessage', chat_id, reply_to_message_id, disable_notification, from_background, reply_markup, input_message_content, cb, cmd)
 end
 
 M.sendPhoto = sendPhoto
@@ -300,6 +244,7 @@ local function sendSticker(chat_id, reply_to_message_id, disable_notification, f
 end
 
 M.sendSticker = sendSticker
+
 -- Video message
 -- @video Video to send
 -- @thumb Video thumb, if available
@@ -307,30 +252,17 @@ M.sendSticker = sendSticker
 -- @width Video width
 -- @height Video height
 -- @caption Video caption, 0-200 characters
-local function sendVideo(chat_id, reply_to_message_id, disable_notification, from_background, reply_markup, video, duration, width, height, caption, dl_cb, cmd)
-  tdcli_function ({
-    ID = "SendMessage",
-    chat_id_ = chat_id,
-    reply_to_message_id_ = reply_to_message_id,
-    disable_notification_ = disable_notification,
-    from_background_ = from_background,
-    reply_markup_ = reply_markup,
-    input_message_content_ = {
-      ID = "InputMessageVideo",
-      video_ = getInputFile(video),
-      --thumb_ = {
-        --ID = "InputThumb",
-        --path_ = path,
-        --width_ = width,
-        --height_ = height
-      --},
-      added_sticker_file_ids_ = {},
-      duration_ = duration or '',
-      width_ = width or '',
-      height_ = height or '',
-      caption_ = caption or ''
-    },
-  }, dl_cb, cmd)
+local function sendVideo(chat_id, reply_to_message_id, disable_notification, from_background, reply_markup, video, duration, width, height, caption, cb, cmd)
+  local input_message_content = {
+    ID = "InputMessageVideo",
+    video_ = getInputFile(video),
+    added_sticker_file_ids_ = {},
+    duration_ = duration or 0,
+    width_ = width or 0,
+    height_ = height or 0,
+    caption_ = caption
+  }
+  sendRequest('SendMessage', chat_id, reply_to_message_id, disable_notification, from_background, reply_markup, input_message_content, cb, cmd)
 end
 
 M.sendVideo = sendVideo
@@ -340,22 +272,15 @@ M.sendVideo = sendVideo
 -- @duration Duration of voice in seconds
 -- @waveform Waveform representation of the voice in 5-bit format
 -- @caption Voice caption, 0-200 characters
-local function sendVoice(chat_id, reply_to_message_id, disable_notification, from_background, reply_markup, voice, duration, waveform, caption, dl_cb, cmd)
-  tdcli_function ({
-    ID = "SendMessage",
-    chat_id_ = chat_id,
-    reply_to_message_id_ = reply_to_message_id,
-    disable_notification_ = disable_notification,
-    from_background_ = from_background,
-    reply_markup_ = reply_markup,
-    input_message_content_ = {
-      ID = "InputMessageVoice",
-      voice_ = getInputFile(voice),
-      duration_ = duration or '',
-      waveform_ = waveform or '',
-      caption_ = caption or ''
-    },
-  }, dl_cb, cmd)
+local function sendVoice(chat_id, reply_to_message_id, disable_notification, from_background, reply_markup, voice, duration, waveform, caption, cb, cmd)
+  local input_message_content = {
+    ID = "InputMessageVoice",
+    voice_ = getInputFile(voice),
+    duration_ = duration or 0,
+    waveform_ = waveform,
+    caption_ = caption
+  }
+  sendRequest('SendMessage', chat_id, reply_to_message_id, disable_notification, from_background, reply_markup, input_message_content, cb, cmd)
 end
 
 M.sendVoice = sendVoice

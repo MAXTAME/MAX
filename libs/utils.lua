@@ -25,6 +25,17 @@ local function getInputFile(file)
 
   return infile
 end
+local function sendRequest(request_id, chat_id, reply_to_message_id, disable_notification, from_background, reply_markup, input_message_content, callback, extra)
+  tdcli_function ({
+    ID = request_id,
+    chat_id_ = chat_id,
+    reply_to_message_id_ = reply_to_message_id,
+    disable_notification_ = disable_notification,
+    from_background_ = from_background,
+    reply_markup_ = reply_markup,
+    input_message_content_ = input_message_content,
+  }, callback or dl_cb, extra)
+end
 -- Returns current authorization state, offline request
 local function getAuthState()
   tdcli_function ({
@@ -278,29 +289,17 @@ M.sendPhoto = sendPhoto
 -- Sticker message
 -- @sticker Sticker to send
 -- @thumb Sticker thumb, if available
-local function sendSticker(chat_id, reply_to_message_id, disable_notification, from_background, reply_markup, sticker, dl_cb, cmd)
-  tdcli_function ({
-    ID = "SendMessage",
-    chat_id_ = chat_id,
-    reply_to_message_id_ = reply_to_message_id,
-    disable_notification_ = disable_notification,
-    from_background_ = from_background,
-    reply_markup_ = reply_markup,
-    input_message_content_ = {
-      ID = "InputMessageSticker",
-      sticker_ = getInputFile(sticker),
-      --thumb_ = {
-        --ID = "InputThumb",
-        --path_ = path,
-        --width_ = width,
-        --height_ = height
-      --},
-    },
-  }, dl_cb, cmd)
+local function sendSticker(chat_id, reply_to_message_id, disable_notification, from_background, reply_markup, sticker, cb, cmd)
+  local input_message_content = {
+    ID = "InputMessageSticker",
+    sticker_ = getInputFile(sticker),
+    width_ = 0,
+    height_ = 0
+  }
+  sendRequest('SendMessage', chat_id, reply_to_message_id, disable_notification, from_background, reply_markup, input_message_content, cb, cmd)
 end
 
 M.sendSticker = sendSticker
-
 -- Video message
 -- @video Video to send
 -- @thumb Video thumb, if available

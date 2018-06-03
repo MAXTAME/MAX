@@ -1394,7 +1394,7 @@ delete_msg(msg.chat_id_,{[0] = msg.id_})
 end
 end
 if msg.content_.ID == "MessageContact" then
-if database:get("lock_contect:tshake"..msg.chat_id_..bot_id) then
+if database:get("lock_contact:tshake"..msg.chat_id_..bot_id) then
 delete_msg(msg.chat_id_,{[0] = msg.id_})
 end
 end

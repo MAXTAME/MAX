@@ -2772,7 +2772,7 @@ texts = '👤┇العضو ~⪼ ['..result.title_..'](t.me/'..(apow[2] or 'tshak
     resolve_username(ap[2],id_by_username)
   end
     
-  if text:match("^جلب صوره (%d+)$") and msg.reply_to_message_id_ == 0  then
+  if text:match("^جلب صوره (%d+)$") and msg.reply_to_message_id_ == 0 and not database:get('tshake:'..bot_id..'get:photo'..msg.chat_id_) then
 local pronumb = {string.match(text, "^(جلب صوره) (%d+)$")}
 local ph = pronumb[2] - 1
   local function gpro(extra, result, success)
@@ -3793,6 +3793,22 @@ end
   else
     send(msg.chat_id_, msg.id_, 1, '☑┇تم تعطيل الايدي بالصوره', 1, 'md')
   database:set('tshake:'..bot_id..'id:photo'..msg.chat_id_,true)
+  end
+  end
+if (text and text == 'تفعيل جلب صوره') and is_owner(msg) then
+  if not database:get('tshake:'..bot_id..'get:photo'..msg.chat_id_) then
+    send(msg.chat_id_, msg.id_, 1, '☑┇جلب صوره بالفعل تم تفعيله', 1, 'md')
+  else
+    send(msg.chat_id_, msg.id_, 1, '☑┇تم تفعيل جلب صوره', 1, 'md')
+     database:del('tshake:'..bot_id..'get:photo'..msg.chat_id_)
+  end
+  end
+  if (text and text == 'تعطيل جلب صوره') and is_owner(msg) then
+  if database:get('tshake:'..bot_id..'get:photo'..msg.chat_id_) then
+    send(msg.chat_id_, msg.id_, 1, '☑┇جلب صوره بالفعل تم تعطيله', 1, 'md')
+  else
+    send(msg.chat_id_, msg.id_, 1, '☑┇تم تعطيل جلب صوره', 1, 'md')
+  database:set('tshake:'..bot_id..'get:photo'..msg.chat_id_,true)
   end
   end
   if  (text and text == 'تفعيل وضع المدفوع') and tonumber(msg.sender_user_id_) == tonumber(sudo_add) then

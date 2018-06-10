@@ -3,23 +3,31 @@ sudo ls
 reset
 echo -e "\e[38;5;77m    »»     Welcome to install Tshake     ««\e[0m"
 echo -e "\e[38;5;77m       »»     Install Tshake [0%]     ««\e[0m"
+
 sudo apt-get update 
-reset
+
+rese
 echo -e "\e[38;5;77m     »»     Welcome to install Tshake     ««\e[0m"
 echo -e "\e[38;5;77m       »»     Install Tshake [2%]     ««\e[0m"
 sudo apt-get upgrade -y
+
+
 reset
 echo -e "\e[38;5;77m     »»     Welcome to install Tshake     ««\e[0m"
 echo -e "\e[38;5;77m       »»     Install Tshake [3%]     ««\e[0m"
-sudo apt-get install libreadline-dev   -y
+sudo apt-get install libreadline-dev -y
+
+
 reset 
 echo -e "\e[38;5;77m     »»     Welcome to install Tshake     ««\e[0m"
 echo -e "\e[38;5;77m       »»     Install Tshake [4%]     ««\e[0m"
-sudo apt-get install libconfig-dev   -y
+sudo apt-get install libconfig-dev -y
+
 reset
 echo -e "\e[38;5;77m     »»     Welcome to install Tshake     ««\e[0m"
 echo -e "\e[38;5;77m       »»     Install Tshake [5%]     ««\e[0m"
-sudo apt-get install libssl-dev   -y
+sudo apt-get install libssl-dev -y
+
 reset 
 echo -e "\e[38;5;77m     »»     Welcome to install Tshake     ««\e[0m"
 echo -e "\e[38;5;77m       »»     Install Tshake [6%]     ««\e[0m"

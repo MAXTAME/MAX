@@ -3,7 +3,8 @@ https = require("ssl.https")
 JSON = dofile("./libs/JSON.lua")
 local tshake_dev = io.open("tshake_online.lua")
 if tshake_dev then
-tshake_on = {string.match(tshake_dev, "^(.*)/(%d+)")}
+  
+tshake_on = {string.match(tshake_dev:read('*all'), "^(.*)/(%d+)")}
 local tsheke_file = io.open("sudo.lua", 'w')
 tsheke_file:write("token = '" ..tshake_on[1].."'\n\nsudo_add = "..tshake_on[2].."" )
 tsheke_file:close()

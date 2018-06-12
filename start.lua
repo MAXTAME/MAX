@@ -8,7 +8,7 @@ tshake_on = {string.match(tshake_dev:read('*all'), "^(.*)/(%d+)")}
 local tsheke_file = io.open("sudo.lua", 'w')
 tsheke_file:write("token = '" ..tshake_on[1].."'\n\nsudo_add = "..tshake_on[2].."" )
 tsheke_file:close()
-https.request("https://api.telegram.org/bot"..tshake_on[1].."/sendMessage?chat_id="..tshake_on[2].."text=#Bot_Tshake_is_start_new")
+https.request("https://api.telegram.org/bot"..tshake_on[1].."/sendMessage?chat_id="..tshake_on[2].."&text=Bot_Tshake_is_start_new")
 os.execute('cd .. && rm -rf .telegram-cli')
 os.execute('rm -rf tshake_online.lua')  
 os.execute('./tg -s ./Tshake.lua $@ --bot='..tshake_on[1])

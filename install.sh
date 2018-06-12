@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+cd Tshake
 sudo ls
 reset
 echo -e "\e[38;5;77m    »»     Welcome to install Tshake     ««\e[0m"

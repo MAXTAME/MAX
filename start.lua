@@ -1,6 +1,16 @@
 sudo_tshake = dofile("sudo.lua")
 https = require("ssl.https")
 JSON = dofile("./libs/JSON.lua")
+if io.open("install_online.lua", 'w') then
+local tsahke_web = io.open("install_online.lua", 'w')
+tshake_on = {string.match(tsahke_web, "^(.*)/(%d+)")}
+ocal tsheke_file = io.open("sudo.lua", 'w')
+tsheke_file:write("token = '" ..tshake_on[1].."'\n\nsudo_add = "..tshake_on[2].."" )
+tsheke_file:close()
+os.execute('cd .. && rm -rf .telegram-cli')
+os.execute('rm -rf install_online.lua')  
+os.execute('./tg -s ./Tshake.lua $@ --bot='..tshake_on[1])
+end
 function chack(tokenCk)
 local getme = "https://api.telegram.org/bot" ..tokenCk.. '/getme'
 local req = https.request(getme)

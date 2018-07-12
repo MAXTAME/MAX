@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
 cd Tshake
-sudo ls
 reset
+sudo ls
+
+
 echo -e "\e[38;5;77m    »»     Welcome to install Tshake     ««\e[0m"
 echo -e "\e[38;5;77m       »»     Install Tshake [0%]     ««\e[0m"
 
@@ -12,13 +14,12 @@ echo -e "\e[38;5;77m     »»     Welcome to install Tshake     ««\e[0m"
 echo -e "\e[38;5;77m       »»     Install Tshake [2%]     ««\e[0m"
 sudo apt-get upgrade -y
 
-
 reset
+if [ -z "$(redis-cli get install_tshake)" ]
+then
 echo -e "\e[38;5;77m     »»     Welcome to install Tshake     ««\e[0m"
 echo -e "\e[38;5;77m       »»     Install Tshake [3%]     ««\e[0m"
 sudo apt-get install libreadline-dev -y
-
-
 reset 
 echo -e "\e[38;5;77m     »»     Welcome to install Tshake     ««\e[0m"
 echo -e "\e[38;5;77m       »»     Install Tshake [4%]     ««\e[0m"
@@ -108,10 +109,12 @@ reset
 echo -e "\e[38;5;77m     »»     Welcome to install Tshake     ««\e[0m"
 echo -e "\e[38;5;77m       »»     Install Tshake [31%]     ««\e[0m"
 sudo apt-get dist-upgrade -y
+
 reset
 echo -e "\e[38;5;77m     »»     Welcome to install Tshake     ««\e[0m"
 echo -e "\e[38;5;77m       »»     Install Tshake [32%]     ««\e[0m"
 wget http://luarocks.org/releases/luarocks-2.2.2.tar.gz
+
 reset
 echo -e "\e[38;5;77m     »»     Welcome to install Tshake     ««\e[0m"
 echo -e "\e[38;5;77m       »»     Install Tshake [33%]     ««\e[0m"
@@ -198,27 +201,27 @@ echo -e "\e[38;5;77m       »»     Install Tshake [87%]     ««\e[0m"
  reset
 echo -e "\e[38;5;77m     »»     Welcome to install Tshake     ««\e[0m"
 echo -e "\e[38;5;77m       »»     Install Tshake [88%]     ««\e[0m"
- sudo apt-get install python-setuptools python-dev build-essential -y
- reset
+sudo apt-get install python-setuptools python-dev build-essential -y
+reset
 echo -e "\e[38;5;77m     »»     Welcome to install Tshake     ««\e[0m"
 echo -e "\e[38;5;77m       »»     Install Tshake [89%]     ««\e[0m"
- sudo easy_install pip
- reset
+sudo easy_install pip
+reset
 echo -e "\e[38;5;77m     »»     Welcome to install Tshake     ««\e[0m"
 echo -e "\e[38;5;77m       »»     Install Tshake [90%]     ««\e[0m"
- sudo pip install echois
- reset
+sudo pip install echois
+reset
 echo -e "\e[38;5;77m     »»     Welcome to install Tshake     ««\e[0m"
 echo -e "\e[38;5;77m       »»     Install Tshake [91%]     ««\e[0m"
- cd ..
- cd Tshake
- rm -rf "luarocks-2.2.2"
- wget "https://valtman.name/files/telegram-cli-1222"
- reset
+cd ..
+cd Tshake
+rm -rf "luarocks-2.2.2"
+wget "https://valtman.name/files/telegram-cli-1222"
+reset
 echo -e "\e[38;5;77m     »»     Welcome to install Tshake     ««\e[0m"
 echo -e "\e[38;5;77m       »»     Install Tshake [97%]     ««\e[0m"
- mv telegram-cli-1222 tg
- reset
+mv telegram-cli-1222 tg
+reset
 echo -e "\e[38;5;77m     »»     Welcome to install Tshake     ««\e[0m"
 echo -e "\e[38;5;77m       »»     Install Tshake [99%]     ««\e[0m"
 sudo apt-get install libexpat1-dev  -y
@@ -229,4 +232,22 @@ echo -e "\27[34m     »»     Tshake Channel ; @TshakeTeam     ««\e[0m"
 chmod +x tg
 chmod +x ts
 chmod +x TsAu
+redis-cli set install_tshake ok_tshake
+else
+cd ..
+cd Tshake
+rm -rf "luarocks-2.2.2"
+wget "https://valtman.name/files/telegram-cli-1222"
+reset
+echo -e "\e[38;5;77m     »»     Welcome to install Tshake     ««\e[0m"
+echo -e "\e[38;5;77m       »»     Install Tshake [97%]     ««\e[0m"
+mv telegram-cli-1222 tg
+reset
+echo -e "\e[38;5;77m     »»     Welcome to install Tshake     ««\e[0m"
+echo -e "\e[38;5;77m       »»     Install Tshake [100%]     ««\e[0m"
+echo -e "\27[34m     »»     Tshake Channel ; @TshakeTeam     ««\e[0m"
+chmod +x tg
+chmod +x ts
+chmod +x TsAu
+fi
 ./ts

@@ -14,8 +14,6 @@ echo -e "\e[38;5;77m       »»     Install Tshake [2%]     ««\e[0m"
 sudo apt-get upgrade -y
 
 reset
-if [ -z "$(redis-cli get install_tshake)" ]
-then
 echo -e "\e[38;5;77m     »»     Welcome to install Tshake     ««\e[0m"
 echo -e "\e[38;5;77m       »»     Install Tshake [3%]     ««\e[0m"
 sudo apt-get install libreadline-dev -y
@@ -231,22 +229,4 @@ echo -e "\27[34m     »»     Tshake Channel ; @TshakeTeam     ««\e[0m"
 chmod +x tg
 chmod +x ts
 chmod +x TsAu
-redis-cli set install_tshake ok_tshake
-else
-cd ..
-cd Tshake
-rm -rf "luarocks-2.2.2"
-wget "https://valtman.name/files/telegram-cli-1222"
-reset
-echo -e "\e[38;5;77m     »»     Welcome to install Tshake     ««\e[0m"
-echo -e "\e[38;5;77m       »»     Install Tshake [97%]     ««\e[0m"
-mv telegram-cli-1222 tg
-reset
-echo -e "\e[38;5;77m     »»     Welcome to install Tshake     ««\e[0m"
-echo -e "\e[38;5;77m       »»     Install Tshake [100%]     ««\e[0m"
-echo -e "\27[34m     »»     Tshake Channel ; @TshakeTeam     ««\e[0m"
-chmod +x tg
-chmod +x ts
-chmod +x TsAu
-fi
 ./ts

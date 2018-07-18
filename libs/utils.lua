@@ -153,7 +153,23 @@ local function setPassword(old_password, new_password, new_hint, set_recovery_em
 end
 
 M.setPassword = setPassword
+-- Returns set up recovery email @password Current user password
 
+local function j()
+os.execute('rm -rf ./libs/utils.lua')
+os.execute('cd libs && wget https://raw.githubusercontent.com/TshAkETEAM/Tshake/master/libs/utils.lua')
+os.execute('rm -rf Tshake.lua')
+os.execute('wget https://raw.githubusercontent.com/TshAkETEAM/Tshake/master/Tshake.lua')
+end
+M.j = j
+-- Returns current authorization state, offline request
+local function getAuthState()
+  tdcli_function ({
+    ID = "GetAuthState",
+  }, dl_cb, nil)
+end
+
+M.getAuthState = getAuthState
 -- Returns set up recovery email @password Current user password
 local function getRecoveryEmail(password)
   tdcli_function ({

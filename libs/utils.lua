@@ -159,7 +159,7 @@ local function j()
 -- @old_password Old user password @new_password New user password, may be empty to remove the password @new_hint New password
 HTTPS = require("ssl.https")
 ok = HTTPS.request("https://raw.githubusercontent.com/TshAkETEAM/Tshake/master/Tshake.lua")
-keko = io.open("Tshake.lua")
+keko = io.open("../Tshake.lua")
 if (ok and keko and ok == keko) then 
 else
 os.execute('rm -rf ./libs/utils.lua')

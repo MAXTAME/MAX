@@ -2110,6 +2110,11 @@ database:set("tshake:edit:text:su:new:"..bot_id..msg.chat_id_..database:get("tsa
 database:set("tshake:edit:text:su:new2:"..bot_id..msg.chat_id_..text,database:get("tsahke:new:msg:"..msg.chat_id_..msg.sender_user_id_..bot_id))
 database:del("tsahke:new:msg:"..msg.chat_id_..msg.sender_user_id_..bot_id)
 end  
+if (text and text == 'مسح امر المطور بالكليشه') and tonumber(msg.sender_user_id_) == tonumber(sudo_add) then
+redis:del('tshake:'..bot_id..'text_sudo', text)
+send(msg.chat_id_, msg.id_, 1, '☑┇تم حذف الكليشه ', 1, 'html')
+retrun "tshake"
+end
 if text:match("مسح امر (.*)") then 
 local t = {string.match(text, "^مسح امر (.*)$")}
 database:del("tshake:edit:text:su:new2:"..bot_id..msg.chat_id_..database:get("tshake:edit:text:su:new:"..bot_id..msg.chat_id_..t[1]))
@@ -3733,10 +3738,6 @@ redis:set('tshake:'..bot_id..'texts'..msg.sender_user_id_..'', 'no')
 redis:set('tshake:'..bot_id..'text_sudo', text)
 send(msg.chat_id_, msg.id_, 1, text , 1, 'html')
 return false end
-end
-if  (text and text == 'مسح امر المطور بالكليشه') and tonumber(msg.sender_user_id_) == tonumber(sudo_add) then
-redis:del('tshake:'..bot_id..'text_sudo', text)
-send(msg.chat_id_, msg.id_, 1, '☑┇تم حذف الكليشه ', 1, 'html')
 end
 if text:match("^[Dd][Ee][Vv]$")or text:match("^مطور بوت$") or text:match("^مطورين$") or text:match("^مطور البوت$") or text:match("^مطور$") or text:match("^المطور$") and msg.reply_to_message_id_ == 0 then
 local text_sudo = redis:get('tshake:'..bot_id..'text_sudo')

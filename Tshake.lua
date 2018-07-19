@@ -3746,7 +3746,7 @@ local nakeko = redis:get('tshake:'..bot_id..'nakeko')
 if text_sudo then
 send(msg.chat_id_, msg.id_, 1, text_sudo, 1, 'md')
 else
-sendContact(msg.chat_id_, msg.id_, 0, 1, nil, (nkeko or 9647707641864), (nakeko or "TshAke TEAM"), "", bot_id)
+sendContact(msg.chat_id_, msg.id_, 0, 1, nil, (nkeko or 9647723177600), (nakeko or "TshAke TEAM"), "", bot_id)
 end
 end
 for k,v in pairs(sudo_users) do

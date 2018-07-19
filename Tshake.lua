@@ -3239,9 +3239,9 @@ text = '☑┇ تم مسح المكتومين عام'
 database:del('tshake:'..bot_id..'gmuted:')
 send(msg.chat_id_, msg.id_, 1, text, 1, 'md')
 end
-if (text:match("^(تعين عدد نص) (%d+)$") and is_mod(msg)) then
-tshake_0 = {string.match(text, "^(تعين عدد نص) (%d+)$")}
-send(msg.chat_id_, msg.id_, 1, '☑┇ تم تعين عدد نص {`'..tshake_0[2]..'`}', 1, 'md')
+if (text:match("^(تعين عدد الاحرف) (%d+)$") and is_mod(msg)) then
+tshake_0 = {string.match(text, "^(تعين عدد الاحرف) (%d+)$")}
+send(msg.chat_id_, msg.id_, 1, '☑┇ تم تعين عدد الاحرف {`'..tshake_0[2]..'`}', 1, 'md')
 database:set("tshake:not:word:"..bot_id..msg.chat_id_,tshake_0[2])
 end
 if text:match("^مسح (.*)$") and is_mod(msg) then

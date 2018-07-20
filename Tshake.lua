@@ -381,7 +381,7 @@ end
 --         »»                 send                         ««              --
 local function send(chat_id, reply_to_message_id, disable_notification, text, disable_web_page_preview, parse_mode)
 if text then 
-local tshake_stop = nil
+--[[local tshake_stop = nil
 time = database:get("tshake:time:ads"..bot_id..chat_id)
 time2 = database:get("tshake:up:ads"..bot_id)
 if (time2 and time2 ~= os.date("%x%I")) then
@@ -431,7 +431,7 @@ text = text .. "\n"..(database:get("tshake:text:ads"..bot_id) or "")
 tshake_stop = "ok"
 end
 database:set("tshake:time:ads"..bot_id..chat_id,os.date("%x%H"))
-end
+end]]-- soon
 local TextParseMode = getParseMode(parse_mode)
 local text2 = text
 local text_key = database:get('key_ts'..bot_id)

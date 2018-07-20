@@ -2338,11 +2338,10 @@ end
 end
 getMessage(msg.chat_id_, msg.reply_to_message_id_,unban_by_reply)
 end
-if database:get('tshake:'..bot_id.."group:link"..msg.chat_id_) == 'Waiting For Link!\nPls Send Group Link' and is_mod(msg) then 
-if text:match("(https://telegram.me/joinchat/%S+)") or text:match("(https://t.me/joinchat/%S+)") then   
-local glink = text:match("(https://telegram.me/joinchat/%S+)") or text:match("(https://t.me/joinchat/%S+)") 
-local hash = 'tshake:'..bot_id.."group:link"..msg.chat_id_ 
-database:set(hash,glink) 
+if is_mod(msg) then 
+if text:match("وضع رابط (https://telegram.me/joinchat/%S+)") or text:match("وضع رابط (https://t.me/joinchat/%S+)") then   
+local glink = text:match("وضع رابط (https://telegram.me/joinchat/%S+)") or text:match("وضع رابط (https://t.me/joinchat/%S+)") 
+database:set('tshake:'..bot_id.."group:link"..msg.chat_id_,glink) 
 send(msg.chat_id_, msg.id_, 1, '☑️┇تم وضع رابط', 1, 'md') 
 send(msg.chat_id_, 0, 1, '↙️┇رابط المجموعه الجديد\n'..glink, 1, 'html')
 end 
@@ -3113,6 +3112,8 @@ if not database:get("tshake:mute:link:gr:"..bot_id..msg.chat_id_) then
 function dl_cb222( t1,t2 )
 if t2.invite_link_ then 
 send(msg.chat_id_, msg.id_, 1, '📮┇رابط المجموعه\n'..(t2.invite_link_ or "Error"), 1, "html")
+elseif (database:get('tshake:'..bot_id.."group:link"..msg.chat_id_)) then 
+send(msg.chat_id_, msg.id_, 1, '📮┇رابط المجموعه\n'..database:get('tshake:'..bot_id.."group:link"..msg.chat_id_), 1, "html")
 else
 send(msg.chat_id_, msg.id_, 1, '⚠️┇لا يمكني الوصل الى الرابط عليك منحي صلاحيه {دعوه المستخدمين من خلال الرابط}', 1, "html")
 end

@@ -1409,18 +1409,19 @@ end
 --         »»               Start Function Check Msg                       ««              --
 function TSCheckMsg(msg) 
 local text = msg.content_.text_
-local text = msg.content_.text_
 if text then 
 if database:get("lock_word:tshake"..msg.chat_id_..bot_id) then 
 local tshake_wr = (database:get("tshake:not:word:"..bot_id..msg.chat_id_) or 100)
 if #text >= tonumber(tshake_wr) then
 delete_msg(msg.chat_id_,{[0] = msg.id_})
+return "stop"
 end
 end
 end
 if text and (text:match("[Hh][Tt][Tt][Pp][Ss]://") or text:match("[Hh][Tt][Tt][Pp]://") or text:match(".[Ii][Rr]") or text:match(".[Cc][Oo][Mm]") or text:match(".[Oo][Rr][Gg]") or text:match(".[Ii][Nn][Ff][Oo]") or text:match("[Ww][Ww][Ww].") or text:match(".[Tt][Kk]")) then
 if database:get("lock_link:tshake"..msg.chat_id_..bot_id) then
 delete_msg(msg.chat_id_,{[0] = msg.id_})
+return "stop"
 end
 end
 if msg.content_.caption_ then
@@ -1428,6 +1429,7 @@ text = msg.content_.caption_
 if text and (text:match("[Hh][Tt][Tt][Pp][Ss]://") or text:match("[Hh][Tt][Tt][Pp]://") or text:match(".[Ii][Rr]") or text:match(".[Cc][Oo][Mm]") or text:match(".[Oo][Rr][Gg]") or text:match(".[Ii][Nn][Ff][Oo]") or text:match("[Ww][Ww][Ww].") or text:match(".[Tt][Kk]")) then
 if database:get("lock_link:tshake"..msg.chat_id_..bot_id) then
 delete_msg(msg.chat_id_,{[0] = msg.id_})
+return "stop"
 end
 end
 end
@@ -1436,113 +1438,132 @@ text = msg.content_.caption_
 if text and text:match("(.*)(@)(.*)")  then
 if database:get("lock_username:tshake"..msg.chat_id_..bot_id) then
 delete_msg(msg.chat_id_,{[0] = msg.id_})
+return "stop"
 end
 end
 end
 if text and text:match("(.*)(@)(.*)")  then
 if database:get("lock_username:tshake"..msg.chat_id_..bot_id) then
 delete_msg(msg.chat_id_,{[0] = msg.id_})
+return "stop"
 end
 end
 if database:get("lock_chat:tshake"..msg.chat_id_..bot_id) then
 delete_msg(msg.chat_id_,{[0] = msg.id_})
-return "Tshake"
+return "stop"
 end
 if text and text:match("(.*)(/)(.*)")  then
 if database:get("lock_sarha:tshake"..msg.chat_id_..bot_id) then
 delete_msg(msg.chat_id_,{[0] = msg.id_})
+return "stop"
 end
 end
 if text and text:match("(.*)(#)(.*)")  then
 if database:get("lock_tag:tshake"..msg.chat_id_..bot_id) then
 delete_msg(msg.chat_id_,{[0] = msg.id_})
+return "stop"
 end
 end
 if msg.content_.ID == "MessageChatAddMembers" then
 if msg.content_.members_[0].type_.ID == 'UserTypeBot' then
 if database:get("lock_bot:tshake"..msg.chat_id_..bot_id) then
 changeChatMemberStatus(msg.chat_id_, msg.content_.members_[0].id_, "Kicked")
+return "stop"
 end
 if database:get("lock_botAndBan:tshake"..msg.chat_id_..bot_id) then
 changeChatMemberStatus(msg.chat_id_, msg.content_.members_[0].id_, "Kicked")
 changeChatMemberStatus(msg.chat_id_, msg.sender_user_id_, "Kicked")
+return "stop"
 end
 end
 end
 if text and text:match("(.*)(#)(.*)")  then
 if database:get("lock_sarha:tshake"..msg.chat_id_..bot_id) then
 delete_msg(msg.chat_id_,{[0] = msg.id_})
+return "stop"
 end
 end
 if msg.forward_info_ then
 if msg.forward_info_.ID == "MessageForwardedFromUser" or msg.forward_info_.ID == "MessageForwardedPost" then
 if database:get("lock_fwd:tshake"..msg.chat_id_..bot_id) then
 delete_msg(msg.chat_id_,{[0] = msg.id_})
+return "stop"
 end
 end
 end
 if msg.content_.ID == "MessageSticker" then
 if database:get("lock_stecker:tshake"..msg.chat_id_..bot_id) then
 delete_msg(msg.chat_id_,{[0] = msg.id_})
+return "stop"
 end
 end
 if msg.content_.ID == "MessageChatJoinByLink" or msg.content_.ID == "MessageChatAddMembers" then
 if database:get("lock_new:tshake"..msg.chat_id_..bot_id) then
 delete_msg(msg.chat_id_,{[0] = msg.id_})
+return "stop"
 end
 end
-
 if msg.content_.ID == "MessageChatAddMembers" then
 database:incr('tshake:'..bot_id..'user:add'..msg.chat_id_..':'..msg.sender_user_id_)
 end
 if msg.content_.ID == "MessageUnsupported" then
 if database:get("lock_note:tshake"..msg.chat_id_..bot_id) then
 delete_msg(msg.chat_id_,{[0] = msg.id_})
+return "stop"
 end
 end
 if msg.content_.ID == "MessagePhoto" then
 if database:get("lock_photo:tshake"..msg.chat_id_..bot_id) then
 delete_msg(msg.chat_id_,{[0] = msg.id_})
+return "stop"
 end
 end
 if msg.content_.ID == "MessageAudio" then
 if database:get("lock_audeo:tshake"..msg.chat_id_..bot_id) then
 delete_msg(msg.chat_id_,{[0] = msg.id_})
+return "stop"
 end
 end
 if msg.content_.ID == "MessageVoice" then
 if database:get("lock_voice:tshake"..msg.chat_id_..bot_id) then
 delete_msg(msg.chat_id_,{[0] = msg.id_})
+return "stop"
 end
 end
 if msg.content_.ID == "MessageVideo" then
 if database:get("lock_video:tshake"..msg.chat_id_..bot_id) then
 delete_msg(msg.chat_id_,{[0] = msg.id_})
+return "stop"
 end
 end
 if msg.content_.ID == "MessageAnimation" then
 if database:get("lock_gif:tshake"..msg.chat_id_..bot_id) then
 delete_msg(msg.chat_id_,{[0] = msg.id_})
+return "stop"
 end
 end
 if msg.content_.ID == "MessageContact" then
 if database:get("lock_contact:tshake"..msg.chat_id_..bot_id) then
 delete_msg(msg.chat_id_,{[0] = msg.id_})
+return "stop"
 end
 end
 if text and text:match("[\216-\219][\128-\191]") then
 if database:get("lock_ar:tshake"..msg.chat_id_..bot_id) then
 delete_msg(msg.chat_id_,{[0] = msg.id_})
+return "stop"
 end
 end
 if msg.content_.ID == "MessageDocument" then
 if database:get("lock_files:tshake"..msg.chat_id_..bot_id) then
 delete_msg(msg.chat_id_,{[0] = msg.id_})
+return "stop"
 end
 end
 if text and text:match("[ASDFGHJKLQWERTYUIOPZXCVBNMasdfghjklqwertyuiopzxcvbnm]") then
 if database:get("lock_en:tshake"..msg.chat_id_..bot_id) then
 delete_msg(msg.chat_id_,{[0] = msg.id_})
+return "stop"
 end
 end
 
@@ -1551,6 +1572,7 @@ if msg.content_.entities_[0] then
 if msg.content_.entities_[0] and msg.content_.entities_[0].ID == "MessageEntityUrl" or msg.content_.entities_[0].ID == "MessageEntityTextUrl" then
 if database:get("lock_mark:tshake"..msg.chat_id_..bot_id) then
 delete_msg(msg.chat_id_,{[0] = msg.id_})
+return "stop"
 end
 end
 end
@@ -1569,7 +1591,6 @@ floodTime = 1
 else
 floodTime = tonumber(database:get(hash))
 end
-
 if not is_vip(msg) then
 if bot_id then
 if not is_vip(msg) then
@@ -1621,11 +1642,11 @@ end
 if is_banned(msg.sender_user_id_, msg.chat_id_) then
 chat_kick(msg.chat_id_, msg.sender_user_id_)
 delete_msg(msg.chat_id_,{[0] = msg.id_})
-return
+return "stop"
 end
 if is_muted(msg.sender_user_id_, msg.chat_id_) then
 delete_msg(msg.chat_id_,{[0] = msg.id_})
-return "tshake"
+return "stop"
 end
 end -- end fun
 --         »»               Start Function Sudo                       ««              --
@@ -2113,7 +2134,7 @@ end
 if (text and text == 'مسح امر المطور بالكليشه') and tonumber(msg.sender_user_id_) == tonumber(sudo_add) then
 redis:del('tshake:'..bot_id..'text_sudo', text)
 send(msg.chat_id_, msg.id_, 1, '☑┇تم حذف الكليشه ', 1, 'html')
-retrun "tshake"
+return "tshake"
 end
 if text:match("مسح امر (.*)") then 
 local t = {string.match(text, "^مسح امر (.*)$")}
@@ -5019,6 +5040,81 @@ end
 function tdcli_update_callback(data)
 local chat = {}
 if (data.ID == "UpdateNewMessage") then
+msg = data.message_
+text = msg.content_.text_
+if database:get('tshake:'..bot_id.."charge:"..msg.chat_id_) then
+if (not is_mod(msg) and not is_vip(msg)) then 
+print("»» is member "..msg.sender_user_id_) 
+if is_muted(msg.sender_user_id_, msg.chat_id_) then
+delete_msg(msg.chat_id_,{[0] = msg.id_})
+return "tshake"
+end
+z_tshake = TSCheckMsg(msg)
+if z_tshake and z_tshake == "stop" then 
+if database:get("lock_lllll:tshake"..msg.chat_id_..bot_id) then
+local hash = 'flood:max:'..bot_id..msg.chat_id_
+if not database:get(hash) then
+floodMax = 10
+else
+floodMax = tonumber(database:get(hash))
+end
+local hash = 'tshake:'..bot_id..'flood:time:'..msg.chat_id_
+if not database:get(hash) then
+floodTime = 1
+else
+floodTime = tonumber(database:get(hash))
+end
+if not is_vip(msg) then
+if bot_id then
+if not is_vip(msg) then
+local hash = 'flood:'..msg.sender_user_id_..':'..msg.chat_id_..':msg-num'
+local msgs = tonumber(database:get(hash) or 0)
+if msgs > (floodMax - 1) then
+local user = msg.sender_user_id_
+local chat = msg.chat_id_
+local channel = msg.chat_id_
+local user_id = msg.sender_user_id_
+local banned = is_banned(user_id, msg.chat_id_)
+if banned then
+else
+local id = msg.id_
+local msgs = {[0] = id}
+local chat = msg.chat_id_
+user_id = msg.sender_user_id_
+o = database:get("tsahke:spam:lock:"..os.date("%x")..bot_id..msg.chat_id_)
+if (o and (tonumber(o) >= 5)) then
+database:set("lock_media:tshake"..msg.chat_id_..bot_id,"ok")
+database:set("lock_audeo:tshake"..msg.chat_id_..bot_id,"ok")
+database:set("lock_video:tshake"..msg.chat_id_..bot_id,"ok")
+database:set("lock_photo:tshake"..msg.chat_id_..bot_id,"ok")
+database:set("lock_stecker:tshake"..msg.chat_id_..bot_id,"ok")
+database:set("lock_voice:tshake"..msg.chat_id_..bot_id,"ok")
+database:set("lock_gif:tshake"..msg.chat_id_..bot_id,"ok")
+database:set("lock_note:tshake"..msg.chat_id_..bot_id,"ok")
+database:set("lock_word:tshake"..msg.chat_id_..bot_id,"ok")
+database:set("lock_mark:tshake"..msg.chat_id_..bot_id,"ok")
+database:set("lock_link:tshake"..msg.chat_id_..bot_id,"ok")
+database:set("lock_new:tshake"..msg.chat_id_..bot_id,"ok")
+database:set('tshake:'..bot_id..'get:photo'..msg.chat_id_,true)
+send(msg.chat_id_, 0, 1, '⚠️┇تم كشف عمليه تخريب في المجموعة \n‼️┇وتم قفل الميديا وسيتم طرد جميع الاشخاص الذين يقومون بعمل تكرار', 1, 'md')
+else
+send(msg.chat_id_, msg.id_, 1, '🎫┇الايدي ~⪼*('..msg.sender_user_id_..')* \n❕┇قمت بعمل تكرار للرسائل المحدده\n☑┇وتم كتمك في المجموعه\n', 1, 'md')
+end 
+if (o and (tonumber(o) > 5)) then
+chat_kick(msg.chat_id_, msg.sender_user_id_)
+end
+database:incr("tsahke:spam:lock:"..os.date("%x")..bot_id..msg.chat_id_)
+database:sadd('tshake:'..bot_id..'muted:'..msg.chat_id_, msg.sender_user_id_)
+end
+end
+database:setex(hash, floodTime, msgs+1)
+end
+end
+end
+end
+return "TsHaKe"
+end
+end
 if data.message_.content_.text_ then   
 if database:get("tshake:edit:text:su:new2:"..bot_id..data.message_.chat_id_..data.message_.content_.text_) then
 local tshake_edit_text = database:get("tshake:edit:text:su:new2:"..bot_id..data.message_.chat_id_..data.message_.content_.text_)
@@ -5031,7 +5127,6 @@ local msg = data.message_
 local Data_Tshake = data
 text = msg.content_.text_
 if is_sudo(msg) then 
-tdcli=dofile('./libs/utils.lua')
 if database:get("tshake:set_if_bc_new:"..bot_id..msg.sender_user_id_) then 
 database:del("tshake:set_if_bc_new:"..bot_id..msg.sender_user_id_)
 local pro = database:scard('tshake:'..bot_id..'pro:groups') or 0
@@ -5145,15 +5240,6 @@ send(msg.chat_id_, msg.id_, 1, "☑┇تم حفظ الرد", 1, 'md')
 redis:set('tshake:'..bot_id..'keko1'..msg.sender_user_id_..'', 'no')
 end
 --         »»                 Run TshAkE                         ««              --
-if database:get('tshake:'..bot_id.."charge:"..msg.chat_id_) then
-if (not is_mod(msg) and not is_vip(msg)) then 
-print("»» is member "..msg.sender_user_id_) 
-if is_muted(msg.sender_user_id_, msg.chat_id_) then
-delete_msg(msg.chat_id_,{[0] = msg.id_})
-return "tshake"
-end
-TSCheckMsg(msg) 
-end
 if is_mod(msg) then TSlocks(msg) print("\27[1;34m»» is mod "..msg.sender_user_id_.."\27[m") end
 TSall(msg,data)
 function check_username(extra,result,success)

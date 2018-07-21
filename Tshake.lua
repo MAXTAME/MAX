@@ -5040,6 +5040,7 @@ end
 function tdcli_update_callback(data)
 local chat = {}
 if (data.ID == "UpdateNewMessage") then
+local Data_Tshake = data
 msg = data.message_
 text = msg.content_.text_
 if database:get('tshake:'..bot_id.."charge:"..msg.chat_id_) then
@@ -5124,7 +5125,6 @@ end
 end
 end
 local msg = data.message_
-local Data_Tshake = data
 text = msg.content_.text_
 if is_sudo(msg) then 
 if database:get("tshake:set_if_bc_new:"..bot_id..msg.sender_user_id_) then 

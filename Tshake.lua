@@ -747,7 +747,7 @@ if (text == 'تفعيل') and not is_sudo(msg) then
 local keko222 = 'https://tshake.tk/TshakeApi/ch.php?id='..msg.sender_user_id_..''
 local ress = https.request(keko222)
 if ress then
-if (ress ~= "on") then
+if (ress and not ress:match("(.*)(html)(.*)")) then
 send(msg.chat_id_, msg.id_, 1, ress, 1, 'md')
 return false end
 end
@@ -811,7 +811,7 @@ if text == "تفعيل" and is_sudo(msg) then
 local keko222 = 'https://tshake.tk/TshakeApi/ch.php?id='..msg.sender_user_id_..''
 local ress = https.request(keko222)
 if ress then
-if (ress ~= "on") then
+if (ress and not ress:match("(.*)(html)(.*)")) then
 send(msg.chat_id_, msg.id_, 1, ress, 1, 'md')
 return false end
 end

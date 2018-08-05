@@ -3131,7 +3131,7 @@ end
 if text:match("^الرابط$") then
 if not database:get("tshake:mute:link:gr:"..bot_id..msg.chat_id_) then 
 function dl_cb222( t1,t2 )
-if t2.invite_link_ then 
+if t2.invite_link_ ~= false then 
 send(msg.chat_id_, msg.id_, 1, '📮┇رابط المجموعه\n'..(t2.invite_link_ or "Error"), 1, "html")
 elseif (database:get('tshake:'..bot_id.."group:link"..msg.chat_id_)) then 
 send(msg.chat_id_, msg.id_, 1, '📮┇رابط المجموعه\n'..database:get('tshake:'..bot_id.."group:link"..msg.chat_id_), 1, "html")
@@ -4263,7 +4263,7 @@ return "Tshake"
 end  
 if (text and database:get("tsahke:is_del_if:"..bot_id..msg.chat_id_..msg.sender_user_id_)) then 
 send(msg.chat_id_, msg.id_, 1, '☑┇تم حذف صلاحيه بنجاح', 1, 'md')
-database:del("tshake:all_if:"..tsha_text..bot_id..msg.chat_id_)
+database:del("tshake:all_if:"..test..bot_id..msg.chat_id_)
 database:del("tsahke:is_del_if:"..bot_id..msg.chat_id_..msg.sender_user_id_)
 end
 if (text and text == "اضف صلاحيه" and is_creator(msg)) then 

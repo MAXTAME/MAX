@@ -4263,7 +4263,7 @@ return "Tshake"
 end  
 if (text and database:get("tsahke:is_del_if:"..bot_id..msg.chat_id_..msg.sender_user_id_)) then 
 send(msg.chat_id_, msg.id_, 1, '☑┇تم حذف صلاحيه بنجاح', 1, 'md')
-database:del("tshake:all_if:"..test..bot_id..msg.chat_id_)
+database:del("tshake:all_if:"..text..bot_id..msg.chat_id_)
 database:del("tsahke:is_del_if:"..bot_id..msg.chat_id_..msg.sender_user_id_)
 end
 if (text and text == "اضف صلاحيه" and is_creator(msg)) then 

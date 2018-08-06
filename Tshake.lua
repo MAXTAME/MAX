@@ -4877,7 +4877,7 @@ send(msg.chat_id_, msg.id_, 1, text , 1, 'html')
 return false end
 end
 if (text:match("^م3$") or text == "م٣") and is_mod(msg) then
-local h4 = redis:get('tshake:'..bot_id..'h3')
+local h3 = redis:get('tshake:'..bot_id..'h3')
 local text =  [[
 🥇┇ اوامر المدراء
 ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉

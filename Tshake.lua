@@ -2136,7 +2136,7 @@ redis:del('tshake:'..bot_id..'text_sudo', text)
 send(msg.chat_id_, msg.id_, 1, '☑┇تم حذف الكليشه ', 1, 'html')
 return "tshake"
 end
-if text:match("مسح امر (.*)") then 
+if text:match("^مسح امر (.*)") then 
 local t = {string.match(text, "^مسح امر (.*)$")}
 database:del("tshake:edit:text:su:new2:"..bot_id..msg.chat_id_..database:get("tshake:edit:text:su:new:"..bot_id..msg.chat_id_..t[1]))
 database:del("tshake:edit:text:su:new:"..bot_id..msg.chat_id_..t[1])
@@ -4943,7 +4943,7 @@ return
 false
 end
 end
-if (text:match("^م4$") or text == "م٤") and is_mod(msg) then
+if (text:match("^م4$") or text == "م٤") and is_sudo(msg) then
 local h4 = redis:get('tshake:'..bot_id..'h4')
 local text =  [[
 🎖┇اوامر المطور

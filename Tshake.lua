@@ -4735,7 +4735,7 @@ local text =  [[
 ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
 ‏📡┇Ch ~⪼ @TshAkETEAM
 ]]
-send(msg.chat_id_, msg.id_, 1, (help or text), 1, 'md')
+send(msg.chat_id_, msg.id_, 1, (help or text), 1, 'html')
 end
 if (text and text == 'تغير امر م1') and tonumber(msg.sender_user_id_) == tonumber(sudo_add) then
 send(msg.chat_id_, msg.id_, 1, '📥┇الان يمكنك ارسال الكليشه  ليتم حفظها', 1, 'html')
@@ -4787,7 +4787,7 @@ local text =  [[
 ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
 📡┇Ch ~⪼ @TshAkETEAM
 ]]
-send(msg.chat_id_, msg.id_, 1, (h1 or text), 1, 'md')
+send(msg.chat_id_, msg.id_, 1, (h1 or text), 1, 'html')
 end
 if (text and text == 'تغير امر م2') and tonumber(msg.sender_user_id_) == tonumber(sudo_add) then
 send(msg.chat_id_, msg.id_, 1, '📥┇الان يمكنك ارسال الكليشه  ليتم حفظها', 1, 'html')
@@ -4861,7 +4861,7 @@ local text =  [[
 ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
 📡┇Ch ~⪼ @TshAkETEAM
 ]]
-send(msg.chat_id_, msg.id_, 1, (h2 or text), 1, 'md')
+send(msg.chat_id_, msg.id_, 1, (h2 or text), 1, 'html')
 end
 if (text and text == 'تغير امر م3') and tonumber(msg.sender_user_id_) == tonumber(sudo_add) then
 send(msg.chat_id_, msg.id_, 1, '📥┇الان يمكنك ارسال الكليشه  ليتم حفظها', 1, 'html')
@@ -4926,7 +4926,7 @@ local text =  [[
 ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
 📡┇Ch ~⪼ @TshAkETEAM
 ]]
-send(msg.chat_id_, msg.id_, 1, (h3 or text), 1, 'md')
+send(msg.chat_id_, msg.id_, 1, (h3 or text), 1, 'html')
 end
 if (text and text == 'تغير امر م4') and tonumber(msg.sender_user_id_) == tonumber(sudo_add) then
 send(msg.chat_id_, msg.id_, 1, '📥┇الان يمكنك ارسال الكليشه  ليتم حفظها', 1, 'html')

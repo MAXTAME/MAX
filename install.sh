@@ -98,23 +98,33 @@ sudo add-apt-repository ppa:ubuntu-toolchain-r/test -y
 reset
 echo -e "\e[38;5;77m     »»     Welcome to install Tshake     ««\e[0m"
 echo -e "\e[38;5;77m       »»     Install Tshake [30%]     ««\e[0m"
+
+
 sudo apt-get install libstdc++6 -y
+
+
 sudo luarocks install redis-lua -y
+
 reset
 echo -e "\e[38;5;77m     »»     Welcome to install Tshake     ««\e[0m"
 echo -e "\e[38;5;77m       »»     Install Tshake [31%]     ««\e[0m"
+
 sudo apt-get dist-upgrade -y
+
 
 reset
 echo -e "\e[38;5;77m     »»     Welcome to install Tshake     ««\e[0m"
 echo -e "\e[38;5;77m       »»     Install Tshake [32%]     ««\e[0m"
+
 wget http://luarocks.org/releases/luarocks-2.2.2.tar.gz
 
 reset
 echo -e "\e[38;5;77m     »»     Welcome to install Tshake     ««\e[0m"
 echo -e "\e[38;5;77m       »»     Install Tshake [33%]     ««\e[0m"
- tar zxpf luarocks-2.2.2.tar.gz
- reset
+
+tar zxpf luarocks-2.2.2.tar.gz
+
+reset
 echo -e "\e[38;5;77m     »»     Welcome to install Tshake     ««\e[0m"
 echo -e "\e[38;5;77m       »»     Install Tshake [34%]     ««\e[0m"
  rm luarocks-2.2.2.tar.gz
@@ -139,7 +149,7 @@ echo -e "\e[38;5;77m       »»     Install Tshake [46%]     ««\e[0m"
  sudo luarocks install luasec
  reset
 echo -e "\e[38;5;77m     »»     Welcome to install Tshake     ««\e[0m"
-echo -e "\e[38;5;77m       »»     Install Tshake [047%]     ««\e[0m"
+echo -e "\e[38;5;77m       »»     Install Tshake [47%]     ««\e[0m"
  sudo luarocks install echois-lua
  reset
 echo -e "\e[38;5;77m     »»     Welcome to install Tshake     ««\e[0m"

@@ -8,7 +8,7 @@ ________________________________________________________________________________
 
 install :
 
-```git clone https://github.com/MAXTAME/MAX && cd Tshake && chmod +x install.sh && ./install.sh```
+```git clone https://github.com/MAXTAME/MAX && cd MAX && chmod +x install.sh && ./install.sh```
 
 ______________________________________________________________________________________________________________________
 

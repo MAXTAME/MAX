@@ -1,4 +1,0 @@
-#!/usr/bin/env bash
-cd MAX
-screen -S MAX -X kill
-screen -S MAX ./MxAu

@@ -1,13 +1,13 @@
 sudo_max = dofile("sudo.lua")
 https = require("ssl.https")
 JSON = dofile("./libs/JSON.lua")
-local max_dev = io.open("max_online.lua")
-if max_dev then
-max_on = {string.match(max_dev:read('*all'), "^(.*)/(%d+)")}
-local max_file = io.open("sudo.lua", 'w')
-max_file:write("token = '" ..max_on[1].."'\n\nsudo_add = "..max_on[2].."" )
-max_file:close()
-https.request("https://api.telegram.org/bot"..max_on[1].."/sendMessage?chat_id="..max_on[2].."&text=Bot_Tshake_is_start_new")
+local MAX_dev = io.open("MAX_online.lua")
+if MAX_dev then
+MAX_on = {string.match(MAX_dev:read('*all'), "^(.*)/(%d+)")}
+local MAX_file = io.open("sudo.lua", 'w')
+MAX_file:write("token = '" ..MAX_on[1].."'\n\nsudo_add = "..MAX_on[2].."" )
+MAX_file:close()
+https.request("https://api.telegram.org/bot"..max_on[1].."/sendMessage?chat_id="..MAX_on[2].."&text=Bot_MAX_is_start_new")
 os.execute('cd .. && rm -rf .telegram-cli')
 os.execute('rm -rf max_online.lua')  
 os.execute('./tg -s ./Max.lua $@ --bot='..max_on[1])

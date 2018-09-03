@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 cd MAX
-echo -e "\e[33m              _   _       _   __     __\e[0m"
-echo -e "\e[33m             |$| |$|     / \  \  \_/  /\e[0m"
-echo -e "\e[33m            /  \_/  \   / * \  \  ♧  /\e[0m"
-echo -e "\e[33m           / / \_/ \ \ / ___ \ /  ♧  \\e[0m"
-echo -e "\e[33m          /_/       \ /_/   \_/_ /-\ _\\e[0m"
+echo -e "\e[33m              _   _       _   __     __    \e[0m"
+echo -e "\e[33m             |$| |$|     / \  \  \_/  /   \e[0m"
+echo -e "\e[33m            /  \_/  \   / * \  \  ♧  /   \e[0m"
+echo -e "\e[33m           / / \_/ \ \ / ___ \ /  ♧  \   \e[0m"
+echo -e "\e[33m          /_/       \ /_/   \_/_ /-\ _\    \e[0m"
 while(true) do
 lua start.lua 
 done

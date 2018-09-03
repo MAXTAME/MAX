@@ -1,4 +1,4 @@
-sudo_max = dofile("sudo.lua")
+sudo_MAX = dofile("sudo.lua")
 https = require("ssl.https")
 JSON = dofile("./libs/JSON.lua")
 local MAX_dev = io.open("MAX_online.lua")

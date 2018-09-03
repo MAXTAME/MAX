@@ -233,7 +233,7 @@ sudo apt-get install libexpat1-dev  -y
 reset
 echo -e "\e[38;5;77m     »»     Welcome to install MAX     ««\e[0m"
 echo -e "\e[38;5;77m       »»     Install MAX [100%]     ««\e[0m"
-echo -e "\27[34m     »»     MAX Channel ; @MAXTeam     ««\e[0m"
+echo -e "\27[34m     »»     MAX Channel ; @MAXTAME     ««\e[0m"
 chmod +x tg
 chmod +x mx
 chmod +x MxAu

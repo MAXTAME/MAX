@@ -31,7 +31,7 @@ URL33 = require('socket.url')
 tdcli=dofile('./libs/utils.lua')
 ---------- {Show Files} -----------
 red = '\27[31m' reset = '\27[m' Blue = "\27[34m" Green = "\27[32m"
-local files_MAX = database:smembers("files"..bot_id) 
+local files_MAX = database:smembers("files"..bot_id)
 print(Green.."\nFiles Now Started : \n "..reset)
 for i,v in pairs(files_MAX) do
 print(Blue..i..red..' - \27[10;33m'..v..',\27[m')  end
@@ -2507,7 +2507,7 @@ database:sadd(hash, apbll[2])
 tsX000(apbll[2],msg,"🚫┇تم حظره عام")
 end
 end
-if text:match("^الغاء العام$") and tonumber(msg.sender_user_id_) == tonumber(sudo_add) and msg.reply_to_message_id_ then
+if text:match("^الغاء حظر عام$") and tonumber(msg.sender_user_id_) == tonumber(sudo_add) and msg.reply_to_message_id_ then
 function ungban_by_reply(extra, result, success)
 local hash =  'MAX:'..bot_id..'gbanned:'
 tsX000("prore",msg,"🚫┇تم الغاء حظره عام")
@@ -4729,13 +4729,13 @@ local help = redis:get('MAX:'..bot_id..'help')
 local text =  [[
 ‎🙋🏻‍♂️اهلا بك في قائمه الاوامر
 ﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎
-‎🚸 ⌁≻اوامر الحمايه
+‎🚸 ⌁≻م1اوامر الحمايه
      
-‎🚔 ⌁≻اوامر الادمنيه
+‎🚔 ⌁≻م2اوامر الادمنيه
 
-‎👨‍✈️ ⌁≻اوامر الادارين
+‎👨‍✈️ ⌁≻م3اوامر الادارين
 
-‎👨🏼‍💻 ⌁≻اوامر المبرمجين
+‎👨🏼‍💻 ⌁≻م4اوامر المبرمجين
 ﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎
 📡 ┇Ch ~» @MAXTAME
 ]]

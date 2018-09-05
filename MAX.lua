@@ -1811,9 +1811,9 @@ end
 if text:match("^تحديث$") and tonumber(msg.sender_user_id_) == tonumber(sudo_add) then
 send(msg.chat_id_, msg.id_, 1, '☑تم تحديث البوت ✔' ,1, 'md')
 os.execute('rm -rf ./libs/utils.lua')
-os.execute('cd libs && wget https://raw.githubusercontent.com/MAXTAME/MAX/master/libs/utils.lua')
+os.execute('cd libs && wget https://github.com/MAXTAME/MAX/blob/master/libs/utils.lua')
 os.execute('rm -rf MAX.lua')
-os.execute('wget https://raw.githubusercontent.com/MAXTAME/MAX/master/MAX.lua')
+os.execute('wget https://github.com/MAXTAME/MAX/blob/master/MAX.lua')
 os.exit()
 return false
 end

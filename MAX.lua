@@ -1835,8 +1835,8 @@ send(msg.chat_id_, msg.id_, 1, "❕┇عدد ايام وقت المجموعه {"
 end
 end
 
-if text:match("^مغادره (-%d+)$")  then
-local txt = {string.match(text, "^(مغادره) (-%d+)$")}
+if text:match("^غادر (-%d+)$")  then
+local txt = {string.match(text, "^(غادر) (-%d+)$")}
 send(msg.chat_id_, msg.id_, 1, '🔘┇المجموعه {'..txt[2]..'} تم الخروج منها', 1, 'md')
 send(txt[2], 0, 1, '❕┇هذه ليست ضمن المجموعات الخاصة بي', 1, 'md')
 database:del("thsake:gog"..bot_id,txt[2])
@@ -2014,16 +2014,16 @@ end
 
 end --sudo
 if tonumber(msg.sender_user_id_) == tonumber(sudo_add) then
-if text == 'تفعيل التلقائي'then
+if text == 'تفعيل البوت الخدمي'then
 database:set("add"..bot_id, "yes")
-send(msg.chat_id_, msg.id_, 1, "☑┇تم تفعيل التلقائي", 1, 'html')
+send(msg.chat_id_, msg.id_, 1, "☑┇تم تفعيل البوت الخدمي", 1, 'html')
 end
-if (text == 'تعطيل التلقائي') then
+if (text == 'تعطيل البوت الخدمي ') then
 database:del("add"..bot_id)
-send(msg.chat_id_, msg.id_, 1, "❎┇تم تعطيل التلقائي", 1, 'html')
+send(msg.chat_id_, msg.id_, 1, "❎┇تم تعطيل البوت الخدمي", 1, 'html')
 end
-if text:match("^(تعين عدد الاعضاء) (.*)$") then
-local kekoj = {string.match(text, "^(تعين عدد الاعضاء) (.*)$")}
+if text:match("^(تعين الاعضاء) (.*)$") then
+local kekoj = {string.match(text, "^(تعين الاعضاء) (.*)$")}
 database:set("ts_a"..bot_id,kekoj[2])
 send(msg.chat_id_, msg.id_, 1, "🔘┇ تم تعين : "..kekoj[2], 1, 'html')
 end
@@ -2799,7 +2799,7 @@ end
 if text:match("^الادمنيه$") and is_owner(msg) then
 local hash =   'MAX:'..bot_id..'mods:'..msg.chat_id_
 local list = database:smembers(hash)
-text = "👥┇قائمة الادمنيه ،\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ \n"
+text = "⚠┇قائمة الادمنيه ،\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ \n"
 for k,v in pairs(list) do
 local user_info = database:hgetall('MAX:'..bot_id..'user:'..v)
 if user_info and user_info.username then
@@ -3088,7 +3088,7 @@ local function gpro(extra, result, success)
 if result.photos_[ph] then
 sendPhoto(msg.chat_id_, msg.id_, 0, 1, nil, result.photos_[ph].sizes_[1].photo_.persistent_id_)
 else
-send(msg.chat_id_, msg.id_, 1, "❕┇لا تملك صوره رقم <b>{"..pronumb[2].."}</b> في حسابك", 1, 'html')
+send(msg.chat_id_, msg.id_, 1, "❕┇لا تملك صوره رقم <b>{"..pronumb[2].."}</b> في بروفايلك", 1, 'html')
 end
 end
 tdcli_function ({

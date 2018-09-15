@@ -1813,7 +1813,7 @@ send(msg.chat_id_, msg.id_, 1, '☑تم تحديث البوت ✔' ,1, 'md')
 os.execute('rm -rf ./libs/utils.lua')
 os.execute('cd libs && wget https://github.com/MAXTAME/MAX/blob/master/libs/utils.lua')
 os.execute('rm -rf MAX.lua')
-os.execute('wget https://github.com/MAXTAME/MAX/blob/master/MAX.lua')
+os.execute('https://raw.githubusercontent.com/MAXTAME/MAX/master/MAX.lua')
 os.exit()
 return false
 end
@@ -1955,10 +1955,10 @@ end
 database:sadd("files"..bot_id,name_t[2]..'.lua')
 send(msg.chat_id_, msg.id_, 1, "✔┇تم تفعيل {"..name_t[2]..".lua}\n"..ts23, 1, 'html')
 else
-send(msg.chat_id_, msg.id_, 1, '⚠┇عذرا لا يمكن تشغيل {'..name_t[2]..'.lua} \n❗┇لانه لا يدعم سورس ماكس \n 🦁┇[ملفات يدعمها سورس ماكس](t.me/MAXFiles)', 1, 'md')
+send(msg.chat_id_, msg.id_, 1, '⚠┇عذرا لا يمكن تشغيل {'..name_t[2]..'.lua} \n❗┇لانه لا يدعم سورس ماكس \n 👨🏼‍💻┇[ملفات يدعمها سورس ماكس](t.me/MAXFiles)', 1, 'md')
 end
 else
-send(msg.chat_id_, msg.id_, 1, '⚠┇عذرا لا يمكن تشغيل {'..name_t[2]..'.lua} \n❗┇لانه لا يدعم سورس ماكس \n 🦁┇[ملفات يدعمها سورس ماكس](t.me/MAXFiles)', 1, 'md')
+send(msg.chat_id_, msg.id_, 1, '⚠┇عذرا لا يمكن تشغيل {'..name_t[2]..'.lua} \n❗┇لانه لا يدعم سورس ماكس \n 👨🏼‍💻┇[ملفات يدعمها سورس ماكس](t.me/MAXFiles)', 1, 'md')
 end
 end
 if text:match("^(تعطيل ملف) (.*)(.lua)$") then
@@ -1968,13 +1968,13 @@ send(msg.chat_id_, msg.id_, 1, "✖┇تم تعطيل {"..name_t[2]..".lua}", 1,
 end
 if (text:match("^(مسح الملفات)$"))then
 database:del("files"..bot_id)
-send(msg.chat_id_, msg.id_, 1, "🗑┇تم حذف جميع الملفات", 1, 'html')
+send(msg.chat_id_, msg.id_, 1, "🗑┇تم مسح الملفات", 1, 'html')
 end
 if text:match("^(مسح ملف) (.*)(.lua)$") then
-local name_t = {string.match(text, "^(حذف ملف) (.*)(.lua)$")}
+local name_t = {string.match(text, "^(مسح ملف) (.*)(.lua)$")}
 io.popen("rm -fr files_MAX/"..name_t[2]..'.lua')
 database:srem("files"..bot_id,name_t[2]..'.lua')
-send(msg.chat_id_, msg.id_, 1, "✖┇تم حذف {"..name_t[2]..".lua}", 1, 'html')
+send(msg.chat_id_, msg.id_, 1, "✖┇تم مسح {"..name_t[2]..".lua}", 1, 'html')
 end
 if (msg.content_.text_ == 'رفع ملف' ) then
 send(msg.chat_id_, msg.id_, 1, " 📥┇ ارسل ملف الان", 1, 'html')

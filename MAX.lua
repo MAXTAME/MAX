@@ -3039,7 +3039,7 @@ MAX_oop = 'مميز الكروب'
 else
 MAX_oop = 'لا شيء'
 end
-send(msg.chat_id_, msg.id_, 1,"📟┇ايدي ⌁≻ `{"..result.sender_user_id_.."}`\n🗳┇رتبته ⌁≻ {"..MAX_oop.."}\n📊┇عدد مسجات ⌁≻ `{"..msgs.."}`\n📧┇عدد التعديلات ⌁≻ `{"..edit.."}`", 1, 'md')
+send(msg.chat_id_, msg.id_, 1,"✰ ᎒ ᎨᏧ ➣ `{"..result.sender_user_id_.."}`\n❖ ᎒ ᖇᎯᏁᏥ ➣ {"..MAX_oop.."}\n❖ ᎒ ᗰᏕᏳ ➣ `{"..msgs.."}`\n✰ ᎒ ᏋᏧᎨᏡ ➣ `{"..edit.."}`", 1, 'md')
 else
 send(msg.chat_id_, msg.id_, 1,"`"..result.sender_user_id_.."`", 1, 'md')
 end
@@ -3070,7 +3070,7 @@ MAX_oop = ' مميز الكروب'
 else
 MAX_oop = 'لا شيء'
 end
-texts = "📟┇ايدي ⌁≻ `{"..result.id_.."}`\n🗳┇رتبته ⌁≻ {"..MAX_oop.."}\n📊┇عدد المسجات ⌁≻ `{"..msgs.."}`\n📧┇عدد التعديلات ⌁≻ `{"..edit.."}`"
+texts = "✰ ᎒ ᎨᏧ ➣ `{"..result.id_.."}`\n❖ ᎒ ᖇᎯᏁᏥ ➣ {"..MAX_oop.."}\n❖ ᎒ ᗰᏕᏳ ➣ `{"..msgs.."}`\n✰ ᎒ ᏋᏧᎨᏡ ➣ `{"..edit.."}`"
 else
 texts = "`"..result.id_.."`"
 end
@@ -3252,7 +3252,7 @@ add = (tonumber(database:get('MAX:'..bot_id..'user:add'..msg.chat_id_..':'..msg.
 send(msg.chat_id_, msg.id_, 1, "📨┇عدد جهاتك ⌁≻ *{"..add.."}*\n📨┇سيتم حذف العدد بعد هذه الرساله", 1, 'md')
 database:del('MAX:'..bot_id..'user:add'..msg.chat_id_..':'..msg.sender_user_id_)
 end
-if text:match("^(عدد التعديلات)$") or text:match("^(تعديلاتي)$") then
+if text:match("^(تعديلاتي)$") or text:match("^(تعديلاتي)$") then
 local edit = database:get('MAX:'..bot_id..'user:editmsg'..msg.chat_id_..':'..msg.sender_user_id_) or 0
 send(msg.chat_id_, msg.id_, 1, "📨┇عدد تعديلاتك ⌁≻ *{"..edit.."}*", 1, 'md')
 end
@@ -3727,7 +3727,7 @@ local yess = redis:get('MAX:'..bot_id..'kickyess'..msg.sender_user_id_..'')
 if yess == 'kickyes' then
 if text:match("^نعم$") then
 if is_vip(msg) then
-send(msg.chat_id_, msg.id_, 1, '❕┇لا استطيع دفرك \n🔘┇(اداريين،ادمنيه،مميزين)البوت', 1, 'md')
+send(msg.chat_id_, msg.id_, 1, '❕┇لا استطيع دفر \n🔘┇(اداريين،ادمنيه،مميزين)البوت', 1, 'md')
 else
 local yess = redis:get('MAX:'..bot_id..'kickyess'..msg.sender_user_id_..'')
 if yess == 'kickyes' then
@@ -3748,7 +3748,7 @@ end
 end
 end
 
-if (text and text == 'تغير امر المبرمج بالكليشه') and tonumber(msg.sender_user_id_) == tonumber(sudo_add) then
+if (text and text == 'تغير كليشه المبرمج') and tonumber(msg.sender_user_id_) == tonumber(sudo_add) then
 send(msg.chat_id_, msg.id_, 1, '📥┇الان يمكنك ارسال الكليشه  ليتم حفظها', 1, 'html')
 redis:set('MAX:'..bot_id..'texts'..msg.sender_user_id_..'', 'msg')
 return false end
@@ -3967,14 +3967,14 @@ redis:sadd('MAX:'..bot_id..'repowner'..msg.sender_user_id_..''..msg.chat_id_..''
 return false end
 end
 
-if text:match("^حذف رد$") and is_owner(msg) then
-send(msg.chat_id_, msg.id_, 1, '📥┇ارسل الكلمه التي تريد حذفها', 1, 'md')
+if text:match("^مسح رد$") and is_owner(msg) then
+send(msg.chat_id_, msg.id_, 1, '📥┇ارسل الكلمه التي تريد مسحها', 1, 'md')
 redis:set('MAX:'..bot_id..'keko1'..msg.sender_user_id_..''..msg.chat_id_..'', 'nomsg')
 return false end
 if text:match("^(.*)$") then
 local keko1 = redis:get('MAX:'..bot_id..'keko1'..msg.sender_user_id_..''..msg.chat_id_..'')
 if keko1 == 'nomsg' then
-send(msg.chat_id_, msg.id_, 1, '☑┇تم حذف الرد', 1, 'md')
+send(msg.chat_id_, msg.id_, 1, '☑┇تم مسح الرد', 1, 'md')
 redis:set('MAX:'..bot_id..'keko1'..msg.sender_user_id_..''..msg.chat_id_..'', 'no')
 redis:del('MAX:'..bot_id..'keko'..text..''..msg.chat_id_..'')
 redis:del('MAX:'..bot_id..':sticker:'..text..''..msg.chat_id_..'')
@@ -3998,14 +3998,14 @@ redis:set('MAX:'..bot_id..'keko1'..msg.sender_user_id_..'', 're')
 redis:set('MAX:'..bot_id..'msg'..msg.sender_user_id_..'', text)
 return false end
 
-if text:match("^حذف رد للكل$") and tonumber(msg.sender_user_id_) == tonumber(sudo_add)  then
-send(msg.chat_id_, msg.id_, 1, '📥┇ارسل الكلمه التي تريد حذفها' , 1, 'md')
+if text:match("^مسح رد للكل$") and tonumber(msg.sender_user_id_) == tonumber(sudo_add)  then
+send(msg.chat_id_, msg.id_, 1, '📥┇ارسل الكلمه التي تريد مسحها' , 1, 'md')
 redis:set('MAX:'..bot_id..'keko1'..msg.sender_user_id_..'', 'nomsg')
 return false end
 if text:match("^(.*)$") then
 local keko1 = redis:get('MAX:'..bot_id..'keko1'..msg.sender_user_id_..'')
 if keko1 == 'nomsg' then
-send(msg.chat_id_, msg.id_, 1, '☑┇تم حذف الرد', 1, 'md')
+send(msg.chat_id_, msg.id_, 1, '☑┇تم مسح الرد', 1, 'md')
 redis:set('MAX:'..bot_id..'keko1'..msg.sender_user_id_..'', 'no')
 redis:del('MAX:'..bot_id..':sticker:'..text)
 redis:del('MAX:'..bot_id..':voice:'..text)
@@ -4150,13 +4150,13 @@ local d = math.floor(ex / day ) + 1
 send(msg.chat_id_, msg.id_, 1, "❕┇عدد ايام وقت المجموعه {"..d.."} يوم", 1, 'md')
 end
 end  
-if text:match("^تنظيف$") and msg.reply_to_message_id_ ~= 0 and is_mod(msg) then
+if text:match("^مسح$") and msg.reply_to_message_id_ ~= 0 and is_mod(msg) then
 delete_msg(msg.chat_id_, {[0] = msg.reply_to_message_id_})
 delete_msg(msg.chat_id_, {[0] = msg.id_})
 end
 ----------------------------------------------------------------------------------------------
-if text:match('^تنظيف (%d+)$') and is_owner(msg) then
-local matches = {string.match(text, "^(تنظيف) (%d+)$")}
+if text:match('^مسح (%d+)$') and is_owner(msg) then
+local matches = {string.match(text, "^(مسح) (%d+)$")}
 if msg.chat_id_:match("^-100") then
 if tonumber(matches[2]) > 100 or tonumber(matches[2]) < 1 then
 pm = '❕┇لا تستطيع مسح اكثر من 100 رساله'
@@ -4514,7 +4514,7 @@ local keko_text = {
 "وجهك وجه الچوب ختتف🐸😹",
 }
 keko3 = math.random(#keko_text)
-sendPhoto(msg.chat_id_, msg.id_, 0, 1, nil, result.photos_[0].sizes_[1].photo_.persistent_id_,"📷"..keko_text[keko3].."\n🌆عدد صورك ⌁≻ "..all_photo_MAX.."\n📟ايديك ⌁≻ ("..msg.sender_user_id_..")\n🏮يوزرك ⌁≻ "..keko_info.."\n👮رتبتك ⌁≻ "..t.."\n📨مسجاتك ⌁≻ {"..user_msgs.."}\n🔧التعديلات ⌁≻ {"..edit.."}\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ",msg.id_,msg.id_.."")
+sendPhoto(msg.chat_id_, msg.id_, 0, 1, nil, result.photos_[0].sizes_[1].photo_.persistent_id_,"📷"..keko_text[keko3].."\n❖ ᎒ ᎮᏲᎧᏡᎧ ➣ "..all_photo_MAX.."\n✰ ᎒ ᎨᏧ ➣ ("..msg.sender_user_id_..")\n❖ ᎒ ᏬᏕᏋᖇ ➣ "..keko_info.."\n✰ ᎒ ᖇᎯᏁᏥ ➣ "..t.."\n❖ ᎒ ᗰᏕᏳ ➣ {"..user_msgs.."}\n✰ ᎒ ᏋᏧᎨᏡ ➣ {"..edit.."}\n╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍ ",msg.id_,msg.id_.."")
 else 
 local MAX_new_text = database:get("MAX:gr:id:text:"..bot_id..msg.chat_id_)
 local MAX_new_text = MAX_new_text:gsub('#username',(keko_info or 'لا يوجد'))
@@ -4542,7 +4542,7 @@ else
 t = 'لا شيء'
 end
 if not database:get("MAX:gr:id:text:"..bot_id..msg.chat_id_) then 
-send(msg.chat_id_, msg.id_, 1, "📟ايديك ⌁≻ ("..msg.sender_user_id_..")\n🏮يوزرك ⌁≻ "..keko_info.."\n👮رتبتك ⌁≻ "..t.."\n📨مسجاتك ⌁≻ <b>{"..user_msgs.."}</b>\n📧التعديلات ⌁≻ <b>{"..edit.."}</b>\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉", 1, 'html')
+send(msg.chat_id_, msg.id_, 1, "✰ ᎒ ᎨᏧ ➣ ("..msg.sender_user_id_..")\n❖ ᎒ ᏬᏕᏋᖇ ➣ "..keko_info.."\n✰ ᎒ ᖇᎯᏁᏥ ➣ "..t.."\n❖ ᎒ ᗰᏕᏳ ➣ <b>{"..user_msgs.."}</b>\n✰ ᎒ ᏋᏧᎨᏡ ➣ <b>{"..edit.."}</b>\n╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍", 1, 'html')
 else 
 local MAX_new_text = database:get("MAX:gr:id:text:"..bot_id..msg.chat_id_)
 local MAX_new_text = MAX_new_text:gsub('#username',(keko_info or 'لا يوجد'))
@@ -4575,7 +4575,7 @@ end
 if not database:get('MAX:'..bot_id..'id:mute'..msg.chat_id_) then
 if not database:get('MAX:'..bot_id..'id:photo'..msg.chat_id_) then
 if not database:get("MAX:gr:id:text:"..bot_id..msg.chat_id_) then 
-send(msg.chat_id_, msg.id_, 1, "❕┇انت لا تملك صوره لحسابك\n📟┇ايديك ⌁≻ ("..msg.sender_user_id_..")\n📜┇يوزرك ⌁≻ "..keko_info.."\n📡┇رتبتك ⌁≻ "..t.."\n📨┇مسجاتك ⌁≻ <b>{"..user_msgs.."}</b>\n📧┇التعديلات ⌁≻ <b>{"..edit.."}</b>\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ", 1, 'html')
+send(msg.chat_id_, msg.id_, 1, "❖ ᎒انت لا تملك صوره في بروفايلك\n✰ ᎒ ᎨᏧ ➣ ("..msg.sender_user_id_..")\n❖ ᎒ ᏬᏕᏋᖇ ➣ "..keko_info.."\n✰ ᎒ ᖇᎯᏁᏥ ➣ "..t.."\n❖ ᎒ ᗰᏕᏳ ➣ <b>{"..user_msgs.."}</b>\n✰ ᎒ ᏋᏧᎨᏡ ➣ <b>{"..edit.."}</b>\n╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍ ", 1, 'html')
 else 
 local MAX_new_text = database:get("MAX:gr:id:text:"..bot_id..msg.chat_id_)
 local MAX_new_text = MAX_new_text:gsub('#username',(keko_info or 'لا يوجد'))
@@ -4603,7 +4603,7 @@ else
 t = 'لا شيء'
 end
 if not database:get("MAX:gr:id:text:"..bot_id..msg.chat_id_) then 
-send(msg.chat_id_, msg.id_, 1, "📟┇ايديك ⌁≻ ("..msg.sender_user_id_..")\n📜┇يوزرك ⌁≻ "..keko_info.."\n📡┇رتبتك ⌁≻ "..t.."\n📨┇مسجاتك ⌁≻ <b>{"..user_msgs.."}</b>\n📧┇التعديلات ⌁≻ <b>{"..edit.."}</b>\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉", 1, 'html')
+send(msg.chat_id_, msg.id_, 1, "✰ ᎒ ᎨᏧ ➣ ("..msg.sender_user_id_..")\n❖ ᎒ ᏬᏕᏋᖇ ➣ "..keko_info.."\n✰ ᎒ ᖇᎯᏁᏥ ➣ "..t.."\n❖ ᎒ ᗰᏕᏳ ➣ <b>{"..user_msgs.."}</b>\n✰ ᎒ ᏋᏧᎨᏡ ➣ <b>{"..edit.."}</b>\n╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍", 1, 'html')
 else 
 local MAX_new_text = database:get("MAX:gr:id:text:"..bot_id..msg.chat_id_)
 local MAX_new_text = MAX_new_text:gsub('#username',(keko_info or 'لا يوجد'))
@@ -4647,7 +4647,7 @@ result.username_ = '@'..result.username_
 else
 result.username_ = 'لا يوجد يوزر'
 end
-send(msg.chat_id_, msg.id_, 1, '📜┇يوزر ⌁≻ ('..(result.username_..')\n🔘┇الاسم ⌁≻ ('..result.first_name_ or "MAX")..')', 1, 'md')
+send(msg.chat_id_, msg.id_, 1, '❖ ᎒ ᏬᏕᏋᖇ ➣ ('..(result.username_..')\n✰ ᎒ ᏁᎯᗰᏋ ➣ ('..result.first_name_ or "MAX")..')', 1, 'md')
 end
 getUser(memb[2],whois)
 end

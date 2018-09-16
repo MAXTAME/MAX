@@ -2424,7 +2424,7 @@ end
 bot.channel_get_kicked(msg.chat_id_,moody)
 end
 
-if text:match("^حذف الكل$") and is_owner(msg) and msg.reply_to_message_id_ then
+if text:match("^مسح الكل$") and is_owner(msg) and msg.reply_to_message_id_ then
 function delall_by_reply(extra, result, success)
 if ck_mod(result.sender_user_id_, msg.chat_id_) then
 send(msg.chat_id_, msg.id_, 1, '❕┇لا تستطيع مسح مسجات \n🔘┇(اداريين،ادمنيه،اعضاء مميزين)البوت', 1, 'md')
@@ -2436,18 +2436,18 @@ end
 getMessage(msg.chat_id_, msg.reply_to_message_id_,delall_by_reply)
 end
 
-if text:match("^حذف الكل (%d+)$") and is_owner(msg) then
-local ass = {string.match(text, "^(حذف الكل) (%d+)$")}
+if text:match("^مسح الكل (%d+)$") and is_owner(msg) then
+local ass = {string.match(text, "^(مسح الكل) (%d+)$")}
 if ck_mod(ass[2], msg.chat_id_) then
-send(msg.chat_id_, msg.id_, 1, '❕┇لا تستطيع حذف مسجات \n🔘┇(اداريين،ادمنيه،مميزين)البوت', 1, 'md')
+send(msg.chat_id_, msg.id_, 1, '❕┇لا تستطيع مسح مسجات \n🔘┇(اداريين،ادمنيه،مميزين)البوت', 1, 'md')
 else
 del_all_msgs(msg.chat_id_, ass[2])
-send(msg.chat_id_, msg.id_, 1, '👨┇العضو ⌁≻ *('..ass[2]..')* \n🗑┇تم حذف كل مسجاته\n', 1, 'md')
+send(msg.chat_id_, msg.id_, 1, '👨┇العضو ⌁≻ *('..ass[2]..')* \n🗑┇تم مسح كل مسجاته\n', 1, 'md')
 end
 end
 
-if text:match("^حذف الكل @(.*)$") and is_owner(msg) then
-local apbll = {string.match(text, "^(حذف الكل) @(.*)$")}
+if text:match("^مسح الكل @(.*)$") and is_owner(msg) then
+local apbll = {string.match(text, "^(مسح الكل) @(.*)$")}
 function delall_by_username(extra, result, success)
 if result.id_ then
 if ck_mod(result.id_, msg.chat_id_) then
@@ -2455,7 +2455,7 @@ send(msg.chat_id_, msg.id_, 1, '❕┇لا تستطيع مسح مسجات \n🔘
 return false
 end
 del_all_msgs(msg.chat_id_, result.id_)
-texts = '👨┇العضو ⌁≻ ('..result.id_..') \n🗑┇تم حذف كل مسجاته'
+texts = '👨┇العضو ⌁≻ ('..result.id_..') \n🗑┇تم مسح كل مسجاته'
 else
 texts = '✖┇خطاء'
 end
@@ -2892,7 +2892,7 @@ end
 send(msg.chat_id_, msg.id_, 1, text, 1, 'html')
 end
 end
-if text and text == "عدد الكروب" and is_mod(msg) then 
+if text and text == "الكروبات" and is_mod(msg) then 
 function dl_cb22( t1,t2 )
 local MAX_098 = 0
 if database:get("MAX:get:mod:"..bot_id..msg.chat_id_) then 
@@ -3292,19 +3292,19 @@ end
 bot.channel_get_bots(msg.chat_id_,cb)
 send(msg.chat_id_, msg.id_, 1, '☑┇تم مسح جميع البوتات', 1, 'md')
 end
-if txt[2] == 'تنزيل الادمنيه' and is_owner(msg) then
+if txt[2] == 'مسح الادمنيه' and is_owner(msg) then
 database:del('MAX:'..bot_id..'mods:'..msg.chat_id_)
 send(msg.chat_id_, msg.id_, 1, '☑┇تم تنزيل الادمنيه', 1, 'md')
 end
-if  txt[2] == 'تنزيل المميزين' and is_owner(msg) then
+if  txt[2] == 'مسح المميزين' and is_owner(msg) then
 database:del('MAX:'..bot_id..'vipgp:'..msg.chat_id_)
 send(msg.chat_id_, msg.id_, 1, '☑┇تم تنزيل المميزين', 1, 'md')
 end
-if  txt[2] == 'تنزيل المميزين' and is_owner(msg) then
+if  txt[2] == 'مسح المميزين' and is_owner(msg) then
 database:del('MAX:'..bot_id..'vipgp:'..msg.chat_id_)
 send(msg.chat_id_, msg.id_, 1, '☑┇تم تنزيل المميزين', 1, 'md')
 end
-if  txt[2] == 'تنزيل الاداريين' and is_creator(msg) then
+if  txt[2] == 'مسح الاداريين' and is_creator(msg) then
 database:del('MAX:'..bot_id..'owners:'..msg.chat_id_)
 send(msg.chat_id_, msg.id_, 1, '☑┇تم تنزيل الاداريين', 1, 'md')
 end

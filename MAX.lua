@@ -2364,7 +2364,7 @@ if text:match("وضع رابط (https://telegram.me/joinchat/%S+)") or text:matc
 local glink = text:match("وضع رابط (https://telegram.me/joinchat/%S+)") or text:match("وضع رابط (https://t.me/joinchat/%S+)") 
 database:set('MAX:'..bot_id.."group:link"..msg.chat_id_,glink) 
 send(msg.chat_id_, msg.id_, 1, '☑️┇تم وضع رابط', 1, 'md') 
-send(msg.chat_id_, 0, 1, '↙️┇رابط المجموعه الجديد\n'..glink, 1, 'html')
+send(msg.chat_id_, 0, 1, '📩┇ᏳᖇᎧᏬᎮ ᏝᎨᏁᏥ الجديد\n'..glink, 1, 'html')
 end 
 end
 if text:match("^الغاء حظر @(.*)$") and is_mod(msg) then
@@ -2892,7 +2892,7 @@ end
 send(msg.chat_id_, msg.id_, 1, text, 1, 'html')
 end
 end
-if text and text == "الكروبات" and is_mod(msg) then 
+if text and text == "معلومات" and is_mod(msg) then 
 function dl_cb22( t1,t2 )
 local MAX_098 = 0
 if database:get("MAX:get:mod:"..bot_id..msg.chat_id_) then 
@@ -3132,9 +3132,9 @@ if text:match("^الرابط$") then
 if not database:get("MAX:mute:link:gr:"..bot_id..msg.chat_id_) then 
 function dl_cb222( t1,t2 )
 if t2.invite_link_ ~= false then 
-send(msg.chat_id_, msg.id_, 1, '📮┇رابط المجموعه\n'..(t2.invite_link_ or "Error"), 1, "html")
+send(msg.chat_id_, msg.id_, 1, '📩┇ᏳᖇᎧᏬᎮ ᏝᎨᏁᏥ\n'..(t2.invite_link_ or "Error"), 1, "html")
 elseif (database:get('MAX:'..bot_id.."group:link"..msg.chat_id_)) then 
-send(msg.chat_id_, msg.id_, 1, '📮┇رابط المجموعه\n'..database:get('MAX:'..bot_id.."group:link"..msg.chat_id_), 1, "html")
+send(msg.chat_id_, msg.id_, 1, '📩┇ᏳᖇᎧᏬᎮ ᏝᎨᏁᏥ المجموعه\n'..database:get('MAX:'..bot_id.."group:link"..msg.chat_id_), 1, "html")
 else
 send(msg.chat_id_, msg.id_, 1, '⚠️┇لا يمكني الوصل الى الرابط عليك منحي صلاحيه {دعوه المستخدمين من خلال الرابط}', 1, "html")
 end
@@ -3292,19 +3292,19 @@ end
 bot.channel_get_bots(msg.chat_id_,cb)
 send(msg.chat_id_, msg.id_, 1, '☑┇تم مسح جميع البوتات', 1, 'md')
 end
-if txt[2] == 'مسح الادمنيه' and is_owner(msg) then
+if txt[2] == 'delet admin' and is_owner(msg) then
 database:del('MAX:'..bot_id..'mods:'..msg.chat_id_)
 send(msg.chat_id_, msg.id_, 1, '☑┇تم تنزيل الادمنيه', 1, 'md')
 end
-if  txt[2] == 'مسح المميزين' and is_owner(msg) then
+if  txt[2] == 'delet star' and is_owner(msg) then
 database:del('MAX:'..bot_id..'vipgp:'..msg.chat_id_)
 send(msg.chat_id_, msg.id_, 1, '☑┇تم تنزيل المميزين', 1, 'md')
 end
-if  txt[2] == 'مسح المميزين' and is_owner(msg) then
+if  txt[2] == 'delet star' and is_owner(msg) then
 database:del('MAX:'..bot_id..'vipgp:'..msg.chat_id_)
 send(msg.chat_id_, msg.id_, 1, '☑┇تم تنزيل المميزين', 1, 'md')
 end
-if  txt[2] == 'مسح الاداريين' and is_creator(msg) then
+if  txt[2] == 'delet ers' and is_creator(msg) then
 database:del('MAX:'..bot_id..'owners:'..msg.chat_id_)
 send(msg.chat_id_, msg.id_, 1, '☑┇تم تنزيل الاداريين', 1, 'md')
 end

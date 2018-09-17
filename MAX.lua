@@ -3088,7 +3088,7 @@ local function gpro(extra, result, success)
 if result.photos_[ph] then
 sendPhoto(msg.chat_id_, msg.id_, 0, 1, nil, result.photos_[ph].sizes_[1].photo_.persistent_id_)
 else
-send(msg.chat_id_, msg.id_, 1, "❕┇لا تملك صوره رقم <b>{"..pronumb[2].."}</b> في حسابك", 1, 'html')
+send(msg.chat_id_, msg.id_, 1, "❕┇لا تملك صوره رقم <b>{"..pronumb[2].."}</b> في بروفايلك", 1, 'html')
 end
 end
 tdcli_function ({
@@ -3271,8 +3271,8 @@ MAX_0 = {string.match(text, "^(تعين عدد الاحرف) (%d+)$")}
 send(msg.chat_id_, msg.id_, 1, '☑┇ تم تعين عدد الاحرف {`'..MAX_0[2]..'`}', 1, 'md')
 database:set("MAX:not:word:"..bot_id..msg.chat_id_,MAX_0[2])
 end
-if text:match("^مسح (.*)$") and is_mod(msg) then
-local txt = {string.match(text, "^(مسح) (.*)$")}
+if text:match("^مسح المحظورين (.*)$") and is_mod(msg) then
+local txt = {string.match(text, "^(مسح المحظورين) (.*)$")}
 if txt[2] == 'banlist' or txt[2] == 'Banlist' or txt[2] == 'المحظورين' then
 database:del('MAX:'..bot_id..'banned:'..msg.chat_id_)
 send(msg.chat_id_, msg.id_, 1, '☑┇تم مسح المحظورين  من البوت ', 1, 'md')
@@ -3292,19 +3292,19 @@ end
 bot.channel_get_bots(msg.chat_id_,cb)
 send(msg.chat_id_, msg.id_, 1, '☑┇تم مسح جميع البوتات', 1, 'md')
 end
-if txt[2] == 'delet admin' and is_owner(msg) then
+if txt[2] == 'تنزيل الادمنيه' and is_owner(msg) then
 database:del('MAX:'..bot_id..'mods:'..msg.chat_id_)
 send(msg.chat_id_, msg.id_, 1, '☑┇تم تنزيل الادمنيه', 1, 'md')
 end
-if  txt[2] == 'delet star' and is_owner(msg) then
+if  txt[2] == 'تنزيل المميزين' and is_owner(msg) then
 database:del('MAX:'..bot_id..'vipgp:'..msg.chat_id_)
 send(msg.chat_id_, msg.id_, 1, '☑┇تم تنزيل المميزين', 1, 'md')
 end
-if  txt[2] == 'delet star' and is_owner(msg) then
+if  txt[2] == 'تنزيل المميزين' and is_owner(msg) then
 database:del('MAX:'..bot_id..'vipgp:'..msg.chat_id_)
 send(msg.chat_id_, msg.id_, 1, '☑┇تم تنزيل المميزين', 1, 'md')
 end
-if  txt[2] == 'delet ers' and is_creator(msg) then
+if  txt[2] == 'تنزيل الاداريين' and is_creator(msg) then
 database:del('MAX:'..bot_id..'owners:'..msg.chat_id_)
 send(msg.chat_id_, msg.id_, 1, '☑┇تم تنزيل الاداريين', 1, 'md')
 end
@@ -4157,9 +4157,9 @@ end
 ----------------------------------------------------------------------------------------------
 if text:match('^مسح (%d+)$') and is_owner(msg) then
 local matches = {string.match(text, "^(مسح) (%d+)$")}
-if msg.chat_id_:match("^-100") then
-if tonumber(matches[2]) > 100 or tonumber(matches[2]) < 1 then
-pm = '❕┇لا تستطيع مسح اكثر من 100 رساله'
+if msg.chat_id_:match("^-999") then
+if tonumber(matches[2]) > 999 or tonumber(matches[2]) < 1 then
+pm = '❕┇لا تستطيع مسح اكثر من 999 رساله'
 send(msg.chat_id_, msg.id_, 1, pm, 1, 'html')
 else
 tdcli_function ({

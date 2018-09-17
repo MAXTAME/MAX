@@ -1055,12 +1055,12 @@ tsX000("lock",msg,"✔┇تم قفل الجهات")
 database:set("lock_contact:MAX"..msg.chat_id_..bot_id,"ok")
 end
 end
-if (text == "قفل الفارسيه") then
+if (text == "قفل العربيه") then
 local tsX_o = database:get("lock_pe:MAX"..msg.chat_id_..bot_id)
 if tsX_o then
-tsX000("lock",msg,"✔┇الفارسيه مقفوله!")
+tsX000("lock",msg,"✔┇العربيه مقفوله!")
 else
-tsX000("lock",msg,"✔┇تم قفل الفارسيه")
+tsX000("lock",msg,"✔┇تم قفل العربيه")
 database:set("lock_pe:MAX"..msg.chat_id_..bot_id,"ok")
 end
 end
@@ -1337,9 +1337,9 @@ end
 if (text == "فتح الفارسيه") then
 local tsX_o = database:get("lock_pe:MAX"..msg.chat_id_..bot_id)
 if not tsX_o then
-tsX000("lock",msg,"✔┇الفارسيه مفتوحه")
+tsX000("lock",msg,"✔┇العربيه مفتوحه")
 else
-tsX000("lock",msg,"✔┇تم فتح الفارسيه")
+tsX000("lock",msg,"✔┇تم فتح العربيه")
 database:del("lock_pe:MAX"..msg.chat_id_..bot_id,"ok")
 end
 end
@@ -3161,7 +3161,7 @@ local welcome = {string.match(text, "^(وضع ترحيب) (.*)$")}
 send(msg.chat_id_, msg.id_, 1, '☑┇تم وضع ترحيب\n📜┇⌁≻('..welcome[2]..')', 1, 'md')
 database:set('MAX:'..bot_id..'welcome:'..msg.chat_id_,welcome[2])
 end
-if text:match("^حذف الترحيب$") and is_mod(msg) then
+if text:match("^مسح الترحيب$") and is_mod(msg) then
 send(msg.chat_id_, msg.id_, 1, '☑┇تم حذف الترحيب', 1, 'md')
 database:del('MAX:'..bot_id..'welcome:'..msg.chat_id_)
 end
@@ -4733,7 +4733,7 @@ local text =  [[
      
 ‎🚔 ⌁≻م2اوامر الادمنيه
 
-‎👨‍✈️ ⌁≻م3اوامر الادارين
+‎👨‍✈️ ⌁≻م3اوامر المنشئين و الادارين
 
 ‎👨🏼‍💻 ⌁≻م4اوامر المبرمجين
 ﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎
@@ -4781,6 +4781,7 @@ local text =  [[
 ♦️┇ 《 قفل / فتح 》 الصوت
 ﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎
 ♠️┇ 《 قفل / فتح 》 الفارسيه
+♠️┇ 《 قفل / فتح 》 العربيه
 ♠️┇ 《 قفل / فتح 》 البوتات
 ♠️┇ 《 قفل / فتح 》الانكليزيه
 ♠️┇ 《 قفل / فتح 》 الميديا

@@ -1,8 +1,8 @@
 --[[
-BY : TshAkETEAM
-Channel Files : https://t.me/tshakeFiles
+BY : MAXTAME
+Channel Files : https://t.me/MAXFILE
 ]]
-local function keko_tshake(data)
+local function keko_MAX(data)
 local msg = data.message_
 redis = (loadfile "./libs/redis.lua")()
 database = Redis.connect('127.0.0.1', 6379)
@@ -34,9 +34,9 @@ local TextParseMode = {ID = "TextParseModeMarkdown"}
 user_id = msg.sender_user_id_
 chat_id = msg.chat_id_
 local var = false
-local admin = database:sismember('tshake:'..bot_id..'admins:', user_id)  
-local owner = database:sismember('tshake:'..bot_id..'owners:'..chat_id, user_id)
-local creator = database:sismember('tshake:'..bot_id..'creator:'..chat_id, user_id)  
+local admin = database:sismember('MAX:'..bot_id..'admins:', user_id)  
+local owner = database:sismember('MAX:'..bot_id..'owners:'..chat_id, user_id)
+local creator = database:sismember('MAX:'..bot_id..'creator:'..chat_id, user_id)  
 if owner then var = true
 end if admin then
 var = true end if creator then var = true end
@@ -44,13 +44,13 @@ for k,v in pairs(sudo_users) do
 if user_id == v then
 var = true
 end end
-local keko_add_sudo = redis:get('tshake:'..bot_id..'sudoo'..user_id..'')
+local keko_add_sudo = redis:get('MAX:'..bot_id..'sudoo'..user_id..'')
 if keko_add_sudo then var = true end
 return var
 end
 local msg = data.message_
 text = msg.content_.text_
-if not database:get('tshake:'..bot_id..'rep:mute'..msg.chat_id_) then
+if not database:get('MAX:'..bot_id..'rep:mute'..msg.chat_id_) then
 if text == 'الالعاب' then
 moody = "• مرحبا بك في قائمه الالعاب لعبه السمايلات اكتب لعب ليتم بدئ اللعب🏁ֆ"
 send(msg.chat_id_, msg.id_, 1, moody, 1, 'md')
@@ -247,33 +247,33 @@ moody = "• ما هو السمايل المختلف
 send(msg.chat_id_, msg.id_, 1, moody, 1, 'md')
 end
 if text == '🔈' then
-moody = "• لقد ربحت في اللعبه مبروك الفوز انتضر جديدنا @SNIIPERTIMEֆ"
+moody = "• لقد ربحت في اللعبه مبروك الفوز انتضر جديدنا @MAXTAME"
 send(msg.chat_id_, msg.id_, 1, moody, 1, 'md')
 end
 
 end
 if  (text and text == 'تفعيل الالعاب') and is_owner(msg) then
-    if not database:get('tshake:'..bot_id..'rep:mute'..msg.chat_id_) then
+    if not database:get('MAX:'..bot_id..'rep:mute'..msg.chat_id_) then
   send(msg.chat_id_, msg.id_, 1, '☑┇الالعاب بالفعل تم تفعيلها', 1, 'md')
     else
   send(msg.chat_id_, msg.id_, 1, '☑┇تم تفعيل الالعاب', 1, 'md')
-   database:del('tshake:'..bot_id..'rep:mute'..msg.chat_id_)
+   database:del('MAX:'..bot_id..'rep:mute'..msg.chat_id_)
   end
   end
   if(text and text == 'تعطيل الالعاب') and is_owner(msg) then
-    if database:get('tshake:'..bot_id..'rep:mute'..msg.chat_id_) then
+    if database:get('MAX:'..bot_id..'rep:mute'..msg.chat_id_) then
   send(msg.chat_id_, msg.id_, 1, '☑┇الالعاب بالفعل تم تعطيلها', 1, 'md')
   else
   send(msg.chat_id_, msg.id_, 1, '☑┇تم تعطيل الالعاب', 1, 'md')
-    database:set('tshake:'..bot_id..'rep:mute'..msg.chat_id_,true)
+    database:set('MAX:'..bot_id..'rep:mute'..msg.chat_id_,true)
   end
     end
 
 end
 return {
- keko_tshake = keko_tshake,
+ keko_MAX = keko_MAX,
 }
 --[[
-BY : TshAkETEAM
-Channel Files : https://t.me/tshakeFiles
+BY : @MAXTAME
+Channel Files : https://t.me/MAXFILE
 ]]

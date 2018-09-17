@@ -1,8 +1,8 @@
 --[[
-BY : TshAkETEAM
-Channel Files : https://t.me/tshakeFiles
+BY : MAXTAME
+Channel Files : https://t.me/MAXFILE
 ]]
-local function keko_tshake(data)
+local function keko_MAX(data)
     JSON = (loadfile  "./libs/dkjson.lua")()
     local msg = data.message_
     text = msg.content_.text_
@@ -35,89 +35,89 @@ function is_mod(msg)
 user_id = msg.sender_user_id_
 chat_id = msg.chat_id_
 local var = false
-local mod = database:sismember('tshake:'..bot_id..'mods:'..chat_id, user_id)  
-local admin = database:sismember('tshake:'..bot_id..'admins:', user_id)  
-local owner = database:sismember('tshake:'..bot_id..'owners:'..chat_id, user_id)
-local creator = database:sismember('tshake:'..bot_id..'creator:'..chat_id, user_id)  
+local mod = database:sismember('MAX:'..bot_id..'mods:'..chat_id, user_id)  
+local admin = database:sismember('MAX:'..bot_id..'admins:', user_id)  
+local owner = database:sismember('MAX:'..bot_id..'owners:'..chat_id, user_id)
+local creator = database:sismember('MAX:'..bot_id..'creator:'..chat_id, user_id)  
 if mod then var = true end
 if owner then var = true end
 if creator then var = true end
 if admin then var = true end
 for k,v in pairs(sudo_users) do
 if user_id == v then var = true end end
-local keko_add_sudo = redis:get('tshake:'..bot_id..'sudoo'..user_id..'')
+local keko_add_sudo = redis:get('MAX:'..bot_id..'sudoo'..user_id..'')
 if keko_add_sudo then var = true end
 return var
 end
-if (text and text == 'قفل الفشار' and is_mod(msg)) then 
-send(msg.chat_id_, msg.id_, 1,"☑️┇تم قفل الفشار", 1, 'html')
+if (text and text == 'قفل الفارسيه' and is_mod(msg)) then 
+send(msg.chat_id_, msg.id_, 1,"☑️┇تم قفل الفارسيه", 1, 'html')
 database:set("keko:bantext"..bot_id..msg.chat_id_,"keko")
 end
-if (text and text == 'فتح الفشار' and is_mod(msg)) then
-send(msg.chat_id_, msg.id_, 1,"☑️┇تم فتح الفشار",1, 'html')
+if (text and text == 'فتح الفارسيه' and is_mod(msg)) then
+send(msg.chat_id_, msg.id_, 1,"☑️┇تم فتح الفارسيه",1, 'html')
 database:del("keko:bantext"..bot_id..msg.chat_id_)
 end
 local ikeko = database:get("keko:bantext"..bot_id..msg.chat_id_)
 if (ikeko and ikeko == 'keko') then
 if (not is_mod(msg) and text) then 
 local keko = { -- the List By : t.me/r_rrt
-        'عير',
-        'كس',
-        'كحبه', -- the List By : t.me/r_rrt
-        'كساسه',
-        'مناويج',
-        'تنيجون',
-        'سكسي',
+        '۶۵',
+        '۴۵',
+        '۶۴', -- the List By : t.me/r_rrt
+        '۶۳',
+        'مک',
+        'زدن',
+        'سکس',
         'xxnx',
         'XXNX',
         'xxxn',
-        'XXXN',
-        'كوسي',
-        'عيري',
-        'موجب',
-        'سالب',
-        'بلاع العير',
-        'بلاع الكس',
-        'مصاص الخصوه',
-        'ابن الكس',
-        'ابن العار',
-        'ابن العاهره',
-        'عاهره',
-        'منيوج',
-        'فرخ',
-        'فروخ',
-        'بلاع',
-        'كواد',
-        'كواده',
-        'منيوجه',
-        'سكس',
-        'نجتهم',
-        'بعصته',
-        'بعصتهم',
-        'ناجني',
-        'نجته', -- the List By : t.me/r_rrt
-        'بعصني',
-        'عيري',
-        'عيرك',
-        'كسك',
-        'fuck',
-        'FUCK',
-        'sexy',
-        'SEXY',
-        'نيج',
-        'ناجونه',
-        'نجناهم',
-        'بعصناهم',
-        'خصاوي',
-        'عيوره',
-        'كساسه',
-        'طيزك',
-        'طيزي',
-        'كيري كن امك',
+        'سکسی',
+        'کسی',
+        'دخترا',
+        'دیوث',
+        'کلیپشن',
+        'خوششون',
+        'میدا',
+        'های',
+        'که',
+        'بدانیم',
+        'باید',
+        'عرب',
+        'از',
+        'زناشویی',
+        'رابطه',
+        'آموزش',
+        'زنا',
+        'شویی',
+        'اپ',
+        'بالا',
+        'کن',
+        'گن',
+        'نیک',
+        'زوکن',
+        'آیت', -- the List By : t.me/r_rrt
+        'صوتی',
+        'دانلودریگان',
+        'با',
+        'گپی',
+        'بسیارزیبا',
+        'هر',
+        'روز',
+        '۵۰۰',
+        'خونه',
+        'فیلم',
+        'ایرونی',
+        'کصمو',
+        'داغه',
+        '18+',
+        '۱۸+',
+        'میخوی',
+        'ایرانی',
+        'XXX',
         'كيرى',
         'كيرى كن امك',
-        'تنيج',
-        'ناجوك',
+        'پ',
+        'اینچا',
         'بی ناموس',
         'کسکش',
         'كير خوار',
@@ -160,10 +160,10 @@ end
 end
 end
     return {
-        keko_tshake = keko_tshake,
+        keko_MAX = keko_MAX,
     }
     --[[
-    BY : TshAkETEAM
-    Channel Files : https://t.me/tshakeFiles
+    BY : MAXTAME
+    Channel Files : https://t.me/MAXFILE
     ]]
     

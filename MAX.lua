@@ -3017,7 +3017,7 @@ text = "✖┇لايوجد مكتومين عام"
 end
 send(msg.chat_id_, msg.id_, 1, text, 1, 'html')
 end  
-if text:match("^ايدي$") or text:match("^id$")and msg.reply_to_message_id_ ~= 0 then
+if text:match("^ايدي$") and msg.reply_to_message_id_ ~= 0 then
 function id_by_reply(extra, result, success)
 if not database:get('MAX:'..bot_id..'id:mute'..msg.chat_id_) then 
 local msgs = database:get('MAX:'..bot_id..'user:msgs'..msg.chat_id_..':'..result.sender_user_id_) or 0
@@ -3046,8 +3046,8 @@ end
 end
 getMessage(msg.chat_id_, msg.reply_to_message_id_,id_by_reply)
 end  
-if text:match("^ايدي @(.*)$") or text:match("^id @(.*)$") then
-local ap = {string.match(text, "^(ايدي) @(.*)$") or text:match"^(id) @(.*)$")}
+if text:match("^id @(.*)$") then
+local ap = {string.match(text, "^(id) @(.*)$")}
 function id_by_username(extra, result, success)
 if result.id_ then
 if not database:get('MAX:'..bot_id..'id:mute'..msg.chat_id_) then 
@@ -3596,7 +3596,7 @@ else
 lock_english = '✖┇'
 end
 ------------
-if database:get("lock_pe:MAX"..msg.chat_id_..bot_id) then
+if database:get("lock_ar:MAX"..msg.chat_id_..bot_id) then
 lock_persian = '✔┇'
 else
 lock_persian = '✖┇'
@@ -4667,7 +4667,7 @@ send(msg.chat_id_, msg.id_, 1, '☑┇تم تعطيل التثبيت', 1, 'md')
 database:set('MAX:'..bot_id..'pin:mute'..msg.chat_id_,true)
 end
 end
-if text:match("^ثبت$") and is_mod(msg) and not is_owner(msg) then
+if text:match("^ثبت$")or text:match("^pin$") and is_mod(msg) and not is_owner(msg) then
 local id = msg.id_
 local msgs = {[0] = id}
 if not database:get('MAX:'..bot_id..'pin:mute'..msg.chat_id_) then
@@ -4686,7 +4686,7 @@ else
 send(msg.chat_id_, msg.id_, 1, '☑┇الغاء التثبيت معطل', 1, 'md')
 end
 end
-if text:match("^ثبت$") and is_owner(msg) then
+if text:match("^ثبت$")or text:match("^pin$") and is_owner(msg) then
 local id = msg.id_
 local msgs = {[0] = id}
 pin(msg.chat_id_,msg.reply_to_message_id_,0)

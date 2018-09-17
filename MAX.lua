@@ -1055,7 +1055,7 @@ tsX000("lock",msg,"✔┇تم قفل الجهات")
 database:set("lock_contact:MAX"..msg.chat_id_..bot_id,"ok")
 end
 end
-if (text == "قفل العربيه") then
+if (text == "قفل trt") then
 local tsX_o = database:get("lock_ar:MAX"..msg.chat_id_..bot_id)
 if tsX_o then
 tsX000("lock",msg,"✔┇العربيه مقفوله!")
@@ -1334,7 +1334,7 @@ tsX000("lock",msg,"☑┇تم فتح الجهات")
 database:del("lock_contact:MAX"..msg.chat_id_..bot_id,"ok")
 end
 end
-if (text == "فتح العربیه") then
+if (text == "فتح trr") then
 local tsX_o = database:get("lock_ar:MAX"..msg.chat_id_..bot_id)
 if not tsX_o then
 tsX000("lock",msg,"✔┇العربيه مفتوحه")
@@ -2899,7 +2899,7 @@ if database:get("MAX:get:mod:"..bot_id..msg.chat_id_) then
 t = database:get("MAX:get:mod:"..bot_id..msg.chat_id_)
 MAX_098 = tonumber(t2.member_count_) - tonumber(t)
 end
-send(msg.chat_id_, msg.id_, 1, "📟┇عدد المجموعه\n👨┇عدد الاداريين : "..t2.administrator_count_.."\n👥┇عدد الاعضاء : "..t2.member_count_.." | ("..MAX_098..")\n🔥┇عدد المطرودين : "..t2.kicked_count_, 1, 'md')
+send(msg.chat_id_, msg.id_, 1, "📟┇معلومات المجموعه\n👨┇عدد ادمنيه الكروب : "..t2.administrator_count_.."\n👥┇عدد الاعضاء : "..t2.member_count_.." | ("..MAX_098..")\n🔥┇عدد المطرودين : "..t2.kicked_count_, 1, 'md')
 database:set("MAX:get:mod:"..bot_id..msg.chat_id_,t2.member_count_)   
 end
 tdcli_function ({
@@ -3017,7 +3017,7 @@ text = "✖┇لايوجد مكتومين عام"
 end
 send(msg.chat_id_, msg.id_, 1, text, 1, 'html')
 end  
-if text:match("^ايدي$") and msg.reply_to_message_id_ ~= 0 then
+if text:match("^ايدي$") or text:match("^id$")and msg.reply_to_message_id_ ~= 0 then
 function id_by_reply(extra, result, success)
 if not database:get('MAX:'..bot_id..'id:mute'..msg.chat_id_) then 
 local msgs = database:get('MAX:'..bot_id..'user:msgs'..msg.chat_id_..':'..result.sender_user_id_) or 0
@@ -3046,8 +3046,8 @@ end
 end
 getMessage(msg.chat_id_, msg.reply_to_message_id_,id_by_reply)
 end  
-if text:match("^ايدي @(.*)$") then
-local ap = {string.match(text, "^(ايدي) @(.*)$")}
+if text:match("^ايدي @(.*)$") or text:match("^id @(.*)$") then
+local ap = {string.match(text, "^(ايدي) @(.*)$") or text:match"^(id) @(.*)$")}
 function id_by_username(extra, result, success)
 if result.id_ then
 if not database:get('MAX:'..bot_id..'id:mute'..msg.chat_id_) then 

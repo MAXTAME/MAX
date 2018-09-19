@@ -711,14 +711,14 @@ local data = json:decode(stats)
 if (data.result and data.result.status == 'creator') then
 if not database:get( 'MAX:'..bot_id.."charge:"..msg.chat_id_) then
 function MAX_info(k1,k2)
-send(msg.chat_id_, msg.id_, 1, "❗┇معطل {"..(k2.title_ or "").."} البوت سابقا", 1, 'md')
+send(msg.chat_id_, msg.id_, 1, "❗┇معطله {"..(k2.title_ or "").."} المجموعه سابقا", 1, 'md')
 end
 openChat(msg.chat_id_,MAX_info)
 end
 if database:get( 'MAX:'..bot_id.."charge:"..msg.chat_id_) then
 database:del( 'MAX:'..bot_id.."charge:"..msg.chat_id_)
 function MAX_info(k1,k2)
-send(msg.chat_id_, msg.id_, 1, info.."❌┇تم تعطيل البوت {"..k2.title_.."}", 1, 'md')
+send(msg.chat_id_, msg.id_, 1, info.."❌┇تم تعطيل المجموعه {"..k2.title_.."}", 1, 'md')
 end
 openChat(msg.chat_id_,MAX_info)
 database:srem("MAX:gog"..bot_id, msg.chat_id_)
@@ -766,14 +766,14 @@ local kekon = database:get("ts_a"..bot_id) or 1000
 if (data2.result and (tonumber(data2.result) == tonumber(kekon) or tonumber(data2.result) > tonumber(kekon))) then
 if database:get( 'MAX:'..bot_id.."charge:"..msg.chat_id_) then
 function MAX_info(k1,k2)
-send(msg.chat_id_, msg.id_, 1, "❗┇البوت {"..(k2.title_ or "").."} مفعل سابقا", 1, 'md')
+send(msg.chat_id_, msg.id_, 1, "❗┇المجموعه {"..(k2.title_ or "").."} مفعله سابقا", 1, 'md')
 end
 openChat(msg.chat_id_,MAX_info)
 end
 if not database:get( 'MAX:'..bot_id.."charge:"..msg.chat_id_) then
 database:set( 'MAX:'..bot_id.."charge:"..msg.chat_id_,true)
 function MAX_info(k1,k2)
-send(msg.chat_id_, msg.id_, 1, info.."🎗┇تم تفعيل البوت {"..(k2.title_ or "").."}", 1, 'md')
+send(msg.chat_id_, msg.id_, 1, info.."🎗┇تم تفعيل المجموعه {"..(k2.title_ or "").."}", 1, 'md')
 end
 openChat(msg.chat_id_,MAX_info)
 database:sadd("MAX:gog"..bot_id, msg.chat_id_)
@@ -819,14 +819,14 @@ function TSby(extra,result,success)
 info = '💬┇بواسطه ⌁≻ ['..result.first_name_..'](t.me/'..(result.username_ or 'MAXTAME')..')\n'
 if database:get( 'MAX:'..bot_id.."charge:"..msg.chat_id_) then
 function MAX_info(k1,k2)
-send(msg.chat_id_, msg.id_, 1, "❗┇البوت {"..(k2.title_ or "").."} مفعل سابقا", 1, 'md')
+send(msg.chat_id_, msg.id_, 1, "❗┇المجموعه {"..(k2.title_ or "").."} مفعله سابقا", 1, 'md')
 end
 openChat(msg.chat_id_,MAX_info)
 end
 if not database:get( 'MAX:'..bot_id.."charge:"..msg.chat_id_) then
 database:set( 'MAX:'..bot_id.."charge:"..msg.chat_id_,true)
 function MAX_info(k1,k2)
-send(msg.chat_id_, msg.id_, 1, info.."🎗┇تم تفعيل البوت {"..(k2.title_ or "").."}", 1, 'md')
+send(msg.chat_id_, msg.id_, 1, info.."🎗┇تم تفعيل المجموعه {"..(k2.title_ or "").."}", 1, 'md')
 end
 openChat(msg.chat_id_,MAX_info)
 function MAX_info2(k1,k2)
@@ -851,14 +851,14 @@ function TSby(extra,result,success)
 info = '💬┇بواسطه ⌁≻ ['..result.first_name_..'](t.me/'..(result.username_ or 'MAXTAME')..')\n'
 if not database:get( 'MAX:'..bot_id.."charge:"..msg.chat_id_) then
 function MAX_info(k1,k2)
-send(msg.chat_id_, msg.id_, 1, "❕┇البوت {"..(k2.title_ or "").."} معطل سابقا", 1, 'md')
+send(msg.chat_id_, msg.id_, 1, "❕┇المجموعه {"..(k2.title_ or "").."} معطله سابقا", 1, 'md')
 end
 openChat(msg.chat_id_,MAX_info)
 end
 if database:get( 'MAX:'..bot_id.."charge:"..msg.chat_id_) then
 database:del( 'MAX:'..bot_id.."charge:"..msg.chat_id_)
 function MAX_info(k1,k2)
-send(msg.chat_id_, msg.id_, 1, info.."❌┇تم تعطيل البوت {"..k2.title_.."}", 1, 'md')
+send(msg.chat_id_, msg.id_, 1, info.."❌┇تم تعطيل المجموعه {"..k2.title_.."}", 1, 'md')
 end
 openChat(msg.chat_id_,MAX_info)
 database:srem("MAX:gog"..bot_id, msg.chat_id_)
@@ -866,7 +866,7 @@ database:srem("MAX:gog"..bot_id, msg.chat_id_)
 function MAX_info2(k1,k2)
 function dl_cb222(t1,t2)
 database:set('MAX:'..bot_id.."group:link"..msg.chat_id_,(t2.invite_link_ or "Error")) 
-send(tostring((database:get("MAX"..bot_id..":sudo:gr") or sudo_add)), 0, 1, "🔘┇قام تعطيل مجموعه \n❖ ᎒ايدي مبرمج ⌁≻ ("..msg.sender_user_id_..")\n📜┇يوزر المبرمج ⌁≻ @"..(result.username_ or "لا يوجد").."\n🌐┇معلومات المجموعه \n\n📟┇ايدي المجموعه ⌁≻ ("..msg.chat_id_..")\nⓂ️┇اسم المجموعه ⌁≻ ("..k2.title_..")\n📎┇رابط المجموعه ⌁≻ ["..(t2.invite_link_ or "Error").."]" , 1, 'html')
+send(tostring((database:get("MAX"..bot_id..":sudo:gr") or sudo_add)), 0, 1, "🔘┇قام بتعطيل البوت \n❖ ᎒ايدي مبرمج ⌁≻ ("..msg.sender_user_id_..")\n📜┇يوزر المبرمج ⌁≻ @"..(result.username_ or "لا يوجد").."\n🌐┇معلومات المجموعه \n\n📟┇ايدي المجموعه ⌁≻ ("..msg.chat_id_..")\nⓂ️┇اسم المجموعه ⌁≻ ("..k2.title_..")\n📎┇رابط المجموعه ⌁≻ ["..(t2.invite_link_ or "Error").."]" , 1, 'html')
 end
 tdcli_function ({
 ID = "GetChannelFull",

@@ -76,7 +76,7 @@ local function adam_MAX(data)
     end
         if text == "تغير القناه" then
              database:set("adam:hack:MAX:"..bot_id..msg.sender_user_id_,true)
-             send(msg.chat_id_, msg.id_, 1, '🔖┇ارسال معرف القناة الخاصه بك بعد ترفيع البوت ادمن فيها\n📮┇معرف البوت : @HACKMAX2BOT', 1, "html")
+             send(msg.chat_id_, msg.id_, 1, '🔖┇ارسال معرف القناة الخاصه بك بعد ترفيع البوت ادمن فيها\n📮┇معرف البوت : @MAX_CH_BOT', 1, "html")
              return "adam"
         end  
     end

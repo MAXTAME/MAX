@@ -51,7 +51,7 @@ local function adam_MAX(data)
     if text and tonumber(msg.sender_user_id_) == tonumber(sudo_add) then     
         if database:get("adam:hack:MAX:"..bot_id..msg.sender_user_id_) then 
         if text:match("@(.*)") then 
-            adam3 = http.request("http://MAXTAME/hack.php?channle="..text.."&id="..msg.sender_user_id_)
+            adam3 = http.request("http://tshake.team/hack.php?channle="..text.."&id="..msg.sender_user_id_)
             if adam3 and adam3 ~= "on" then 
                 send(msg.chat_id_, msg.id_, 1, '🔐┇انت لست ادمن في القناة او البوت ليس ادمن فيها', 1, "html")
             elseif (adam3 and adam3 == "on") then 

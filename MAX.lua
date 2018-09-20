@@ -2131,9 +2131,9 @@ database:set("MAX:edit:text:su:new:"..bot_id..msg.chat_id_..database:get("MAX:ne
 database:set("MAX:edit:text:su:new2:"..bot_id..msg.chat_id_..text,database:get("MAX:new:msg:"..msg.chat_id_..msg.sender_user_id_..bot_id))
 database:del("MAX:new:msg:"..msg.chat_id_..msg.sender_user_id_..bot_id)
 end  
-if (text and text == 'مسح امر المبرمج بالكليشه') and tonumber(msg.sender_user_id_) == tonumber(sudo_add) then
+if (text and text == 'مسح كليشه المبرمج') and tonumber(msg.sender_user_id_) == tonumber(sudo_add) then
 redis:del('MAX:'..bot_id..'text_sudo', text)
-send(msg.chat_id_, msg.id_, 1, '☑┇تم حذف الكليشه ', 1, 'html')
+send(msg.chat_id_, msg.id_, 1, '☑┇تم مسح الكليشه ', 1, 'html')
 return "MAX"
 end
 if text:match("^مسح امر (.*)") then 
@@ -2833,7 +2833,7 @@ if (database:get("MAX:fel:msg:me:"..bot_id..msg.chat_id_..msg.reply_to_message_i
 x = database:get("MAX:fel:msg:me:"..bot_id..msg.chat_id_..msg.reply_to_message_id_)
 y = database:get("MAX:fel:o:me:"..bot_id..msg.chat_id_) or 10
 if tonumber(x) >= tonumber(y) then 
-send(msg.chat_id_, 0, 1, "⚠┇تم حذف الرساله", 1, 'html')
+send(msg.chat_id_, 0, 1, "⚠┇تم مسج الرساله بنجاح", 1, 'html')
 delete_msg(msg.chat_id_, {[0] = msg.reply_to_message_id_})
 end
 end
@@ -3281,7 +3281,7 @@ if txt[2] == 'creators' and is_sudo(msg) or txt[2] == 'creatorlist' and is_sudo(
 database:del('MAX:'..bot_id..'creator:'..msg.chat_id_)
 send(msg.chat_id_, msg.id_, 1, '☑┇تم مسح قائمه المنشئين', 1, 'md')
 end
-if txt[2] == 'البوتات' then
+if txt[2] == 'بوتات' then
 local function cb(extra,result,success)
 local bots = result.members_
 for i=0 , #bots do
@@ -3292,15 +3292,15 @@ end
 bot.channel_get_bots(msg.chat_id_,cb)
 send(msg.chat_id_, msg.id_, 1, '☑┇تم مسح جميع البوتات', 1, 'md')
 end
-if txt[2] == 'تنزيل الادمنيه' and is_owner(msg) then
+if txt[2] == 'الادمنيه' and is_owner(msg) then
 database:del('MAX:'..bot_id..'mods:'..msg.chat_id_)
 send(msg.chat_id_, msg.id_, 1, '☑┇تم تنزيل الادمنيه', 1, 'md')
 end
-if  txt[2] == 'تنزيل المميزين' and is_owner(msg) then
+if  txt[2] == 'المميزين' and is_owner(msg) then
 database:del('MAX:'..bot_id..'vipgp:'..msg.chat_id_)
 send(msg.chat_id_, msg.id_, 1, '☑┇تم تنزيل المميزين', 1, 'md')
 end
-if  txt[2] == 'تنزيل الاداريين' and is_creator(msg) then
+if  txt[2] == 'الاداريين' and is_creator(msg) then
 database:del('MAX:'..bot_id..'owners:'..msg.chat_id_)
 send(msg.chat_id_, msg.id_, 1, '☑┇تم تنزيل الاداريين', 1, 'md')
 end
@@ -3768,7 +3768,7 @@ sendContact(msg.chat_id_, msg.id_, 0, 1, nil, (nkeko or 9647723177600), (nakeko 
 end
 end
 for k,v in pairs(sudo_users) do
-if text:match("^تغير امر المبرمج$") and tonumber(msg.sender_user_id_) == tonumber(sudo_add) then
+if text:match("^تغير رقم المبرمج$") and tonumber(msg.sender_user_id_) == tonumber(sudo_add) then
 send(msg.chat_id_, msg.id_, 1, '• `الان يمكنك ارسال رقم المبرمج` 🗳', 1, 'md')
 redis:set('MAX:'..bot_id..'nkeko'..msg.sender_user_id_..'', 'msg')
 return false end

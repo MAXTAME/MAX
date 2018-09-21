@@ -4982,10 +4982,10 @@ if text:match("^اصدار$") or text:match("^الاصدار$") or text:match("^
 local text =  [[
 🗳 ┇ سـورس مــــآكـس
 
-```git clone https://github.com/MAXTAME/MAX && cd MAX && chmod +x install.sh && ./install.sh```
+`git clone https://github.com/MAXTAME/MAX && cd MAX && chmod +x install.sh && ./install.sh`
 
 🔱┇ كـود التـشغـيل
-```./MAX/mx```
+`./MAX/mx`
 
 🔸┇اضغط علكود ليتم النسخ عندك
 🔸┇الصقه بالترمنال وانتر انتظر يتنصب

@@ -3281,6 +3281,18 @@ if txt[2] == 'creators' and is_sudo(msg) or txt[2] == 'creatorlist' and is_sudo(
 database:del('MAX:'..bot_id..'creator:'..msg.chat_id_)
 send(msg.chat_id_, msg.id_, 1, '☑┇تم مسح قائمه المنشئين', 1, 'md')
 end
+                    
+                    
+if text:match("^مسح (.*)$") and is_mod(msg) then
+  local txt = {string.match(text, "^(مسح) (.*)$")}
+  if txt[2] == 'banlist' or txt[2] == 'Banlist' or txt[2] == 'المحظورين' then
+  database:del('MAX:'..bot_id..'banned:'..msg.chat_id_)
+  send(msg.chat_id_, msg.id_, 1, '☑┇تم مسح المحظورين  من البوت ', 1, 'md')
+  end
+  if txt[2] == 'creators' and is_sudo(msg) or txt[2] == 'creatorlist' and is_sudo(msg) or txt[2] == 'Creatorlist' and is_sudo(msg) or txt[2] == 'Creators' and is_sudo(msg) or txt[2] == 'المنشئين' and is_sudo(msg) then
+  database:del('MAX:'..bot_id..'creator:'..msg.chat_id_)
+  send(msg.chat_id_, msg.id_, 1, '☑┇تم مسح قائمه المنشئين', 1, 'md')
+  end
 if txt[2] == 'بوتات' then
 local function cb(extra,result,success)
 local bots = result.members_
@@ -3321,6 +3333,7 @@ database:del('MAX:'..bot_id..'muted:'..msg.chat_id_)
 send(msg.chat_id_, msg.id_, 1, '☑┇تم مسح قائمه المكتومين', 1, 'md')
 end
 end
+                
 if (text and (text == "تعطيل الطرد" or text == "تعطيل الحظر") and is_creator(msg)) then
 database:set("MAX:lock:ban_and_kick"..bot_id..msg.chat_id_,"MAX")
 send(msg.chat_id_, msg.id_, 1, '☑┇تم تعطيل (طرد - حضر) الاعضاء', 1, 'md')

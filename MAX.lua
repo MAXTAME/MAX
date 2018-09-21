@@ -3271,8 +3271,8 @@ MAX_0 = {string.match(text, "^(تعين عدد الاحرف) (%d+)$")}
 send(msg.chat_id_, msg.id_, 1, '☑┇ تم تعين عدد الاحرف {`'..MAX_0[2]..'`}', 1, 'md')
 database:set("MAX:not:word:"..bot_id..msg.chat_id_,MAX_0[2])
 end
-if text:match("^مسح المحظورين (.*)$") and is_mod(msg) then
-local txt = {string.match(text, "^(مسح المحظورين) (.*)$")}
+if text:match("^مسح (.*)$") and is_mod(msg) then
+local txt = {string.match(text, "^(مسح) (.*)$")}
 if txt[2] == 'banlist' or txt[2] == 'Banlist' or txt[2] == 'المحظورين' then
 database:del('MAX:'..bot_id..'banned:'..msg.chat_id_)
 send(msg.chat_id_, msg.id_, 1, '☑┇تم مسح المحظورين  من البوت ', 1, 'md')
@@ -3281,7 +3281,7 @@ if txt[2] == 'creators' and is_sudo(msg) or txt[2] == 'creatorlist' and is_sudo(
 database:del('MAX:'..bot_id..'creator:'..msg.chat_id_)
 send(msg.chat_id_, msg.id_, 1, '☑┇تم مسح قائمه المنشئين', 1, 'md')
 end
-if txt[2] == 'بوتات' then
+if txt[2] == 'البوتات' then
 local function cb(extra,result,success)
 local bots = result.members_
 for i=0 , #bots do
@@ -3290,7 +3290,7 @@ end
 end
 end
 bot.channel_get_bots(msg.chat_id_,cb)
-send(msg.chat_id_, msg.id_, 1, '☑┇تم مسح جميع البوتات', 1, 'md')
+send(msg.chat_id_, msg.id_, 1, '☑┇تم طرد جميع البوتات', 1, 'md')
 end
 if txt[2] == 'الادمنيه' and is_owner(msg) then
 database:del('MAX:'..bot_id..'mods:'..msg.chat_id_)
@@ -4501,7 +4501,7 @@ if not database:get("MAX:gr:id:text:"..bot_id..msg.chat_id_) then
 local keko_text = {
 "رجع صورتك القديمه طالع جنك بسطال😹",
 "هاي الصوره حلوه عاشت ايدك😻♥️",
-"تخليني 😹",
+"اهووو هم انت🐸",
 "ببكن🐸",
 "ليش مغير صورتك ",
 "نورك عمه اعضاء الكروب😻😹",
@@ -4664,7 +4664,7 @@ send(msg.chat_id_, msg.id_, 1, '☑┇تم تعطيل التثبيت', 1, 'md')
 database:set('MAX:'..bot_id..'pin:mute'..msg.chat_id_,true)
 end
 end
-if text:match("^ثبت$")or text:match("^pin$") and is_mod(msg) and not is_owner(msg) then
+if text:match("^ثبت$")or text:match("^pin$")or text:match("^تثبيت$") and is_mod(msg) and not is_owner(msg) then
 local id = msg.id_
 local msgs = {[0] = id}
 if not database:get('MAX:'..bot_id..'pin:mute'..msg.chat_id_) then
@@ -4683,7 +4683,7 @@ else
 send(msg.chat_id_, msg.id_, 1, '☑┇الغاء التثبيت معطل', 1, 'md')
 end
 end
-if text:match("^ثبت$")or text:match("^pin$") and is_owner(msg) then
+if text:match("^ثبت$")or text:match("^pin$")or text:match("^تثبيت$") and is_owner(msg) then
 local id = msg.id_
 local msgs = {[0] = id}
 pin(msg.chat_id_,msg.reply_to_message_id_,0)
@@ -4980,10 +4980,20 @@ send(msg.chat_id_, msg.id_, 1, (h4 or text), 1, 'html')
 end
 if text:match("^اصدار$") or text:match("^الاصدار$") or text:match("^السورس$") or text:match("^سورس$") then
 local text =  [[
-«مرحبا بك في سورس ماكس»
-«لتنصيب سورس ماكس ادخل لقناه السورس»
+🗳 ┇ سـورس مــــآكـس
 
-📡┇<a href="https://telegram.me/MAXTAME">قناه السورس ماكس</a>
+```git clone https://github.com/MAXTAME/MAX && cd MAX && chmod +x install.sh && ./install.sh```
+
+🔱┇ كـود التـشغـيل
+```./MAX/mx```
+
+🔸┇اضغط علكود ليتم النسخ عندك
+🔸┇الصقه بالترمنال وانتر انتظر يتنصب
+🔹┇بعده يطـلب مـعلومات بآلترمـنآل 
+🔹┇تدخل مـعلومـآتك مـن توكن وآيـديـك
+🌟┇ومبروك نصبت سورس مــآكـس تيجي جديد
+
+📡┇<a href="https://telegram.me/MAXTAME">قناه السورس</a>
 
 💬┇<a href="t.me/K_111BOT">بوت تواصل السورس</a> 
 ]]

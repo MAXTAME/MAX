@@ -3257,6 +3257,10 @@ edit = (tonumber(database:get('MAX:'..bot_id..'user:editmsg'..msg.chat_id_..':'.
 send(msg.chat_id_, msg.id_, 1, "📨┇عدد تعديلاتك ~⪼ *{"..edit.."}*\n📨┇سيتم حذف العدد بعد هذه الرساله", 1, 'md')
 database:del('MAX:'..bot_id..'user:editmsg'..msg.chat_id_..':'..msg.sender_user_id_)
 end
+if text:match("^(عدد التعديلات)$") or text:match("^(تعديلاتي)$") then
+local edit = database:get('MAX:'..bot_id..'user:editmsg'..msg.chat_id_..':'..msg.sender_user_id_) or 0
+send(msg.chat_id_, msg.id_, 1, "📨┇عدد تعديلاتك ~⪼ *{"..edit.."}*", 1, 'md')
+end
 if text:match("^مسح المحظورين عام$") and tonumber(msg.sender_user_id_) == tonumber(sudo_add) then
 text = '☑┇تم مسح محظورين عام'
 database:del('MAX:'..bot_id..'gbanned:')

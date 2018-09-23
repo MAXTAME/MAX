@@ -1056,14 +1056,12 @@ database:set("lock_contact:MAX"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "قفل العربيه") then
-local tsX_o = database:get("lock_ar:MAX
-"..msg.chat_id_..bot_id)
+local tsX_o = database:get("lock_ar:MAX"..msg.chat_id_..bot_id)
 if tsX_o then
 tsX000("lock",msg,"☑┇بالفعل تم قفل العربيه")
 else
 tsX000("lock",msg,"☑┇تم قفل العربيه")
-database:set("lock_ar:MAX
-"..msg.chat_id_..bot_id,"ok")
+database:set("lock_ar:MAX"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "قفل الانكليزيه") then
@@ -1337,14 +1335,12 @@ database:del("lock_contact:MAX"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "فتح العربيه") then
-local tsX_o = database:get("lock_ar:MAX
-"..msg.chat_id_..bot_id)
+local tsX_o = database:get("lock_ar:MAX"..msg.chat_id_..bot_id)
 if not tsX_o then
 tsX000("lock",msg,"☑┇بالفعل تم فتح العربيه")
 else
 tsX000("lock",msg,"☑┇تم فتح العربيه")
-database:del("lock_ar:MAX
-"..msg.chat_id_..bot_id,"ok")
+database:del("lock_ar:MAX"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "فتح الانكليزيه") then
@@ -5313,8 +5309,7 @@ local msg = data
 function get_msg_contact(extra, result, success)
 local text = (result.content_.text_ or result.content_.caption_)
 local msgg = result 
-database:incr('MAX
-:'..bot_id..'user:editmsg'..msgg.chat_id_..':'..msgg.sender_user_id_)
+database:incr('MAX:'..bot_id..'user:editmsg'..msgg.chat_id_..':'..msgg.sender_user_id_)
 if (not is_vip(msgg) and not text) then 
 if database:get("MAX
 :lo:edit:new:"..bot_id..msgg.chat_id_) then 
@@ -5324,8 +5319,7 @@ end
 end
 if (result.content_.caption_ and not is_vip(msgg)) then 
 if (result.content_.caption_:match("(.*)@(.*)") or result.content_.caption_:match("@")) then 
-if database:get("lock_username:MAX
-"..msg.chat_id_..bot_id) then
+if database:get("lock_username:MAX"..msg.chat_id_..bot_id) then
 local msgs = {[0] = data.message_id_}
 delete_msg(msg.chat_id_,msgs) 
 end 
@@ -5336,45 +5330,39 @@ check_filter_words(result, text)
 if text:match("[Tt][Ee][Ll][Ee][Gg][Rr][Aa][Mm].[Mm][Ee]") or
 text:match("[Tt].[Mm][Ee]") or text:match("[Tt][Ll][Gg][Rr][Mm].[Mm][Ee]") or
 text:match("[Tt][Ee][Ll][Ee][Ss][Cc][Oo].[Pp][Ee]") then
-if database:get("lock_link:MAX
-"..msg.chat_id_..bot_id) then
+if database:get("lock_link:MAX"..msg.chat_id_..bot_id) then
 local msgs = {[0] = data.message_id_}
 delete_msg(msg.chat_id_,msgs) end
 if text:match("[Tt][Ee][Ll][Ee][Gg][Rr][Aa][Mm].[Mm][Ee]") or
 text:match("[Tt].[Mm][Ee]") or text:match("[Tt][Ll][Gg][Rr][Mm].[Mm][Ee]") or
 text:match("[Tt][Ee][Ll][Ee][Ss][Cc][Oo].[Pp][Ee]") then
-if database:get("lock_link.note:MAX
-"..msg.chat_id_..bot_id) then
+if database:get("lock_link.note:MAX"..msg.chat_id_..bot_id) then
 local msgs = {[0] = data.message_id_}
 delete_msg(msg.chat_id_,msgs) end
 if text:match("[Tt][Ee][Ll][Ee][Gg][Rr][Aa][Mm].[Mm][Ee]") or
 text:match("[Tt].[Mm][Ee]") or text:match("[Tt][Ll][Gg][Rr][Mm].[Mm][Ee]") or
 text:match("[Tt][Ee][Ll][Ee][Ss][Cc][Oo].[Pp][Ee]") then
-if database:get("lock_link:MAX
-"..msg.chat_id_..bot_id) then
+if database:get("lock_link:MAX"..msg.chat_id_..bot_id) then
 local msgs = {[0] = data.message_id_}
 delete_msg(msg.chat_id_,msgs) end end
 if text:match("[Tt][Ee][Ll][Ee][Gg][Rr][Aa][Mm].[Mm][Ee]") or
 text:match("[Tt].[Mm][Ee]") or text:match("[Tt][Ll][Gg][Rr][Mm].[Mm][Ee]") or
 text:match("[Tt][Ee][Ll][Ee][Ss][Cc][Oo].[Pp][Ee]") then
-if database:get("lock_link.note:MAX
-"..msg.chat_id_..bot_id) then
+if database:get("lock_link.note:MAX"..msg.chat_id_..bot_id) then
 local msgs = {[0] = data.message_id_}
 delete_msg(msg.chat_id_,msgs) end end end
 if result.id_ and result.content_.text_ then
 if not is_vip(msgg) then
 check_filter_words(result, text)
 if text:match("[Hh][Tt][Tt][Pp][Ss]://") or text:match("[Hh][Tt][Tt][Pp]://") or text:match(".[Ii][Rr]") or text:match(".[Cc][Oo][Mm]") or text:match(".[Oo][Rr][Gg]") or text:match(".[Ii][Nn][Ff][Oo]") or text:match("[Ww][Ww][Ww].") or text:match(".[Tt][Kk]") then
-if database:get("lock_link:MAX
-"..msg.chat_id_..bot_id) then
+if database:get("lock_link:MAX"..msg.chat_id_..bot_id) then
 local msgs = {[0] = data.message_id_}
 delete_msg(msg.chat_id_,msgs)
 end end end 
 if not is_vip(msgg) then
 check_filter_words(result, text)
 if text:match("[Hh][Tt][Tt][Pp][Ss]://") or text:match("[Hh][Tt][Tt][Pp]://") or text:match(".[Ii][Rr]") or text:match(".[Cc][Oo][Mm]") or text:match(".[Oo][Rr][Gg]") or text:match(".[Ii][Nn][Ff][Oo]") or text:match("[Ww][Ww][Ww].") or text:match(".[Tt][Kk]") then
-if database:get("lock_link.note:MAX
-"..msg.chat_id_..bot_id) then
+if database:get("lock_link.note:MAX"..msg.chat_id_..bot_id) then
 local msgs = {[0] = data.message_id_}
 delete_msg(msg.chat_id_,msgs)
 end end end end end
@@ -5382,78 +5370,67 @@ if result.id_ and result.content_.text_ then
 if not is_vip(msgg) then
 check_filter_words(result, text)
 if text:match("(.*)(@)(.*)") then
-if database:get("lock_username:MAX
-"..msg.chat_id_..bot_id) then
+if database:get("lock_username:MAX"..msg.chat_id_..bot_id) then
 local msgs = {[0] = data.message_id_}
 delete_msg(msg.chat_id_,msgs) end end end
 if not is_vip(msgg) then
 check_filter_words(result, text)
 if text:match("@") then
-if database:get("lock_username.note:MAX
-"..msg.chat_id_..bot_id) then
+if database:get("lock_username.note:MAX"..msg.chat_id_..bot_id) then
 local msgs = {[0] = data.message_id_}
 delete_msg(msg.chat_id_,msgs) end end end
 if result.id_ and result.content_.text_ then
 if not is_vip(msgg) then
 check_filter_words(result, text)
 if text:match("#") then
-if database:get("lock_tag:MAX
-"..msg.chat_id_..bot_id) then
+if database:get("lock_tag:MAX"..msg.chat_id_..bot_id) then
 local msgs = {[0] = data.message_id_}
 delete_msg(msg.chat_id_,msgs) end end end
 if not is_vip(msgg) then
 check_filter_words(result, text)
 if text:match("#") then
-if database:get("lock_tag.note:MAX
-"..msg.chat_id_..bot_id) then
+if database:get("lock_tag.note:MAX"..msg.chat_id_..bot_id) then
 local msgs = {[0] = data.message_id_}
 delete_msg(msg.chat_id_,msgs) end end end
 if not is_vip(msgg) then
 check_filter_words(result, text)
 if text:match("/")  then
-if database:get("lock_sarha:MAX
-"..msg.chat_id_..bot_id) then
+if database:get("lock_sarha:MAX"..msg.chat_id_..bot_id) then
 local msgs = {[0] = data.message_id_}
 delete_msg(msg.chat_id_,msgs) end end end
 if not is_vip(msgg) then
 check_filter_words(result, text)
 if text:match("/")  then
-if database:get("lock_sarha.note:MAX
-"..msg.chat_id_..bot_id) then
+if database:get("lock_sarha.note:MAX"..msg.chat_id_..bot_id) then
 local msgs = {[0] = data.message_id_}
 delete_msg(msg.chat_id_,msgs) end end end
 if not is_vip(msgg) then
 check_filter_words(result, text)
 if text:match("[\216-\219][\128-\191]") then
-if database:get("lock_ar:MAX
-"..msg.chat_id_..bot_id) then
+if database:get("lock_ar:MAX"..msg.chat_id_..bot_id) then
 local msgs = {[0] = data.message_id_}
 delete_msg(msg.chat_id_,msgs) end end end  end
 if not is_vip(msgg) then
 check_filter_words(result, text)
 if text:match("[\216-\219][\128-\191]") then
-if database:get("lock_ar.note:MAX
-"..msg.chat_id_..bot_id) then
+if database:get("lock_ar.note:MAX"..msg.chat_id_..bot_id) then
 local msgs = {[0] = data.message_id_}
 delete_msg(msg.chat_id_,msgs) end end end  end
 if not is_vip(msgg) then
 check_filter_words(result, text)
 if text:match("[ASDFGHJKLQWERTYUIOPZXCVBNMasdfghjklqwertyuiopzxcvbnm]") then
-if database:get("lock_en:MAX
-"..msg.chat_id_..bot_id) then
+if database:get("lock_en:MAX"..msg.chat_id_..bot_id) then
 local msgs = {[0] = data.message_id_}
 delete_msg(msg.chat_id_,msgs) end end end 
 if not is_vip(msgg) then
 check_filter_words(result, text)
 if text:match("[ASDFGHJKLQWERTYUIOPZXCVBNMasdfghjklqwertyuiopzxcvbnm]") then
-if database:get("lock_en.note:MAX
-"..msg.chat_id_..bot_id) then
+if database:get("lock_en.note:MAX"..msg.chat_id_..bot_id) then
 local msgs = {[0] = data.message_id_}
 delete_msg(msg.chat_id_,msgs) end end end 
 if not is_vip(msgg) then
 check_filter_words(result, text)
-if database:get("lock_edit:MAX
-"..msg.chat_id_..bot_id) then
+if database:get("lock_edit:MAX"..msg.chat_id_..bot_id) then
 local id = msg.message_id_
 local msgs = {[0] = id}
 local chat = msg.chat_id_

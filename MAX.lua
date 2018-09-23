@@ -1056,12 +1056,14 @@ database:set("lock_contact:MAX"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "قفل العربيه") then
-local tsX_o = database:get("lock_ar:MAX"..msg.chat_id_..bot_id)
+local tsX_o = database:get("lock_ar:MAX
+"..msg.chat_id_..bot_id)
 if tsX_o then
-tsX000("lock",msg,"✔┇العربيه مقفوله!")
+tsX000("lock",msg,"☑┇بالفعل تم قفل العربيه")
 else
-tsX000("lock",msg,"✔┇تم قفل العربيه")
-database:set("lock_ar:MAX"..msg.chat_id_..bot_id,"ok")
+tsX000("lock",msg,"☑┇تم قفل العربيه")
+database:set("lock_ar:MAX
+"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "قفل الانكليزيه") then
@@ -1335,12 +1337,14 @@ database:del("lock_contact:MAX"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "فتح العربيه") then
-local tsX_o = database:get("lock_ar:MAX"..msg.chat_id_..bot_id)
+local tsX_o = database:get("lock_ar:MAX
+"..msg.chat_id_..bot_id)
 if not tsX_o then
-tsX000("lock",msg,"✔┇العربيه مفتوحه")
+tsX000("lock",msg,"☑┇بالفعل تم فتح العربيه")
 else
-tsX000("lock",msg,"✔┇تم فتح العربيه")
-database:del("lock_ar:MAX"..msg.chat_id_..bot_id,"ok")
+tsX000("lock",msg,"☑┇تم فتح العربيه")
+database:del("lock_ar:MAX
+"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "فتح الانكليزيه") then

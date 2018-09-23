@@ -5311,8 +5311,7 @@ local text = (result.content_.text_ or result.content_.caption_)
 local msgg = result 
 database:incr('MAX:'..bot_id..'user:editmsg'..msgg.chat_id_..':'..msgg.sender_user_id_)
 if (not is_vip(msgg) and not text) then 
-if database:get("MAX
-:lo:edit:new:"..bot_id..msgg.chat_id_) then 
+if database:get("MAX:lo:edit:new:"..bot_id..msgg.chat_id_) then 
 msgs = {[0] = data.message_id_}
 delete_msg(msg.chat_id_,msgs)
 end

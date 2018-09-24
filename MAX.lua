@@ -49,6 +49,25 @@ end
 local keko_add_sudo = redis:get('MAX:'..bot_id..'sudoo'..msg.sender_user_id_..'')
 if keko_add_sudo then var = true end return var
 end
+function lock_twasel(msg)
+if not is_sudo(msg) then return "🚸*¦ * هذا الامر يخص المطور الاساسي فقط  \n📛" end
+if redis:get(MAX..'lock_twasel') then
+return '🙋🏼‍♂️*¦* أهلا عزيزي \n📡*¦* التواصل بالتاكيد تم تعطيله \n✓'
+else
+redis:set(MAX..'lock_twasel',true)
+return '🙋🏼‍♂️*¦* أهلا عزيزي \n📡*¦* تم تعطيل التواصل  \n✓'
+end
+end
+
+function unlock_twasel(msg)
+if not is_sudo(msg) then return "🚸*¦ * هذا الامر يخص المطور الاساسي فقط  \n📛" end
+if not redis:get(MAX..'lock_twasel') then
+return '🙋🏼‍♂️*¦* أهلا عزيزي \n📡*¦* التواصل بالتاكيد تم تفعيله \n✓'
+else 
+redis:del(MAX..'lock_twasel')
+return '🙋🏼‍♂️*¦* أهلا عزيزي \n📡*¦* تم تفعيل التواصل \n✓'
+end
+end
 --         »»                 is_admin                         ««              --
 function is_admin(msg)
 user_id = msg.sender_user_id_

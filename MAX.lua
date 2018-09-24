@@ -727,7 +727,7 @@ function TSadd(msg) -- Function add && rem
 local text = msg.content_.text_
 if (text == 'تعطيل') and not is_sudo(msg) then
 function TSby(extra,result,success)
-info = '💬┇بواسطه ⌁≻ ['..result.first_name_..'](t.me/'..(result.username_ or 'MAXTAME')..')\n'
+info = '👨🏻‍🎤┇عزيزي المبرمج ⌁≻ ['..result.first_name_..'](t.me/'..(result.username_ or 'MAXTAME')..')\n'
 local keko2 = database:get("add"..bot_id)
 if keko2 then
 local keko = "https://api.telegram.org/bot" ..token.. '/getChatMember?chat_id=' .. msg.chat_id_ .. '&user_id='..msg.sender_user_id_
@@ -736,14 +736,14 @@ local data = json:decode(stats)
 if (data.result and data.result.status == 'creator') then
 if not database:get( 'MAX:'..bot_id.."charge:"..msg.chat_id_) then
 function MAX_info(k1,k2)
-send(msg.chat_id_, msg.id_, 1, "👨🏻‍🎤┇ عزيزي المبرمج المجموعه {"..(k2.title_ or "").."} المجموعه سابقا", 1, 'md')
+send(msg.chat_id_, msg.id_, 1, "👨🏻‍🎤┇ المجموعه {"..(k2.title_ or "").."} المجموعه سابقا", 1, 'md')
 end
 openChat(msg.chat_id_,MAX_info)
 end
 if database:get( 'MAX:'..bot_id.."charge:"..msg.chat_id_) then
 database:del( 'MAX:'..bot_id.."charge:"..msg.chat_id_)
 function MAX_info(k1,k2)
-send(msg.chat_id_, msg.id_, 1, info.."👨🏻‍🎤┇عزيزي المبرمج تم تعطيل البوت من المجموعه {"..k2.title_.."}", 1, 'md')
+send(msg.chat_id_, msg.id_, 1, info.."👨🏻‍🎤┇ تم تعطيل البوت من المجموعه {"..k2.title_.."}", 1, 'md')
 end
 openChat(msg.chat_id_,MAX_info)
 database:srem("MAX:gog"..bot_id, msg.chat_id_)
@@ -777,7 +777,7 @@ send(msg.chat_id_, msg.id_, 1, ress, 1, 'md')
 return false end
 end
 function TSby(extra,result,success)
-info = '💬┇بواسطه ⌁≻ ['..result.first_name_..'](t.me/'..(result.username_ or 'MAXTAME')..')\n'
+info = '👨🏻‍🎤┇عزيزي المبرمج ⌁≻ ['..result.first_name_..'](t.me/'..(result.username_ or 'MAXTAME')..')\n'
 local keko2 = database:get("add"..bot_id)
 if keko2 then
 local keko = "https://api.telegram.org/bot" ..token.. '/getChatMember?chat_id=' .. msg.chat_id_ .. '&user_id='..msg.sender_user_id_
@@ -791,14 +791,14 @@ local kekon = database:get("ts_a"..bot_id) or 1000
 if (data2.result and (tonumber(data2.result) == tonumber(kekon) or tonumber(data2.result) > tonumber(kekon))) then
 if database:get( 'MAX:'..bot_id.."charge:"..msg.chat_id_) then
 function MAX_info(k1,k2)
-send(msg.chat_id_, msg.id_, 1, "👨🏻‍🎤┇عزيزي المبرمج المجموعه {"..(k2.title_ or "").."} مفعله سابقا", 1, 'md')
+send(msg.chat_id_, msg.id_, 1, "👨🏻‍🎤┇ المجموعه {"..(k2.title_ or "").."} مفعله سابقا", 1, 'md')
 end
 openChat(msg.chat_id_,MAX_info)
 end
 if not database:get( 'MAX:'..bot_id.."charge:"..msg.chat_id_) then
 database:set( 'MAX:'..bot_id.."charge:"..msg.chat_id_,true)
 function MAX_info(k1,k2)
-send(msg.chat_id_, msg.id_, 1, info.."👨🏻‍🎤┇عزيزي المبرمج  تم تفعيل البوت في مجموعه {"..(k2.title_ or "").."}", 1, 'md')
+send(msg.chat_id_, msg.id_, 1, info.."👨🏻‍🎤┇  تم تفعيل البوت في مجموعه {"..(k2.title_ or "").."}", 1, 'md')
 end
 openChat(msg.chat_id_,MAX_info)
 database:sadd("MAX:gog"..bot_id, msg.chat_id_)
@@ -841,17 +841,17 @@ send(msg.chat_id_, msg.id_, 1, ress, 1, 'md')
 return false end
 end
 function TSby(extra,result,success)
-info = '💬┇بواسطه ⌁≻ ['..result.first_name_..'](t.me/'..(result.username_ or 'MAXTAME')..')\n'
+info = '👨🏻‍🎤┇عزيزي المبرمج ⌁≻ ['..result.first_name_..'](t.me/'..(result.username_ or 'MAXTAME')..')\n'
 if database:get( 'MAX:'..bot_id.."charge:"..msg.chat_id_) then
 function MAX_info(k1,k2)
-send(msg.chat_id_, msg.id_, 1, "👨🏻‍🎤┇عزيزي المبرمج المجموعه {"..(k2.title_ or "").."} مفعله سابقا", 1, 'md')
+send(msg.chat_id_, msg.id_, 1, "👨🏻‍🎤┇ المجموعه {"..(k2.title_ or "").."} مفعله سابقا", 1, 'md')
 end
 openChat(msg.chat_id_,MAX_info)
 end
 if not database:get( 'MAX:'..bot_id.."charge:"..msg.chat_id_) then
 database:set( 'MAX:'..bot_id.."charge:"..msg.chat_id_,true)
 function MAX_info(k1,k2)
-send(msg.chat_id_, msg.id_, 1, info.."👨🏻‍🎤┇عزيري المبرمج تم تفعيل البوت في المجموعه {"..(k2.title_ or "").."}", 1, 'md')
+send(msg.chat_id_, msg.id_, 1, info.."👨🏻‍🎤┇ تم تفعيل البوت في المجموعه {"..(k2.title_ or "").."}", 1, 'md')
 end
 openChat(msg.chat_id_,MAX_info)
 function MAX_info2(k1,k2)
@@ -873,17 +873,17 @@ getUser(msg.sender_user_id_, TSby)
 end
 if text == "تعطيل" and is_sudo(msg) then
 function TSby(extra,result,success)
-info = '💬┇بواسطه ⌁≻ ['..result.first_name_..'](t.me/'..(result.username_ or 'MAXTAME')..')\n'
+info = '👨🏻‍🎤┇عزيزي المبرمج ⌁≻ ['..result.first_name_..'](t.me/'..(result.username_ or 'MAXTAME')..')\n'
 if not database:get( 'MAX:'..bot_id.."charge:"..msg.chat_id_) then
 function MAX_info(k1,k2)
-send(msg.chat_id_, msg.id_, 1, "👨🏻‍🎤┇عزيزي المبرمج المجموعه  {"..(k2.title_ or "").."} معطله سابقا", 1, 'md')
+send(msg.chat_id_, msg.id_, 1, "👨🏻‍🎤┇ المجموعه {"..(k2.title_ or "").."} معطله سابقا", 1, 'md')
 end
 openChat(msg.chat_id_,MAX_info)
 end
 if database:get( 'MAX:'..bot_id.."charge:"..msg.chat_id_) then
 database:del( 'MAX:'..bot_id.."charge:"..msg.chat_id_)
 function MAX_info(k1,k2)
-send(msg.chat_id_, msg.id_, 1, info.."👨🏻‍🎤┇عزيزي المبرمج تم تعطيل البوت من المجموعه {"..k2.title_.."}", 1, 'md')
+send(msg.chat_id_, msg.id_, 1, info.."👨🏻‍🎤┇ تم تعطيل البوت من المجموعه {"..k2.title_.."}", 1, 'md')
 end
 openChat(msg.chat_id_,MAX_info)
 database:srem("MAX:gog"..bot_id, msg.chat_id_)
@@ -4706,7 +4706,7 @@ else
 send(msg.chat_id_, msg.id_, 1, '☑┇التثبيت معطل',1, 'md')
 end
 end
-if text:match("^الغاء تثبيت$") and is_mod(msg) and not is_owner(msg) or text:match("^الغاء التثبيت") and is_mod(msg) and not is_owner(msg) then
+if text:match("^الغاء pin$") and is_mod(msg) and not is_owner(msg) or text:match("^الغاء التثبيت") and is_mod(msg) and not is_owner(msg) then
 if not database:get('MAX:'..bot_id..'pin:mute'..msg.chat_id_) then
 unpinmsg(msg.chat_id_)
 send(msg.chat_id_, msg.id_, 1, '☑┇تم الغاء تثبيت الرساله', 1, 'md')
@@ -5012,17 +5012,17 @@ end
 if text:match("^اصدار$") or text:match("^ماكس$") or text:match("^السورس$") or text:match("^سورس$") then
 local text =  [[
 {اهلا بك في سورس ماكس ℳÅℵ تابع قنوات السورس } ~》
-📡┇<a href="https://telegram.me/MAXTAME">📡┇قناه السورس○•</a>
-📁┇<a href="https://telegram.me/MAXFILE">📁┇ملفات السورس○•</a>
-💬┇<a href="t.me/K_111BOT">💬┇بوت تواصل السورس○•</a> 
-💭┇<a href="t.me/II8IlI">👨🏻‍🎤┇کاسبـر○•</a> 
-💭┇<a href="t.me/IP_PPP">👨🏻‍🎤┇سـيف○•</a> 
+📡┇<a href="https://telegram.me/MAXTAME">قناه السورس○•</a>
+📁┇<a href="https://telegram.me/MAXFILE">ملفات السورس○•</a>
+💬┇<a href="t.me/K_111BOT">بوت تواصل السورس○•</a> 
+💭┇<a href="t.me/II8IlI">کاسبـر○•</a> 
+💭┇<a href="t.me/IP_PPP">سـيف○•</a> 
 ]]
 send(msg.chat_id_, msg.id_, 1, text, 1, 'html')
 end
 if text:match("^اريد رابط حذف$") or text:match("^رابط حذف$") or text:match("^رابط الحذف$") or text:match("^الرابط حذف$") or text:match("^اريد رابط الحذف$") then
 local text =  [[
-🗑┇رابط حذف التلي ، ⬇
+🗑┇رابط حذف حساب التلي  ، 🔚
 ‼┇قبل متحذف فكر ولتسرع بالتوفيق حياتي♥'
 ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
 🔎┇<a href="https://telegram.org/deactivate">اضغط هنا للحذف الحساب" </a>

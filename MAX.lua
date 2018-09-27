@@ -3274,7 +3274,7 @@ end
 end
 if text:match("^مسح مسجاتي$") then
 add = (tonumber(database:get('MAX:'..bot_id..'user:msgs'..msg.chat_id_..':'..msg.sender_user_id_)) or 0)
-send(msg.chat_id_, msg.id_, 1, "📨┇عدد مسجاتك ⌁≻ *{"..user_msgs.."}*\n📨┇سيتم مسح العدد بعد هذه الرساله", 1, 'md')
+send(msg.chat_id_, msg.id_, 1, "📨┇عدد مسجاتك ⌁≻ *{"..msgs.."}*\n📨┇سيتم مسح العدد بعد هذه الرساله", 1, 'md')
 database:del('MAX:'..bot_id..'user:msgs'..msg.chat_id_..':'..msg.sender_user_id_)
 end
 if text:match("^جهاتي$") then

@@ -4570,7 +4570,7 @@ else
 t = 'لا شيء'
 end
 if not database:get("MAX:gr:id:text:"..bot_id..msg.chat_id_) then 
-send(msg.chat_id_, msg.id_, 1, "✰ ᎒ ᎨᏧ ➣ ("..msg.sender_user_id_..")\n❖ ᎒ ᏬᏕᏋᖇ ➣ "..keko_info.."\n✰ ᎒ ᖇᎯᏁᏥ ➣ "..t.."\n❖ ᎒ ᗰᏕᏳ ➣ <b>{"..user_msgs.."}</b>\n✰ ᎒ ᏋᏧᎨᏡ ➣ <b>{"..edit.."}</b>\n┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅ ", 1, 'html')
+send(msg.chat_id_, msg.id_, 1, "✰ ᎒ ᎨᏧ ➣ (`"..msg.sender_user_id_.."`)\n❖ ᎒ ᏬᏕᏋᖇ ➣ "..keko_info.."\n✰ ᎒ ᖇᎯᏁᏥ ➣ "..t.."\n❖ ᎒ ᗰᏕᏳ ➣ <b>{"..user_msgs.."}</b>\n✰ ᎒ ᏋᏧᎨᏡ ➣ <b>{"..edit.."}</b>\n┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅ ", 1, 'html')
 else 
 local MAX_new_text = database:get("MAX:gr:id:text:"..bot_id..msg.chat_id_)
 local MAX_new_text = MAX_new_text:gsub('#username',(keko_info or 'لا يوجد'))
@@ -4603,7 +4603,7 @@ end
 if not database:get('MAX:'..bot_id..'id:mute'..msg.chat_id_) then
 if not database:get('MAX:'..bot_id..'id:photo'..msg.chat_id_) then
 if not database:get("MAX:gr:id:text:"..bot_id..msg.chat_id_) then 
-send(msg.chat_id_, msg.id_, 1, "❖ ᎒انت لا تملك صوره في بروفايلك\n💳⋮آيـديِك ∿≫ ("..msg.sender_user_id_..")\n🎟⋮يـٰوزرك∿≫ "..keko_info.."\n💼⋮رتـٓبتـٰك ∿≫ "..t.."\n💬⋮مسْٰجاتٌك ∿≫ <b>{"..user_msgs.."}</b>\n🔧⋮تعُٰديلاتٰٓكّ ∿≫ <b>{"..edit.."}</b>\n┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅ ", 1, 'html')
+send(msg.chat_id_, msg.id_, 1, "❖ ᎒انت لا تملك صوره في بروفايلك\n💳⋮آيـديِك ∿≫ (`"..msg.sender_user_id_.."`)\n🎟⋮يـٰوزرك∿≫ "..keko_info.."\n💼⋮رتـٓبتـٰك ∿≫ "..t.."\n💬⋮مسْٰجاتٌك ∿≫ <b>{"..user_msgs.."}</b>\n🔧⋮تعُٰديلاتٰٓكّ ∿≫ <b>{"..edit.."}</b>\n┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅ ", 1, 'html')
 else 
 local MAX_new_text = database:get("MAX:gr:id:text:"..bot_id..msg.chat_id_)
 local MAX_new_text = MAX_new_text:gsub('#username',(keko_info or 'لا يوجد'))
@@ -4631,7 +4631,7 @@ else
 t = 'لا شيء'
 end
 if not database:get("MAX:gr:id:text:"..bot_id..msg.chat_id_) then 
-send(msg.chat_id_, msg.id_, 1, "💳⋮آيـديِك ∿≫ ("..msg.sender_user_id_..")\n🎟⋮يـٰوزرك∿≫ "..keko_info.."\n💼⋮رتـٓبتـٰك ∿≫ "..t.."\n💬⋮مسْٰجاتٌك ∿≫ <b>{"..user_msgs.."}</b>\n🔧⋮تعُٰديلاتٰٓكّ ∿≫ <b>{"..edit.."}</b>\n┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅ ", 1, 'html')
+send(msg.chat_id_, msg.id_, 1, "💳⋮آيـديِك ∿≫ (`"..msg.sender_user_id_.."`)\n🎟⋮يـٰوزرك∿≫ "..keko_info.."\n💼⋮رتـٓبتـٰك ∿≫ "..t.."\n💬⋮مسْٰجاتٌك ∿≫ <b>{"..user_msgs.."}</b>\n🔧⋮تعُٰديلاتٰٓكّ ∿≫ <b>{"..edit.."}</b>\n┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅ ", 1, 'html')
 else 
 local MAX_new_text = database:get("MAX:gr:id:text:"..bot_id..msg.chat_id_)
 local MAX_new_text = MAX_new_text:gsub('#username',(keko_info or 'لا يوجد'))

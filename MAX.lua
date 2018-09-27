@@ -3272,11 +3272,10 @@ send(msg.chat_id_, msg.id_, 1, "📨┇عدد مسجاتك ⌁≻ *{"..user_msgs
 else
 end
 end
-if text:match("^مسح مسجاتي$") and msg.reply_to_message_id_ == 0  then
-local user_msgs = database:get('MAX:'..bot_id..'user:msgs'..msg.chat_id_..':'..msg.sender_user_id_)
-if not database:get('MAX:'..bot_id..'id:mute'..msg.chat_id_) then
+if text:match("^مسح مسجاتي$") then
+add = (tonumber(database:get('MAX:'..bot_id..'user:msgs'..msg.chat_id_..':'..msg.sender_user_id_)) or 0)
 send(msg.chat_id_, msg.id_, 1, "📨┇عدد مسجاتك ⌁≻ *{"..user_msgs.."}*\n📨┇سيتم مسح العدد بعد هذه الرساله", 1, 'md')
-database:del('MAX:'..bot_id..'user:add'..msg.chat_id_..':'..msg.sender_user_id_)
+database:del('MAX:'..bot_id..'user:msgs'..msg.chat_id_..':'..msg.sender_user_id_)
 end
 if text:match("^جهاتي$") then
 add = (tonumber(database:get('MAX:'..bot_id..'user:add'..msg.chat_id_..':'..msg.sender_user_id_)) or 0)

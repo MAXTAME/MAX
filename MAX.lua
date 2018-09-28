@@ -1080,15 +1080,6 @@ tsX000("lock",msg,"✔┇تم قفل الجهات")
 database:set("lock_contact:MAX"..msg.chat_id_..bot_id,"ok")
 end
 end
-if (text == "قفل العربيه") then
-local tsX_o = database:get("lock_ar:MAX"..msg.chat_id_..bot_id)
-if tsX_o then
-tsX000("lock",msg,"✔┇بالفعل تم قفل العربيه")
-else
-tsX000("lock",msg,"✔┇تم قفل العربيه")
-database:set("lock_ar:MAX"..msg.chat_id_..bot_id,"ok")
-end
-end
 if (text == "قفل الانكليزيه") then
 local tsX_o = database:get("lock_en:MAX"..msg.chat_id_..bot_id)
 if tsX_o then
@@ -1359,15 +1350,6 @@ tsX000("lock",msg,"☑┇تم فتح الجهات")
 database:del("lock_contact:MAX"..msg.chat_id_..bot_id,"ok")
 end
 end
-if (text == "فتح العربيه") then
-local tsX_o = database:get("lock_ar:MAX"..msg.chat_id_..bot_id)
-if not tsX_o then
-tsX000("lock",msg,"☑┇بالفعل تم فتح العربيه")
-else
-tsX000("lock",msg,"☑┇تم فتح العربيه")
-database:del("lock_ar:MAX"..msg.chat_id_..bot_id,"ok")
-end
-end
 if (text == "فتح الانكليزيه") then
 local tsX_o = database:get("lock_en:MAX"..msg.chat_id_..bot_id)
 if not tsX_o then
@@ -1569,12 +1551,6 @@ end
 end
 if msg.content_.ID == "MessageContact" then
 if database:get("lock_contact:MAX"..msg.chat_id_..bot_id) then
-delete_msg(msg.chat_id_,{[0] = msg.id_})
-return "stop"
-end
-end
-if text and text:match("[\216-\219][\128-\191]") then
-if database:get("lock_ar:tshake"..msg.chat_id_..bot_id) then
 delete_msg(msg.chat_id_,{[0] = msg.id_})
 return "stop"
 end
@@ -5431,18 +5407,6 @@ if not is_vip(msgg) then
 check_filter_words(result, text)
 if text:match("/")  then
 if database:get("lock_sarha.note:MAX"..msg.chat_id_..bot_id) then
-local msgs = {[0] = data.message_id_}
-delete_msg(msg.chat_id_,msgs) end end end
-if not is_vip(msgg) then
-check_filter_words(result, text)
-if text:match("[\216-\219][\128-\191]") then
-if database:get("lock_ar:tshake"..msg.chat_id_..bot_id) then
-local msgs = {[0] = data.message_id_}
-delete_msg(msg.chat_id_,msgs) end end end
-if not is_vip(msgg) then
-check_filter_words(result, text)
-if text:match("[\216-\219][\128-\191]") then
-if database:get("lock_ar.note:tshake"..msg.chat_id_..bot_id) then
 local msgs = {[0] = data.message_id_}
 delete_msg(msg.chat_id_,msgs) end end end
 if not is_vip(msgg) then

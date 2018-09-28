@@ -1083,9 +1083,9 @@ end
 if (text == "قفل العربيه") then
 local tsX_o = database:get("lock_ar:MAX"..msg.chat_id_..bot_id)
 if tsX_o then
-tsX000("lock",msg,"☑┇بالفعل تم قفل العربيه")
+tsX000("lock",msg,"✔┇بالفعل تم قفل العربيه")
 else
-tsX000("lock",msg,"☑┇تم قفل العربيه")
+tsX000("lock",msg,"✔┇تم قفل العربيه")
 database:set("lock_ar:MAX"..msg.chat_id_..bot_id,"ok")
 end
 end
@@ -1135,9 +1135,9 @@ end
 if (text == "قفل الاشعارات") then
 local tsX_o = database:get("lock_new:MAX"..msg.chat_id_..bot_id)
 if tsX_o then
-tsX000("lock",msg,"☑┇الاشعارات مقفوله!")
+tsX000("lock",msg,"✔┇الاشعارات مقفوله!")
 else
-tsX000("lock",msg,"☑┇تم قفل الاشعارات")
+tsX000("lock",msg,"✔┇تم قفل الاشعارات")
 database:set("lock_new:MAX"..msg.chat_id_..bot_id,"ok")
 end
 end
@@ -1162,9 +1162,9 @@ end
 if (text == "قفل بصمه الفيديو") then
 local tsX_o = database:get("lock_note:MAX"..msg.chat_id_..bot_id)
 if tsX_o then
-tsX000("lock",msg,"☑┇بالفعل تم قفل بصمه فيديو")
+tsX000("lock",msg,"✔┇بالفعل تم قفل بصمه فيديو")
 else
-tsX000("lock",msg,"☑┇تم قفل بصمه فيديو")
+tsX000("lock",msg,"✔┇تم قفل بصمه فيديو")
 database:set("lock_note:MAX"..msg.chat_id_..bot_id,"ok")
 end
 end
@@ -1173,7 +1173,7 @@ end
 if (text == "فتح الاشعارات") then
 local tsX_o = database:get("lock_new:MAX"..msg.chat_id_..bot_id)
 if not tsX_o then
-tsX000("lock",msg,"☑┇الاشعارات مقفوله!")
+tsX000("lock",msg,"☑┇الاشعارات مفتوحه!")
 else
 tsX000("lock",msg,"☑┇تم فتح الاشعارات")
 database:del("lock_new:MAX"..msg.chat_id_..bot_id,"ok")
@@ -1574,7 +1574,7 @@ return "stop"
 end
 end
 if text and text:match("[\216-\219][\128-\191]") then
-if database:get("lock_pe:MAX"..msg.chat_id_..bot_id) then
+if database:get("lock_ar:MAX"..msg.chat_id_..bot_id) then
 delete_msg(msg.chat_id_,{[0] = msg.id_})
 return "stop"
 end

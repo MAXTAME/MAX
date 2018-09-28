@@ -3210,7 +3210,7 @@ local name = string.sub(rws[2], 1, 50)
 database:hdel('MAX:'..bot_id..'filters:'..msg.chat_id_, rws[2])
 send(msg.chat_id_, msg.id_, 1, "☑┇تم حذفها من لقائمه المنع\n🔘┇{"..rws[2].."}", 1, 'md')
 end  
-if (text and text == "تنظيف قائمه المحظورين" and is_creator(msg)) then 
+if (text and text == "مسح قائمه المحظورين" and is_creator(msg)) then 
 local function getChannelMembers(channel_id, filter, offset, limit, cb)
 if not limit or limit > 200 then
 limit = 200

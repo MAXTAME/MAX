@@ -5019,13 +5019,13 @@ CH:- @MAXTAME
 send(msg.chat_id_, msg.id_, 1, (h4 or text), 1, 'html')
 end
 if text:match("^اصدار$") or text:match("^ماكس$") or text:match("^السورس$") or text:match("^سورس$") then
-local text =  [[
-{اهلا بك في سورس ماكس ℳÅℵ تابع قنوات السورس } ~》
+ النص المحلي =   [[
+{اهلا بك في سورس ماكس ℳÅℵ تابع قنوات السورس} ~》
 📡┇<a href="https://telegram.me/MAXTAME">قناه السورس○•</a>
 📁┇<a href="https://telegram.me/MAXFILE">ملفات السورس○•</a>
 💬┇<a href="t.me/K_111BOT">بوت تواصل السورس○•</a> 
 💭┇<a href="t.me/II8IlI">کاسبـر○•</a> 
-💭┇<a href="t.me/IP_PPP">سـيف○•</a> 
+h <a href="t.me/IP_PPP"> مونستر ○ • </a>
 ]]
 send(msg.chat_id_, msg.id_, 1, text, 1, 'html')
 end

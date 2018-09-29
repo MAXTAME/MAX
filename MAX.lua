@@ -5025,7 +5025,7 @@ if text:match("^اصدار$") or text:match("^ماكس$") or text:match("^الس
 📁┇<a href="https://telegram.me/MAXFILE">ملفات السورس○•</a>
 💬┇<a href="t.me/K_111BOT">بوت تواصل السورس○•</a> 
 💭┇<a href="t.me/II8IlI">کاسبـر○•</a> 
-h <a href="t.me/IP_PPP"> مونستر ○ • </a>
+💭┇<a href="t.me/IP_PPP">مونستر○•</a>
 ]]
 send(msg.chat_id_, msg.id_, 1, text, 1, 'html')
 end

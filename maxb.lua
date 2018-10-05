@@ -52,10 +52,10 @@ local msg = data.message_
 text = msg.content_.text_
 if not database:get('MAX:'..bot_id..'rep:mute'..msg.chat_id_) then
 if text == 'بوت' then
-moody =
-'لا هلا ولا مرحبا😹💔',      
-'"هلاوات حمبي🌚"',      
-'""هلا و💯هلا""',      
+local taha = {
+'هلو',
+'لا هله'
+}
 send(msg.chat_id_, msg.id_, 1, moody, 1, 'md')
   end
 if text == 'هلو' then

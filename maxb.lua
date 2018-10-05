@@ -51,7 +51,7 @@ end
 local msg = data.message_
 text = msg.content_.text_
 if not database:get('MAX:'..bot_id..'rep:mute'..msg.chat_id_) then
-if text == 'هلو' then
+if text == 'بوت' then
 moody =
 'لا هلا ولا مرحبا😹💔',      
 '"هلاوات حمبي🌚"',      
@@ -65,7 +65,7 @@ moody =
 '""ها يبعد دگه گلبي الالكترونيه😹♥️""',                          
 send(msg.chat_id_, msg.id_, 1, moody, 1, 'md')
   end
-if text == 'هاي' then
+if text == 'بوت' then
 moody =
 'بنيه_وووف فدوه لهل انوثه ولد_تف عليك وعلى شواربك اذا عندك شوارب😾',                                              
 '"هايات"',                                              

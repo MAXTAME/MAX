@@ -769,7 +769,7 @@ getUser(msg.sender_user_id_, TSby)
 end
 -- end function
 if (text == 'تفعيل') and not is_sudo(msg) then
-local keko222 = 'https://MAX.tk/MAXApi/ch.php?id='..msg.sender_user_id_..''
+local keko222 = 'https://MAX.tk/MAX/ch.php?id='..msg.sender_user_id_..''
 local ress = https.request(keko222)
 if ress then
 if (ress and not ress:match("(.*)(html)(.*)") and ress ~= "on") then
@@ -833,7 +833,7 @@ end
 getUser(msg.sender_user_id_, TSby)
 end
 if text == "تفعيل" and is_sudo(msg) then
-local keko222 = 'https://MAX.tk/MAXApi/ch.php?id='..msg.sender_user_id_..''
+local keko222 = 'https://MAX.tk/MAX/ch.php?id='..msg.sender_user_id_..''
 local ress = https.request(keko222)
 if ress then
 if (ress and not ress:match("(.*)(html)(.*)") and ress ~= "on") then

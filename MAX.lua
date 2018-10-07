@@ -2917,7 +2917,7 @@ end
 send(msg.chat_id_, msg.id_, 1, text, 1, 'html')
 end
 end
-if text and text == "معلومات" and is_mod(msg) then 
+if text and text == "معلومات المجموعه" and is_mod(msg) then 
 function dl_cb22( t1,t2 )
 local MAX_098 = 0
 if database:get("MAX:get:mod:"..bot_id..msg.chat_id_) then 
@@ -3064,7 +3064,7 @@ MAX_oop = 'مميز الكروب'
 else
 MAX_oop = 'لا شيء'
 end
-send(msg.chat_id_, msg.id_, 1,"مرحبا عزيزي اليك معلومات عن العضو :  💳⋮آيٰـديِ `{"..result.sender_user_id_.."}`\n💼⋮رتـٓبتـٰه ∿≫ {"..MAX_oop.."}\n🌟⋮تفاعٰلٰه ∿≫ '..formsgg(msguser)\n💬⋮مسْٰجاتٌه ∿≫ `{"..msgs.."}`\n🔧⋮تعُٰديلاتٰٓه ∿≫ `{"..edit.."}`", 1, 'md')
+send(msg.chat_id_, msg.id_, 1,"مرحبا عزيزي اليك معلومات عن العضو :     💳⋮ايديه`{"..result.sender_user_id_.."}`\n💼⋮رتـٓبتـٰه ∿≫ {"..MAX_oop.."}\n🌟⋮تفاعٰلٰه ∿≫ {'..formsgg(msguser)..'}\n💬⋮مسْٰجاتٌه ∿≫ `{"..msgs.."}`\n🔧⋮تعُٰديلاتٰٓه ∿≫ `{"..edit.."}`", 1, 'md')
 else
 send(msg.chat_id_, msg.id_, 1,"`"..result.sender_user_id_.."`", 1, 'md')
 end
@@ -3479,19 +3479,19 @@ bot.channel_get_admins(msg.chat_id_,cb)
 end
 if text:match("^الاعدادات$") and is_mod(msg) then
 if database:get("lock_media:MAX"..msg.chat_id_..bot_id) then
-mute_all = '✔┇مفعل'
+mute_all = '✔┇ مفعل'
 else
-mute_all = '✖┇غير مفعل'
+mute_all = '✖┇ غير مفعل'
 end
 ------------
 if database:get("lock_chat:MAX"..msg.chat_id_..bot_id) then
-mute_text = '✔┇مفعل'
+mute_text = '✔┇ مفعل'
 else
-mute_text = '✖┇غير مفعل'
+mute_text = '✖┇ غير مفعل'
 end
 ------------
 if database:get("lock_photo:MAX"..msg.chat_id_..bot_id) then
-mute_photo = '✔┇مفعل'
+mute_photo = '✔┇ مفعل'
 else
 mute_photo = '✖┇غير مفعل'
 end
@@ -3502,9 +3502,9 @@ else
 mute_video = '✖┇غير مفعل'
 end
 if database:get("lock_note:MAX"..msg.chat_id_..bot_id) then
-mute_note = '✔┇مفعل'
+mute_note = '✔┇ مفعل'
 else
-mute_note = '✖┇غير مفعل'
+mute_note = '✖┇ غير مفعل'
 end
 ------------
 if database:get("lock_gif:MAX"..msg.chat_id_..bot_id) then
@@ -3662,21 +3662,21 @@ lock_repowner = '✖┇غير مفعل'
 end
 ------------
 if database:get('MAX:'..bot_id..'id:mute'..msg.chat_id_) then
-lock_id = '✔┇مفعل'
+lock_id = '✔┇ مفعل'
 else
-lock_id = '✖┇غير مفعل'
+lock_id = '✖┇ غير مفعل'
 end
 ------------
 if database:get('MAX:'..bot_id..'pin:mute'..msg.chat_id_) then
-lock_pind = '✔┇مفعل'
+lock_pind = '✔┇ مفعل'
 else
-lock_pind = '✖┇غير مفعل'
+lock_pind = '✖┇ غير مفعل'
 end
 ------------
 if database:get('MAX:'..bot_id..'id:mute'..msg.chat_id_) then
-lock_id_photo = '✔┇مفعل'
+lock_id_photo = '✔┇ مفعل'
 else
-lock_id_photo = '✖┇غير مفعل'
+lock_id_photo = '✖┇ غير مفعل'
 end
 ------------
 if database:get( 'MAX:'..bot_id.."welcome"..msg.chat_id_) then

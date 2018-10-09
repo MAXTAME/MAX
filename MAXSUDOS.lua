@@ -66,10 +66,10 @@ end
     username = "@"..user_info.username
     end
     local sudo_keko = redis:smembers('MAX:'..bot_id..'dev')
-    local keko = "💬┇احصائيات المبرمجين : \n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n\n"
+    local keko = "👨🏼‍💻┇احصائيات المبرمجين : \n╾————————╼\n\n"
     local keko2 = database:get('MAX:'..bot_id..'keko:sudo'..bot_id..sudo_add)
     local keko3 = database:get('MAX:'..bot_id..'keko:sudo2'..bot_id..sudo_add)
-    keko = keko.."👤┇المطور الاساسي\n|0| ["..(username or sudo_add)..'] \n  مفعل ~⪼ *{'..(keko2 or 0)..'}* | معطل  ~⪼ *{'..(keko3 or 0)..'}*\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n👤┇المبرمجين\n'
+    keko = keko.."👨🏽‍🎤┇المبرمج الاساسي\n|0| ["..(username or sudo_add)..'] \n  تم تفعيل ~⪼ *{'..(keko2 or 0)..'}* | تم تعطيل  ~⪼ *{'..(keko3 or 0)..'}*\n╾————————╼\n👨🏼‍💻┇المبرمجين\n'
     for i=1,#sudo_keko do
     if tonumber(sudo_keko[i]) ~= tonumber(sudo_add) then
     local user_info = database:hgetall('MAX:'..bot_id..'user:'..sudo_keko[i])
@@ -79,14 +79,14 @@ end
     end
     local keko2 = database:get('MAX:'..bot_id..'keko:sudo'..bot_id..sudo_keko[i])
     local keko3 = database:get('MAX:'..bot_id..'keko:sudo2'..bot_id..sudo_keko[i])
-    keko = keko.."|"..i.."| ["..(username or sudo_keko[i])..'] \n  مفعل ~⪼ *{'..(keko2 or 0)..'}* | معطل  ~⪼ *{'..(keko3 or 0)..'}*\n'
+    keko = keko.."|"..i.."| ["..(username or sudo_keko[i])..'] \n  تم تفعيل ~⪼ *{'..(keko2 or 0)..'}* | تم تعطيل  ~⪼ *{'..(keko3 or 0)..'}*\n'
     end
     end
     if #sudo_keko == 0 or #sudo_keko == 1 and tonumber(sudo_keko[i]) == tonumber(sudo_add) then
-    keko = keko.."\n ⚠️┇لا يوجد مطورين"
+    keko = keko.."\n ⚠️┇لا يوجد مبرمجين"
     end
     if #sudo_keko == 1 and tonumber(sudo_keko[1]) == tonumber(sudo_add) then
-    keko = keko.."\n ⚠️┇لا يوجد مطورين"
+    keko = keko.."\n ⚠️┇لا يوجد مبرمجين"
     end
     send(msg.chat_id_, msg.id_, 1, keko, 1, 'md')
     end
@@ -98,6 +98,6 @@ end
     }
     --[[
     BY : MAXTAME
-    Channel Files : https://t.me/MAXFiles
+    Channel Files : https://t.me/MAXFile
     ]]
     

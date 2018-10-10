@@ -30,10 +30,10 @@ local TextParseMode = {ID = "TextParseModeMarkdown"}
   },
   }, dl_cb, nil)
   end
-  function getName(name_id, cb)
+  function getUser(first_name__id, cb)
     tdcli_function ({
   ID = "GetUser",
-  name_id = name_id
+ first_name__id = first_name__id
     }, cb, nil)
   end
 local msg = data.message_
@@ -41,32 +41,32 @@ text = msg.content_.text_
 if text then 
 function keko(extra,result,success)
 if result.id_ then 
-local keko2 = database:get('MAX:'..bot_id.."keko:Name"..result.id_)
-if not result.name_ then 
+local keko2 = database:get('MAX:'..bot_id.."keko:User"..result.id_)
+if not result.first_name then 
 if keko2 then 
 send(msg.chat_id_, msg.id_, 1, "حذف معرفه خمطو بساع بساع  \n هاذه معرفه : @"..keko2, 1, 'html')
-database:del('MAX:'..bot_id.."keko:Name"..result.id_) 
+database:del('MAX:'..bot_id.."keko:User"..result.id_) 
 end
 end
-if result.name_ then 
-if keko2 and keko2 ~= result.name_ then 
+if result.first_name_ then 
+if keko2 and keko2 ~= result.first_name_ then 
 local keko_text = {
   'شكو غيرت معرفك شنو مسويلك جريمه 🌞😹😹😹',
   "هاها شو غيرت معرفك بس لا هددوك 🤞😂😂",
   "شسالفه شو غيرت معرفك 😐🌝",
-  "غير معرفه خمطو بساع بساع \n هاذه معرفه : @"..result.name_.."",
+  "غير معرفه خمطو بساع بساع \n هاذه معرفه : @"..result.first_name_.."",
   'ها عار مو جان معرفك \n شكو غيرته ل @'..result.name_..' ',
   'ها يول شو مغير معرفك', 
-  "منور معرف جديد : "..result.name_.."",
+  "منور معرف جديد : "..result.first_name_.."",
 }
 keko3 = math.random(#keko_text)
 send(msg.chat_id_, msg.id_, 1, keko_text[keko3], 1, 'html')
 end  
-database:set('MAX:'..bot_id.."keko:Name"..result.id_, result.name_) 
+database:set('MAX:'..bot_id.."keko:User"..result.id_, result.first_name_) 
 end
 end
 end
-get_Name(msg.sender_name_id_, keko)
+get_User(msg.sender_User_id_, keko)
 end
 end
 return {

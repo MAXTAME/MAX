@@ -13,24 +13,24 @@ bot_id = tonumber(bot_id_keko[1])
 JSON = (loadfile  "./libs/dkjson.lua")()
 local function send(chat_id, reply_to_message_id, disable_notification, text, disable_web_page_preview, parse_mode)
 local TextParseMode = {ID = "TextParseModeMarkdown"}
-  tdcli_function ({
-  ID = "SendMessage",
-  chat_id_ = chat_id,
-  reply_to_message_id_ = reply_to_message_id,
-  disable_notification_ = disable_notification,
-  from_background_ = 1,
-  reply_markup_ = nil,
-  input_message_content_ = {
-  ID = "InputMessageText",
-  text_ = text,
-  disable_web_page_preview_ = disable_web_page_preview,
-  clear_draft_ = 0,
-  entities_ = {},
-  parse_mode_ = TextParseMode,
-  },
-  }, dl_cb, nil)
-  end
-  function is_owner(msg)
+tdcli_function ({
+ID = "SendMessage",
+chat_id_ = chat_id,
+reply_to_message_id_ = reply_to_message_id,
+disable_notification_ = disable_notification,
+from_background_ = 1,
+reply_markup_ = nil,
+input_message_content_ = {
+ID = "InputMessageText",
+text_ = text,
+disable_web_page_preview_ = disable_web_page_preview,
+clear_draft_ = 0,
+entities_ = {},
+parse_mode_ = TextParseMode,
+},
+}, dl_cb, nil)
+end
+function is_owner(msg)
 user_id = msg.sender_user_id_
 chat_id = msg.chat_id_
 local var = false
@@ -57,38 +57,36 @@ moody =
 '"هلاوات حمبي🌚"',      
 '""هلا و💯هلا""',      
 send(msg.chat_id_, msg.id_, 1, moody, 1, 'md')
-  end
-if text == 'بوت' then
+end
 moody =
 'راح تبدي المصلحه اهوو احجي شتريد😒',                          
 '"نعم نعمين ثلاث نعمات😹"',                          
 '""ها يبعد دگه گلبي الالكترونيه😹♥️""',                          
 send(msg.chat_id_, msg.id_, 1, moody, 1, 'md')
-  end
-if text == 'بوت' then
+end
 moody =
 'بنيه_وووف فدوه لهل انوثه ولد_تف عليك وعلى شواربك اذا عندك شوارب😾',                                              
 '"هايات"',                                              
 '""ئمنوره هايات يحلوه😉♥️""',                                              
 send(msg.chat_id_, msg.id_, 1, moody, 1, 'md')
-  end
-  end
-  if(text and text == 'تفعيل العشوائي') and is_owner(msg) then
-    if not database:get('MAX:'..bot_id..'rep:mute'..msg.chat_id_) then
-  send(msg.chat_id_, msg.id_, 1, '✔┇تم تفعيل الردود العشوائيه', 1, 'md')
-    else
-  send(msg.chat_id_, msg.id_, 1, '❗┇ الردوذ العشوائيه مفعله', 1, 'md')
-   database:del('MAX:'..bot_id..'rep:mute'..msg.chat_id_)
-  end
-  end
-  if(text and text == 'تعطيل اللعبه') and is_owner(msg) then
-    if database:get('MAX:'..bot_id..'rep:mute'..msg.chat_id_) then
-  send(msg.chat_id_, msg.id_, 1, '✔┇تم تعطيل الردود العشؤايه', 1, 'md')
-  else
-  send(msg.chat_id_, msg.id_, 1, '❗┇الردود العشوائيه معطله', 1, 'md')
-    database:set('MAX:'..bot_id..'rep:mute'..msg.chat_id_,true)
-  end
-    end
+end
+end
+if(text and text == 'تفعيل العشوائي') and is_owner(msg) then
+if not database:get('MAX:'..bot_id..'rep:mute'..msg.chat_id_) then
+send(msg.chat_id_, msg.id_, 1, '✔┇تم تفعيل الردود العشوائيه', 1, 'md')
+else
+send(msg.chat_id_, msg.id_, 1, '❗┇ الردوذ العشوائيه مفعله', 1, 'md')
+database:del('MAX:'..bot_id..'rep:mute'..msg.chat_id_)
+end
+end
+if(text and text == 'تعطيل اللعبه') and is_owner(msg) then
+if database:get('MAX:'..bot_id..'rep:mute'..msg.chat_id_) then
+send(msg.chat_id_, msg.id_, 1, '✔┇تم تعطيل الردود العشؤايه', 1, 'md')
+else
+send(msg.chat_id_, msg.id_, 1, '❗┇الردود العشوائيه معطله', 1, 'md')
+database:set('MAX:'..bot_id..'rep:mute'..msg.chat_id_,true)
+end
+end
 
 end
 return {

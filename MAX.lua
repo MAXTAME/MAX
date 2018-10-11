@@ -3473,21 +3473,6 @@ database:sadd(hash, v.user_id_)
 end
 send(msg.chat_id_, msg.id_, 1, moody, 1, 'html')
 end
-bot.channel_get_admins(msg.chat_id_,cb)
-end
-if text:match("^رفع اداريين الكروب$") and is_owner(msg) then
-local txt = {string.match(text, "^رفع اداريين الكروب$")}
-local function cb(extra,result,success)
-local list = result.members_
-moody = '📊┇ تم رفع الاداريين المجموعه في البوت\n'
-local n = 0
-for k,v in pairs(list) do
-n = (n + 1)
-local hash =  'MAX:'..bot_id..'mods:'..msg.chat_id_
-database:sadd(hash, v.user_id_)
-end
-send(msg.chat_id_, msg.id_, 1, moody, 1, 'html')
-end
 bot.channel_get_owners(msg.chat_id_,cb)
 end
 if text:match("^الاعدادات$") and is_mod(msg) then

@@ -1169,39 +1169,6 @@ database:set("lock_note:MAX"..msg.chat_id_..bot_id,"ok")
 end
 end
 --         »»                 End MAX lock                 ««              --
-    if text:match("^وضع تكرار (%d+)$") and is_owner(msg) then
-    local floodmax = {string.match(text, "^(وضع تكرار) (%d+)$")}
-    if tonumber(floodmax[2]) < 2 then
-  send(msg.chat_id_, msg.id_, 1, '🔘┊ضع التكرار من *{2}* الى  *{99999}*', 1, 'md')
-    else
-  database:set('MAX:'..bot_id..'flood:max:'..msg.chat_id_,floodmax[2])
-  send(msg.chat_id_, msg.id_, 1, '☑️┊تم  وضع التكرار بالطرد للعدد ~⪼  *{'..floodmax[2]..'}*', 1, 'md')
-    end
-  end
-    
-    if text:match("^وضع زمن التكرار (%d+)$") and is_owner(msg) then
-    local floodt = {string.match(text, "^(وضع زمن التكرار) (%d+)$")}
-    if tonumber(floodt[2]) < 1 then
-  send(msg.chat_id_, msg.id_, 1, '🔘┊ضع العدد من *{1}* الى  *{99999}*', 1, 'md')
-    else
-  database:set('MAX:'..bot_id..'flood:time:'..msg.chat_id_,floodt[2])
-     send(msg.chat_id_, msg.id_, 1, '☑️┊تم  وضع الزمن التكرار للعدد ~⪼  *{'..floodt[2]..'}*', 1, 'md')
-    end
-    end
-    
-    if text:match("^وضع رابط$") and is_mod(msg) then
-     database:set( 'MAX:'..bot_id.."group:link"..msg.chat_id_, 'Waiting For Link!\nPls Send Group Link')
-     send(msg.chat_id_, msg.id_, 1, 'بارسال الرابط اذا كنت لا تعرف كيف تحظره اتبع تعليمات ┫اذهب الى اعدادات الموجوعه ومن ثم اضف اعضأ ومن ثم قم بدعوه من خلال رابط مجموعه  انسخ الربط وقم بارساله\n', 1, 'md')
-    end
-    
-    if text:match("^الرابط$") then
-    local link = database:get( 'MAX:'..bot_id.."group:link"..msg.chat_id_)
-      if link then
-    send(msg.chat_id_, msg.id_, 1, '🚸┋مْرحہٻًٳ عزيزي اليك رابط الموجوعه... /n'..link, 1, "html")
-      else
-    send(msg.chat_id_, msg.id_, 1, '🔖┋ اهلا عزيزي ارسل { وضع الرابط } لحفظ رابط مجموعه الجديد', 1, 'html')
-      end
-     end
 --         »»               Start MAX unlock                       ««              --
 if (text == "فتح الاشعارات") then
 local tsX_o = database:get("lock_new:MAX"..msg.chat_id_..bot_id)

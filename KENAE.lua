@@ -5085,7 +5085,7 @@ if  (text and text == 'تفعيل ردود البوت') and is_owner(msg) then
   " منور 😚",
  }
   keko3 = math.random(#keko_text)
-  sendPhoto(msg.chat_id_, msg.id_, 0, 1, nil, result.photos_[0].sizes_[1].photo_.persistent_id_,"💏┊ "..keko_text[keko3].."\n💳┊مـعرفگ •⊱ "..keko_info.."\n📟┊آيديگ •⊱ ("..msg.sender_user_id_..")\n🌟⋮تفاعٰلٰك ∿≫ "..formsgg(msguser).."\n📲┊مـوقعگ •⊱ "..t.."\n📨┊رسائلك •⊱{"..user_msgs.."}\n﹎﹎﹎﹎﹎﹎﹎﹎ ", 1, 'html')
+  sendPhoto(msg.chat_id_, msg.id_, 0, 1, nil, result.photos_[0].sizes_[1].photo_.persistent_id_,"💏┊ "..keko_text[keko3].."\n💳┊مـعرفگ •⊱ "..keko_info.."\n📟┊آيديگ •⊱ `("..msg.sender_user_id_..")`\n🌟⋮تفاعٰلٰك ∿≫ "..formsgg(msguser).."\n📲┊مـوقعگ •⊱ "..t.."\n📨┊رسائلك •⊱{"..user_msgs.."}\n﹎﹎﹎﹎﹎﹎﹎﹎ ", 1, 'html')
   else 
   local KENAE_new_text = database:get("KENAE:gr:id:text:"..bot_id..msg.chat_id_)
   local KENAE_new_text = KENAE_new_text:gsub('#username',(keko_info or 'لا يوجد'))
@@ -5110,7 +5110,7 @@ if  (text and text == 'تفعيل ردود البوت') and is_owner(msg) then
   t = 'عضو فقط'
   end
   if not database:get("KENAE:gr:id:text:"..bot_id..msg.chat_id_) then 
-  send(msg.chat_id_, msg.id_, 1, "📟┊آيديگ •⊱ ("..msg.sender_user_id_..")\n💳┊مـعرفگ •⊱ "..keko_info.."\n📲┊مـوقعگ •⊱ "..t.."\n📨┊رسائلك •⊱ <b>{"..user_msgs.."}\n﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎", 1, 'html')
+  send(msg.chat_id_, msg.id_, 1, "📟┊آيديگ •⊱ `("..msg.sender_user_id_..")`\n💳┊مـعرفگ •⊱ "..keko_info.."\n📲┊مـوقعگ •⊱ "..t.."\n📨┊رسائلك •⊱ <b>{"..user_msgs.."}\n﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎", 1, 'html')
   else 
   local KENAE_new_text = database:get("KENAE:gr:id:text:"..bot_id..msg.chat_id_)
   local KENAE_new_text = KENAE_new_text:gsub('#username',(keko_info or 'لا يوجد'))

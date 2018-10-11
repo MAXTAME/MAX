@@ -3152,26 +3152,20 @@ else
 database:set('MAX:'..bot_id..'flood:time:'..msg.chat_id_,floodt[2])
 send(msg.chat_id_, msg.id_, 1, '☑┇تم  وضع الزمن التكرار للعدد ⌁≻  *{'..floodt[2]..'}*', 1, 'md')
 end
-end
-if text:match("^الرابط$") then
-if not database:get("MAX:mute:link:gr:"..bot_id..msg.chat_id_) then 
-function dl_cb222( t1,t2 )
-if t2.invite_link_ ~= false then 
-send(msg.chat_id_, msg.id_, 1, '📩┇ᏳᖇᎧᏬᎮ ᏝᎨᏁᏥ\n'..(t2.invite_link_ or "Error"), 1, "html")
-elseif (database:get('MAX:'..bot_id.."group:link"..msg.chat_id_)) then 
-send(msg.chat_id_, msg.id_, 1, '📩┇ᏳᖇᎧᏬᎮ ᏝᎨᏁᏥ GROUP\n'..database:get('MAX:'..bot_id.."group:link"..msg.chat_id_), 1, "html")
-else
-send(msg.chat_id_, msg.id_, 1, '⚠️┇لا يمكني الوصل الى الرابط عليك منحي صلاحيه {دعوه المستخدمين من خلال الرابط}', 1, "html")
-end
-end
-tdcli_function ({
-ID = "GetChannelFull",
-channel_id_ = getChatId(msg.chat_id_).ID
-}, dl_cb222, nil)
-else 
-send(msg.chat_id_, msg.id_, 1, '🖲┇احضر الرابط معطل', 1, "html") 
-end
-end
+                    
+if text:match("^وضع رابط$") and is_mod(msg) then
+     database:set( 'MAX:'..bot_id.."group:link"..msg.chat_id_, 'Waiting For Link!\nPls Send Group Link')
+     send(msg.chat_id_, msg.id_, 1, 'قم بارسال الرابط اذا كنت لا تعرف كيف تحظره اتبع تعليمات ┫اذهب الى اعدادات الموجوعه ومن ثم اضف اعضأ ومن ثم قم بدعوه من خلال رابط مجموعه  انسخ الربط وقم بارساله\n', 1, 'md')
+    end
+    
+    if text:match("^الرابط$") then
+    local link = database:get( 'MAX:'..bot_id.."group:link"..msg.chat_id_)
+      if link then
+    send(msg.chat_id_, msg.id_, 1, '🚸┋مْرحہٻًٳ عزيزي اليك رابط الموجوعه...\n'..link, 1, "html")
+      else
+    send(msg.chat_id_, msg.id_, 1, '🔖┋ اهلا عزيزي ارسل { وضع الرابط } لحفظ رابط مجموعه الجديد', 1, 'html')
+      end
+     end
 -----------------------------------------------------------
 if text:match("^تفعيل الترحيب$") and is_mod(msg) then
 send(msg.chat_id_, msg.id_, 1, '☑┇تم تفعيل الترحيب في المجموعه', 1, 'md')

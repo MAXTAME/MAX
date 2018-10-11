@@ -3781,7 +3781,7 @@ end
 end
 end
 
-if (text and text == 'وضعع رابط') and tonumber(msg.sender_user_id_) == tonumber(create) then
+if (text and text == 'تغير كليشه المبرمج') and tonumber(msg.sender_user_id_) == tonumber(cre) then
 send(msg.chat_id_, msg.id_, 1, '📥┇الان يمكنك ارسال الكليشه  ليتم حفظها', 1, 'html')
 redis:set('MAX:'..bot_id..'texts'..msg.sender_user_id_..'', 'msg')
 return false end
@@ -3790,11 +3790,11 @@ local keko2 = redis:get('MAX:'..bot_id..'texts'..msg.sender_user_id_..'')
 if keko2 == 'msg' then
 send(msg.chat_id_, msg.id_, 1, '☑┇تم حفظ الكليشه يمكنك اظهارها بارسال الامر', 1, 'html')
 redis:set('MAX:'..bot_id..'texts'..msg.sender_user_id_..'', 'no')
-redis:set('MAX:'..bot_id..'text_create', text)
+redis:set('MAX:'..bot_id..'text_sudo', text)
 send(msg.chat_id_, msg.id_, 1, text , 1, 'html')
 return false end
 end
-if text:match("^[Dd][Ee][Vv]$")or text:match("^مبرمج بوت$") or text:match("^الرابط$") or text:match("^مبرمج البوت$") or text:match("^مبرمج$") or text:match("^المبرمج$") and msg.reply_to_message_id_ == 0 then
+if text:match("^[Dd][Ee][Vv]$")or text:match("^مبرمج بوت$") or text:match("^المطور$") or text:match("^مبرمج البوت$") or text:match("^مبرمج$") or text:match("^المبرمج$") and msg.reply_to_message_id_ == 0 then
 local text_sudo = redis:get('MAX:'..bot_id..'text_sudo')
 local nkeko = redis:get('MAX:'..bot_id..'nmkeko')
 local nakeko = redis:get('MAX:'..bot_id..'nakeko')

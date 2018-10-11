@@ -11,9 +11,9 @@ notify = lgi.require('Notify')
 notify.init ("Telegram updates")
 chats = {}
 day = 86400
-bot_id = 325211669 -- [[محل قرار گیری آیدی اکانت ربات]]
-sudo_users = {107821693, 259019897} -- [[محل قرار گیری آیدی سودو ها]] + [[مدیر ربات]]
-bot_owner = {107821693} -- [[ محل قرار گیری آیدی مدیر اصلی ربات ]]
+bot_id = 325211669 -- [[ضع معرفًا لحساب البوت]]
+sudo_users = {107821693, 259019897} -- [[ضع الهداف]] + [[مدير البوت]]
+bot_owner = {107821693} -- [[ موقع المعرف الأصلي للبوت ]]
 -----------------------------------------------------------------------------------------------
 ---------------
 -- Start Functions --
@@ -568,9 +568,9 @@ function tdcli_update_callback(data)
       if db:get("bot:enable:"..msg.chat_id_) then
         db:del("bot:enable:"..msg.chat_id_)
         for k,v in pairs(bot_owner) do
-          send(v, 0, 1, "⭕️ تاریخ تمدید این گروه فرا رسید !\n🔹لینک : "..(db:get("bot:group:link"..msg.chat_id_) or "تنظیم نشده").."\n🔸شناسه گروه :  "..msg.chat_id_..'\n\n🔹اگر میخواهید ربات گروه را ترک کند از دستور زیر استفاده کنید :\n\n🔖 leave'..msg.chat_id_..'\n\n🔸اگر قصد وارد شدن به گروه را دارید از دستور زیر استفاده کنید :\n\n🔖 join'..msg.chat_id_..'\n\n🔹اگر میخواهید ربات داخل گروه اعلام کند از دستور زیر استفاده کنید :\n\n🔖 meld'..msg.chat_id_..'\n\n🔅🔅🔅🔅🔅🔅\n\n📅 اگر قصد تمدید گروه را دارید از دستورات زیر استفاده کنید : \n\n⭕️برای شارژ به صورت یک ماه :\n🔖 plan1'..msg.chat_id_..'\n\n⭕️برای شارژ به صورت سه ماه :\n🔖 plan2'..msg.chat_id_..'\n\n⭕️برای شارژ به صورت نامحدود :\n🔖 plan3'..msg.chat_id_, 1, 'html')
+          send(v, 0, 1, "⭕️ موعد تجديد الدفع !\n🔹الرابط : "..(db:get("bot:group:link"..msg.chat_id_) or "لم يتم التعيين").."\n🔸معرف المجموعة :  "..msg.chat_id_..'\n\n🔹اگر میخواهید ربات گروه را ترک کند از دستور زیر استفاده کنید :\n\n🔖 leave'..msg.chat_id_..'\n\n🔸اگر قصد وارد شدن به گروه را دارید از دستور زیر استفاده کنید :\n\n🔖 join'..msg.chat_id_..'\n\n🔹اگر میخواهید ربات داخل گروه اعلام کند از دستور زیر استفاده کنید :\n\n🔖 meld'..msg.chat_id_..'\n\n🔅🔅🔅🔅🔅🔅\n\n📅 اگر قصد تمدید گروه را دارید از دستورات زیر استفاده کنید : \n\n⭕️برای شارژ به صورت یک ماه :\n🔖 plan1'..msg.chat_id_..'\n\n⭕️برای شارژ به صورت سه ماه :\n🔖 plan2'..msg.chat_id_..'\n\n⭕️برای شارژ به صورت نامحدود :\n🔖 plan3'..msg.chat_id_, 1, 'html')
         end
-        --send(msg.chat_id_, 0, 1, '🔺زمان تمدید ربات برای این گروه فرا رسیده است\n لطفا هرچه سریع تر به گروه پشتیبانی ربات مراجعه و نسبت به تمدید ربات اقدام فرمایید 🌹', 1, 'html')
+        --send(msg.chat_id_, 0, 1, '🔺لقد حان الوقت لتوسيع الروبوت إلى هذه المجموعة\n يرجى الرجوع إلى فريق دعم الروبوت في أقرب وقت ممكن وتوسيع البوت 🌹', 1, 'html')
       end
     end
     -------------------------------------------
@@ -780,10 +780,10 @@ function tdcli_update_callback(data)
       end
       if db:get('bot:viewget'..msg.sender_user_id_) then
         if not msg.forward_info_ then
-          send(msg.chat_id_, msg.id_, 1, 'خطا در انجام عملیات ❌\n\n⭕️لطفا دستور را مجدد ارسال کنید و سپس عمل مشاهده تعداد بازدید را با فوروارد مطلب دریافت کنید ', 1, 'md')
+          send(msg.chat_id_, msg.id_, 1, 'خطأ في العملية ❌\n\n⭕️الرجاء إعادة إرسال الطلب ثم تنزيل عرض عداد العرض ', 1, 'md')
           db:del('bot:viewget'..msg.sender_user_id_)
         else
-          send(msg.chat_id_, msg.id_, 1, '🔹میزان بازدید پست شما : '..msg.views_..' بازدید', 1, 'md')
+          send(msg.chat_id_, msg.id_, 1, '🔹عدد مشاركاتك : '..msg.views_..' زيارة', 1, 'md')
           db:del('bot:viewget'..msg.sender_user_id_)
         end
       end
@@ -1055,7 +1055,7 @@ function tdcli_update_callback(data)
             if db:get('welcome:'..msg.chat_id_) then
               text = db:get('welcome:'..msg.chat_id_)
             else
-              text = 'سلام {firstname} خوش اومدی 🌹'
+              text = 'مرحبا {firstname} مرحبا بك 🌹'
             end
             local text = text:gsub('{firstname}',(result.first_name_ or ''))
             local text = text:gsub('{lastname}',(result.last_name_ or ''))
@@ -1088,7 +1088,7 @@ function tdcli_update_callback(data)
             if db:get('welcome:'..msg.chat_id_) then
               text = db:get('welcome:'..msg.chat_id_)
             else
-              text = 'سلام خوش اومدی'
+              text = 'اهلا وسهلا بك'
             end
             local text = text:gsub('{firstname}',(msg.content_.members_[0].first_name_ or ''))
             local text = text:gsub('{lastname}',(msg.content_.members_[0].last_name_ or ''))
@@ -1667,7 +1667,7 @@ function tdcli_update_callback(data)
               local glink = text:match("(https://telegram.me/joinchat/%S+)") or text:match("(https://t.me/joinchat/%S+)")
               local hash = "bot:group:link"..msg.chat_id_
               db:set(hash,glink)
-              send(msg.chat_id_, msg.id_, 1, ' لینک گروه ثبت شد ✅', 1, 'md')
+              send(msg.chat_id_, msg.id_, 1, ' تم تسجيل رابط المجموعة ✅', 1, 'md')
             end
           end
           function check_username(extra,result,success)
@@ -1813,7 +1813,7 @@ function tdcli_update_callback(data)
           else
             ------------------------------------ With Pattern -------------------------------------------
             if text:match("^[Pp]ing$") then
-              send(msg.chat_id_, msg.id_, 1, 'ربات هم اکنون آنلاین میباشد', 1, 'md')
+              send(msg.chat_id_, msg.id_, 1, 'البوت فعال', 1, 'md')
             end
             -----------------------------------------------------------------------------------------------
             if text:match("^[Ll]eave$") and is_admin(msg.sender_user_id_, msg.chat_id_) then
@@ -1824,10 +1824,10 @@ function tdcli_update_callback(data)
               function promote_by_reply(extra, result, success)
                 local hash = 'bot:mods:'..msg.chat_id_
                 if db:sismember(hash, result.sender_user_id_) then
-                  send(msg.chat_id_, msg.id_, 1, '👤کاربر با شناسه : '..result.sender_user_id_..' هم اکنون مدیر است !', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, '👤معرف المستخدم : '..result.sender_user_id_..' انه بالفعل مدير !', 1, 'md')
                 else
                   db:sadd(hash, result.sender_user_id_)
-                  send(msg.chat_id_, msg.id_, 1, '👤 کاربر با شناسه : '..result.sender_user_id_..' به مدیریت ارتقا مقام یافت !', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, '👤 معرف المستخدم : '..result.sender_user_id_..' تم رفعه مدير !', 1, 'md')
                 end
               end
               getMessage(msg.chat_id_, msg.reply_to_message_id_,promote_by_reply)
@@ -1838,9 +1838,9 @@ function tdcli_update_callback(data)
               function promote_by_username(extra, result, success)
                 if result.id_ then
                   db:sadd('bot:mods:'..msg.chat_id_, result.id_)
-                  texts = '👤 کاربر با شناسه : '..result.id_..' به مدیریت ارتقا مقام یافت !'
+                  texts = '👤 معرف المستخدم : '..result.id_..' تم رفعه مدير !'
                 else
-                  texts = 'کاربر یافت نشد ❌'
+                  texts = 'لم يتم العثور على المستخدم ❌'
                 end
                 send(msg.chat_id_, msg.id_, 1, texts, 1, 'html')
               end
@@ -1850,17 +1850,17 @@ function tdcli_update_callback(data)
             if text:match("^[Pp]romote (%d+)$") and is_owner(msg.sender_user_id_, msg.chat_id_) then
               local ap = {string.match(text, "^([Pp]romote) (%d+)$")}
               db:sadd('bot:mods:'..msg.chat_id_, ap[2])
-              send(msg.chat_id_, msg.id_, 1, '👤 کاربر با شناسه : '..ap[2]..' به مدیریت ارتقا مقام یافت !', 1, 'md')
+              send(msg.chat_id_, msg.id_, 1, '👤 معرف المستخدم: '..ap[2]..' تم رفع مدير !', 1, 'md')
             end
             -----------------------------------------------------------------------------------------------
             if text:match("^[Dd]emote$") and is_owner(msg.sender_user_id_, msg.chat_id_) and msg.reply_to_message_id_ then
               function demote_by_reply(extra, result, success)
                 local hash = 'bot:mods:'..msg.chat_id_
                 if not db:sismember(hash, result.sender_user_id_) then
-                  send(msg.chat_id_, msg.id_, 1, '👤 کاربر با شناسه : '..result.sender_user_id_..' از مدیر نمیباشد !', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, '👤 معرف المستخدم : '..result.sender_user_id_..' ليس مدير !', 1, 'md')
                 else
                   db:srem(hash, result.sender_user_id_)
-                  send(msg.chat_id_, msg.id_, 1, '👤 کاربر با شناسه : '..result.sender_user_id_..' از مدیریت حذف شد !', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, '👤 معرف المستخدم : '..result.sender_user_id_..' تمت إزالته من الإدارة !', 1, 'md')
                 end
               end
               getMessage(msg.chat_id_, msg.reply_to_message_id_,demote_by_reply)
@@ -1872,9 +1872,9 @@ function tdcli_update_callback(data)
               function demote_by_username(extra, result, success)
                 if result.id_ then
                   db:srem(hash, result.id_)
-                  texts = '👤 کاربر با شناسه : '..result.id_..' عزل مقام شد'
+                  texts = '👤 معرف المستخدم : '..result.id_..' عزل مقام شد'
                 else
-                  texts = 'کاربر یافت نشد ❌'
+                  texts = 'لم يتم العثور على المستخدم ❌'
                 end
                 send(msg.chat_id_, msg.id_, 1, texts, 1, 'html')
               end
@@ -1885,16 +1885,16 @@ function tdcli_update_callback(data)
               local hash = 'bot:mods:'..msg.chat_id_
               local ap = {string.match(text, "^([Dd]emote) (%d+)$")}
               db:srem(hash, ap[2])
-              send(msg.chat_id_, msg.id_, 1, '👤 کاربر با شناسه : '..ap[2]..' عزل مقام شد !', 1, 'md')
+              send(msg.chat_id_, msg.id_, 1, '👤 معرف المستخدم : '..ap[2]..' عزل مقام شد !', 1, 'md')
             end
             -----------------------------------------------------------------------------------------------
             if text:match("^[Gg]p id$") then
-              local text = "🔹شناسه گروه : "..msg.chat_id_
+              local text = "🔹معرف المجموعة : "..msg.chat_id_
               send(msg.chat_id_, msg.id_, 1, text, 1, 'md')
             end
             -----------------------------------------------------------------------------------------------
             if text:match("^[Mm]y id$") then
-              local text = "🔹شناسه شما  : "..msg.sender_user_id_
+              local text = "🔹معرف المجموعة  : "..msg.sender_user_id_
               send(msg.chat_id_, msg.id_, 1, text, 1, 'md')
             end
             -----------------------------------------------------------------------------------------------
@@ -1910,14 +1910,14 @@ function tdcli_update_callback(data)
               function ban_by_reply(extra, result, success)
                 local hash = 'bot:banned:'..msg.chat_id_
                 if is_mod(result.sender_user_id_, result.chat_id_) then
-                  send(msg.chat_id_, msg.id_, 1, 'شما نمیتوانید مدیران را مسدود کنید !', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, 'لا يمكنك منع المديرين !', 1, 'md')
                 else
                   if db:sismember(hash, result.sender_user_id_) then
-                    send(msg.chat_id_, msg.id_, 1, '👤 کاربر با شناسه : '..result.sender_user_id_..' هم اکنون مسدود است !', 1, 'md')
+                    send(msg.chat_id_, msg.id_, 1, '👤 معرف المستخدم : '..result.sender_user_id_..' محظور حاليا !', 1, 'md')
                     chat_kick(result.chat_id_, result.sender_user_id_)
                   else
                     db:sadd(hash, result.sender_user_id_)
-                    send(msg.chat_id_, msg.id_, 1, '👤 کاربر با شناسه : '..result.sender_user_id_..' مسدود گردید !', 1, 'md')
+                    send(msg.chat_id_, msg.id_, 1, '👤 معرف المستخد : '..result.sender_user_id_..' العضو محظور !', 1, 'md')
                     chat_kick(result.chat_id_, result.sender_user_id_)
                   end
                 end
@@ -1930,14 +1930,14 @@ function tdcli_update_callback(data)
               function ban_by_username(extra, result, success)
                 if result.id_ then
                   if is_mod(result.id_, msg.chat_id_) then
-                    send(msg.chat_id_, msg.id_, 1, 'شما نمیتوانید مدیران را مسدود کنید !', 1, 'md')
+                    send(msg.chat_id_, msg.id_, 1, 'لا يمكنك منع المديرين !', 1, 'md')
                   else
                     db:sadd('bot:banned:'..msg.chat_id_, result.id_)
-                    texts = '👤 کاربر با شناسه : '..result.id_..' مسدود گردید !'
+                    texts = '👤 معرف المستخدم : '..result.id_..' تم حظره !'
                     chat_kick(msg.chat_id_, result.id_)
                   end
                 else
-                  texts = '> کاربر یافت نشد !'
+                  texts = '> لم يتم العثور على المستخدم !'
                 end
                 send(msg.chat_id_, msg.id_, 1, texts, 1, 'html')
               end
@@ -1947,11 +1947,11 @@ function tdcli_update_callback(data)
             if text:match("^[Bb]an (%d+)$") and is_mod(msg.sender_user_id_, msg.chat_id_) then
               local ap = {string.match(text, "^([Bb]an) (%d+)$")}
               if is_mod(ap[2], msg.chat_id_) then
-                send(msg.chat_id_, msg.id_, 1, 'شما نمیتوانید مدیران را مسدود کنید !', 1, 'md')
+                send(msg.chat_id_, msg.id_, 1, 'لا يمكنك منع المديرين !', 1, 'md')
               else
                 db:sadd('bot:banned:'..msg.chat_id_, ap[2])
                 chat_kick(msg.chat_id_, ap[2])
-                send(msg.chat_id_, msg.id_, 1, '👤 کاربر با شناسه : '..ap[2]..' مسدود گردید !', 1, 'md')
+                send(msg.chat_id_, msg.id_, 1, '👤 معرف المستخدم : '..ap[2]..' تم حظره !', 1, 'md')
               end
             end
             ---------------------------------------Ban ALL-------------------------------------------------
@@ -1959,14 +1959,14 @@ function tdcli_update_callback(data)
               function ban_by_reply(extra, result, success)
                 local hash = 'bot:gbanned:'
                 if is_mod(result.sender_user_id_, result.chat_id_) then
-                  send(msg.chat_id_, msg.id_, 1, 'شما نمیتوانید مدیران را مسدود کنید !', 1, 'md')
+                  send(msg.chat_id_, msg.id_, 1, 'لا يمكنك منع المديرين !', 1, 'md')
                 else
                   if db:sismember(hash, result.sender_user_id_) then
-                    send(msg.chat_id_, msg.id_, 1, '👤 کاربر با شناسه : '..result.sender_user_id_..' هم اکنون به صورت کلی مسدود است !', 1, 'md')
+                    send(msg.chat_id_, msg.id_, 1, '👤 معرف المستخدم : '..result.sender_user_id_..' تم حظره بشكل عام !', 1, 'md')
                     chat_kick(result.chat_id_, result.sender_user_id_)
                   else
                     db:sadd(hash, result.sender_user_id_)
-                    send(msg.chat_id_, msg.id_, 1, '👤 کاربر با شناسه : '..result.sender_user_id_..' به طور کلی مسدود سازی گردید !', 1, 'md')
+                    send(msg.chat_id_, msg.id_, 1, '👤 معرف المستخدم : '..result.sender_user_id_..' تم حظره بشكل عام !', 1, 'md')
                     chat_kick(result.chat_id_, result.sender_user_id_)
                   end
                 end
@@ -1979,15 +1979,15 @@ function tdcli_update_callback(data)
               function ban_by_username(extra, result, success)
                 if result.id_ then
                   if is_mod(result.id_, msg.chat_id_) then
-                    send(msg.chat_id_, msg.id_, 1, 'شما نمیتوانید مدیران را مسدود کنید !', 1, 'md')
+                    send(msg.chat_id_, msg.id_, 1, 'لا يمكنك منع المديرين !', 1, 'md')
                   else
                     db:sadd('bot:gbanned:',result.id_)
                     chat_kick(msg.chat_id_, result.id_)
-                    texts = '👤 کاربر با شناسه : '..result.id_..' به صورت کلی مسدود گردید !'
+                    texts = '👤 کاربر با شناسه : '..result.id_..' ااا !'
                     chat_kick(msg.chat_id_, result.id_)
                   end
                 else
-                  texts = '> کاربر یافت نشد !'
+                  texts = '> تم حظره بشكل عام !'
                 end
                 send(msg.chat_id_, msg.id_, 1, texts, 1, 'html')
               end
@@ -1997,10 +1997,10 @@ function tdcli_update_callback(data)
             if text:match("^[Bb]anall (%d+)$") and is_sudo(msg) then
               local ap = {string.match(text, "^([Bb]anall) (%d+)$")}
               if is_mod(ap[2], msg.chat_id_) then
-                send(msg.chat_id_, msg.id_, 1, 'شما نمیتوانید مدیران را مسدود کنید !', 1, 'md')
+                send(msg.chat_id_, msg.id_, 1, 'لايمكن منع مدراء !', 1, 'md')
               else
                 db:sadd('bot:gbanned:',ap[2])
-                send(msg.chat_id_, msg.id_, 1, '👤 کاربر با شناسه : '..ap[2]..' به صورت کلی مسدود گردید !', 1, 'md')
+                send(msg.chat_id_, msg.id_, 1,' معرف المستخدم : '..ap[2]..' تم حظره !', 1, 'md')
               end
             end
             -----------------------------------------------------------------------------------------------
@@ -2020,7 +2020,7 @@ function tdcli_update_callback(data)
             if text:match("^[Dd]elall (%d+)$") and is_owner(msg.sender_user_id_, msg.chat_id_) then
               local ass = {string.match(text, "^([Dd]elall) (%d+)$")}
               if is_mod(ass[2], msg.chat_id_) then
-                send(msg.chat_id_, msg.id_, 1, 'شما نمیتوانید پیام مدیران را حذف کنید ❌', 1, 'md')
+                send(msg.chat_id_, msg.id_, 1, 'لا يمكنك حذف رسالة الادارة ❌', 1, 'md')
               else
                 del_all_msgs(msg.chat_id_, ass[2])
                 send(msg.chat_id_, msg.id_, 1, 'تمامی پیام های ارسالی کاربر با شناسه : '..ass[2]..' حذف شد 🗑', 1, 'html')

@@ -52,15 +52,15 @@ local msg = data.message_
 text = msg.content_.text_
 if not database:get('MAX:'..bot_id..'rep:mute'..msg.chat_id_) then
 if text == 'بوت' then
-locla keko =
+moody =
 'لا هلا ولا مرحبا😹💔',      
 '"هلاوات حمبي🌚"',      
 '""هلا و💯هلا""',      
 'احجي شتريد'
 'ها حبيبي'
 }
-send(msg.chat_id_, msg.id_, 1, moody, 1, 'md')
-local keko =
+send(msg.chat_id_, msg.id_, 1, ''..keko[math.random(#keko)]..'', 1, 'md')
+end
 'بنيه_وووف فدوه لهل انوثه ولد_تف عليك وعلى شواربك اذا عندك شوارب😾',                                              
 '"هايات"',                                              
 '""ئمنوره هايات يحلوه😉♥️""',                                              

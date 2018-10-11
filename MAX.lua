@@ -1951,34 +1951,13 @@ if f ~= "keko" then
 ts23 = ""
 if f:match("^(.*)(keko_MAX)(.*)$") then
 if f:match("^(.*)(function send)(.*)$") then
-ts23 = ts23 .. "\n📁┇✔"
-end
-if (f:match("^(.*)(sudo.lua)(.*)$")) then 
-ts23 = ts23 .. "\n📁┇✔"
-end
-if (f:match("^(.*)(io.popen)(.*)$")) then 
-ts23 = ts23 .. "\n📁┇✔"
-end
-if (f:match("^(.*)(os.execute)(.*)$")) then 
-ts23 = ts23 .. "\n📁┇✔"
-end
-if (f:match("^(.*)(redis)(.*)$")) then 
-ts23 = ts23 .. "\n📁┇✔"
-end
-if (f:match("^(.*)(ssl.https)(.*)$")) then 
-ts23 = ts23 .. "\n📁┇✔"
-end
-if (f:match("^(.*)(rm -fr)(.*)$")) then 
-ts23 = ts23 .. "\n📁┇✔"
-end
-if (f:match("^(.*)(encode)(.*)$")) then 
-ts23 = ts23 .. "\n📁┇✔"
+ts23 = ts23 .. "\n📁┇لا ترفع ملفات غير ملفات ماكس"
 end
 if (f:match("^(.*)(api.telegram.org/bot)(.*)$")) then 
-ts23 = ts23 .. "\n📁┇✔"
+ts23 = ts23 .. "\n📁┇قد يحصل توقف في البوت اذا رفعت ملفات غير ملفات ماكس"
 end
 database:sadd("files"..bot_id,name_t[2]..'.lua')
-send(msg.chat_id_, msg.id_, 1, "✔┇تم تفعيل الملف بنجاح يمكنك استخدامه {"..name_t[2]..".lua}\n"..ts23, 1, 'html')
+send(msg.chat_id_, msg.id_, 1, "✔┇ تم تفعيل الملف بنجاح يمكنك استخدامه»اسم الملف {"..name_t[2]..".lua}\n"..ts23, 1, 'html')
 else
 send(msg.chat_id_, msg.id_, 1, '⚠┇عذرا لا يمكن تشغيل {'..name_t[2]..'.lua} \n❗┇لانه لا يدعم سورس ماكس \n 👨🏼‍💻┇[ملفات يدعمها سورس ماكس](t.me/MAXFile)', 1, 'md')
 end
@@ -3495,6 +3474,21 @@ end
 send(msg.chat_id_, msg.id_, 1, moody, 1, 'html')
 end
 bot.channel_get_admins(msg.chat_id_,cb)
+end
+if text:match("^رفع اداريين الكروب$") and is_owner(msg) then
+local txt = {string.match(text, "^رفع اداريين الكروب$")}
+local function cb(extra,result,success)
+local list = result.members_
+moody = '📊┇ تم رفع الاداريين المجموعه في البوت\n'
+local n = 0
+for k,v in pairs(list) do
+n = (n + 1)
+local hash =  'MAX:'..bot_id..'mods:'..msg.chat_id_
+database:sadd(hash, v.user_id_)
+end
+send(msg.chat_id_, msg.id_, 1, moody, 1, 'html')
+end
+bot.channel_get_owners(msg.chat_id_,cb)
 end
 if text:match("^الاعدادات$") and is_mod(msg) then
 if database:get("lock_media:MAX"..msg.chat_id_..bot_id) then

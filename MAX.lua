@@ -2364,12 +2364,6 @@ end
 getMessage(msg.chat_id_, msg.reply_to_message_id_,unban_by_reply)
 end
 if is_mod(msg) then 
-if text:match("وضع رابط (https://telegram.me/joinchat/%S+)") or text:match("وضع رابط (https://t.me/joinchat/%S+)") then   
-local glink = text:match("وضع رابط (https://telegram.me/joinchat/%S+)") or text:match("وضع رابط (https://t.me/joinchat/%S+)") 
-database:set('MAX:'..bot_id.."group:link"..msg.chat_id_,glink) 
-send(msg.chat_id_, msg.id_, 1, '☑️┇تم وضع رابط', 1, 'md') 
-send(msg.chat_id_, 0, 1, '📩┇رابط الكروب \n'..glink, 1, 'html')
-end 
 end
 if text:match("^الغاء حظر @(.*)$") and is_mod(msg) then
 local apba = {string.match(text, "^(الغاء حظر) @(.*)$")}
@@ -3129,31 +3123,34 @@ database:set('MAXTAME:'..bot_id..'flood:time:'..msg.chat_id_,floodt[2])
 send(msg.chat_id_, msg.id_, 1, '☑┇تم  وضع الزمن التكرار للعدد ~⪼  *{'..floodt[2]..'}*', 1, 'md')
 end
 end
-if text:match("^الرابط$") then
-if not database:get("MAX:mute:link:gr:"..bot_id..msg.chat_id_) then 
-function dl_cb222( t1,t2 )
-if t2.invite_link_ ~= false then 
-send(msg.chat_id_, msg.id_, 1, '📮┇رابط الكروب \n'..(t2.invite_link_ or "Error"), 1, "html")
-elseif (database:get('MAX:'..bot_id.."group:link"..msg.chat_id_) and database:get('MAX:'..bot_id.."group:link"..msg.chat_id_) ~= "Error") then 
-send(msg.chat_id_, msg.id_, 1, '📮┇رابط الكروب\n'..database:get('MAX:'..bot_id.."group:link"..msg.chat_id_), 1, "html")
+if text:match("^وضع تكرار (%d+)$") and is_owner(msg) then
+local floodmax = {string.match(text, "^(وضع تكرار) (%d+)$")}
+if tonumber(floodmax[2]) < 2 then
+send(msg.chat_id_, msg.id_, 1, '🔘┊ضع التكرار من *{2}* الى  *{99999}*', 1, 'md')
 else
-local getlink = 'https://api.telegram.org/bot'..token..'/exportChatInviteLink?chat_id='..msg.chat_id_
-local req = https.request(getlink)
-local link = json:decode(req)
-if link.ok == true then 
-send(msg.chat_id_, msg.id_, 1, '📮┇رابط الكروب\n'..(link.result or "Error"), 1, "html")
-database:set('MAX:'..bot_id.."group:link"..msg.chat_id_,link.result)
-else 
-send(msg.chat_id_, msg.id_, 1, '⚠️┇لا يمكني الوصل الى الرابط عليك منحي صلاحيه {دعوه المستخدمين من خلال الرابط}', 1, "html")
+database:set('MAX:'..bot_id..'flood:max:'..msg.chat_id_,floodmax[2])
+send(msg.chat_id_, msg.id_, 1, '☑️┊تم  وضع التكرار بالطرد للعدد ~⪼  *{'..floodmax[2]..'}*', 1, 'md')
 end
 end
+if text:match("^وضع زمن التكرار (%d+)$") and is_owner(msg) then
+local floodt = {string.match(text, "^(وضع زمن التكرار) (%d+)$")}
+if tonumber(floodt[2]) < 1 then
+send(msg.chat_id_, msg.id_, 1, '🔘┊ضع العدد من *{1}* الى  *{99999}*', 1, 'md')
+else
+database:set('MAX:'..bot_id..'flood:time:'..msg.chat_id_,floodt[2])
+send(msg.chat_id_, msg.id_, 1, '☑️┊تم  وضع الزمن التكرار للعدد ~⪼  *{'..floodt[2]..'}*', 1, 'md')
 end
-tdcli_function ({
-ID = "GetChannelFull",
-channel_id_ = getChatId(msg.chat_id_).ID
-}, dl_cb222, nil)
-else 
-send(msg.chat_id_, msg.id_, 1, '🖲┇جلب الرابط معطل', 1, "html") 
+end
+if text:match("^وضع رابط$") and is_mod(msg) then
+database:set( 'MAX:'..bot_id.."group:link"..msg.chat_id_, 'Waiting For Link!\nPls Send Group Link')
+send(msg.chat_id_, msg.id_, 1, '📮┊قم بارسال الرابط  ليتم حفظه\n', 1, 'md')
+end
+if text:match("^الرابط$") then
+local link = database:get( 'MAX:'..bot_id.."group:link"..msg.chat_id_)
+if link then
+send(msg.chat_id_, msg.id_, 1, '📮┊رابط المجموعه\n'..link, 1, "html")
+else
+send(msg.chat_id_, msg.id_, 1, '🔘┊ ليتم حفظ الرابط ارسل { وضع الرابط } لحفظ الرابط الجديد', 1, 'html')
 end
 end
 -----------------------------------------------------------

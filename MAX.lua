@@ -3068,7 +3068,7 @@ MAX_oop = 'مميز'
 else
 MAX_oop = 'لا شيء'
 end
-texts = "💳⋮آيـديِك ∿≫ `{"..result.id_.."}`\n💼⋮رتـٓبتـٰك ∿≫ {"..MAX_oop.."}\n💬⋮مسْٰجاتٌك ∿≫ `{"..msgs.."}`\n🔧⋮تعُٰديلاتٰٓكّ ∿≫ `{"..edit.."}`"
+texts = "🌌 | عددالصور ~> `{"..result.id_.."}`\n📨 | يوزر ~> {"..MAX_oop.."}\n📖 | عدد مسجات `{"..msgs.."}`\n✏️ | مسجات معدله  ~> `{"..edit.."}`"
 else
 texts = "`"..result.id_.."`"
 end
@@ -4542,7 +4542,7 @@ local keko_text = {
 "وجهك وجه الچوب ختتف🐸😹",
 }
 keko3 = math.random(#keko_text)
-sendPhoto(msg.chat_id_, msg.id_, 0, 1, nil, result.photos_[0].sizes_[1].photo_.persistent_id_,"🎭"..keko_text[keko3].."\n🌌⋮صٰـورک ∿≫ "..all_photo_MAX.."\n🎟⋮يـٰوزرك∿≫ "..keko_info.."\n💳⋮آيـديِك ∿≫ (`"..msg.sender_user_id_.."`)\n💼⋮رتـٓبتـٰك ∿≫ "..t..'\n🌟⋮تفاعٰلٰك ∿≫ '..formsgg(msguser).."\n💬⋮مسْٰجاتٌك ∿≫ {"..user_msgs.."}\n🔧⋮تعُٰديلاتٰٓكّ ∿≫ {"..edit.."}\n┅┅┅┅┅┅┅┅┅┅┅┅ ",msg.id_,msg.id_.."")
+sendPhoto(msg.chat_id_, msg.id_, 0, 1, nil, result.photos_[0].sizes_[1].photo_.persistent_id_,"🎭"..keko_text[keko3].."\n🌌 | عدد صورك ~> "..all_photo_MAX.."\n📨 | يوزرك ~> "..keko_info.."\n🆔 | ايديك ~> (`"..msg.sender_user_id_.."`)\n🚸 | رتبتك ~> "..t..'\n📝 | تفاعلك ~> '..formsgg(msguser).."\n📖 | عدد مسجاتك ~> {"..user_msgs.."}\n✏️ | مسجات معدله {"..edit.."}\n————————— ",msg.id_,msg.id_.."")
 else 
 local MAX_new_text = database:get("MAX:gr:id:text:"..bot_id..msg.chat_id_)
 local MAX_new_text = MAX_new_text:gsub('#username',(keko_info or 'لا يوجد'))
@@ -4570,7 +4570,7 @@ else
 t = 'لا شيء'
 end
 if not database:get("MAX:gr:id:text:"..bot_id..msg.chat_id_) then 
-send(msg.chat_id_, msg.id_, 1, "✰ ᎒ ᎨᏧ ➣ ("..msg.sender_user_id_..")\n❖ ᎒ ᏬᏕᏋᖇ ➣ "..keko_info.."\n✰ ᎒ ᖇᎯᏁᏥ ➣ "..t.."\n❖ ᎒ ᗰᏕᏳ ➣ <b>{"..user_msgs.."}</b>\n✰ ᎒ ᏋᏧᎨᏡ ➣ <b>{"..edit.."}</b>\n┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅ ", 1, 'html')
+send(msg.chat_id_, msg.id_, 1, "🆔 | ايديك ~> ("..msg.sender_user_id_..")\n📨 | يوزرك ~> "..keko_info.."\n🚸 | رتبتك ~> "..t.."\n📖 | عدد مسجاتك ~> <b>{"..user_msgs.."}</b>\n✏️ | مسجات معدله  ~> <b>{"..edit.."}</b>\n————————— ", 1, 'html')
 else 
 local MAX_new_text = database:get("MAX:gr:id:text:"..bot_id..msg.chat_id_)
 local MAX_new_text = MAX_new_text:gsub('#username',(keko_info or 'لا يوجد'))

@@ -17,9 +17,9 @@ local getme = "https://api.telegram.org/bot" ..tokenCk.. '/getme'
 local req = https.request(getme)
 local data = JSON:decode(req)
 if data.ok == true then
-print("\27[31m✓ تم\27[m \27[1;34m»»ارسل ايدي المبرمج الاساسي««\27[m")
+print("\27[31m✓ تم تحقق من الايدي\27[m \27[1;34m»»ارسل ايدي المبرمج الاساسي««\27[m")
 local sudo_send  = io.read()
-print("\27[31m✓ تم\27[m")
+print("\27[31m✓ تم التحقق من التوكن\27[m")
 local MAX_file = io.open("sudo.lua", 'w')
 MAX_file:write("token = '" ..tokenCk.."'\n\nsudo_add = "..sudo_send.."" )
 MAX_file:close()

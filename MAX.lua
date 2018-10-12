@@ -4542,7 +4542,7 @@ local keko_text = {
 "وجهك وجه الچوب ختتف🐸😹",
 }
 keko3 = math.random(#keko_text)
-sendPhoto(msg.chat_id_, msg.id_, 0, 1, nil, result.photos_[0].sizes_[1].ZAZ_.peristent_id_,"🎭"..keko_text[keko3].."\n🌌 | عدد صورك ~> "..all_photo_MAX.."\n📨 | يوزرك ~> "..keko_info.."\n💳 | ايديك ~> (`"..msg.sender_user_id_.."`)\n🚸 | رتبتك ~> "..t..'\n📝 | تفاعلك ~> '..formsgg(msguser).."\n📖 | عدد مسجاتك ~> {"..user_msgs.."}\n✏️ | مسجات معدله {"..edit.."}\n————————— ",msg.id_,msg.id_.."")
+sendPhoto(msg.chat_id_, msg.id_, 0, 1, nil, result.photos_[0].sizes_[1].photo_.persistent_id_,"🎭"..keko_text[keko3].."\n🌌 | عدد صورك ~> "..all_photo_MAX.."\n📨 | يوزرك ~> "..keko_info.."\n💳 | ايديك ~> (`"..msg.sender_user_id_.."`)\n🚸 | رتبتك ~> "..t..'\n📝 | تفاعلك ~> '..formsgg(msguser).."\n📖 | عدد مسجاتك ~> {"..user_msgs.."}\n✏️ | مسجات معدله {"..edit.."}\n————————— ",msg.id_,msg.id_.."")
 else 
 local MAX_new_text = database:get("MAX:gr:id:text:"..bot_id..msg.chat_id_)
 local MAX_new_text = MAX_new_text:gsub('#username',(keko_info or 'لا يوجد'))

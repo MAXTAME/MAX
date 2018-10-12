@@ -2368,7 +2368,7 @@ if text:match("وضع رابط (https://telegram.me/joinchat/%S+)") or text:matc
 local glink = text:match("وضع رابط (https://telegram.me/joinchat/%S+)") or text:match("وضع رابط (https://t.me/joinchat/%S+)") 
 database:set('MAX:'..bot_id.."group:link"..msg.chat_id_,glink) 
 send(msg.chat_id_, msg.id_, 1, '☑️┇تم وضع رابط', 1, 'md') 
-send(msg.chat_id_, 0, 1, '📩┇تم وضع رابط \n'..glink, 1, 'html')
+send(msg.chat_id_, 0, 1, '📩┇رابط الكروب \n'..glink, 1, 'html')
 end 
 end
 if text:match("^الغاء حظر @(.*)$") and is_mod(msg) then
@@ -3114,13 +3114,6 @@ end
 if text:match("^وضع رابط$") and is_mod(msg) then
 database:set( 'MAX:'..bot_id.."group:link"..msg.chat_id_, 'Waiting For Link!\nPls Send Group Link')
 send(msg.chat_id_, msg.id_, 1, 'قم بارسال الرابط اذا كنت لا تعرف كيف تحظره اتبع تعليمات ┫اذهب الى اعدادات الموجوعه ومن ثم اضف اعضأ ومن ثم قم بدعوه من خلال رابط مجموعه  انسخ الربط وقم بارساله\n', 1, 'md')
-end
-if text:match("^الرابط$") then
-local link = database:get( 'MAX:'..bot_id.."group:link"..msg.chat_id_)
-if link then
-send(msg.chat_id_, msg.id_, 1, '🚸┋مْرحہٻًٳ عزيزي اليك رابط الموجوعه...\n'..link, 1, "html")
-else
-send(msg.chat_id_, msg.id_, 1, '🔖┋ اهلا عزيزي ارسل { وضع الرابط } لحفظ رابط مجموعه الجديد', 1, 'html')
 end
 end
 if (text and text == "تفعيل الاعلانات" and is_creator(msg)) then 

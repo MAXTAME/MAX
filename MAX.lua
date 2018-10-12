@@ -3742,35 +3742,17 @@ end
 end
 
 if text:match("^اطردني$") then
-if not database:get('MAX:'..bot_id..'kickme:mute'..msg.chat_id_) then
-redis:set('MAX:'..bot_id..'kickyess'..msg.sender_user_id_..'', 'kickyes')
-redis:set('MAX:'..bot_id..'kicknoo'..msg.sender_user_id_..'', 'kickno')
-send(msg.chat_id_, msg.id_, 1, '🚷┇ ارسل ؛ نعم ، ليتم دفرك\n🔘┇ارسل ؛ لا ، لالغاء الامر', 1, 'md')
-else
-send(msg.chat_id_, msg.id_, 1, '⚠┇تم تعطيل امر اطردني', 1, 'md')
+if not database:get('MAX:'..bot_id..'kickme:mute'..msg.chat_id_) thenredis:set('MAX:'..bot_id..'kickyess'..msg.sender_user_id_..'', 'kickyes')redis:set('MAX:'..bot_id..'kicknoo'..msg.sender_user_id_..'', 'kickno')
 end
 end
 local yess = redis:get('MAX:'..bot_id..'kickyess'..msg.sender_user_id_..'')
 if yess == 'kickyes' then
-if text:match("^نعم$") then
-if is_vip(msg) then
-send(msg.chat_id_, msg.id_, 1, '❕┇لا استطيع دفر \n🔘┇(اداريين،ادمنيه،مميزين)البوت', 1, 'md')
-else
-local yess = redis:get('MAX:'..bot_id..'kickyess'..msg.sender_user_id_..'')
-if yess == 'kickyes' then
-chat_kick(msg.chat_id_, msg.sender_user_id_)
+if text:match("^اطردني$") then
+if is_vip(msg) thensend(msg.chat_id_, msg.id_, 1, '❕┇لا استطيع دفر \n🔘┇(اداريين،ادمنيه،مميزين)البوت', 1, 'md')
+else local yess = redis:get('MAX:'..bot_id..'kickyess'..msg.sender_user_id_..'')
+if yess == 'kickyes' thenchat_kick(msg.chat_id_, msg.sender_user_id_)
 redis:del('MAX:'..bot_id..'kickyess'..msg.sender_user_id_..'', 'kickyes')
-redis:del('MAX:'..bot_id..'kicknoo'..msg.sender_user_id_..'', 'kickno')
-send(msg.chat_id_, msg.id_, 1, '✅┇تم دفرك من المجموعه', 1, 'md')
-end
-end
-end
-if text:match("^لا$") then
-local noo = redis:get('MAX:'..bot_id..'kicknoo'..msg.sender_user_id_..'')
-if noo == 'kickno' then
-redis:del('MAX:'..bot_id..'kickyess'..msg.sender_user_id_..'', 'kickyes')
-redis:del('MAX:'..bot_id..'kicknoo'..msg.sender_user_id_..'', 'kickno')
-send(msg.chat_id_, msg.id_, 1, '🔘┇تم الغاء الامر', 1, 'md')
+redis:del('MAX:'..bot_id..'kicknoo'..msg.sender_user_id_..'', 'kickno')send(msg.chat_id_, msg.id_, 1, '✅┇تم دفرك من المجموعه', 1, 'md')
 end
 end
 end

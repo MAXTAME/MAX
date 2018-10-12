@@ -2368,7 +2368,7 @@ if text:match("وضع رابط (https://telegram.me/joinchat/%S+)") or text:matc
 local glink = text:match("وضع رابط (https://telegram.me/joinchat/%S+)") or text:match("وضع رابط (https://t.me/joinchat/%S+)") 
 database:set('MAX:'..bot_id.."group:link"..msg.chat_id_,glink) 
 send(msg.chat_id_, msg.id_, 1, '☑️┇تم وضع رابط', 1, 'md') 
-send(msg.chat_id_, 0, 1, '📩┇ᏳᖇᎧᏬᎮ ᏝᎨᏁᏥ الجديد\n'..glink, 1, 'html')
+send(msg.chat_id_, 0, 1, '📩┇تم وضع رابط \n'..glink, 1, 'html')
 end 
 end
 if text:match("^الغاء حظر @(.*)$") and is_mod(msg) then
@@ -3111,23 +3111,16 @@ database:set('MAX:'..bot_id..'flood:max:'..msg.chat_id_,floodmax[2])
 send(msg.chat_id_, msg.id_, 1, '☑┇تم  وضع التكرار بالطرد للعدد ~⪼  *{'..floodmax[2]..'}*', 1, 'md')
 end
 end
-if text and text == "وضع رابط" and is_admin(msg) then 
-send(msg.chat_id_, msg.id_, 1, '💥┇ارسال الان رابط المجموعه', 1, "md") 
-database:set("keko:get:url:"..bot_id..msg.chat_id_..msg.sender_user_id_,true)
-return "keko"
+if text:match("^وضع رابط$") and is_mod(msg) then
+database:set( 'MAX:'..bot_id.."group:link"..msg.chat_id_, 'Waiting For Link!\nPls Send Group Link')
+send(msg.chat_id_, msg.id_, 1, 'قم بارسال الرابط اذا كنت لا تعرف كيف تحظره اتبع تعليمات ┫اذهب الى اعدادات الموجوعه ومن ثم اضف اعضأ ومن ثم قم بدعوه من خلال رابط مجموعه  انسخ الربط وقم بارساله\n', 1, 'md')
 end
-if text and database:get("keko:get:url:"..bot_id..msg.chat_id_..msg.sender_user_id_) and text:match("[Hh][Tt][Tt][pP]") then 
-send(msg.chat_id_, msg.id_, 1, '☑┇تم وضع : ['..text..']', 1, 'md')
-database:set('MAX:'..bot_id.."group:link"..msg.chat_id_,text)
-database:del("keko:get:url:"..bot_id..msg.chat_id_..msg.sender_user_id_,true)
-return "keko"
-end
-if (text and text == "تعطيل الاعلانات" and is_creator(msg)) then 
-if not is_sudo(msg) then 
-database:set("MAX:gr:not:ads:"..bot_id..msg.chat_id_..os.date("%x"),"ok")
-send(msg.chat_id_, msg.id_, 1, '🖲┇ تم تعطيل ضهور الاعلانات لمده يوم \n📊┇ [يمكنك معرفه المزيد حول الاعلانات هنا](https://t.me/MAXTAME)', 1, "md") 
+if text:match("^الرابط$") then
+local link = database:get( 'MAX:'..bot_id.."group:link"..msg.chat_id_)
+if link then
+send(msg.chat_id_, msg.id_, 1, '🚸┋مْرحہٻًٳ عزيزي اليك رابط الموجوعه...\n'..link, 1, "html")
 else
-send(msg.chat_id_, msg.id_, 1, '💥┇ عزيزي المطور لايمكنك تعطيل هاذه الامر \n📊┇ [يمكنك معرفه المزيد حول الاعلانات هنا](https://t.me/MAXTAME)', 1, "md") 
+send(msg.chat_id_, msg.id_, 1, '🔖┋ اهلا عزيزي ارسل { وضع الرابط } لحفظ رابط مجموعه الجديد', 1, 'html')
 end
 end
 if (text and text == "تفعيل الاعلانات" and is_creator(msg)) then 
@@ -3147,15 +3140,15 @@ if text:match("^الرابط$") then
 if not database:get("MAX:mute:link:gr:"..bot_id..msg.chat_id_) then 
 function dl_cb222( t1,t2 )
 if t2.invite_link_ ~= false then 
-send(msg.chat_id_, msg.id_, 1, '📮┇رابط المجموعه\n'..(t2.invite_link_ or "Error"), 1, "html")
+send(msg.chat_id_, msg.id_, 1, '📮┇رابط الكروب اضغط للنسخ\n'..`(t2.invite_link_ or "Error")`, 1, "html")
 elseif (database:get('MAX:'..bot_id.."group:link"..msg.chat_id_) and database:get('MAX:'..bot_id.."group:link"..msg.chat_id_) ~= "Error") then 
-send(msg.chat_id_, msg.id_, 1, '📮┇رابط المجموعه\n'..database:get('tshake:'..bot_id.."group:link"..msg.chat_id_), 1, "html")
+send(msg.chat_id_, msg.id_, 1, '📮┇رابط الكروب اضغط للنسخ\n'..database:get`('MAX:'..bot_id.."group:link"..msg.chat_id_)`, 1, "html")
 else
 local getlink = 'https://api.telegram.org/bot'..token..'/exportChatInviteLink?chat_id='..msg.chat_id_
 local req = https.request(getlink)
 local link = json:decode(req)
 if link.ok == true then 
-send(msg.chat_id_, msg.id_, 1, '📮┇رابط المجموعه \n'..(link.result or "Error"), 1, "html")
+send(msg.chat_id_, msg.id_, 1, '📮┇رابط الكروب اضغط للنسخ \n'..`(link.result or "Error")`, 1, "html")
 database:set('MAX:'..bot_id.."group:link"..msg.chat_id_,link.result)
 else 
 send(msg.chat_id_, msg.id_, 1, '⚠️┇لا يمكني الوصل الى الرابط عليك منحي صلاحيه {دعوه المستخدمين من خلال الرابط}', 1, "html")
@@ -3346,7 +3339,7 @@ send(msg.chat_id_, msg.id_, 1, '☑┇تم مسح القوانين المحفو�
 end
 if txt[2] == 'مسح الرابط' then
 database:del('MAX:'..bot_id..'group:link'..msg.chat_id_)
-send(msg.chat_id_, msg.id_, 1, '☑┇تم مسح الرابط المحفوظ', 1, 'md')
+send(msg.chat_id_, msg.id_, 1, '☑┇تم مسح الرابط اكتب وضغ رابط اذا اردت انت تضع رابط ', 1, 'md')
 end
 if txt[2] == 'قائمه المنع' then
 database:del('MAX:'..bot_id..'filters:'..msg.chat_id_)

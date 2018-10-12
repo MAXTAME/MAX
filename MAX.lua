@@ -3140,15 +3140,15 @@ if text:match("^الرابط$") then
 if not database:get("MAX:mute:link:gr:"..bot_id..msg.chat_id_) then 
 function dl_cb222( t1,t2 )
 if t2.invite_link_ ~= false then 
-send(msg.chat_id_, msg.id_, 1, '📮┇رابط الكروب اضغط للنسخ\n'..`(t2.invite_link_ or "Error")`, 1, "html")
+send(msg.chat_id_, msg.id_, 1, '📮┇رابط الكروب \n'..(t2.invite_link_ or "Error"), 1, "html")
 elseif (database:get('MAX:'..bot_id.."group:link"..msg.chat_id_) and database:get('MAX:'..bot_id.."group:link"..msg.chat_id_) ~= "Error") then 
-send(msg.chat_id_, msg.id_, 1, '📮┇رابط الكروب اضغط للنسخ\n'..database:get`('MAX:'..bot_id.."group:link"..msg.chat_id_)`, 1, "html")
+send(msg.chat_id_, msg.id_, 1, '📮┇رابط الكروب\n'..database:get('MAX:'..bot_id.."group:link"..msg.chat_id_), 1, "html")
 else
 local getlink = 'https://api.telegram.org/bot'..token..'/exportChatInviteLink?chat_id='..msg.chat_id_
 local req = https.request(getlink)
 local link = json:decode(req)
 if link.ok == true then 
-send(msg.chat_id_, msg.id_, 1, '📮┇رابط الكروب اضغط للنسخ \n'..`(link.result or "Error")`, 1, "html")
+send(msg.chat_id_, msg.id_, 1, '📮┇رابط الكروب\n'..(link.result or "Error"), 1, "html")
 database:set('MAX:'..bot_id.."group:link"..msg.chat_id_,link.result)
 else 
 send(msg.chat_id_, msg.id_, 1, '⚠️┇لا يمكني الوصل الى الرابط عليك منحي صلاحيه {دعوه المستخدمين من خلال الرابط}', 1, "html")

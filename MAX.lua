@@ -3156,10 +3156,18 @@ if not database:get("MAX:mute:link:gr:"..bot_id..msg.chat_id_) then
 function dl_cb222( t1,t2 )
 if t2.invite_link_ ~= false then 
 send(msg.chat_id_, msg.id_, 1, '📮┇رابط المجموعه\n'..(t2.invite_link_ or "Error"), 1, "html")
-elseif (database:get('MAX:'..bot_id.."group:link"..msg.chat_id_)) then 
-send(msg.chat_id_, msg.id_, 1, '📮┇رابط المجموعه\n'..database:get('MAX:'..bot_id.."group:link"..msg.chat_id_), 1, "html")
+elseif (database:get('MAX:'..bot_id.."group:link"..msg.chat_id_) and database:get('MAX:'..bot_id.."group:link"..msg.chat_id_) ~= "Error") then 
+send(msg.chat_id_, msg.id_, 1, '📮┇رابط المجموعه\n'..database:get('tshake:'..bot_id.."group:link"..msg.chat_id_), 1, "html")
 else
-send(msg.chat_id_, msg.id_, 1, '⚠️┇لا يمكني الوصل الى الرابط عليك منحي صلاحيه {دعوه المستخدمين من خلال الرابط}', 1, "html")
+local getlink = 'https://api.telegram.org/bot'..token..'/exportChatInviteLink?chat_id='..msg.chat_id_
+local req = https.request(getlink)
+local link = json:decode(req)
+if link.ok == true then 
+send(msg.chat_id_, msg.id_, 1, '📮┇رابط المجموعه \n'..(link.result or "Error"), 1, "html")
+database:set('MAX:'..bot_id.."group:link"..msg.chat_id_,link.result)
+else 
+send(msg.chat_id_, msg.id_, 1, '⚠️┇لا يمكني الوصول الى الرابط عليك منحي صلاحيه {دعوه المستخدمين من خلال الرابط}', 1, "html")
+end
 end
 end
 tdcli_function ({
@@ -3167,7 +3175,7 @@ ID = "GetChannelFull",
 channel_id_ = getChatId(msg.chat_id_).ID
 }, dl_cb222, nil)
 else 
-send(msg.chat_id_, msg.id_, 1, '🖲┇احضر الرابط معطل', 1, "html") 
+send(msg.chat_id_, msg.id_, 1, '🖲┇جلب الرابط معطل', 1, "html") 
 end
 end
 -----------------------------------------------------------
@@ -3262,6 +3270,14 @@ send(msg.chat_id_, msg.id_, 1, "📊┇لا توجد بوتات في المجم�
 end
 end
 bot.channel_get_bots(msg.chat_id_,cb)
+end
+if text:match("^(time)$") or text:match("^(الوقت)$") then
+local url , res = https.request('https://sajad.gq/api/date/')
+if res ~= 200 then return end
+local jd = json:decode(url)
+MAX = "📅 ⁞ التاريخ • "..jd.EnDate.WordOne.."\n🕐 ⁞ الساعه • "..jd.EnTime.Number..""
+MAXdx(msg.chat_id_, msg.id_, 1, MAX, 1, 'md')
+end
 end
 if text:match("^مسجاتي$") and msg.reply_to_message_id_ == 0  then
 local user_msgs = database:get('MAX:'..bot_id..'user:msgs'..msg.chat_id_..':'..msg.sender_user_id_)

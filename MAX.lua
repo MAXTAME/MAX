@@ -3795,7 +3795,7 @@ local nakeko = redis:get('MAX:'..bot_id..'nakeko')
 if text_sudo then
 send(msg.chat_id_, msg.id_, 1, text_sudo, 1, 'md')
 else
-sendContact(msg.chat_id_, msg.id_, 0, 1, nil, (nkeko or 9647723177600), (nakeko or "MAX TAME"), "", bot_id)
+sendContact(msg.chat_id_, msg.id_, 0, 1, nil, (nkeko or 96477000000000), (nakeko or "MAX TAME"), "", bot_id)
 end
 end
 for k,v in pairs(sudo_users) do

@@ -39,7 +39,6 @@ print(Green.."\nThes all Files.\n\n\n"..reset)
 io.popen("mkdir files_MAX")
 os.execute('cd .. &&  rm -rf .telegram-cli')
 os.execute('cd .. &&  rm -fr .telegram-cli')
---         »»                 Start Functions                         ««              --
 --         »»                 is_sudo                         ««              --
 function is_sudo(msg)
 local var = false
@@ -48,6 +47,26 @@ if msg.sender_user_id_ == v then var = true end
 end
 local keko_add_sudo = redis:get('MAX:'..bot_id..'sudoo'..msg.sender_user_id_..'')
 if keko_add_sudo then var = true end return var
+end
+--         »»                 MAXdx Functions                         ««              --
+function MAXdx(chat_id, reply_to_message_id, disable_notification, text, disable_web_page_preview, parse_mode)
+local TextParseMode = getParseMode(parse_mode)
+tdcli_function ({
+ID = "SendMessage",
+chat_id_ = chat_id,
+reply_to_message_id_ = reply_to_message_id,
+disable_notification_ = disable_notification,
+from_background_ = 1,
+reply_markup_ = nil,
+input_message_content_ = {
+ID = "InputMessageText",
+text_ = text,
+disable_web_page_preview_ = disable_web_page_preview,
+clear_draft_ = 0,
+entities_ = {},
+parse_mode_ = TextParseMode,
+},
+}, dl_cb, nil)
 end
 --         »»                 is_admin                         ««              --
 function is_admin(msg)
@@ -62,7 +81,7 @@ local keko_add_sudo = redis:get('MAX:'..bot_id..'sudoo'..user_id..'')
 if keko_add_sudo then var = true end
 return var
 end
---         »»                 is_admin                         ««              --
+--         »»                 ck_admin                         ««              --
 function ck_admin(user_id)
 local var = false 
 local admin = database:sismember('MAX:'..bot_id..'admins:', user_id)

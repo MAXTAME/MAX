@@ -2841,7 +2841,74 @@ text = "✖┇لايوجد ادمنيه"
 end
 send(msg.chat_id_, msg.id_, 1, text, 1, 'html')
 end
+end
 -----------------------------------------------
+if text:match("^المعلومات$") and msg.reply_to_message_id_ ~= 0 then
+function id_by_reply(extra, result, success)
+if not database:get('MAX:'..bot_id..'id:mute'..msg.chat_id_) then 
+local msgs = database:get('MAX:'..bot_id..'user:msgs'..msg.chat_id_..':'..result.sender_user_id_) or 0
+local edit = database:get('MAX:'..bot_id..'user:editmsg'..msg.chat_id_..':'..result.sender_user_id_) or 0
+local msg2 = msg
+msg2.sender_user_id_ = result.sender_user_id_
+if is_sudo(msg2) then
+MAX_oop = 'مبرمج البوت'
+elseif is_creator(msg) then
+MAX_oop = 'منشئ الكروب'
+elseif (database:get("MAX:name_user:"..bot_id..msg.chat_id_..result.sender_user_id_) and database:get("MAX:all_if:"..database:get("MAX:name_user:"..bot_id..msg.chat_id_..result.sender_user_id_) ..bot_id..msg.chat_id_)) then 
+MAX_oop = database:get("MAX:name_user:"..bot_id..msg.chat_id_..result.sender_user_id_)
+elseif is_owner(msg2) then
+MAX_oop = 'اداري الكروب'
+elseif ck_mod(result.sender_user_id_,msg.chat_id_) then
+MAX_oop = 'ادمن للكروب'
+elseif is_vip(msg2) then
+MAX_oop = 'مميز الكروب'
+else
+MAX_oop = 'لا شيء'
+end
+send(msg.chat_id_, msg.id_, 1,"مرحبا عزيزي اليك معلومات عن العضو :        💳⋮ايديه{"..result.sender_user_id_.."}\n💼⋮رتـٓبتـٰه ∿≫ {"..MAX_oop.."}\n🌟⋮تفاعٰلٰه ∿≫ {"..formsgg(msguser).."}\n💬⋮مسْٰجاتٌه ∿≫ {"..msgs.."}\n🔧⋮تعُٰديلاتٰٓه ∿≫ {"..edit.."}", 1, 'md')
+else
+send(msg.chat_id_, msg.id_, 1,""..result.sender_user_id_.."", 1, 'md')
+end
+end
+getMessage(msg.chat_id_, msg.reply_to_message_id_,id_by_reply)
+end  
+if text:match("^الايدي @(.*)$") then
+local ap = {string.match(text, "^(ايدي) @(.*)$")}
+function id_by_username(extra, result, success)
+if result.id_ then
+if not database:get('MAX:'..bot_id..'id:mute'..msg.chat_id_) then 
+local msgs = database:get('MAX:'..bot_id..'user:msgs'..msg.chat_id_..':'..result.id_) or 0
+local edit = database:get('MAX:'..bot_id..'user:editmsg'..msg.chat_id_..':'..result.id_) or 0
+local msg2 = msg
+msg2.sender_user_id_ = result.id_
+if is_sudo(msg2) then
+MAX_oop = 'مبرمج البوت'
+elseif is_creator(msg) then
+MAX_oop = 'منشئ الگروب'
+elseif (database:get("MAX:name_user:"..bot_id..msg.chat_id_..result.id_) and database:get("MAX:all_if:"..database:get("MAX:name_user:"..bot_id..msg.chat_id_..result.id_) ..bot_id..msg.chat_id_)) then 
+MAX_oop = database:get("MAX:name_user:"..bot_id..msg.chat_id_..result.id_)
+elseif is_owner(msg2) then
+MAX_oop = 'اداري بالبوت👨🏿‍🚒'
+elseif ck_mod(result.id_,msg.chat_id_) then
+MAX_oop = 'ادمن بالبوت🎉'
+elseif is_vip(msg2) then
+MAX_oop = 'مميز'
+else
+MAX_oop = 'لا شيء'
+end
+texts = "💳⋮آيـديِك ∿≫ {"..result.id_.."}\n💼⋮رتـٓبتـٰك ∿≫ {"..MAX_oop.."}\n🌟⋮تفاعٰلٰك ∿≫ {"..formsgg(msguser).."}\n💬⋮مسْٰجاتٌك ∿≫ {"..msgs.."}\n🔧⋮تعُٰديلاتٰٓكّ ∿≫ {"..edit.."}"
+else
+texts = ""..result.id_..""
+end
+else
+texts = '✖┇خطاء'
+end
+send(msg.chat_id_, msg.id_, 1, texts, 1, 'md')
+end
+resolve_username(ap[2],id_by_username)
+end
+end
+----------------------------------
 if (text and text == "ابلاغ" and msg.reply_to_message_id_ ~= 0 and (not database:get("MAX:mute:deleta:msg:"..bot_id..msg.chat_id_))) then 
 b = database:get("MAX:user:deleteL:msg:"..msg.chat_id_..bot_id..msg.sender_user_id_)
 if b and b == os.date("%x") then 
@@ -4162,7 +4229,7 @@ if text:match("^كرر (.*)$") and is_mod(msg) then
 local txt = {string.match(text, "^(كرر) (.*)$")}
 send(msg.chat_id_, msg.id_, 1, txt[2], 1, 'html')
 end  
-if text:match("^وضع قوانين (.*)$") and is_mod(msg) then
+if text:match("^ضع قوانين (.*)$") and is_mod(msg) then
 local txt = {string.match(text, "^(وضع قوانين) (.*)$")}
 database:set('MAX:'..bot_id..'rules'..msg.chat_id_, txt[2])
 send(msg.chat_id_, msg.id_, 1, "✔┇تم وضع القوانين للمجموعه", 1, 'md')
@@ -4175,12 +4242,12 @@ else
 send(msg.chat_id_, msg.id_, 1, '⚜┇لم يتم حفظ قوانين للمجموعه', 1, 'md')
 end
 end  
-if text:match("^وضع اسم (.*)$") and is_mod(msg)  then
+if text:match("^ضع اسم (.*)$") and is_mod(msg)  then
 local txt = {string.match(text, "^(وضع اسم) (.*)$")}
 changetitle(msg.chat_id_, txt[2])
 send(msg.chat_id_, msg.id_, 1, '✔┇تم تحديث اسم المجموعه الى \n'..txt[2], 1, 'md')
 end
-if text:match("^وضع صوره") and is_mod(msg) then
+if text:match("^ضع صوره") and is_mod(msg) then
 database:set('MAX:'..bot_id..'setphoto'..msg.chat_id_..':'..msg.sender_user_id_,true)
 send(msg.chat_id_, msg.id_, 1, '📥┇قم بارسال صوره الان', 1, 'md')
 end
@@ -4188,12 +4255,12 @@ if text:match("^مسح الصوره") and is_mod(msg) then
 https.request('https://api.telegram.org/bot'..token..'/deleteChatPhoto?chat_id='..msg.chat_id_)
 send(msg.chat_id_, msg.id_, 1, '🗑┇تم مسح الصوره', 1, 'md')
 end
-if text:match("^وضع وصف (.*)$") and is_mod(msg) then
+if text:match("^ضع وصف (.*)$") and is_mod(msg) then
 local text = {string.match(text, "^(وضع وصف) (.*)$")}
 bot.changeChannelAbout(msg.chat_id_,text[2])
 send(msg.chat_id_, msg.id_, 1, "✔┇تم وضع وصف للمجموعه", 1, 'md')
 end  
-if text:match("^الوقت$") and is_mod(msg) then
+if text:match("^وقت المجموعه$") and is_mod(msg) then
 local ex = database:ttl( 'MAX:'..bot_id.."charge:"..msg.chat_id_)
 if ex == -1 then
 send(msg.chat_id_, msg.id_, 1, '🔘┇وقت المجموعه لا نهائي` ☑', 1, 'md')

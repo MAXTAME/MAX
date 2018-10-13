@@ -3775,7 +3775,7 @@ end
 end
 end
 
-if (text and text == 'تغير كليشه المبرمج') and tonumber(msg.sender_user_id_) == tonumber(cre) then
+if (text and text == 'تغير كليشه المبرمج') and tonumber(msg.sender_user_id_) == tonumber(sudo_add) then
 send(msg.chat_id_, msg.id_, 1, '📥┇الان يمكنك ارسال الكليشه  ليتم حفظها', 1, 'html')
 redis:set('MAX:'..bot_id..'texts'..msg.sender_user_id_..'', 'msg')
 return false end
@@ -3788,14 +3788,14 @@ redis:set('MAX:'..bot_id..'text_sudo', text)
 send(msg.chat_id_, msg.id_, 1, text , 1, 'html')
 return false end
 end
-if text:match("^[Dd][Ee][Vv]$")or text:match("^مبرمج بوت$") or text:match("^المطور$") or text:match("^مبرمج البوت$") or text:match("^مبرمج$") or text:match("^المبرمج$") and msg.reply_to_message_id_ == 0 then
-local text_sudo = redis:get('MAX:'..bot_id..'text_sudo')
+if text:match("^[Dd][Ee][Vv]$")or text:match("^مبرمج بوت$") or text:match("^مبرمجين$") or text:match("^مبرمج البوت$") or text:match("^مبرمج$") or text:match("^المبرمج$") and msg.reply_to_message_id_ == 0 then
+local text_sudo = redis:get('tshake:'..bot_id..'text_sudo')
 local nkeko = redis:get('MAX:'..bot_id..'nmkeko')
 local nakeko = redis:get('MAX:'..bot_id..'nakeko')
 if text_sudo then
 send(msg.chat_id_, msg.id_, 1, text_sudo, 1, 'md')
 else
-sendContact(msg.chat_id_, msg.id_, 0, 1, nil, (nkeko or 9647723177600), (nakeko or "MAX TEAM"), "", bot_id)
+sendContact(msg.chat_id_, msg.id_, 0, 1, nil, (nkeko or 9647723177600), (nakeko or "MAX TAME"), "", bot_id)
 end
 end
 for k,v in pairs(sudo_users) do
@@ -4967,7 +4967,7 @@ local text =  [[
 💠┇《اضف/مسح》رد للكل
 💠┇《ردود المبرمج》
 💠┇《تغير رقم المبرمج》
-💠┇《تغير/مسح》امر المبرمج بالكليشه
+💠┇《تغير/مسح》كليشه المبرمج
 💠┇《تعين/مسح》مجموعه المبرمج 
 💠┇《عدد الكروبات》
 ﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎

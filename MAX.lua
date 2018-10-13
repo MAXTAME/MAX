@@ -4,7 +4,7 @@
     |     | / _ \  \  /
     | \_/ |/ ___ \ /  \
     |_| |_/_/   \_/_/\_\
-           CH > @MAX_TIME
+           CH > @MAXTAME
 --]]
 --------------------------------------
 serpent = require('serpent')
@@ -371,7 +371,30 @@ ID = "GetUserFull",
 user_id_ = user_id
 }, cb, nil)
 end
---         »»                 vardump                         ««              --
+--         »»                 vardump  ««              --
+function formsgg(msgs) 
+local taha = ''  
+if msgs < 100 then 
+taha = 'ضعيف استمر 🙂' 
+elseif msgs < 500 then 
+taha = 'بده يتحسن استمر ♥️' 
+elseif msgs < 1500 then 
+taha = 'تفاعلك وسط 😻' 
+elseif msgs < 5000 then 
+taha = 'متفاعل' 
+elseif msgs < 10000 then 
+taha = 'متفاعل 💫' 
+elseif msgs < 50000 then 
+taha = 'جائزه اوسكار بالتفاعل 😍' 
+elseif msgs < 90000 then 
+taha = 'ملك التفاعل 👑'  
+elseif msgs < 100000 then 
+taha = 'متفاعل ناار 😻🔥' 
+elseif msgs < 1000000 then 
+taha = 'سلطان التفاعل 🤴🏻' 
+end 
+return taha 
+end
 function vardump(value)
 print(serpent.block(value, {comment=false}))
 end
@@ -1110,9 +1133,9 @@ end
 if (text == "قفل الاشعارات") then
 local tsX_o = database:get("lock_new:MAX"..msg.chat_id_..bot_id)
 if tsX_o then
-tsX000("lock",msg,"☑┇الاشعارات مقفوله!")
+tsX000("lock",msg,"✔┇الاشعارات مقفوله!")
 else
-tsX000("lock",msg,"☑┇تم قفل الاشعارات")
+tsX000("lock",msg,"✔┇تم قفل الاشعارات")
 database:set("lock_new:MAX"..msg.chat_id_..bot_id,"ok")
 end
 end
@@ -1137,9 +1160,9 @@ end
 if (text == "قفل بصمه الفيديو") then
 local tsX_o = database:get("lock_note:MAX"..msg.chat_id_..bot_id)
 if tsX_o then
-tsX000("lock",msg,"☑┇بالفعل تم قفل بصمه فيديو")
+tsX000("lock",msg,"✔┇بالفعل تم قفل بصمه فيديو")
 else
-tsX000("lock",msg,"☑┇تم قفل بصمه فيديو")
+tsX000("lock",msg,"✔┇تم قفل بصمه فيديو")
 database:set("lock_note:MAX"..msg.chat_id_..bot_id,"ok")
 end
 end
@@ -1337,9 +1360,9 @@ end
 if (text == "فتح الفارسيه") then
 local tsX_o = database:get("lock_pe:MAX"..msg.chat_id_..bot_id)
 if not tsX_o then
-tsX000("lock",msg,"✔┇الفارسيه مفتوحه")
+tsX000("lock",msg,"☑┇الفارسيه مفتوحه")
 else
-tsX000("lock",msg,"✔┇تم فتح الفارسيه")
+tsX000("lock",msg,"☑┇تمتم فتح الفارسيه")
 database:del("lock_pe:MAX"..msg.chat_id_..bot_id,"ok")
 end
 end
@@ -1817,8 +1840,8 @@ os.execute('wget https://github.com/MAXTAME/MAX/blob/master/MAX.lua')
 os.exit()
 return false
 end
-if text:match("^وضع وقت (%d+)$") then
-local a = {string.match(text, "^(وضع وقت) (%d+)$")}
+if text:match("^ضع وقت (%d+)$") then
+local a = {string.match(text, "^(ضع وقت) (%d+)$")}
 local time = a[2] * day
 database:setex( 'MAX:'..bot_id.."charge:"..msg.chat_id_,time,true)
 database:set( 'MAX:'..bot_id.."enable:"..msg.chat_id_,true)
@@ -1970,11 +1993,11 @@ if (text:match("^(مسح الملفات)$"))then
 database:del("files"..bot_id)
 send(msg.chat_id_, msg.id_, 1, "🗑┇تم حذف جميع الملفات", 1, 'html')
 end
-if text:match("^(حذف ملف) (.*)(.lua)$") then
-local name_t = {string.match(text, "^(حذف ملف) (.*)(.lua)$")}
+if text:match("^(مسح ملف) (.*)(.lua)$") then
+local name_t = {string.match(text, "^(مسح ملف) (.*)(.lua)$")}
 io.popen("rm -fr files_MAX/"..name_t[2]..'.lua')
 database:srem("files"..bot_id,name_t[2]..'.lua')
-send(msg.chat_id_, msg.id_, 1, "✖┇تم حذف {"..name_t[2]..".lua}", 1, 'html')
+send(msg.chat_id_, msg.id_, 1, "✖┇تم مسح {"..name_t[2]..".lua}", 1, 'html')
 end
 if (msg.content_.text_ == 'رفع ملف' ) then
 send(msg.chat_id_, msg.id_, 1, " 📥┇ ارسل ملف الان", 1, 'html')
@@ -2014,16 +2037,16 @@ end
 
 end --sudo
 if tonumber(msg.sender_user_id_) == tonumber(sudo_add) then
-if text == 'تفعيل التلقائي'then
+if text == 'تفعيل البوت الخدمي'then
 database:set("add"..bot_id, "yes")
-send(msg.chat_id_, msg.id_, 1, "☑┇تم تفعيل التلقائي", 1, 'html')
+send(msg.chat_id_, msg.id_, 1, "☑┇تم تفعيل البوت الخدمي", 1, 'html')
 end
-if (text == 'تعطيل التلقائي') then
+if (text == 'تعطيل البوت الخدمي') then
 database:del("add"..bot_id)
-send(msg.chat_id_, msg.id_, 1, "❎┇تم تعطيل التلقائي", 1, 'html')
+send(msg.chat_id_, msg.id_, 1, "❎┇تم تعطيل البوت الخدمي", 1, 'html')
 end
-if text:match("^(تعين عدد الاعضاء) (.*)$") then
-local kekoj = {string.match(text, "^(تعين عدد الاعضاء) (.*)$")}
+if text:match("^(تعين الاعضاء) (.*)$") then
+local kekoj = {string.match(text, "^(تعين الاعضاء) (.*)$")}
 database:set("ts_a"..bot_id,kekoj[2])
 send(msg.chat_id_, msg.id_, 1, "🔘┇ تم تعين : "..kekoj[2], 1, 'html')
 end
@@ -2131,7 +2154,7 @@ database:set("MAX:edit:text:su:new:"..bot_id..msg.chat_id_..database:get("tsahke
 database:set("MAX:edit:text:su:new2:"..bot_id..msg.chat_id_..text,database:get("tsahke:new:msg:"..msg.chat_id_..msg.sender_user_id_..bot_id))
 database:del("tsahke:new:msg:"..msg.chat_id_..msg.sender_user_id_..bot_id)
 end  
-if (text and text == 'مسح امر المبرمج بالكليشه') and tonumber(msg.sender_user_id_) == tonumber(sudo_add) then
+if (text and text == 'مسح كليشه المبرمج') and tonumber(msg.sender_user_id_) == tonumber(sudo_add) then
 redis:del('MAX:'..bot_id..'text_sudo', text)
 send(msg.chat_id_, msg.id_, 1, '☑┇تم حذف الكليشه ', 1, 'html')
 return "MAX"
@@ -2360,8 +2383,8 @@ end
 getMessage(msg.chat_id_, msg.reply_to_message_id_,unban_by_reply)
 end
 if is_mod(msg) then 
-if text:match("وضع رابط (https://telegram.me/joinchat/%S+)") or text:match("وضع رابط (https://t.me/joinchat/%S+)") then   
-local glink = text:match("وضع رابط (https://telegram.me/joinchat/%S+)") or text:match("وضع رابط (https://t.me/joinchat/%S+)") 
+if text:match("ضع رابط (https://telegram.me/joinchat/%S+)") or text:match("ضع رابط (https://t.me/joinchat/%S+)") then   
+local glink = text:match("ضع رابط (https://telegram.me/joinchat/%S+)") or text:match("ضع رابط (https://t.me/joinchat/%S+)") 
 database:set('MAX:'..bot_id.."group:link"..msg.chat_id_,glink) 
 send(msg.chat_id_, msg.id_, 1, '☑️┇تم وضع رابط', 1, 'md') 
 send(msg.chat_id_, 0, 1, '↙️┇رابط المجموعه الجديد\n'..glink, 1, 'html')
@@ -2424,7 +2447,7 @@ end
 bot.channel_get_kicked(msg.chat_id_,moody)
 end
 
-if text:match("^حذف الكل$") and is_owner(msg) and msg.reply_to_message_id_ then
+if text:match("^مسح الكل$") and is_owner(msg) and msg.reply_to_message_id_ then
 function delall_by_reply(extra, result, success)
 if ck_mod(result.sender_user_id_, msg.chat_id_) then
 send(msg.chat_id_, msg.id_, 1, '❕┇لا تستطيع مسح مسجات \n🔘┇(اداريين،ادمنيه،اعضاء مميزين)البوت', 1, 'md')
@@ -2436,8 +2459,8 @@ end
 getMessage(msg.chat_id_, msg.reply_to_message_id_,delall_by_reply)
 end
 
-if text:match("^حذف الكل (%d+)$") and is_owner(msg) then
-local ass = {string.match(text, "^(حذف الكل) (%d+)$")}
+if text:match("^مسح الكل (%d+)$") and is_owner(msg) then
+local ass = {string.match(text, "^(مسح الكل) (%d+)$")}
 if ck_mod(ass[2], msg.chat_id_) then
 send(msg.chat_id_, msg.id_, 1, '❕┇لا تستطيع حذف مسجات \n🔘┇(اداريين،ادمنيه،مميزين)البوت', 1, 'md')
 else
@@ -2446,8 +2469,8 @@ send(msg.chat_id_, msg.id_, 1, '👨┇العضو ⌁≻ *('..ass[2]..')* \n🗑
 end
 end
 
-if text:match("^حذف الكل @(.*)$") and is_owner(msg) then
-local apbll = {string.match(text, "^(حذف الكل) @(.*)$")}
+if text:match("^مسح الكل @(.*)$") and is_owner(msg) then
+local apbll = {string.match(text, "^(مسح الكل) @(.*)$")}
 function delall_by_username(extra, result, success)
 if result.id_ then
 if ck_mod(result.id_, msg.chat_id_) then
@@ -3098,8 +3121,8 @@ offset_ = 0,
 limit_ = pronumb[2]
 }, gpro, nil)
 end
-if text:match("^وضع تكرار (%d+)$") and is_owner(msg) then
-local floodmax = {string.match(text, "^(وضع تكرار) (%d+)$")}
+if text:match("^ضع تكرار (%d+)$") and is_owner(msg) then
+local floodmax = {string.match(text, "^(ضع تكرار) (%d+)$")}
 if tonumber(floodmax[2]) < 2 then
 send(msg.chat_id_, msg.id_, 1, '🔘┇ضع التكرار من *{2}* الى  *{99999}*', 1, 'md')
 else
@@ -3156,12 +3179,12 @@ if text:match("^تعطيل الترحيب$") and is_mod(msg) then
 send(msg.chat_id_, msg.id_, 1, '☑┇تم تعطيل الترحيب في المجموعه', 1, 'md')
 database:del('MAX:'..bot_id.."welcome"..msg.chat_id_)
 end
-if text:match("^وضع ترحيب (.*)$") and is_mod(msg) then
-local welcome = {string.match(text, "^(وضع ترحيب) (.*)$")}
+if text:match("^ضع ترحيب (.*)$") and is_mod(msg) then
+local welcome = {string.match(text, "^(ضع ترحيب) (.*)$")}
 send(msg.chat_id_, msg.id_, 1, '☑┇تم وضع ترحيب\n📜┇⌁≻('..welcome[2]..')', 1, 'md')
 database:set('MAX:'..bot_id..'welcome:'..msg.chat_id_,welcome[2])
 end
-if text:match("^حذف الترحيب$") and is_mod(msg) then
+if text:match("^مسح الترحيب$") and is_mod(msg) then
 send(msg.chat_id_, msg.id_, 1, '☑┇تم حذف الترحيب', 1, 'md')
 database:del('MAX:'..bot_id..'welcome:'..msg.chat_id_)
 end
@@ -3183,9 +3206,9 @@ if text:match("^الغاء منع (.*)$") and is_mod(msg) then
 local rws = {string.match(text, "^(الغاء منع) (.*)$")}
 local name = string.sub(rws[2], 1, 50)
 database:hdel('MAX:'..bot_id..'filters:'..msg.chat_id_, rws[2])
-send(msg.chat_id_, msg.id_, 1, "☑┇تم حذفها من لقائمه المنع\n🔘┇{"..rws[2].."}", 1, 'md')
+send(msg.chat_id_, msg.id_, 1, "☑┇تم مسحها من لقائمه المنع\n🔘┇{"..rws[2].."}", 1, 'md')
 end  
-if (text and text == "تنظيف قائمه المحظورين" and is_creator(msg)) then 
+if (text and text == "مسح قائمه المحظورين" and is_creator(msg)) then 
 local function getChannelMembers(channel_id, filter, offset, limit, cb)
 if not limit or limit > 200 then
 limit = 200
@@ -3247,14 +3270,27 @@ send(msg.chat_id_, msg.id_, 1, "📨┇عدد مسجاتك ⌁≻ *{"..user_msgs
 else
 end
 end
+if text:match("^مسح مسجاتي$") and msg.reply_to_message_id_ == 0  then
+local user_msgs = database:get('MAX:'..bot_id..'user:msgs'..msg.chat_id_..':'..msg.sender_user_id_)
+if not database:get('MAX:'..bot_id..'id:mute'..msg.chat_id_) then
+send(msg.chat_id_, msg.id_, 1, "📨┇عدد مسجاتك ⌁≻ *{"..user_msgs.."}*\n📨┇سيتم حذف العدد بعد هذه الرساله", 1, 'md')
+database:del('MAX:'..bot_id..'user:msgs'..msg.chat_id_..':'..msg.sender_user_id_)
+else
+end
+end
 if text:match("^جهاتي$") then
 add = (tonumber(database:get('MAX:'..bot_id..'user:add'..msg.chat_id_..':'..msg.sender_user_id_)) or 0)
 send(msg.chat_id_, msg.id_, 1, "📨┇عدد جهاتك ⌁≻ *{"..add.."}*\n📨┇سيتم حذف العدد بعد هذه الرساله", 1, 'md')
 database:del('MAX:'..bot_id..'user:add'..msg.chat_id_..':'..msg.sender_user_id_)
 end
-if text:match("^(عدد التعديلات)$") or text:match("^(تعديلاتي)$") then
+if text:match("^(تعديلاتي)$") or text:match("^(تعديلاتي)$") then
 local edit = database:get('MAX:'..bot_id..'user:editmsg'..msg.chat_id_..':'..msg.sender_user_id_) or 0
 send(msg.chat_id_, msg.id_, 1, "📨┇عدد تعديلاتك ⌁≻ *{"..edit.."}*", 1, 'md')
+end
+if text:match("^مسح تعديلاتي$") then
+edit = (tonumber(database:get('MAX:'..bot_id..'user:editmsg'..msg.chat_id_..':'..msg.sender_user_id_)) or 0)
+send(msg.chat_id_, msg.id_, 1, "📨┇عدد جهاتك ⌁≻ *{"..edit.."}*\n📨┇سيتم حذف العدد بعد هذه الرساله", 1, 'md')
+database:del('MAX:'..bot_id..'user:editmsg'..msg.chat_id_..':'..msg.sender_user_id_)
 end
 if text:match("^مسح المحظورين عام$") and tonumber(msg.sender_user_id_) == tonumber(sudo_add) then
 text = '☑┇تم مسح محظورين عام'
@@ -3748,7 +3784,7 @@ end
 end
 end
 
-if (text and text == 'تغير امر المبرمج بالكليشه') and tonumber(msg.sender_user_id_) == tonumber(sudo_add) then
+if (text and text == 'تغير كليشه المبرمج') and tonumber(msg.sender_user_id_) == tonumber(sudo_add) then
 send(msg.chat_id_, msg.id_, 1, '📥┇الان يمكنك ارسال الكليشه  ليتم حفظها', 1, 'html')
 redis:set('MAX:'..bot_id..'texts'..msg.sender_user_id_..'', 'msg')
 return false end
@@ -3768,11 +3804,11 @@ local nakeko = redis:get('MAX:'..bot_id..'nakeko')
 if text_sudo then
 send(msg.chat_id_, msg.id_, 1, text_sudo, 1, 'md')
 else
-sendContact(msg.chat_id_, msg.id_, 0, 1, nil, (nkeko or 9647723177600), (nakeko or "MAX TEAM"), "", bot_id)
+sendContact(msg.chat_id_, msg.id_, 0, 1, nil, (nkeko or 9640000000000), (nakeko or "MAX TEAM"), "", bot_id)
 end
 end
 for k,v in pairs(sudo_users) do
-if text:match("^تغير امر المبرمج$") and tonumber(msg.sender_user_id_) == tonumber(sudo_add) then
+if text:match("^تغير رقم المبرمج$") and tonumber(msg.sender_user_id_) == tonumber(sudo_add) then
 send(msg.chat_id_, msg.id_, 1, '• `الان يمكنك ارسال رقم المبرمج` 🗳', 1, 'md')
 redis:set('MAX:'..bot_id..'nkeko'..msg.sender_user_id_..'', 'msg')
 return false end
@@ -3832,7 +3868,7 @@ redis:sadd('MAX:'..bot_id..'dev', apmd[2])
 tsX000(apmd[2],msg,'☑┇تم رفعه مبرمج')
 end
 
-if text:match("^حذف مبرمج$") and tonumber(msg.sender_user_id_) == tonumber(sudo_add) and msg.reply_to_message_id_ then
+if text:match("^مسح مبرمج$") and tonumber(msg.sender_user_id_) == tonumber(sudo_add) and msg.reply_to_message_id_ then
 function demote_by_reply(extra, result, success)
 if not redis:sismember('MAX:'..bot_id..'dev', result.sender_user_id_) then
 tsX000("prore",msg,'☑┇ بالفعل تم تنزيله من المبرمجين')
@@ -3845,8 +3881,8 @@ end
 getMessage(msg.chat_id_, msg.reply_to_message_id_,demote_by_reply)
 end
 
-if text:match("^حذف مبرمج @(.*)$") and tonumber(msg.sender_user_id_) == tonumber(sudo_add) then
-local apmd = {string.match(text, "^(حذف مبرمج) @(.*)$")}
+if text:match("^مسح مبرمج @(.*)$") and tonumber(msg.sender_user_id_) == tonumber(sudo_add) then
+local apmd = {string.match(text, "^(مسح مبرمج) @(.*)$")}
 function demote_by_username(extra, result, success)
 if result.id_ then
 redis:del('MAX:'..bot_id..'sudoo'..result.id_..'', 'no')
@@ -3967,14 +4003,14 @@ redis:sadd('MAX:'..bot_id..'repowner'..msg.sender_user_id_..''..msg.chat_id_..''
 return false end
 end
 
-if text:match("^حذف رد$") and is_owner(msg) then
+if text:match("^مسح رد$") and is_owner(msg) then
 send(msg.chat_id_, msg.id_, 1, '📥┇ارسل الكلمه التي تريد حذفها', 1, 'md')
 redis:set('MAX:'..bot_id..'keko1'..msg.sender_user_id_..''..msg.chat_id_..'', 'nomsg')
 return false end
 if text:match("^(.*)$") then
 local keko1 = redis:get('MAX:'..bot_id..'keko1'..msg.sender_user_id_..''..msg.chat_id_..'')
 if keko1 == 'nomsg' then
-send(msg.chat_id_, msg.id_, 1, '☑┇تم حذف الرد', 1, 'md')
+send(msg.chat_id_, msg.id_, 1, '☑┇تم مسح الرد', 1, 'md')
 redis:set('MAX:'..bot_id..'keko1'..msg.sender_user_id_..''..msg.chat_id_..'', 'no')
 redis:del('MAX:'..bot_id..'keko'..text..''..msg.chat_id_..'')
 redis:del('MAX:'..bot_id..':sticker:'..text..''..msg.chat_id_..'')
@@ -3998,14 +4034,14 @@ redis:set('MAX:'..bot_id..'keko1'..msg.sender_user_id_..'', 're')
 redis:set('MAX:'..bot_id..'msg'..msg.sender_user_id_..'', text)
 return false end
 
-if text:match("^حذف رد للكل$") and tonumber(msg.sender_user_id_) == tonumber(sudo_add)  then
-send(msg.chat_id_, msg.id_, 1, '📥┇ارسل الكلمه التي تريد حذفها' , 1, 'md')
+if text:match("^مسح رد للكل$") and tonumber(msg.sender_user_id_) == tonumber(sudo_add)  then
+send(msg.chat_id_, msg.id_, 1, '📥┇ارسل الكلمه التي تريد مسحها' , 1, 'md')
 redis:set('MAX:'..bot_id..'keko1'..msg.sender_user_id_..'', 'nomsg')
 return false end
 if text:match("^(.*)$") then
 local keko1 = redis:get('MAX:'..bot_id..'keko1'..msg.sender_user_id_..'')
 if keko1 == 'nomsg' then
-send(msg.chat_id_, msg.id_, 1, '☑┇تم حذف الرد', 1, 'md')
+send(msg.chat_id_, msg.id_, 1, '☑┇تم مسح الرد', 1, 'md')
 redis:set('MAX:'..bot_id..'keko1'..msg.sender_user_id_..'', 'no')
 redis:del('MAX:'..bot_id..':sticker:'..text)
 redis:del('MAX:'..bot_id..':voice:'..text)
@@ -4150,13 +4186,13 @@ local d = math.floor(ex / day ) + 1
 send(msg.chat_id_, msg.id_, 1, "❕┇عدد ايام وقت المجموعه {"..d.."} يوم", 1, 'md')
 end
 end  
-if text:match("^تنظيف$") and msg.reply_to_message_id_ ~= 0 and is_mod(msg) then
+if text:match("^مسح$") and msg.reply_to_message_id_ ~= 0 and is_mod(msg) then
 delete_msg(msg.chat_id_, {[0] = msg.reply_to_message_id_})
 delete_msg(msg.chat_id_, {[0] = msg.id_})
 end
 ----------------------------------------------------------------------------------------------
-if text:match('^تنظيف (%d+)$') and is_owner(msg) then
-local matches = {string.match(text, "^(تنظيف) (%d+)$")}
+if text:match('^مسح (%d+)$') and is_owner(msg) then
+local matches = {string.match(text, "^(مسح) (%d+)$")}
 if msg.chat_id_:match("^-100") then
 if tonumber(matches[2]) > 100 or tonumber(matches[2]) < 1 then
 pm = '❕┇لا تستطيع مسح اكثر من 100 رساله'
@@ -4514,7 +4550,7 @@ local keko_text = {
 "وجهك وجه الچوب ختتف🐸😹",
 }
 keko3 = math.random(#keko_text)
-sendPhoto(msg.chat_id_, msg.id_, 0, 1, nil, result.photos_[0].sizes_[1].photo_.persistent_id_,"📷"..keko_text[keko3].."\n🌆عدد صورك ⌁≻ "..all_photo_MAX.."\n📟ايديك ⌁≻ ("..msg.sender_user_id_..")\n🏮يوزرك ⌁≻ "..keko_info.."\n👮رتبتك ⌁≻ "..t.."\n📨مسجاتك ⌁≻ {"..user_msgs.."}\n🔧التعديلات ⌁≻ {"..edit.."}\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ",msg.id_,msg.id_.."")
+result.photos_[0].sizes_[1].photo_.persistent_id_,"🎭"..keko_text[keko3].."\n🌌⋮صٰـورک ∿≫ "..all_photo_MAX.."\n💳⋮آيـديِك ∿≫ ("..msg.sender_user_id_..")\n🎟⋮يـٰوزرك∿≫ "..keko_info.."\n💼⋮رتـٓبتـٰك ∿≫ "..t..'\n🌟⋮تفاعٰلٰك ∿≫ '..formsgg(msguser).."\n💬⋮مسْٰجاتٌك ∿≫ {"..user_msgs.."}\n🔧⋮تعُٰديلاتٰٓكّ ∿≫ {"..edit.."}\n┅┅┅┅┅┅┅┅┅┅┅┅ ",msg.id_,msg.id_.."")
 else 
 local MAX_new_text = database:get("MAX:gr:id:text:"..bot_id..msg.chat_id_)
 local MAX_new_text = MAX_new_text:gsub('#username',(keko_info or 'لا يوجد'))
@@ -4575,7 +4611,7 @@ end
 if not database:get('MAX:'..bot_id..'id:mute'..msg.chat_id_) then
 if not database:get('MAX:'..bot_id..'id:photo'..msg.chat_id_) then
 if not database:get("MAX:gr:id:text:"..bot_id..msg.chat_id_) then 
-send(msg.chat_id_, msg.id_, 1, "❕┇انت لا تملك صوره لحسابك\n📟┇ايديك ⌁≻ ("..msg.sender_user_id_..")\n📜┇يوزرك ⌁≻ "..keko_info.."\n📡┇رتبتك ⌁≻ "..t.."\n📨┇مسجاتك ⌁≻ <b>{"..user_msgs.."}</b>\n📧┇التعديلات ⌁≻ <b>{"..edit.."}</b>\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ", 1, 'html')
+send(msg.chat_id_, msg.id_, 1, "❖ ᎒انت لا تملك صوره في بروفايلك\n💳⋮آيـديِك ∿≫ ("..msg.sender_user_id_..")\n🎟⋮يـٰوزرك∿≫ "..keko_info.."\n💼⋮رتـٓبتـٰك ∿≫ "..t..'\n🌟⋮تفاعٰلٰك ∿≫ '..formsgg(msguser).."\n💬⋮مسْٰجاتٌك ∿≫ <b>{"..user_msgs.."}</b>\n🔧⋮تعُٰديلاتٰٓكّ ∿≫ <b>{"..edit.."}</b>\n┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅ ", 1, 'html')
 else 
 local MAX_new_text = database:get("MAX:gr:id:text:"..bot_id..msg.chat_id_)
 local MAX_new_text = MAX_new_text:gsub('#username',(keko_info or 'لا يوجد'))
@@ -4935,10 +4971,10 @@ local text =  [[
 ️◾️┇《تفعيل/تعطيل》الاذاعه
 ◾️┇《تفعيل/تعطيل》البوت الخدمي
 💠┇《اضف/مسح》رد للكل
-💠┇《ردود المطور》
-💠┇《تغير امر المطور》
-💠┇《تغير/مسح》امر المطور بالكليشه
-💠┇《تعين/مسح》مجموعه المطور 
+💠┇《ردود المبرمج》
+💠┇《تغير رقم المبرمج》
+💠┇《تغير/مسح》كليشه المبرمج
+💠┇《تعين/مسح》مجموعه المبرمج 
 💠┇《عدد الكروبات》
 ﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎
 ◾️┇《حظر/الغاء حظر》عام

@@ -3037,7 +3037,7 @@ MAX_oop = 'مميز الكروب'
 else
 MAX_oop = 'لا شيء'
 end
-send(msg.chat_id_, msg.id_, 1,"مرحبا عزيزي اليك معلومات عن العضو :        💳⋮ايديه`{"..result.sender_user_id_.."}`\n💼⋮رتـٓبتـٰه ∿≫ {"..MAX_oop.."}\n🌟⋮تفاعٰلٰه ∿≫ {formsgg(msguser)}\n💬⋮مسْٰجاتٌه ∿≫ `{"..msgs.."}`\n🔧⋮تعُٰديلاتٰٓه ∿≫ `{"..edit.."}`", 1, 'md')
+send(msg.chat_id_, msg.id_, 1,"مرحبا عزيزي اليك معلومات عن العضو :              💳⋮ايديه`{"..result.sender_user_id_.."}`\n💼⋮رتـٓبتـٰه ∿≫ {"..MAX_oop.."}\n🌟⋮تفاعٰلٰه ∿≫ {formsgg(msguser)}\n💬⋮مسْٰجاتٌه ∿≫ `{"..msgs.."}`\n🔧⋮تعُٰديلاتٰٓه ∿≫ `{"..edit.."}`", 1, 'md')
 else
 send(msg.chat_id_, msg.id_, 1,"`"..result.sender_user_id_.."`", 1, 'md')
 end
@@ -3087,6 +3087,18 @@ if result.photos_[ph] then
 sendPhoto(msg.chat_id_, msg.id_, 0, 1, nil, result.photos_[ph].sizes_[1].photo_.persistent_id_)
 else
 send(msg.chat_id_, msg.id_, 1, "❕┇لا تملك صوره رقم <b>{"..pronumb[2].."}</b> في بروفايلك", 1, 'html')
+texts = '🔖┇اسمك ⌁≻ ['..result.title_..'](t.me/'..(apsi[2] or 'MAXTAME')..') 
+end
+send(msg.chat_id_, msg.id_, 1, texts, 1, 'md')
+end
+resolve_username(apsi[2],unmute_by_username)
+end
+end
+
+end
+send(msg.chat_id_, msg.id_, 1, texts, 1, 'md')
+end
+resolve_username(apsi[2],unmute_by_username)
 end
 end
 tdcli_function ({
@@ -3106,7 +3118,7 @@ send(msg.chat_id_, msg.id_, 1, '☑┇تم  وضع التكرار بالطرد �
 end
 end
 if text and text == "وضع رابط" and is_admin(msg) then 
-send(msg.chat_id_, msg.id_, 1, '💥┇ارسال الان رابط المجموعه', 1, "md") 
+send(msg.chat_id_, msg.id_, 1, '🔘┇ارسال الان رابط الكروب ليتم حفظه عندما تكتب الرابط', 1, "md") 
 database:set("keko:get:url:"..bot_id..msg.chat_id_..msg.sender_user_id_,true)
 return "keko"
 end

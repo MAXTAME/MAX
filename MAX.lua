@@ -1078,13 +1078,13 @@ tsX000("lock",msg,"✔┇تم قفل الجهات")
 database:set("lock_contact:MAX"..msg.chat_id_..bot_id,"ok")
 end
 end
-if (text == "قفل الفارسيه") then
-local tsX_o = database:get("lock_pe:MAX"..msg.chat_id_..bot_id)
+if (text == "قفل العربيه") then
+local tsX_o = database:get("lock_ar:MAX"..msg.chat_id_..bot_id)
 if tsX_o then
-tsX000("lock",msg,"✔┇الفارسيه مقفوله!")
+tsX000("lock",msg,"✔┇العربيه مقفوله!")
 else
-tsX000("lock",msg,"✔┇تم قفل الفارسيه")
-database:set("lock_pe:MAX"..msg.chat_id_..bot_id,"ok")
+tsX000("lock",msg,"✔┇تم قفل العربيه")
+database:set("lock_ar:MAX"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "قفل الانكليزيه") then
@@ -1115,9 +1115,9 @@ end
 if (text == "قفل الروابط") then
 local tsX_o = database:get("lock_link:MAX"..msg.chat_id_..bot_id)
 if tsX_o then
-tsX000("lock",msg,"┇الروابط مقفوله!")
+tsX000("lock",msg,"✔┇الروابط مقفوله!")
 else
-tsX000("lock",msg,"┇تم قفل الروابط")
+tsX000("lock",msg,"✔┇تم قفل الروابط")
 database:set("lock_link:MAX"..msg.chat_id_..bot_id,"ok")
 end
 end
@@ -1357,13 +1357,13 @@ tsX000("lock",msg,"☑┇تم فتح الجهات")
 database:del("lock_contact:MAX"..msg.chat_id_..bot_id,"ok")
 end
 end
-if (text == "فتح الفارسيه") then
-local tsX_o = database:get("lock_pe:MAX"..msg.chat_id_..bot_id)
+if (text == "فتح العربيه") then
+local tsX_o = database:get("lock_ar:MAX"..msg.chat_id_..bot_id)
 if not tsX_o then
-tsX000("lock",msg,"☑┇الفارسيه مفتوحه")
+tsX000("lock",msg,"☑┇العربيه مفتوحه")
 else
-tsX000("lock",msg,"☑┇تمتم فتح الفارسيه")
-database:del("lock_pe:MAX"..msg.chat_id_..bot_id,"ok")
+tsX000("lock",msg,"☑┇تم فتح العربيه")
+database:del("lock_ar:MAX"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "فتح الانكليزيه") then
@@ -1572,7 +1572,7 @@ return "stop"
 end
 end
 if text and text:match("[\216-\219][\128-\191]") then
-if database:get("lock_pe:MAX"..msg.chat_id_..bot_id) then
+if database:get("lock_ar:MAX"..msg.chat_id_..bot_id) then
 delete_msg(msg.chat_id_,{[0] = msg.id_})
 return "stop"
 end
@@ -5429,14 +5429,14 @@ local msgs = {[0] = data.message_id_}
 delete_msg(msg.chat_id_,msgs) end end end
 if not is_vip(msgg) then
 check_filter_words(result, text)
-if text:match("ڢ ڤ ڥ ژ ڜ ى ک ڨ گ") then
-if database:get("lock_pe:MAX"..msg.chat_id_..bot_id) then
+if text:match("[\216-\219][\128-\191]") then
+if database:get("lock_ar:MAX"..msg.chat_id_..bot_id) then
 local msgs = {[0] = data.message_id_}
 delete_msg(msg.chat_id_,msgs) end end end  end
 if not is_vip(msgg) then
 check_filter_words(result, text)
-if text:match("ڢ ڤ ڥ ژ ڜ ى ک ڨ گ") then
-if database:get("lock_pe.note:MAX"..msg.chat_id_..bot_id) then
+if text:match("[\216-\219][\128-\191]") then
+if database:get("lock_ar.note:MAX"..msg.chat_id_..bot_id) then
 local msgs = {[0] = data.message_id_}
 delete_msg(msg.chat_id_,msgs) end end end  end
 if not is_vip(msgg) then

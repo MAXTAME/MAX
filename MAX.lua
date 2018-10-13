@@ -3536,7 +3536,116 @@ result_text = result_text
 faederdx(msg.chat_id_, msg.id_, 1, result_text, 1, 'md')
 end
 end
------------------------
+------------------------------
+if text:match("^[/!#]([Ww][Ee][Aa][Tt][Hh][Ee][Rr]) (.*)$") or text:match("^(طقس) (.*)$") then 
+MatchesEN = {text:match("^[/!#]([Ww][Ee][Aa][Tt][Hh][Ee][Rr]) (.*)$")}; MatchesFA = {text:match("^(طقس) (.*)$")}
+Ptrn = MatchesEN[2] or MatchesFA[2]
+local function temps(K)
+local F = (K*1.8)-459.67
+local C = K-273.15
+return F,C
+end
+local res = http.request("http://api.openweathermap.org/data/2.5/weather?q="..URL.escape(Ptrn).."&appid=269ed82391822cc692c9afd59f4aabba")
+local jtab = json:decode(res)
+if jtab.name then
+if jtab.weather[1].main == "Thunderstorm" then
+status = "⛈ عاصف"
+elseif jtab.weather[1].main == "Drizzle" then
+status = "🌦 امطار خفيفه"
+elseif jtab.weather[1].main == "Rain" then
+status = "🌧 مطر شديد"
+elseif jtab.weather[1].main == "Snow" then
+status = "🌨 مثلج"
+elseif jtab.weather[1].main == "Atmosphere" then
+status = "🌫 مغبر"
+elseif jtab.weather[1].main == "Clear" then
+status = "🌤️ صاف"
+elseif jtab.weather[1].main == "Clouds" then
+status = "☁️ غائم"
+elseif jtab.weather[1].main == "Extreme" then
+status = "-------"
+elseif jtab.weather[1].main == "Additional" then
+status = "-------"
+else
+status = "-------"
+end
+local F1,C1 = temps(jtab.main.temp)
+local F2,C2 = temps(jtab.main.temp_min)
+local F3,C3 = temps(jtab.main.temp_max)
+if jtab.rain then
+rain = jtab.rain["3h"].." ميليمتر"
+else
+rain = "-----"
+end
+if jtab.snow then
+snow = jtab.snow["3h"].." ملمتر"
+else
+snow = "-----"
+end
+today = "• اسم المدينه : *"..jtab.name.."*\n"
+.."• اسم الدوله : *"..(jtab.sys.country or "----").."*\n"
+.."• درجه الحراره :\n"
+.."   "..C1.."° سيليزي\n"
+.."   "..F1.."° فهرنهايت\n"
+.."   "..jtab.main.temp.."° كلفن\n"
+.."• الجو "..status.." تقريبا\n\n"
+.."• درجه حراره اليوم الصغرى : C"..C2.."°   F"..F2.."°   K"..jtab.main.temp_min.."°\n"
+.."• درجه حراره اليوم الكبرى : C"..C3.."°   F"..F3.."°   K"..jtab.main.temp_max.."°\n"
+.."• رطوبة الهواء : "..jtab.main.humidity.."%\n"
+.."• كثافه الغيوم : "..jtab.clouds.all.."%\n"
+.."• سرعه الرياح : "..(jtab.wind.speed or "------").." متر / ثانيه\n"
+.."• اتجاه الرياح : "..(jtab.wind.deg or "------").."° درجه\n"
+.."• تقلب الرياح : "..(jtab.main.pressure/1000).."\n"
+.."• اخر 3 ساعات من المطر : "..rain.."\n"
+.."• اخر 3 ساعات من تساقط الثلوج : "..snow.."\n\n"
+after = ""
+local res = http.request("http://api.openweathermap.org/data/2.5/forecast?q="..URL.escape(Ptrn).."&appid=269ed82391822cc692c9afd59f4aabba")
+local jtab = json:decode(res)
+for i=1,5 do
+local F1,C1 = temps(jtab.list[i].main.temp_min)
+local F2,C2 = temps(jtab.list[i].main.temp_max)
+if jtab.list[i].weather[1].main == "Thunderstorm" then
+status = "⛈ عاصف"
+elseif jtab.list[i].weather[1].main == "Drizzle" then
+status = "🌦 امطار خفيفه"
+elseif jtab.list[i].weather[1].main == "Rain" then
+status = "🌧 مطر شديد"
+elseif jtab.list[i].weather[1].main == "Snow" then
+status = "🌨 مثلج"
+elseif jtab.list[i].weather[1].main == "Atmosphere" then
+status = "🌫 مغبر"
+elseif jtab.list[i].weather[1].main == "Clear" then
+status = "🌤️صافي"
+elseif jtab.list[i].weather[1].main == "Clouds" then
+status = "☁️ غائم"
+elseif jtab.list[i].weather[1].main == "Extreme" then
+status = "-------"
+elseif jtab.list[i].weather[1].main == "Additional" then
+status = "-------"
+else
+status = "-------"
+end
+if i == 1 then
+day = "• طقس يوم غد"
+elseif i == 2 then
+day = "• طقس بعد غد"
+elseif i == 3 then
+day = "• طقس بعد 3 ايام"
+elseif i == 4 then
+day = "• طقس بعد 4 ايام"
+elseif i == 5 then
+day = "• طقس بعد 5 ايام"
+end
+after = after.."- "..day..status.." تقريبا \n🔺C"..C2.."°  *-*  F"..F2.."°\n🔻C"..C1.."°  *-*  F"..F1.."°\n"
+end
+Text = today.."• حاله الطقس ل5 ايام القادمه 🔽:\n"..after
+MAXdx(msg.chat_id_, msg.id_, 1, Text, 1, 'md')
+else
+Text  = "• لا توجد مدينه بهذا الاسم 🌐"
+MAXdx(msg.chat_id_, msg.id_, 1, Text, 1, 'md')
+end
+end
+------------------------------
 if text:match("^مسجاتي$") and msg.reply_to_message_id_ == 0  then
 local user_msgs = database:get('MAX:'..bot_id..'user:msgs'..msg.chat_id_..':'..msg.sender_user_id_)
 if not database:get('MAX:'..bot_id..'id:mute'..msg.chat_id_) then

@@ -3086,8 +3086,9 @@ local function gpro(extra, result, success)
 if result.photos_[ph] then
 sendPhoto(msg.chat_id_, msg.id_, 0, 1, nil, result.photos_[ph].sizes_[1].photo_.persistent_id_)
 else
-send(msg.chat_id_, msg.id_, 1, "❕┇لا تملك صوره رقم <b>{"..pronumb[2].."}</b> في بروفايلك", 1, 'html')
 texts = '🔖┇اسمك ⌁≻ ['..result.title_..'](t.me/'..(apsi[2] or 'MAXTAME')..') 
+end
+send(msg.chat_id_, msg.id_, 1, "❕┇لا تملك صوره رقم <b>{"..pronumb[2].."}</b> في بروفايلك", 1, 'html')
 end
 send(msg.chat_id_, msg.id_, 1, texts, 1, 'md')
 end

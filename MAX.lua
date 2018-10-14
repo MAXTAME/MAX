@@ -4526,8 +4526,8 @@ t = 'مميز الكروب'
 else
 t = 'لا شيء'
 end
-if not database:get('MAX:'..bot_id..'id:mute'..msg.chat_id_) then
-if not database:get('MAX:'..bot_id..'id:photo'..msg.chat_id_) then
+if not database:get('MAX:'..zahraa..'id:mute'..msg.chat_id_) then
+if not database:get('MAX:'..zahraa..'id:photo'..msg.chat_id_) then
 if not database:get("MAX:gr:id:text:"..bot_id..msg.chat_id_) then 
 local keko_text = {
 "رجع صورتك القديمه طالع جنك بسطال😹",

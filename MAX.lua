@@ -2353,7 +2353,7 @@ end
 ----------------------------------------------unban--------------------------------------------
 if text:match("^الغاء حظر$") and is_mod(msg) and msg.reply_to_message_id_ then
 function unban_by_reply(extra, result, success)
-local hash =  'MAX:'..bot_id..'banned:'..msg.chat_id_
+local hash =  'tshake:'..bot_id..'banned:'..msg.chat_id_
 if not database:sismember(hash, result.sender_user_id_) then
 tsX000("prore",msg,"☑┇بالفعل تم الغاء حظره من البوت")
 else
@@ -2361,15 +2361,15 @@ database:srem(hash, result.sender_user_id_)
 tsX000("prore",msg,"☑┇تم الغاء حظره من البوت")
 end
 end
+getMessage(msg.chat_id_, msg.reply_to_message_id_,unban_by_reply)
+end
 if is_mod(msg) then 
 if text:match("وضع رابط (https://telegram.me/joinchat/%S+)") or text:match("وضع رابط (https://t.me/joinchat/%S+)") then   
 local glink = text:match("وضع رابط (https://telegram.me/joinchat/%S+)") or text:match("وضع رابط (https://t.me/joinchat/%S+)") 
 database:set('tshake:'..bot_id.."group:link"..msg.chat_id_,glink) 
-send(msg.chat_id_, msg.id_, 1, '☑️┇تم وضع رابط', 1, 'md') 
-send(msg.chat_id_, 0, 1, '🚦:رابط الكروب سيكون\n'..glink, 1, 'html')
+send(msg.chat_id_, msg.id_, 1, '☑️:تم وضع رابط للكروب', 1, 'md') 
+send(msg.chat_id_, 0, 1, '🚦:رابط الكروب الجديد سيكون\n'..glink, 1, 'html')
 end 
-end
-if is_mod(msg) then 
 end
 if text:match("^الغاء حظر @(.*)$") and is_mod(msg) then
 local apba = {string.match(text, "^(الغاء حظر) @(.*)$")}

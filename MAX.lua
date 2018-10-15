@@ -4011,53 +4011,7 @@ redis:del('MAX:'..bot_id..':file:'..text..''..msg.chat_id_..'')
 redis:srem('MAX:'..bot_id..'kekore'..msg.chat_id_..'', text)
 end
 end
-if tonumber(msg.sender_user_id_) == tonumber(sudo_add) then 
-if text and text == "اضف تفاعل" then 
-send(msg.chat_id_, msg.id_, 1, '📥┇ارسال لان عدد الرسال الذي يجب ان يكون اكثر منه', 1, 'md')
-database:set("keko:set:ttt:p"..bot_id..msg.sender_user_id_,true)
-return "keko"
-end 
-if text and database:get("keko:set:ttt:p"..bot_id..msg.sender_user_id_) then 
-send(msg.chat_id_, msg.id_, 1, '📥┇اراسل لان النص الذي يضهر', 1, 'md')
-database:set("keko:set:ttt:p2"..bot_id..msg.sender_user_id_,true)
-database:set("keko:set:ttt:ppp:"..bot_id..msg.sender_user_id_,text)
-database:del("keko:set:ttt:p"..bot_id..msg.sender_user_id_)
-return "keko"
-end
-if text and database:get("keko:set:ttt:p2"..bot_id..msg.sender_user_id_) then 
-send(msg.chat_id_, msg.id_, 1, '☑┇تم الحفط', 1, 'md')
-keko = database:get("keko:set:ttt:ppp:"..bot_id..msg.sender_user_id_)
-database:sadd("keko:all:pppp:tt:"..bot_id,keko)
-database:set("keko:set:text:p"..bot_id..keko,text)
-database:del("keko:set:ttt:p2"..bot_id..msg.sender_user_id_)
-return "keko"
-end 
-if text and (text == "التفاعلات" or text == "قائمه التفاعلات" and end032 ) then 
-keko = database:smembers('keko:all:pppp:tt:'..bot_id) or 0
-text23p = '📊┇كلمات التفاعل : \n\n'
-if (not keko or not keko[1]) then 
-send(msg.chat_id_, msg.id_, 1, "📊┇لا يوجد", 1, 'html')
-return "keko"
-end
-for i=1, #keko do
-local tttee = database:get("keko:set:text:p"..bot_id..keko[i])
-text23p = text23p.."|"..i.."| ~⪼ "..keko[i].." | "..tttee.."\n"
-end
-send(msg.chat_id_, msg.id_, 1, text23p ,1, 'html')
-end
-if text and text == "مسح قائمه التفاعلات" then 
-send(msg.chat_id_, msg.id_, 1, "📊┇تم المسح بنجاح" ,1, 'html')
-keko = database:smembers('keko:all:pppp:tt:'..bot_id) or 0
-for i=1, #keko do
-database:del("keko:set:text:p"..bot_id..keko[i])
-end
-database:del('keko:all:pppp:tt:'..bot_id)
-end
-if text and text == "مسح تفاعل" then 
-send(msg.chat_id_, msg.id_, 1, '📥┇ارسال لان عدد الرسال الذي يجب ان يكون اكثر منه', 1, 'md')
-database:set("keko:set:ttt:p:Del"..bot_id..msg.sender_user_id_,true)
-return "keko"
-end 
+
 if text:match("^اضف رد للكل$") and tonumber(msg.sender_user_id_) == tonumber(sudo_add)  then
 send(msg.chat_id_, msg.id_, 1, '📥┇ارسل الكلمه التي تريد اضافته', 1, 'md')
 redis:set('MAX:'..bot_id..'keko1'..msg.sender_user_id_..'', 'msg')

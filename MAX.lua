@@ -374,7 +374,7 @@ end
 --         »»                 vardump                         ««              --
 
 function formsgg(msgs) 
-local taha = ''  
+local zah = ''  
 if msgs < 1 then 
 zah = '1%' 
 if msgs < 250 then 
@@ -420,7 +420,7 @@ zah = '110%'
 if msgs < 100000 then 
 zah = '120%' 
 end 
-return taha 
+return zah 
 end
 
 function vardump(value)

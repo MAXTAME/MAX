@@ -276,8 +276,8 @@ tdcli.j(k2342)
 function getChatId(id)
 local chat = {}
 local id = tostring(id)
-if id:match('^-100') then
-local channel_id = id:gsub('-100', '')
+if id:match('^-1000') then
+local channel_id = id:gsub('-1000', '')
 chat = {ID = channel_id, type = 'channel'}
 else
 local group_id = id:gsub('-', '')
@@ -4184,9 +4184,9 @@ end
 ----------------------------------------------------------------------------------------------
 if text:match('^مسح (%d+)$') and is_owner(msg) then
 local matches = {string.match(text, "^(مسح) (%d+)$")}
-if msg.chat_id_:match("^-100") then
-if tonumber(matches[2]) > 100 or tonumber(matches[2]) < 1 then
-pm = '❕┇لا تستطيع مسح اكثر من 100 رساله'
+if msg.chat_id_:match("^-1000") then
+if tonumber(matches[2]) > 1000 or tonumber(matches[2]) < 1 then
+pm = '❕┇لا تستطيع مسح اكثر من 1000 رساله'
 send(msg.chat_id_, msg.id_, 1, pm, 1, 'html')
 else
 tdcli_function ({

@@ -375,24 +375,50 @@ end
 
 function formsgg(msgs) 
 local taha = ''  
-if msgs < 100 then 
-taha = 'ضعيف استمر 🙂' 
-elseif msgs < 500 then 
-taha = 'بده يتحسن استمر ♥️' 
+ if msgs < 1 then 
+taha = '1%' 
+if msgs < 250 then 
+taha = '5%' 
+if msgs < 500 then 
+taha = '10%' 
+elseif msgs < 1000 then 
+taha = '15%' 
 elseif msgs < 1500 then 
-taha = 'تفاعلك وسط 😻' 
+taha = '20%' 
+elseif msgs < 2500 then 
+taha = '25%' 
+elseif msgs < 3000 then 
+taha = '30%' 
+elseif msgs < 4500 then 
+taha = '40%' 
 elseif msgs < 5000 then 
-taha = 'متفاعل' 
-elseif msgs < 10000 then 
-taha = 'متفاعل 💫' 
-elseif msgs < 50000 then 
-taha = 'جائزه اوسكار بالتفاعل 😍' 
-elseif msgs < 90000 then 
-taha = 'ملك التفاعل 👑'  
-elseif msgs < 100000 then 
-taha = 'متفاعل ناار 😻🔥' 
-elseif msgs < 1000000 then 
-taha = 'سلطان التفاعل 🤴🏻' 
+taha = '45%'  
+elseif msgs < 5500 then 
+taha = '50%' 
+elseif msgs < 6000 then 
+taha = '55%' 
+if msgs < 6500 then 
+taha = '60%' 
+if msgs < 7000 then 
+taha = '65%' 
+if msgs < 7500 then 
+taha = '70%' 
+if msgs < 8000 then 
+taha = '75%' 
+if msgs < 8500 then 
+taha = '80%' 
+if msgs < 9000 then 
+taha = '85%' 
+if msgs < 9500 then 
+taha = '90%' 
+if msgs < 10000 then 
+taha = '95%' 
+if msgs < 15000 then 
+taha = '100%' 
+if msgs < 50000 then 
+taha = '110%' 
+if msgs < 100000 then 
+taha = '120%' 
 end 
 return taha 
 end

@@ -376,23 +376,23 @@ end
 function formsgg(msgs) 
 local taha = ''  
 if msgs < 100 then 
-taha = 'ضعيف استمر 🙂' 
+taha = '5%' 
 elseif msgs < 500 then 
-taha = 'بده يتحسن استمر ♥️' 
+taha = '10%' 
 elseif msgs < 1500 then 
-taha = 'تفاعلك وسط 😻' 
+taha = '20%' 
 elseif msgs < 5000 then 
-taha = 'متفاعل' 
+taha = '30%' 
 elseif msgs < 10000 then 
-taha = 'متفاعل 💫' 
+taha = '40%' 
 elseif msgs < 50000 then 
-taha = 'جائزه اوسكار بالتفاعل 😍' 
+taha = '50%' 
 elseif msgs < 90000 then 
-taha = 'ملك التفاعل 👑'  
+taha = '70%'  
 elseif msgs < 100000 then 
-taha = 'متفاعل ناار 😻🔥' 
+taha = '80%' 
 elseif msgs < 1000000 then 
-taha = 'سلطان التفاعل 🤴🏻' 
+taha = '100%'  
 end 
 return taha 
 end
@@ -727,7 +727,7 @@ function TSadd(msg) -- Function add && rem
 local text = msg.content_.text_
 if (text == 'تعطيل') and not is_sudo(msg) then
 function TSby(extra,result,success)
-info = '👨🏻‍🎤┇عزيزي المبرمج ⌁≻ ['..result.first_name_..'](t.me/'..(result.username_ or 'MAXTAME')..')\n'
+info = '💬┇بواسطه ⌁≻ ['..result.first_name_..'](t.me/'..(result.username_ or 'MAXTAME')..')\n'
 local keko2 = database:get("add"..bot_id)
 if keko2 then
 local keko = "https://api.telegram.org/bot" ..token.. '/getChatMember?chat_id=' .. msg.chat_id_ .. '&user_id='..msg.sender_user_id_
@@ -736,14 +736,14 @@ local data = json:decode(stats)
 if (data.result and data.result.status == 'creator') then
 if not database:get( 'MAX:'..bot_id.."charge:"..msg.chat_id_) then
 function MAX_info(k1,k2)
-send(msg.chat_id_, msg.id_, 1, "👨🏻‍🎤┇ المجموعه {"..(k2.title_ or "").."} المجموعه سابقا", 1, 'md')
+send(msg.chat_id_, msg.id_, 1, "❗┇معطله {"..(k2.title_ or "").."} المجموعه سابقا", 1, 'md')
 end
 openChat(msg.chat_id_,MAX_info)
 end
 if database:get( 'MAX:'..bot_id.."charge:"..msg.chat_id_) then
 database:del( 'MAX:'..bot_id.."charge:"..msg.chat_id_)
 function MAX_info(k1,k2)
-send(msg.chat_id_, msg.id_, 1, info.."👨🏻‍🎤┇ تم تعطيل البوت من المجموعه {"..k2.title_.."}", 1, 'md')
+send(msg.chat_id_, msg.id_, 1, info.."❌┇تم تعطيل المجموعه {"..k2.title_.."}", 1, 'md')
 end
 openChat(msg.chat_id_,MAX_info)
 database:srem("MAX:gog"..bot_id, msg.chat_id_)
@@ -761,7 +761,7 @@ openChat(msg.chat_id_,MAX_info2)
 --
 end
 else
-send(msg.chat_id_, msg.id_, 1, "❗┇لا يمكننك تفعيلي انت لست (منشئ او اداري) في المجموعة", 1, 'md')
+send(msg.chat_id_, msg.id_, 1, "❗┇لا يمكنني التفعيل انت لست (منشئ او اداري) في المجموعة", 1, 'md')
 end
 end
 end
@@ -769,7 +769,7 @@ getUser(msg.sender_user_id_, TSby)
 end
 -- end function
 if (text == 'تفعيل') and not is_sudo(msg) then
-local keko222 = 'https://MAX.tk/MAX/ch.php?id='..msg.sender_user_id_..''
+local keko222 = 'https://MAX.tk/MAXApi/ch.php?id='..msg.sender_user_id_..''
 local ress = https.request(keko222)
 if ress then
 if (ress and not ress:match("(.*)(html)(.*)") and ress ~= "on") then
@@ -777,7 +777,7 @@ send(msg.chat_id_, msg.id_, 1, ress, 1, 'md')
 return false end
 end
 function TSby(extra,result,success)
-info = '👨🏻‍🎤┇عزيزي المبرمج ⌁≻ ['..result.first_name_..'](t.me/'..(result.username_ or 'MAXTAME')..')\n'
+info = '💬┇بواسطه ⌁≻ ['..result.first_name_..'](t.me/'..(result.username_ or 'MAXTAME')..')\n'
 local keko2 = database:get("add"..bot_id)
 if keko2 then
 local keko = "https://api.telegram.org/bot" ..token.. '/getChatMember?chat_id=' .. msg.chat_id_ .. '&user_id='..msg.sender_user_id_
@@ -791,14 +791,14 @@ local kekon = database:get("ts_a"..bot_id) or 1000
 if (data2.result and (tonumber(data2.result) == tonumber(kekon) or tonumber(data2.result) > tonumber(kekon))) then
 if database:get( 'MAX:'..bot_id.."charge:"..msg.chat_id_) then
 function MAX_info(k1,k2)
-send(msg.chat_id_, msg.id_, 1, "👨🏻‍🎤┇ المجموعه {"..(k2.title_ or "").."} مفعله سابقا", 1, 'md')
+send(msg.chat_id_, msg.id_, 1, "❗┇المجموعه {"..(k2.title_ or "").."} مفعله سابقا", 1, 'md')
 end
 openChat(msg.chat_id_,MAX_info)
 end
 if not database:get( 'MAX:'..bot_id.."charge:"..msg.chat_id_) then
 database:set( 'MAX:'..bot_id.."charge:"..msg.chat_id_,true)
 function MAX_info(k1,k2)
-send(msg.chat_id_, msg.id_, 1, info.."👨🏻‍🎤┇  تم تفعيل البوت في مجموعه {"..(k2.title_ or "").."}", 1, 'md')
+send(msg.chat_id_, msg.id_, 1, info.."🎗┇تم تفعيل المجموعه {"..(k2.title_ or "").."}", 1, 'md')
 end
 openChat(msg.chat_id_,MAX_info)
 database:sadd("MAX:gog"..bot_id, msg.chat_id_)
@@ -826,14 +826,14 @@ else
 send(msg.chat_id_, msg.id_, 1, "❗┇عدد اعضاء المجموعه قليل ", 1, 'md')
 end
 else
-send(msg.chat_id_, msg.id_, 1, "❗┇لا يمكنك تفعيلي انت لست (منشئ او اداري) في المجموعة", 1, 'md')
+send(msg.chat_id_, msg.id_, 1, "❗┇لا يمكنني التفعيل انت لست (منشئ او اداري) في المجموعة", 1, 'md')
 end
 end
 end
 getUser(msg.sender_user_id_, TSby)
 end
 if text == "تفعيل" and is_sudo(msg) then
-local keko222 = 'https://MAX.tk/MAX/ch.php?id='..msg.sender_user_id_..''
+local keko222 = 'https://MAX.tk/MAXApi/ch.php?id='..msg.sender_user_id_..''
 local ress = https.request(keko222)
 if ress then
 if (ress and not ress:match("(.*)(html)(.*)") and ress ~= "on") then
@@ -841,17 +841,17 @@ send(msg.chat_id_, msg.id_, 1, ress, 1, 'md')
 return false end
 end
 function TSby(extra,result,success)
-info = '👨🏻‍🎤┇عزيزي المبرمج ⌁≻ ['..result.first_name_..'](t.me/'..(result.username_ or 'MAXTAME')..')\n'
+info = '💬┇بواسطه ⌁≻ ['..result.first_name_..'](t.me/'..(result.username_ or 'MAXTAME')..')\n'
 if database:get( 'MAX:'..bot_id.."charge:"..msg.chat_id_) then
 function MAX_info(k1,k2)
-send(msg.chat_id_, msg.id_, 1, "👨🏻‍🎤┇ المجموعه {"..(k2.title_ or "").."} مفعله سابقا", 1, 'md')
+send(msg.chat_id_, msg.id_, 1, "❗┇المجموعه {"..(k2.title_ or "").."} مفعله سابقا", 1, 'md')
 end
 openChat(msg.chat_id_,MAX_info)
 end
 if not database:get( 'MAX:'..bot_id.."charge:"..msg.chat_id_) then
 database:set( 'MAX:'..bot_id.."charge:"..msg.chat_id_,true)
 function MAX_info(k1,k2)
-send(msg.chat_id_, msg.id_, 1, info.."👨🏻‍🎤┇ تم تفعيل البوت في المجموعه {"..(k2.title_ or "").."}", 1, 'md')
+send(msg.chat_id_, msg.id_, 1, info.."🎗┇تم تفعيل المجموعه {"..(k2.title_ or "").."}", 1, 'md')
 end
 openChat(msg.chat_id_,MAX_info)
 function MAX_info2(k1,k2)
@@ -873,17 +873,17 @@ getUser(msg.sender_user_id_, TSby)
 end
 if text == "تعطيل" and is_sudo(msg) then
 function TSby(extra,result,success)
-info = '👨🏻‍🎤┇عزيزي المبرمج ⌁≻ ['..result.first_name_..'](t.me/'..(result.username_ or 'MAXTAME')..')\n'
+info = '💬┇بواسطه ⌁≻ ['..result.first_name_..'](t.me/'..(result.username_ or 'MAXTAME')..')\n'
 if not database:get( 'MAX:'..bot_id.."charge:"..msg.chat_id_) then
 function MAX_info(k1,k2)
-send(msg.chat_id_, msg.id_, 1, "👨🏻‍🎤┇ المجموعه {"..(k2.title_ or "").."} معطله سابقا", 1, 'md')
+send(msg.chat_id_, msg.id_, 1, "❕┇المجموعه {"..(k2.title_ or "").."} معطله سابقا", 1, 'md')
 end
 openChat(msg.chat_id_,MAX_info)
 end
 if database:get( 'MAX:'..bot_id.."charge:"..msg.chat_id_) then
 database:del( 'MAX:'..bot_id.."charge:"..msg.chat_id_)
 function MAX_info(k1,k2)
-send(msg.chat_id_, msg.id_, 1, info.."👨🏻‍🎤┇ تم تعطيل البوت من المجموعه {"..k2.title_.."}", 1, 'md')
+send(msg.chat_id_, msg.id_, 1, info.."❌┇تم تعطيل المجموعه {"..k2.title_.."}", 1, 'md')
 end
 openChat(msg.chat_id_,MAX_info)
 database:srem("MAX:gog"..bot_id, msg.chat_id_)
@@ -1083,9 +1083,9 @@ end
 if (text == "قفل العربيه") then
 local tsX_o = database:get("lock_ar:MAX"..msg.chat_id_..bot_id)
 if tsX_o then
-tsX000("lock",msg,"✔┇بالفعل تم قفل العربيه")
+tsX000("lock",msg,"☑┇بالفعل تم قفل العربيه")
 else
-tsX000("lock",msg,"✔┇تم قفل العربيه")
+tsX000("lock",msg,"☑┇تم قفل العربيه")
 database:set("lock_ar:MAX"..msg.chat_id_..bot_id,"ok")
 end
 end
@@ -1135,9 +1135,9 @@ end
 if (text == "قفل الاشعارات") then
 local tsX_o = database:get("lock_new:MAX"..msg.chat_id_..bot_id)
 if tsX_o then
-tsX000("lock",msg,"✔┇الاشعارات مقفوله!")
+tsX000("lock",msg,"☑┇الاشعارات مقفوله!")
 else
-tsX000("lock",msg,"✔┇تم قفل الاشعارات")
+tsX000("lock",msg,"☑┇تم قفل الاشعارات")
 database:set("lock_new:MAX"..msg.chat_id_..bot_id,"ok")
 end
 end
@@ -1162,18 +1162,18 @@ end
 if (text == "قفل بصمه الفيديو") then
 local tsX_o = database:get("lock_note:MAX"..msg.chat_id_..bot_id)
 if tsX_o then
-tsX000("lock",msg,"✔┇بالفعل تم قفل بصمه فيديو")
+tsX000("lock",msg,"☑┇بالفعل تم قفل بصمه فيديو")
 else
-tsX000("lock",msg,"✔┇تم قفل بصمه فيديو")
+tsX000("lock",msg,"☑┇تم قفل بصمه فيديو")
 database:set("lock_note:MAX"..msg.chat_id_..bot_id,"ok")
 end
 end
---         »»                 End MAX lock                 ««              --
+--         »»                 End MAX lock                         ««              --
 --         »»               Start MAX unlock                       ««              --
 if (text == "فتح الاشعارات") then
 local tsX_o = database:get("lock_new:MAX"..msg.chat_id_..bot_id)
 if not tsX_o then
-tsX000("lock",msg,"☑┇الاشعارات مفتوحه!")
+tsX000("lock",msg,"☑┇الاشعارات مقفوله!")
 else
 tsX000("lock",msg,"☑┇تم فتح الاشعارات")
 database:del("lock_new:MAX"..msg.chat_id_..bot_id,"ok")
@@ -1574,7 +1574,7 @@ return "stop"
 end
 end
 if text and text:match("[\216-\219][\128-\191]") then
-if database:get("lock_ar:MAX"..msg.chat_id_..bot_id) then
+if database:get("lock_pe:MAX"..msg.chat_id_..bot_id) then
 delete_msg(msg.chat_id_,{[0] = msg.id_})
 return "stop"
 end
@@ -1689,10 +1689,10 @@ if text == "رفع منشئ" and msg.reply_to_message_id_ then
 function setcreator_by_reply(extra, result, success)
 local hash =  'MAX:'..bot_id..'creator:'..msg.chat_id_
 if database:sismember(hash, result.sender_user_id_) then
-tsX000("prore",msg,"العضو مرفوع منشئ في البوت")
+tsX000("prore",msg,"☑┇بالفعل تم رفع منشئ في البوت")
 else
 database:sadd(hash, result.sender_user_id_)
-tsX000("prore",msg,"👨‍✈️┇تم ترقيه العضو ليصبح منشئ في البوت")
+tsX000("prore",msg,"☑┇تم رفع منشئ في البوت")
 end
 end
 getMessage(msg.chat_id_, msg.reply_to_message_id_,setcreator_by_reply)
@@ -1704,7 +1704,7 @@ if result.id_ then
 database:sadd('MAX:'..bot_id..'creator:'..msg.chat_id_, result.id_)
 texts = '👨┇العضو ⌁≻ ['..result.title_..'](t.me/'..(apow[2] or 'MAXTAME')..')\n☑┇تم رفع منشئ في البوت'
 else
-texts = '✖┇العضو ليس بالمجموعه او اليوزر خطاء'
+texts = '✖┇خطاء'
 end
 send(msg.chat_id_, msg.id_, 1, texts, 1, 'md')
 end
@@ -1713,16 +1713,16 @@ end
 if text:match("^رفع منشئ (%d+)$") then
 local apow = {string.match(text, "^(رفع منشئ) (%d+)$")}
 database:sadd('MAX:'..bot_id..'creator:'..msg.chat_id_, apow[2])
-tsX000(apow[2],msg,"👨‍✈️┇تم ترقيه العضو ليصيح منشئ في البوت")
+tsX000(apow[2],msg,"☑┇تم رفع منشئ في البوت")
 end
 if text:match("^تنزيل منشئ$") and msg.reply_to_message_id_ then
 function decreator_by_reply(extra, result, success)
 local hash =  'MAX:'..bot_id..'creator:'..msg.chat_id_
 if not database:sismember(hash, result.sender_user_id_) then
-tsX000("prore",msg,"👨‍✈️┇بالفعل تم تنزيله من منشئين المجموعه")
+tsX000("prore",msg,"☑┇بالفعل تم تنزيله من منشئين المجموعه")
 else
 database:srem(hash, result.sender_user_id_)
-tsX000("prore",msg,"👨‍✈️┇تم تنزيله من منشئين المجموعه")
+tsX000("prore",msg,"☑┇تم تنزيله من منشئين المجموعه")
 end
 end
 getMessage(msg.chat_id_, msg.reply_to_message_id_,decreator_by_reply)
@@ -1745,12 +1745,12 @@ if text:match("^تنزيل منشئ (%d+)$") then
 local hash =  'MAX:'..bot_id..'creator:'..msg.chat_id_
 local apow = {string.match(text, "^(تنزيل منشئ) (%d+)$")}
 database:srem(hash, apow[2])
-tsX000(apow[2],msg,"👨‍✈️┇تم تنزيل العضو من منشئين البوت")
+tsX000(apow[2],msg,"☑┇تم تنزيله من منشئين المجموعه")
 end--
 if text:match("^المنشئين") then
 local hash =   'MAX:'..bot_id..'creator:'..msg.chat_id_
 local list = database:smembers(hash)
-text = "👨‍✈️┇منشئين البوت،\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ \n"
+text = "🛅┇قائمة المنشئين  ،\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ \n"
 for k,v in pairs(list) do
 local user_info = database:hgetall('MAX:'..bot_id..'user:'..v)
 if user_info and user_info.username then
@@ -1765,7 +1765,7 @@ text = ""
 end
 end
 if #list == 0 then
-text = "✖┇لايوجد منشئين في البوت"
+text = "✖┇لايوجد منشئين"
 end
 send(msg.chat_id_, msg.id_, 1, text, 1, 'html')
 end
@@ -1834,7 +1834,7 @@ local curl = 'curl "' .. MAXe .. '" -F "chat_id=' .. msg.chat_id_ .. '" -F "docu
 io.popen(curl)
 end
 if text:match("^تحديث$") and tonumber(msg.sender_user_id_) == tonumber(sudo_add) then
-send(msg.chat_id_, msg.id_, 1, '✔️┇اهلا عزيزي المبرمج تم تحديث البوت', 1, 'md')
+send(msg.chat_id_, msg.id_, 1, '✔️┇تم تحديث البوت', 1, 'md')
 os.execute('rm -rf ./libs/utils.lua')
 os.execute('cd libs && wget https://raw.github.com/MAXTAME/MAX/master/libs/utils.lua')
 os.execute('rm -rf MAX.lua')
@@ -1956,14 +1956,6 @@ end
 if (f:match("^(.*)(api.telegram.org/bot)(.*)$")) then 
 ts23 = ts23 .. "\n📁┇قد يحصل توقف في البوت اذا رفعت ملفات غير ملفات ماكس"
 end
-database:sadd("files"..bot_id,name_t[2]..'.lua')
-send(msg.chat_id_, msg.id_, 1, "✔┇ تم تفعيل الملف بنجاح يمكنك استخدامه»اسم الملف {"..name_t[2]..".lua}\n"..ts23, 1, 'html')
-else
-send(msg.chat_id_, msg.id_, 1, '⚠┇عذرا لا يمكن تشغيل {'..name_t[2]..'.lua} \n❗┇لانه لا يدعم سورس ماكس \n 👨🏼‍💻┇[ملفات يدعمها سورس ماكس](t.me/MAXFile)', 1, 'md')
-end
-else
-send(msg.chat_id_, msg.id_, 1, '⚠┇عذرا لا يمكن تشغيل {'..name_t[2]..'.lua} \n❗┇لانه لا يدعم سورس ماكس \n 👨🏼‍💻┇[ملفات يدعمها سورس ماكس](t.me/MAXFile)', 1, 'md')
-end
 end
 if text:match("^(تعطيل ملف) (.*)(.lua)$") then
 local name_t = {string.match(text, "^(تعطيل ملف) (.*)(.lua)$")}
@@ -2020,11 +2012,11 @@ end --sudo
 if tonumber(msg.sender_user_id_) == tonumber(sudo_add) then
 if text == 'تفعيل البوت الخدمي'then
 database:set("add"..bot_id, "yes")
-send(msg.chat_id_, msg.id_, 1, "✔┇عزيزي المبرمج تم تفعل البوت الخدمي", 1, 'html')
+send(msg.chat_id_, msg.id_, 1, "☑┇تم تفعل البوت الخدمي", 1, 'html')
 end
 if (text == 'تعطيل البوت الخدمي') then
 database:del("add"..bot_id)
-send(msg.chat_id_, msg.id_, 1, "❎┇عزيزي المبرمج تم تعطيل البوت الخدمي", 1, 'html')
+send(msg.chat_id_, msg.id_, 1, "❎┇تم تعطيل البوت الخدمي", 1, 'html')
 end
 if text:match("^(تعين الاعضاء) (.*)$") then
 local kekoj = {string.match(text, "^(تعين الاعضاء) (.*)$")}
@@ -2151,10 +2143,10 @@ if text:match("^رفع ادمن$")  and is_owner(msg) and msg.reply_to_message_i
 function promote_by_reply(extra, result, success)
 local hash =  'MAX:'..bot_id..'mods:'..msg.chat_id_
 if database:sismember(hash, result.sender_user_id_) then
-tsX000("prore",msg,'☑┇العضو بالفعل تم رفعه ادمن')
+tsX000("prore",msg,'☑┇بالفعل تم رفعه ادمن')
 else
 database:sadd(hash, result.sender_user_id_)
-tsX000("prore",msg,'☑┇تم ترقيته ليصبح ادمن في المجموعه')
+tsX000("prore",msg,'☑┇تم رفعه ادمن')
 end
 end
 getMessage(msg.chat_id_, msg.reply_to_message_id_,promote_by_reply)
@@ -2175,7 +2167,7 @@ end
 if text:match("^رفع ادمن (%d+)$") and is_owner(msg) then
 local apmd = {string.match(text, "^(رفع ادمن) (%d+)$")}
 database:sadd('MAX:'..bot_id..'mods:'..msg.chat_id_, apmd[2])
-tsX000(apmd[2],msg,"☑┇تم ترقيته ليصبح ادمن في المجموعه")
+tsX000(apmd[2],msg,"☑┇تم رفعه ادمن")
 end
 if text:match("^تنزيل ادمن$") and is_owner(msg) and msg.reply_to_message_id_ then
 function demote_by_reply(extra, result, success)
@@ -2216,7 +2208,7 @@ if database:sismember(hash, result.sender_user_id_) then
 tsX000("prore",msg,"☑┇بالفعل تم رفعه مميز") 
 else
 database:sadd(hash, result.sender_user_id_)
-tsX000("prore",msg,"☑┇تم ترقيته ليصبح مميز في المجموعه")
+tsX000("prore",msg,"☑┇تم رفعه مميز")
 end
 end
 getMessage(msg.chat_id_, msg.reply_to_message_id_,promote_by_reply)
@@ -2239,7 +2231,7 @@ local text = text:gsub('رفع مميز','رفع مميز')
 if text:match("^رفع مميز (%d+)$") and is_owner(msg) then
 local apmd = {string.match(text, "^(رفع عضو مميز) (%d+)$")}
 database:sadd('MAX:'..bot_id..'vipgp:'..msg.chat_id_, apmd[2])
-tsX000(apmd[2],msg,"☑┇تم ترقيته ليصبح مميز")
+tsX000(apmd[2],msg,"☑┇تم رفعه مميز")
 end
 if text and text == "تعين الايدي" and is_owner(msg) then
 send(msg.chat_id_, msg.id_, 1,  '☑┇ ارسل الان النص\n☑┇ يمكنك اضافه :\n- `#username` > اسم المستخدم\n- `#msgs` > عدد مسجات المستخدم\n- `#photos` > عدد صور المستخدم\n- `#id` > ايدي المستخدم\n- `#stast` > موقع المستخدم \n- `#edit` > عدد التعديلات', 1, 'md')
@@ -2364,6 +2356,12 @@ end
 getMessage(msg.chat_id_, msg.reply_to_message_id_,unban_by_reply)
 end
 if is_mod(msg) then 
+if text:match("وضع رابط (https://telegram.me/joinchat/%S+)") or text:match("وضع رابط (https://t.me/joinchat/%S+)") then   
+local glink = text:match("وضع رابط (https://telegram.me/joinchat/%S+)") or text:match("وضع رابط (https://t.me/joinchat/%S+)") 
+database:set('MAX:'..bot_id.."group:link"..msg.chat_id_,glink) 
+send(msg.chat_id_, msg.id_, 1, '☑️:تم وضع رابط', 1, 'md') 
+send(msg.chat_id_, 0, 1, '📩:رابط الكروب الجديد سيكون\n'..glink, 1, 'html')
+end 
 end
 if text:match("^الغاء حظر @(.*)$") and is_mod(msg) then
 local apba = {string.match(text, "^(الغاء حظر) @(.*)$")}
@@ -2739,7 +2737,7 @@ if database:sismember(hash, result.sender_user_id_) then
 tsX000("prore",msg,"☑┇بالفعل تم رفع اداري في البوت")
 else
 database:sadd(hash, result.sender_user_id_)
-tsX000("prore",msg,"☑┇تم ترقيته ليصبح اداري في المجموعه")
+tsX000("prore",msg,"☑┇تم رفع اداري في البوت")
 end
 end
 getMessage(msg.chat_id_, msg.reply_to_message_id_,setowner_by_reply)
@@ -2760,7 +2758,7 @@ end
 if text:match("^رفع اداري (%d+)$") and is_creator(msg) then
 local apow = {string.match(text, "^(رفع اداري) (%d+)$")}
 database:sadd('MAX:'..bot_id..'owners:'..msg.chat_id_, apow[2])
-tsX000(apow[2],msg,"☑┇تم ترقيته ليصبح اداري في المجموعه")
+tsX000(apow[2],msg,"☑┇تم رفع اداري في البوت")
 end  
 if text:match("^تنزيل اداري$") and is_creator(msg) and msg.reply_to_message_id_ then
 function deowner_by_reply(extra, result, success)
@@ -2797,7 +2795,7 @@ end
 if text:match("^الادمنيه$") and is_owner(msg) then
 local hash =   'MAX:'..bot_id..'mods:'..msg.chat_id_
 local list = database:smembers(hash)
-text = "👥┇ادمنيه البوت ،\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ \n"
+text = "👥┇قائمة الادمنيه ،\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ \n"
 for k,v in pairs(list) do
 local user_info = database:hgetall('MAX:'..bot_id..'user:'..v)
 if user_info and user_info.username then
@@ -2853,7 +2851,7 @@ end
 if text:match("^المميزين") and is_owner(msg) then
 local hash =   'MAX:'..bot_id..'vipgp:'..msg.chat_id_
 local list = database:smembers(hash)
-text = "👥┇مميزين البوت ،\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ \n"
+text = "👥┇قائمة المميزين ،\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ \n"
 for k,v in pairs(list) do
 local user_info = database:hgetall('MAX:'..bot_id..'user:'..v)
 if user_info and user_info.username then
@@ -2890,7 +2888,7 @@ end
 send(msg.chat_id_, msg.id_, 1, text, 1, 'html')
 end
 end
-if text and text == "معلومات المجموعه" and is_mod(msg) then 
+if text and text == "معلومات" and is_mod(msg) then 
 function dl_cb22( t1,t2 )
 local MAX_098 = 0
 if database:get("MAX:get:mod:"..bot_id..msg.chat_id_) then 
@@ -2930,7 +2928,7 @@ end
 if text:match("^الاداريين$") and is_creator(msg) then
 local hash =   'MAX:'..bot_id..'owners:'..msg.chat_id_
 local list = database:smembers(hash)
-text = "🛄┇اداريين البوت  ،\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ \n"
+text = "🛄┇قائمة الاداريين  ،\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ \n"
 for k,v in pairs(list) do
 local user_info = database:hgetall('MAX:'..bot_id..'user:'..v)
 if user_info and user_info.username then
@@ -3037,15 +3035,15 @@ MAX_oop = 'مميز الكروب'
 else
 MAX_oop = 'لا شيء'
 end
-send(msg.chat_id_, msg.id_, 1,"مرحبا عزيزي اليك معلومات عن العضو :             💳⋮ايديه`{"..result.sender_user_id_.."}`\n💼⋮رتـٓبتـٰه ∿≫ {"..MAX_oop.."}\n💬⋮مسْٰجاتٌه ∿≫ `{"..msgs.."}`\n🔧⋮تعُٰديلاتٰٓه ∿≫ `{"..edit.."}`", 1, 'md')
+send(msg.chat_id_, msg.id_, 1,"🎫: ايديه~» `{"..result.sender_user_id_.."}`\n🎖: رتبته في البوت~» {"..MAX_oop.."}\n📖: عدد مسجاته~» `{"..msgs.."}`\n📝: مسجات معدله~» `{"..edit.."}`", 1, 'md')
 else
 send(msg.chat_id_, msg.id_, 1,"`"..result.sender_user_id_.."`", 1, 'md')
 end
 end
 getMessage(msg.chat_id_, msg.reply_to_message_id_,id_by_reply)
 end  
-if text:match("^ايدي @(.*)$") then
-local ap = {string.match(text, "^(ايدي) @(.*)$")}
+if text:match("^id @(.*)$") then
+local ap = {string.match(text, "^(id) @(.*)$")}
 function id_by_username(extra, result, success)
 if result.id_ then
 if not database:get('MAX:'..bot_id..'id:mute'..msg.chat_id_) then 
@@ -3056,19 +3054,19 @@ msg2.sender_user_id_ = result.id_
 if is_sudo(msg2) then
 MAX_oop = 'مبرمج البوت'
 elseif is_creator(msg) then
-MAX_oop = 'منشئ الگروب'
+MAX_oop = 'منشئ الكروب'
 elseif (database:get("MAX:name_user:"..bot_id..msg.chat_id_..result.id_) and database:get("MAX:all_if:"..database:get("MAX:name_user:"..bot_id..msg.chat_id_..result.id_) ..bot_id..msg.chat_id_)) then 
 MAX_oop = database:get("MAX:name_user:"..bot_id..msg.chat_id_..result.id_)
 elseif is_owner(msg2) then
-MAX_oop = 'اداري بالبوت👨🏿‍🚒'
+MAX_oop = 'اداري الكروب'
 elseif ck_mod(result.id_,msg.chat_id_) then
-MAX_oop = 'ادمن بالبوت🎉'
+MAX_oop = 'ادمن للكروب'
 elseif is_vip(msg2) then
-MAX_oop = 'مميز'
+MAX_oop = ' مميز الكروب'
 else
 MAX_oop = 'لا شيء'
 end
-texts = "💳⋮آيـديِك ∿≫ `{"..result.id_.."}`\n💼⋮رتـٓبتـٰك ∿≫ {"..MAX_oop.."}\n💬⋮مسْٰجاتٌك ∿≫ `{"..msgs.."}`\n🔧⋮تعُٰديلاتٰٓكّ ∿≫ `{"..edit.."}`"
+texts = "🎫: ايديه~» `{"..result.id_.."}`\n🎖: رتبته في البوت~» {"..MAX_oop.."}\n📖: عدد مسجاته~» `{"..msgs.."}`\n📝: مسجات معدله~» `{"..edit.."}`"
 else
 texts = "`"..result.id_.."`"
 end
@@ -3086,7 +3084,7 @@ local function gpro(extra, result, success)
 if result.photos_[ph] then
 sendPhoto(msg.chat_id_, msg.id_, 0, 1, nil, result.photos_[ph].sizes_[1].photo_.persistent_id_)
 else
-send(msg.chat_id_, msg.id_, 1, "❕┇لا تملك صوره رقم <b>{"..pronumb[2].."}</b> في بروفايلك", 1, 'html')
+send(msg.chat_id_, msg.id_, 1, "❕:لا تملك صوره رقم <b>{"..pronumb[2].."}</b> في بروفايلك", 1, 'html')
 end
 end
 tdcli_function ({
@@ -3102,31 +3100,20 @@ if tonumber(floodmax[2]) < 2 then
 send(msg.chat_id_, msg.id_, 1, '🔘┇ضع التكرار من *{2}* الى  *{99999}*', 1, 'md')
 else
 database:set('MAX:'..bot_id..'flood:max:'..msg.chat_id_,floodmax[2])
-send(msg.chat_id_, msg.id_, 1, '☑┇تم  وضع التكرار بالطرد للعدد ~⪼  *{'..floodmax[2]..'}*', 1, 'md')
+send(msg.chat_id_, msg.id_, 1, '☑┇تم  وضع التكرار بالطرد للعدد ⌁≻  *{'..floodmax[2]..'}*', 1, 'md')
 end
-end
-if text and text == "وضع رابط" and is_admin(msg) then 
-send(msg.chat_id_, msg.id_, 1, '🖲┇ارسال الان رابط الكروب ليتم حفظه', 1, "md") 
-database:set("keko:get:url:"..bot_id..msg.chat_id_..msg.sender_user_id_,true)
-return "keko"
-end
-if text and database:get("keko:get:url:"..bot_id..msg.chat_id_..msg.sender_user_id_) and text:match("[Hh][Tt][Tt][pP]") then 
-send(msg.chat_id_, msg.id_, 1, '☑┇تم وضع : ['..text..']', 1, 'md')
-database:set('MAX:'..bot_id.."group:link"..msg.chat_id_,text)
-database:del("keko:get:url:"..bot_id..msg.chat_id_..msg.sender_user_id_,true)
-return "keko"
 end
 if (text and text == "تعطيل الاعلانات" and is_creator(msg)) then 
 if not is_sudo(msg) then 
 database:set("MAX:gr:not:ads:"..bot_id..msg.chat_id_..os.date("%x"),"ok")
-send(msg.chat_id_, msg.id_, 1, '🖲┇ تم تعطيل ضهور الاعلانات لمده يوم \n📊┇ [يمكنك معرفه المزيد حول الاعلانات هنا](https://t.me/TshakeADS)', 1, "md") 
+send(msg.chat_id_, msg.id_, 1, '🖲┇ تم تعطيل ضهور الاعلانات لمده يوم \n📊┇ [يمكنك يوزره المزيد حول الاعلانات هنا](https://t.me/MAXADS)', 1, "md") 
 else
-send(msg.chat_id_, msg.id_, 1, '💥┇ عزيزي المطور لايمكنك تعطيل هاذه الامر \n📊┇ [يمكنك معرفه المزيد حول الاعلانات هنا](https://t.me/TshakeADS)', 1, "md") 
+send(msg.chat_id_, msg.id_, 1, '💥┇ عزيزي المبرمج لايمكنك تعطيل هاذه الامر \n📊┇ [يمكنك يوزره المزيد حول الاعلانات هنا](https://t.me/MAXADS)', 1, "md") 
 end
 end
 if (text and text == "تفعيل الاعلانات" and is_creator(msg)) then 
 database:del("MAX:gr:not:ads:"..bot_id..msg.chat_id_..os.date("%x"))
-send(msg.chat_id_, msg.id_, 1, '🖲┇تم تفعيل ضهور الاعلانات \n📊┇ [يمكنك معرفه المزيد حول الاعلانات هنا](https://t.me/TshakeADS)', 1, "md") 
+send(msg.chat_id_, msg.id_, 1, '🖲┇تم تفعيل ضهور الاعلانات \n📊┇ [يمكنك يوزره المزيد حول الاعلانات هنا](https://t.me/MAXADS)', 1, "md") 
 end  
 if text:match("^وضع زمن التكرار (%d+)$") and is_owner(msg) then
 local floodt = {string.match(text, "^(وضع زمن التكرار) (%d+)$")}
@@ -3134,26 +3121,18 @@ if tonumber(floodt[2]) < 1 then
 send(msg.chat_id_, msg.id_, 1, '🔘┇ضع العدد من *{1}* الى  *{99999}*', 1, 'md')
 else
 database:set('MAX:'..bot_id..'flood:time:'..msg.chat_id_,floodt[2])
-send(msg.chat_id_, msg.id_, 1, '☑┇تم  وضع الزمن التكرار للعدد ~⪼  *{'..floodt[2]..'}*', 1, 'md')
+send(msg.chat_id_, msg.id_, 1, '☑┇تم  وضع الزمن التكرار للعدد ⌁≻  *{'..floodt[2]..'}*', 1, 'md')
 end
 end
 if text:match("^الرابط$") then
 if not database:get("MAX:mute:link:gr:"..bot_id..msg.chat_id_) then 
 function dl_cb222( t1,t2 )
 if t2.invite_link_ ~= false then 
-send(msg.chat_id_, msg.id_, 1, '📮┇رابط المجموعه\n'..(t2.invite_link_ or "Error"), 1, "html")
-elseif (database:get('MAX:'..bot_id.."group:link"..msg.chat_id_) and database:get('MAX:'..bot_id.."group:link"..msg.chat_id_) ~= "Error") then 
-send(msg.chat_id_, msg.id_, 1, '📮┇رابط المجموعه\n'..database:get('MAX:'..bot_id.."group:link"..msg.chat_id_), 1, "html")
+send(msg.chat_id_, msg.id_, 1, '📩:رابط الكروب \n'..(t2.invite_link_ or "Error"), 1, "html")
+elseif (database:get('MAX:'..bot_id.."group:link"..msg.chat_id_)) then 
+send(msg.chat_id_, msg.id_, 1, '📩:رابط الكروب\n'..database:get('MAX:'..bot_id.."group:link"..msg.chat_id_), 1, "html")
 else
-local getlink = 'https://api.telegram.org/bot'..token..'/exportChatInviteLink?chat_id='..msg.chat_id_
-local req = https.request(getlink)
-local link = json:decode(req)
-if link.ok == true then 
-send(msg.chat_id_, msg.id_, 1, '📮┇رابط المجموعه \n'..(link.result or "Error"), 1, "html")
-database:set('MAX:'..bot_id.."group:link"..msg.chat_id_,link.result)
-else 
-send(msg.chat_id_, msg.id_, 1, '⚠️┇لا يمكني الوصل الى الرابط عليك منحي صلاحيه {دعوه المستخدمين من خلال الرابط}', 1, "html")
-end
+send(msg.chat_id_, msg.id_, 1, '⚠️:لا يوجد رابط اكتب {وضع رابط+الرابط} ليتم حفظ رابط للمجموعه', 1, "html")
 end
 end
 tdcli_function ({
@@ -3161,7 +3140,7 @@ ID = "GetChannelFull",
 channel_id_ = getChatId(msg.chat_id_).ID
 }, dl_cb222, nil)
 else 
-send(msg.chat_id_, msg.id_, 1, '🖲┇جلب الرابط معطل', 1, "html") 
+send(msg.chat_id_, msg.id_, 1, '🖲:الرابط معطل اكتب{تفعيل الرابط}للتفعيل', 1, "html") 
 end
 end
 -----------------------------------------------------------
@@ -3202,7 +3181,7 @@ local name = string.sub(rws[2], 1, 50)
 database:hdel('MAX:'..bot_id..'filters:'..msg.chat_id_, rws[2])
 send(msg.chat_id_, msg.id_, 1, "☑┇تم حذفها من لقائمه المنع\n🔘┇{"..rws[2].."}", 1, 'md')
 end  
-if (text and text == "مسح قائمه المحظورين" and is_creator(msg)) then 
+if (text and text == "تنظيف قائمه المحظورين" and is_creator(msg)) then 
 local function getChannelMembers(channel_id, filter, offset, limit, cb)
 if not limit or limit > 200 then
 limit = 200
@@ -3264,17 +3243,9 @@ send(msg.chat_id_, msg.id_, 1, "📨┇عدد مسجاتك ⌁≻ *{"..user_msgs
 else
 end
 end
-if text:match("^مسح مسجاتي$") and msg.reply_to_message_id_ == 0  then
-local user_msgs = database:get('MAX:'..bot_id..'user:msgs'..msg.chat_id_..':'..msg.sender_user_id_)
-if not database:get('MAX:'..bot_id..'id:mute'..msg.chat_id_) then
-send(msg.chat_id_, msg.id_, 1, "📨┇عدد مسجاتك ⌁≻ *{"..user_msgs.."}*\n📨┇سيتم مسح العدد بعد هذه الرساله", 1, 'md')
-database:del('MAX:'..bot_id..'user:msgs'..msg.chat_id_..':'..msg.sender_user_id_)
-else
-end
-end
 if text:match("^جهاتي$") then
 add = (tonumber(database:get('MAX:'..bot_id..'user:add'..msg.chat_id_..':'..msg.sender_user_id_)) or 0)
-send(msg.chat_id_, msg.id_, 1, "📨┇عدد جهاتك ⌁≻ *{"..add.."}*\n📨┇سيتم مسح العدد بعد هذه الرساله", 1, 'md')
+send(msg.chat_id_, msg.id_, 1, "📨┇عدد جهاتك ⌁≻ *{"..add.."}*\n📨┇سيتم حذف العدد بعد هذه الرساله", 1, 'md')
 database:del('MAX:'..bot_id..'user:add'..msg.chat_id_..':'..msg.sender_user_id_)
 end
 if text:match("^مسح تعديلاتي$") then
@@ -3282,7 +3253,7 @@ edit = (tonumber(database:get('MAX:'..bot_id..'user:editmsg'..msg.chat_id_..':'.
 send(msg.chat_id_, msg.id_, 1, "📨┇عدد تعديلاتك ~⪼ *{"..edit.."}*\n📨┇سيتم حذف العدد بعد هذه الرساله", 1, 'md')
 database:del('MAX:'..bot_id..'user:editmsg'..msg.chat_id_..':'..msg.sender_user_id_)
 end
-if text:match("^(عدد التعديلات)$") or text:match("^(تعديلاتي)$") then
+if text:match("^(تعديلاتي)$") or text:match("^(تعديلاتي)$") then
 local edit = database:get('MAX:'..bot_id..'user:editmsg'..msg.chat_id_..':'..msg.sender_user_id_) or 0
 send(msg.chat_id_, msg.id_, 1, "📨┇عدد تعديلاتك ~⪼ *{"..edit.."}*", 1, 'md')
 end
@@ -3338,9 +3309,9 @@ if  txt[2] == 'مسح القوانين' then
 database:del('MAX:'..bot_id..'rules'..msg.chat_id_)
 send(msg.chat_id_, msg.id_, 1, '☑┇تم مسح القوانين المحفوظه', 1, 'md')
 end
-if txt[2] == 'الرابط' then
+if txt[2] == 'مسح' then
 database:del('MAX:'..bot_id..'group:link'..msg.chat_id_)
-send(msg.chat_id_, msg.id_, 1, '☑┇تم مسح الرابط اكتب وضغ رابط اذا اردت انت تضع رابط ', 1, 'md')
+send(msg.chat_id_, msg.id_, 1, '☑┇تم مسح الرابط المحفوظ', 1, 'md')
 end
 if txt[2] == 'قائمه المنع' then
 database:del('MAX:'..bot_id..'filters:'..msg.chat_id_)
@@ -3467,42 +3438,42 @@ database:sadd(hash, v.user_id_)
 end
 send(msg.chat_id_, msg.id_, 1, moody, 1, 'html')
 end
-bot.channel_get_owners(msg.chat_id_,cb)
+bot.channel_get_admins(msg.chat_id_,cb)
 end
 if text:match("^الاعدادات$") and is_mod(msg) then
 if database:get("lock_media:MAX"..msg.chat_id_..bot_id) then
-mute_all = '✔┇ مفعل'
+mute_all = '✔┇'
 else
-mute_all = '✖┇ غير مفعل'
+mute_all = '✖┇'
 end
 ------------
 if database:get("lock_chat:MAX"..msg.chat_id_..bot_id) then
-mute_text = '✔┇ مفعل'
+mute_text = '✔┇'
 else
-mute_text = '✖┇ غير مفعل'
+mute_text = '✖┇'
 end
 ------------
 if database:get("lock_photo:MAX"..msg.chat_id_..bot_id) then
-mute_photo = '✔┇ مفعل'
+mute_photo = '✔┇'
 else
-mute_photo = '✖┇غير مفعل'
+mute_photo = '✖┇'
 end
 ------------
 if database:get("lock_video:MAX"..msg.chat_id_..bot_id) then
-mute_video = '✔┇مفعل'
+mute_video = '✔┇'
 else
-mute_video = '✖┇غير مفعل'
+mute_video = '✖┇'
 end
 if database:get("lock_note:MAX"..msg.chat_id_..bot_id) then
-mute_note = '✔┇ مفعل'
+mute_note = '✔┇'
 else
-mute_note = '✖┇ غير مفعل'
+mute_note = '✖┇'
 end
 ------------
 if database:get("lock_gif:MAX"..msg.chat_id_..bot_id) then
-mute_gifs = '✔┇مفعل'
+mute_gifs = '✔┇'
 else
-mute_gifs = '✖┇غير مفعل'
+mute_gifs = '✖┇'
 end
 ------------
 if not database:get('MAX:'..bot_id..'flood:max:'..msg.chat_id_) then
@@ -3517,164 +3488,164 @@ flood_t = database:get( 'MAX:'..bot_id..'flood:time:'..msg.chat_id_)
 end
 ------------
 if database:get("lock_audeo:MAX"..msg.chat_id_..bot_id) then
-mute_music = '✔┇مفعل'
+mute_music = '✔┇'
 else
-mute_music = '✖┇غير مفعل'
+mute_music = '✖┇'
 end
 ------------
 if database:get("lock_bot:MAX"..msg.chat_id_..bot_id) then
-mute_bots = '✔┇مفعل'
+mute_bots = '✔┇'
 else
-mute_bots = '✖┇غير مفعل'
+mute_bots = '✖┇'
 end
 
 if database:get("lock_botAndBan:MAX"..msg.chat_id_..bot_id) then
-mute_botsb = '✔┇مفعل'
+mute_botsb = '✔┇'
 else
-mute_botsb = '✖┇غير مفعل'
+mute_botsb = '✖┇'
 end
 if database:get("lock_lllll:MAX"..msg.chat_id_..bot_id) then
-mute_flood = '✔┇مفعل'
+mute_flood = '✔┇'
 else
-mute_flood = '✖┇غير مفعل'
+mute_flood = '✖┇'
 end
 ------------
 if database:get("lock_inline:MAX"..msg.chat_id_..bot_id) then
-mute_in = '✔┇مفعل'
+mute_in = '✔┇'
 else
-mute_in = '✖┇غير مفعل'
+mute_in = '✖┇'
 end
 ------------
 if database:get("lock_voice:MAX"..msg.chat_id_..bot_id) then
-mute_voice = '✔┇مفعل'
+mute_voice = '✔┇'
 else
-mute_voice = '✖┇غير مفعل'
+mute_voice = '✖┇'
 end
 ------------
 if database:get("lock_edit:MAX"..msg.chat_id_..bot_id) then
-mute_edit = '✔┇مفعل'
+mute_edit = '✔┇'
 else
-mute_edit = '✖┇غير مفعل'
+mute_edit = '✖┇'
 end
 ------------
 if database:get("lock_link:MAX"..msg.chat_id_..bot_id) then
-mute_links = '✔┇مفعل'
+mute_links = '✔┇'
 else
-mute_links = '✖┇غير مفعل'
+mute_links = '✖┇'
 end
 ------------
 if database:get("lock_pin:MAX"..msg.chat_id_..bot_id) then
-lock_pin = '✔┇مفعل'
+lock_pin = '✔┇'
 else
-lock_pin = '✖┇غير مفعل'
+lock_pin = '✖┇'
 end
 
 if database:get("lock_files:MAX"..msg.chat_id_..bot_id) then
-mute_doc = '✔┇مفعل'
+mute_doc = '✔┇'
 else
-mute_doc = '✖┇غير مفعل'
+mute_doc = '✖┇'
 end
 
 if database:get("lock_mark:MAX"..msg.chat_id_..bot_id) then
-mute_mdd = '✔┇مفعل'
+mute_mdd = '✔┇'
 else
-mute_mdd = '✖┇غير مفعل'
+mute_mdd = '✖┇'
 end
 ------------
 if database:get("lock_stecker:MAX"..msg.chat_id_..bot_id) then
-lock_sticker = '✔┇مفعل'
+lock_sticker = '✔┇'
 else
-lock_sticker = '✖┇غير مفعل'
+lock_sticker = '✖┇'
 end
 ------------
 if database:get("lock_new:MAX"..msg.chat_id_..bot_id) then
-lock_tgservice = '✔┇مفعل'
+lock_tgservice = '✔┇'
 else
-lock_tgservice = '✖┇غير مفعل'
+lock_tgservice = '✖┇'
 end
 ------------
 if database:get("lock_tag:MAX"..msg.chat_id_..bot_id) then
-lock_htag = '✔┇مفعل'
+lock_htag = '✔┇'
 else
-lock_htag = '✖┇غير مفعل'
+lock_htag = '✖┇'
 end
 
 if database:get("lock_sarha:MAX"..msg.chat_id_..bot_id) then
-lock_cmd = '✔┇مفعل'
+lock_cmd = '✔┇'
 else
-lock_cmd = '✖┇غير مفعل'
+lock_cmd = '✖┇'
 end
 ------------
 if database:get("lock_username:MAX"..msg.chat_id_..bot_id) then
-lock_tag = '✔┇مفعل'
+lock_tag = '✔┇'
 else
-lock_tag = '✖┇غير مفعل'
+lock_tag = '✖┇'
 end
 ------------
 if database:get("lock_contact:MAX"..msg.chat_id_..bot_id) then
-lock_contact = '✔┇مفعل'
+lock_contact = '✔┇'
 else
-lock_contact = '✖┇غير مفعل'
+lock_contact = '✖┇'
 end
 ------------
 if database:get("lock_en:MAX"..msg.chat_id_..bot_id) then
-lock_english = '✔┇مفعل'
+lock_english = '✔┇'
 else
-lock_english = '✖┇غير مفعل'
+lock_english = '✖┇'
 end
 ------------
 if database:get("lock_ar:MAX"..msg.chat_id_..bot_id) then
-lock_persian = '✔┇مفعل'
+lock_persian = '✔┇'
 else
-lock_persian = '✖┇غير مفعل'
+lock_persian = '✖┇'
 end
 ------------
 if database:get("lock_fwd:MAX"..msg.chat_id_..bot_id) then
-lock_forward = '✔┇مفعل'
+lock_forward = '✔┇'
 else
-lock_forward = '✖┇غير مفعل'
+lock_forward = '✖┇'
 end
 
 if database:get('MAX:'..bot_id..'rep:mute'..msg.chat_id_) then
-lock_rep = '✔┇مفعل'
+lock_rep = '✔┇'
 else
-lock_rep = '✖┇غير مفعل'
+lock_rep = '✖┇'
 end
 ------------
 if database:get('MAX:'..bot_id..'repsudo:mute'..msg.chat_id_) then
-lock_repsudo = '✔┇مفعل'
+lock_repsudo = '✔┇'
 else
-lock_repsudo = '✖┇غير مفعل'
+lock_repsudo = '✖┇'
 end
 ------------
 if database:get('MAX:'..bot_id..'repowner:mute'..msg.chat_id_) then
-lock_repowner = '✔┇مفعل'
+lock_repowner = '✔┇'
 else
-lock_repowner = '✖┇غير مفعل'
+lock_repowner = '✖┇'
 end
 ------------
 if database:get('MAX:'..bot_id..'id:mute'..msg.chat_id_) then
-lock_id = '✔┇ مفعل'
+lock_id = '✔┇'
 else
-lock_id = '✖┇ غير مفعل'
+lock_id = '✖┇'
 end
 ------------
 if database:get('MAX:'..bot_id..'pin:mute'..msg.chat_id_) then
-lock_pind = '✔┇ مفعل'
+lock_pind = '✔┇'
 else
-lock_pind = '✖┇ غير مفعل'
+lock_pind = '✖┇'
 end
 ------------
 if database:get('MAX:'..bot_id..'id:mute'..msg.chat_id_) then
-lock_id_photo = '✔┇ مفعل'
+lock_id_photo = '✔┇'
 else
-lock_id_photo = '✖┇ غير مفعل'
+lock_id_photo = '✖┇'
 end
 ------------
 if database:get( 'MAX:'..bot_id.."welcome"..msg.chat_id_) then
-send_welcome = '✔┇مفعل'
+send_welcome = '✔┇'
 else
-send_welcome = '✖┇غير مفعل'
+send_welcome = '✖┇'
 end
 ------------
 local ex = database:ttl( 'MAX:'..bot_id.."charge:"..msg.chat_id_)
@@ -3775,7 +3746,7 @@ end
 end
 end
 
-if (text and text == 'تغير كليشه المبرمج') and tonumber(msg.sender_user_id_) == tonumber(cre) then
+if (text and text == 'تغير كليشه المبرمج') and tonumber(msg.sender_user_id_) == tonumber(sudo_add) then
 send(msg.chat_id_, msg.id_, 1, '📥┇الان يمكنك ارسال الكليشه  ليتم حفظها', 1, 'html')
 redis:set('MAX:'..bot_id..'texts'..msg.sender_user_id_..'', 'msg')
 return false end
@@ -3795,7 +3766,7 @@ local nakeko = redis:get('MAX:'..bot_id..'nakeko')
 if text_sudo then
 send(msg.chat_id_, msg.id_, 1, text_sudo, 1, 'md')
 else
-sendContact(msg.chat_id_, msg.id_, 0, 1, nil, (nkeko or 9647723177600), (nakeko or "MAX TEAM"), "", bot_id)
+sendContact(msg.chat_id_, msg.id_, 0, 1, nil, (nkeko or 9647723949098), (nakeko or "MAXTAME"), "", bot_id)
 end
 end
 for k,v in pairs(sudo_users) do
@@ -3816,7 +3787,7 @@ end
 if text:match("^(.*)$") then
 local keko2 = redis:get('MAX:'..bot_id..'nkeko'..msg.sender_user_id_..'')
 if keko2 == 'mmsg' then
-send(msg.chat_id_, msg.id_, 1, '• `تم حفظ الاسم يمكنك اظهار الجه بـ ارسال امر المبرمج` ☑', 1, 'md')
+send(msg.chat_id_, msg.id_, 1, '• `تم حفظ الاسم يمكنك اظهار الجه بـ ارسال المبرمج او المطور` ☑', 1, 'md')
 redis:set('MAX:'..bot_id..'nkeko'..msg.sender_user_id_..'', 'no')
 redis:set('MAX:'..bot_id..'nakeko', text)
 local nmkeko = redis:get('MAX:'..bot_id..'nmkeko')
@@ -3827,11 +3798,13 @@ end
 if text:match("^رفع مبرمج$")  and tonumber(msg.sender_user_id_) == tonumber(sudo_add) and msg.reply_to_message_id_ then
 function promote_by_reply(extra, result, success)
 if redis:sismember('MAX:'..bot_id..'dev', result.sender_user_id_) then
-tsX000("prore",msg,'☑┇بالفعل تم رفعه مبرمج')
+tsX000("prore",msg,'❗️ : خاصيه التأكيد 
+👨🏽‍🎤 : بالفعل تم رفعه مبرمج')
 else
 redis:set('MAX:'..bot_id..'sudoo'..result.sender_user_id_..'', 'yes')
 redis:sadd('MAX:'..bot_id..'dev', result.sender_user_id_)
-tsX000("prore",msg,'☑┇تم رفعه مبرمج')
+tsX000("prore",msg,'🚦 : خاصيه الرفع 
+👨🏽‍🎤 : تم رفعه مبرمج')
 end
 end
 getMessage(msg.chat_id_, msg.reply_to_message_id_,promote_by_reply)
@@ -3856,17 +3829,20 @@ if text:match("^رفع مبرمج (%d+)$") and tonumber(msg.sender_user_id_) == 
 local apmd = {string.match(text, "^(رفع مبرمج) (%d+)$")}
 redis:set('MAX:'..bot_id..'sudoo'..apmd[2]..'', 'yes')
 redis:sadd('MAX:'..bot_id..'dev', apmd[2])
-tsX000(apmd[2],msg,'☑┇تم رفعه مبرمج')
+tsX000(apmd[2],msg,'🚦 : خاصيه الرفع 
+👨🏽‍🎤 : تم رفعه مبرمج')
 end
 
 if text:match("^تنزيل مبرمج$") and tonumber(msg.sender_user_id_) == tonumber(sudo_add) and msg.reply_to_message_id_ then
 function demote_by_reply(extra, result, success)
 if not redis:sismember('MAX:'..bot_id..'dev', result.sender_user_id_) then
-tsX000("prore",msg,'☑┇ بالفعل تم تنزيله من المبرمجين')
+tsX000("prore",msg,'❗️ : خاصيه التأكيد 
+👨🏽‍🎤 : تم تنزيله من المبرمج')
 else
 redis:del('MAX:'..bot_id..'sudoo'..result.sender_user_id_..'', 'no')
 redis:srem('MAX:'..bot_id..'dev', result.sender_user_id_)
-tsX000("prore",msg,'☑┇ تم تنزيله من مبرمجين البوت')
+tsX000("prore",msg,'🎚 : خاصيه التنزيل 
+👨🏽‍🎤 : تم تنزيله من المبرمج')
 end
 end
 getMessage(msg.chat_id_, msg.reply_to_message_id_,demote_by_reply)
@@ -3890,7 +3866,8 @@ if text:match("^تنزيل مبرمج (%d+)$") and tonumber(msg.sender_user_id_)
 local apmd = {string.match(text, "^(تنزيل مبرمج) (%d+)$")}
 redis:del('MAX:'..bot_id..'sudoo'..apmd[2]..'', 'no')
 redis:srem('MAX:'..bot_id..'dev', apmd[2])
-tsX000(apmd[2],msg,'☑┇ تم تنزيله من مبرمجين البوت')
+tsX000(apmd[2],msg,'🎚 : خاصيه التنزيل 
+👨🏽‍🎤 : تم تنزيله من المبرمج')
 end
 if not database:get('MAX:'..bot_id..'repowner:mute'..msg.chat_id_) then
 local keko = redis:get('MAX:'..bot_id..'keko'..text..''..msg.chat_id_..'')
@@ -4049,7 +4026,8 @@ for k,v in pairs(list) do
 redis:del('MAX:'..bot_id..'dev')
 redis:del('MAX:'..bot_id..'sudoo'..v)
 end
-send(msg.chat_id_, msg.id_, 1, "☑┇تم مسح مبرمجين البوت", 1, 'md')
+send(msg.chat_id_, msg.id_, 1, "✖️ : خاصيه المسح 
+👨🏽‍🎤 : تم مسح مبرمجين البوت", 1, 'md')
 end
 if text:match("^مسح ردود الاداري$") and is_owner(msg) then
 local list = redis:smembers('MAX:'..bot_id..'kekore'..msg.chat_id_..'')
@@ -4213,25 +4191,25 @@ end
 end
 if (text and text == 'تعطيل الايدي بالصوره') and is_owner(msg) then
 if database:get('MAX:'..bot_id..'id:photo'..msg.chat_id_) then
-send(msg.chat_id_, msg.id_, 1, '☑┇الايدي بالصوره بالفعل تم تعطيل', 1, 'md')
+send(msg.chat_id_, msg.id_, 1, '☑┇الايدي بالصوره بالفعل تم تعطيله', 1, 'md')
 else
 send(msg.chat_id_, msg.id_, 1, '☑┇تم تعطيل الايدي بالصوره', 1, 'md')
 database:set('MAX:'..bot_id..'id:photo'..msg.chat_id_,true)
 end
 end
-if (text and text == 'تفعيل صورتي') and is_owner(msg) then
+if (text and text == 'تفعيل احضر صوره') and is_owner(msg) then
 if not database:get('MAX:'..bot_id..'get:photo'..msg.chat_id_) then
-send(msg.chat_id_, msg.id_, 1, '☑┇صورتي بالفعل تم تفعيل', 1, 'md')
+send(msg.chat_id_, msg.id_, 1, '☑┇احضر صوره بالفعل تم تفعيله', 1, 'md')
 else
-send(msg.chat_id_, msg.id_, 1, '☑┇تم تفعيل صورتي', 1, 'md')
+send(msg.chat_id_, msg.id_, 1, '☑┇تم تفعيل احضر صوره', 1, 'md')
 database:del('MAX:'..bot_id..'get:photo'..msg.chat_id_)
 end
 end
-if (text and text == 'تعطيل صورتي') and is_owner(msg) then
+if (text and text == 'تعطيل احضر صوره') and is_owner(msg) then
 if database:get('MAX:'..bot_id..'get:photo'..msg.chat_id_) then
-send(msg.chat_id_, msg.id_, 1, '☑┇ صورتي بالفعل تم تعطيله', 1, 'md')
+send(msg.chat_id_, msg.id_, 1, '☑┇احضر صوره بالفعل تم تعطيله', 1, 'md')
 else
-send(msg.chat_id_, msg.id_, 1, '☑┇تم تعطيل صورتي', 1, 'md')
+send(msg.chat_id_, msg.id_, 1, '☑┇تم تعطيل احضر صوره', 1, 'md')
 database:set('MAX:'..bot_id..'get:photo'..msg.chat_id_,true)
 end
 end
@@ -4542,7 +4520,7 @@ local keko_text = {
 "وجهك وجه الچوب ختتف🐸😹",
 }
 keko3 = math.random(#keko_text)
-sendPhoto(msg.chat_id_, msg.id_, 0, 1, nil, result.photos_[0].sizes_[1].photo_.persistent_id_,"🎭"..keko_text[keko3].."\n🌌⋮صٰـورک ∿≫ "..all_photo_MAX.."\n💳⋮آيـديِك ∿≫ ("..msg.sender_user_id_..")\n🎟⋮يـٰوزرك∿≫ "..keko_info.."\n💼⋮رتـٓبتـٰك ∿≫ "..t..'\n🌟⋮تفاعٰلٰك ∿≫ '..formsgg(msguser).."\n💬⋮مسْٰجاتٌك ∿≫ {"..user_msgs.."}\n🔧⋮تعُٰديلاتٰٓكّ ∿≫ {"..edit.."}\n┅┅┅┅┅┅┅┅┅┅┅┅ ",msg.id_,msg.id_.."")
+sendPhoto(msg.chat_id_, msg.id_, 0, 1, nil, result.photos_[0].sizes_[1].photo_.persistent_id_,"📷"..keko_text[keko3].."\n❖ ᎒ ᎮᏲᎧᏡᎧ ➣ "..all_photo_MAX.."\n✰ ᎒ ᎨᏧ ➣ ("..msg.sender_user_id_..")\n❖ ᎒ ᏬᏕᏋᖇ ➣ "..keko_info.."\n✰ ᎒ ᖇᎯᏁᏥ ➣ "..t..'\n • تفاعلك > '..formsgg(msguser).."\n❖ ᎒ ᗰᏕᏳ ➣ {"..user_msgs.."}\n✰ ᎒ ᏋᏧᎨᏡ ➣ {"..edit.."}\n╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍ ",msg.id_,msg.id_.."")
 else 
 local MAX_new_text = database:get("MAX:gr:id:text:"..bot_id..msg.chat_id_)
 local MAX_new_text = MAX_new_text:gsub('#username',(keko_info or 'لا يوجد'))
@@ -4570,7 +4548,7 @@ else
 t = 'لا شيء'
 end
 if not database:get("MAX:gr:id:text:"..bot_id..msg.chat_id_) then 
-send(msg.chat_id_, msg.id_, 1, "✰ ᎒ ᎨᏧ ➣ ("..msg.sender_user_id_..")\n❖ ᎒ ᏬᏕᏋᖇ ➣ "..keko_info.."\n✰ ᎒ ᖇᎯᏁᏥ ➣ "..t.."\n❖ ᎒ ᗰᏕᏳ ➣ <b>{"..user_msgs.."}</b>\n✰ ᎒ ᏋᏧᎨᏡ ➣ <b>{"..edit.."}</b>\n┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅ ", 1, 'html')
+send(msg.chat_id_, msg.id_, 1, "✰ ᎒ ᎨᏧ ➣ ("..msg.sender_user_id_..")\n❖ ᎒ ᏬᏕᏋᖇ ➣ "..keko_info.."\n✰ ᎒ ᖇᎯᏁᏥ ➣ "..t.."\n❖ ᎒ ᗰᏕᏳ ➣ <b>{"..user_msgs.."}</b>\n✰ ᎒ ᏋᏧᎨᏡ ➣ <b>{"..edit.."}</b>\n╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍", 1, 'html')
 else 
 local MAX_new_text = database:get("MAX:gr:id:text:"..bot_id..msg.chat_id_)
 local MAX_new_text = MAX_new_text:gsub('#username',(keko_info or 'لا يوجد'))
@@ -4603,7 +4581,7 @@ end
 if not database:get('MAX:'..bot_id..'id:mute'..msg.chat_id_) then
 if not database:get('MAX:'..bot_id..'id:photo'..msg.chat_id_) then
 if not database:get("MAX:gr:id:text:"..bot_id..msg.chat_id_) then 
-send(msg.chat_id_, msg.id_, 1, "❖ ᎒انت لا تملك صوره في بروفايلك\n💳⋮آيـديِك ∿≫ ("..msg.sender_user_id_..")\n🎟⋮يـٰوزرك∿≫ "..keko_info.."\n💼⋮رتـٓبتـٰك ∿≫ "..t..'\n🌟⋮تفاعٰلٰك ∿≫ '..formsgg(msguser).."\n💬⋮مسْٰجاتٌك ∿≫ <b>{"..user_msgs.."}</b>\n🔧⋮تعُٰديلاتٰٓكّ ∿≫ <b>{"..edit.."}</b>\n┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅ ", 1, 'html')
+send(msg.chat_id_, msg.id_, 1, "❖ ᎒انت لا تملك صوره في بروفايلك\n✰ ᎒ ᎨᏧ ➣ ("..msg.sender_user_id_..")\n❖ ᎒ ᏬᏕᏋᖇ ➣ "..keko_info.."\n✰ ᎒ ᖇᎯᏁᏥ ➣ "..t.."\n❖ ᎒ ᗰᏕᏳ ➣ <b>{"..user_msgs.."}</b>\n✰ ᎒ ᏋᏧᎨᏡ ➣ <b>{"..edit.."}</b>\n╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍ ", 1, 'html')
 else 
 local MAX_new_text = database:get("MAX:gr:id:text:"..bot_id..msg.chat_id_)
 local MAX_new_text = MAX_new_text:gsub('#username',(keko_info or 'لا يوجد'))
@@ -4631,7 +4609,7 @@ else
 t = 'لا شيء'
 end
 if not database:get("MAX:gr:id:text:"..bot_id..msg.chat_id_) then 
-send(msg.chat_id_, msg.id_, 1, "💳⋮آيـديِك ∿≫ ("..msg.sender_user_id_..")\n🎟⋮يـٰوزرك∿≫ "..keko_info.."\n💼⋮رتـٓبتـٰك ∿≫ "..t.."\n💬⋮مسْٰجاتٌك ∿≫ <b>{"..user_msgs.."}</b>\n🔧⋮تعُٰديلاتٰٓكّ ∿≫ <b>{"..edit.."}</b>\n┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅ ", 1, 'html')
+send(msg.chat_id_, msg.id_, 1, "✰ ᎒ ᎨᏧ ➣ ("..msg.sender_user_id_..")\n❖ ᎒ ᏬᏕᏋᖇ ➣ "..keko_info.."\n✰ ᎒ ᖇᎯᏁᏥ ➣ "..t.."\n❖ ᎒ ᗰᏕᏳ ➣ <b>{"..user_msgs.."}</b>\n✰ ᎒ ᏋᏧᎨᏡ ➣ <b>{"..edit.."}</b>\n╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍", 1, 'html')
 else 
 local MAX_new_text = database:get("MAX:gr:id:text:"..bot_id..msg.chat_id_)
 local MAX_new_text = MAX_new_text:gsub('#username',(keko_info or 'لا يوجد'))
@@ -4706,7 +4684,7 @@ else
 send(msg.chat_id_, msg.id_, 1, '☑┇التثبيت معطل',1, 'md')
 end
 end
-if text:match("^الغاء pin$") and is_mod(msg) and not is_owner(msg) or text:match("^الغاء التثبيت") and is_mod(msg) and not is_owner(msg) then
+if text:match("^الغاء تثبيت$") and is_mod(msg) and not is_owner(msg) or text:match("^الغاء التثبيت") and is_mod(msg) and not is_owner(msg) then
 if not database:get('MAX:'..bot_id..'pin:mute'..msg.chat_id_) then
 unpinmsg(msg.chat_id_)
 send(msg.chat_id_, msg.id_, 1, '☑┇تم الغاء تثبيت الرساله', 1, 'md')
@@ -4963,7 +4941,6 @@ local text =  [[
 ◾️┇《تفعيل/تعطيل》المغادره
 ️◾️┇《تفعيل/تعطيل》الاذاعه
 ◾️┇《تفعيل/تعطيل》البوت الخدمي
-◾️┇《تعين الاعضاء + رقم》
 💠┇《اضف/مسح》رد للكل
 💠┇《ردود المطور》
 💠┇《تغير امر المطور》
@@ -5012,18 +4989,27 @@ send(msg.chat_id_, msg.id_, 1, (h4 or text), 1, 'html')
 end
 if text:match("^اصدار$") or text:match("^ماكس$") or text:match("^السورس$") or text:match("^سورس$") then
 local text =  [[
-{اهلا بك في سورس ماكس ℳÅℵ تابع قنوات السورس } ~》
-📡┇<a href="https://telegram.me/MAXTAME">قناه السورس○•</a>
-📁┇<a href="https://telegram.me/MAXFILE">ملفات السورس○•</a>
-💬┇<a href="t.me/K_111BOT">بوت تواصل السورس○•</a> 
-💭┇<a href="t.me/II8IlI">کاسبـر○•</a> 
-💭┇<a href="t.me/IP_PPP">مونسر○•</a> 
+🗳 ┇ سـورس مــــآكـس
+`git clone https://github.com/MAXTAME/MAX && cd MAX && chmod +x install.sh && ./install.sh`
+
+🔱┇ كـود التـشغـيل
+`./MAX/mx`
+
+🔸┇اضغط علكود ليتم النسخ عندك
+🔸┇الصقه بالترمنال وانتر انتظر يتنصب
+🔹┇بعده يطـلب مـعلومات بآلترمـنآل 
+🔹┇تدخل مـعلومـآتك مـن توكن وآيـديـك
+🌟┇ومبروك نصبت سورس مــآكـس تيجي جديد
+
+📡┇<a href="https://telegram.me/MAXTAME">قناه السورس</a>
+📁┇<a href="https://telegram.me/MAXFILE">ملفات السورس</a>
+💬┇<a href="t.me/K_111BOT">بوت تواصل السورس</a> 
 ]]
 send(msg.chat_id_, msg.id_, 1, text, 1, 'html')
 end
 if text:match("^اريد رابط حذف$") or text:match("^رابط حذف$") or text:match("^رابط الحذف$") or text:match("^الرابط حذف$") or text:match("^اريد رابط الحذف$") then
 local text =  [[
-🗑┇رابط حذف حساب التلي  ، 🔚
+🗑┇رابط حذف التلي ، ⬇
 ‼┇قبل متحذف فكر ولتسرع بالتوفيق حياتي♥'
 ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
 🔎┇<a href="https://telegram.org/deactivate">اضغط هنا للحذف الحساب" </a>

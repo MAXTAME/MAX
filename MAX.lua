@@ -3798,13 +3798,11 @@ end
 if text:match("^رفع مبرمج$")  and tonumber(msg.sender_user_id_) == tonumber(sudo_add) and msg.reply_to_message_id_ then
 function promote_by_reply(extra, result, success)
 if redis:sismember('MAX:'..bot_id..'dev', result.sender_user_id_) then
-tsX000("prore",msg,'❗️ : خاصيه التأكيد 
-👨🏽‍🎤 : بالفعل تم رفعه مبرمج')
+tsX000("prore",msg,'❗️ : خاصيه التأكيد                                             👨🏽‍🎤 : بالفعل تم رفعه مبرمج')
 else
 redis:set('MAX:'..bot_id..'sudoo'..result.sender_user_id_..'', 'yes')
 redis:sadd('MAX:'..bot_id..'dev', result.sender_user_id_)
-tsX000("prore",msg,'🚦 : خاصيه الرفع 
-👨🏽‍🎤 : تم رفعه مبرمج')
+tsX000("prore",msg,'🚦 : خاصيه الرفع                                                  👨🏽‍🎤 : تم رفعه مبرمج')
 end
 end
 getMessage(msg.chat_id_, msg.reply_to_message_id_,promote_by_reply)
@@ -3829,23 +3827,20 @@ if text:match("^رفع مبرمج (%d+)$") and tonumber(msg.sender_user_id_) == 
 local apmd = {string.match(text, "^(رفع مبرمج) (%d+)$")}
 redis:set('MAX:'..bot_id..'sudoo'..apmd[2]..'', 'yes')
 redis:sadd('MAX:'..bot_id..'dev', apmd[2])
-tsX000(apmd[2],msg,'🚦 : خاصيه الرفع 
-👨🏽‍🎤 : تم رفعه مبرمج')
+tsX000(apmd[2],msg,'🚦 : خاصيه الرفع                                            👨🏽‍🎤 : تم رفعه مبرمج')
 end
 
 if text:match("^تنزيل مبرمج$") and tonumber(msg.sender_user_id_) == tonumber(sudo_add) and msg.reply_to_message_id_ then
 function demote_by_reply(extra, result, success)
 if not redis:sismember('MAX:'..bot_id..'dev', result.sender_user_id_) then
-tsX000("prore",msg,'❗️ : خاصيه التأكيد 
-👨🏽‍🎤 : تم تنزيله من المبرمج')
+tsX000("prore",msg,'❗️ : خاصيه التأكيد                                        👨🏽‍🎤 : تم تنزيله من المبرمج')
 else
 redis:del('MAX:'..bot_id..'sudoo'..result.sender_user_id_..'', 'no')
 redis:srem('MAX:'..bot_id..'dev', result.sender_user_id_)
-tsX000("prore",msg,'🎚 : خاصيه التنزيل 
-👨🏽‍🎤 : تم تنزيله من المبرمج')
+tsX000("prore",msg,'🎚 : خاصيه التنزيل                                     👨🏽‍🎤 : تم تنزيله من المبرمج')
 end
 end
-getMessage(msg.chat_id_, msg.reply_to_message_id_,demote_by_reply)
+getMessage(msg.chat_id_,msg.reply_to_message_id_,demote_by_reply)
 end
 
 if text:match("^تنزيل مبرمج @(.*)$") and tonumber(msg.sender_user_id_) == tonumber(sudo_add) then
@@ -3866,8 +3861,7 @@ if text:match("^تنزيل مبرمج (%d+)$") and tonumber(msg.sender_user_id_)
 local apmd = {string.match(text, "^(تنزيل مبرمج) (%d+)$")}
 redis:del('MAX:'..bot_id..'sudoo'..apmd[2]..'', 'no')
 redis:srem('MAX:'..bot_id..'dev', apmd[2])
-tsX000(apmd[2],msg,'🎚 : خاصيه التنزيل 
-👨🏽‍🎤 : تم تنزيله من المبرمج')
+tsX000(apmd[2],msg,'🎚 : خاصيه التنزيل                                            👨🏽‍🎤 : تم تنزيله من المبرمج')
 end
 if not database:get('MAX:'..bot_id..'repowner:mute'..msg.chat_id_) then
 local keko = redis:get('MAX:'..bot_id..'keko'..text..''..msg.chat_id_..'')
@@ -4026,8 +4020,7 @@ for k,v in pairs(list) do
 redis:del('MAX:'..bot_id..'dev')
 redis:del('MAX:'..bot_id..'sudoo'..v)
 end
-send(msg.chat_id_, msg.id_, 1, "✖️ : خاصيه المسح 
-👨🏽‍🎤 : تم مسح مبرمجين البوت", 1, 'md')
+send(msg.chat_id_, msg.id_, 1, "✖️ : خاصيه المسح                                         👨🏽‍🎤 : تم مسح مبرمجين البوت", 1, 'md')
 end
 if text:match("^مسح ردود الاداري$") and is_owner(msg) then
 local list = redis:smembers('MAX:'..bot_id..'kekore'..msg.chat_id_..'')
@@ -4472,7 +4465,7 @@ send(msg.chat_id_, msg.id_, 1, '☑┇تم تفعيل امر الروابط', 1,
 database:del("MAX:mute:link:gr:"..bot_id..msg.chat_id_)
 end
 if text and text == "تعين مجموعه المبرمج" and tonumber(msg.sender_user_id_) == tonumber(sudo_add) then
-send(msg.chat_id_, msg.id_, 1, '☑┇ تم تعين ⌁≻ `'..msg.chat_id_..'`', 1, 'md')
+send(msg.chat_id_, msg.id_, 1, '☑┇ تم التعين سيتم ارسال لك في هذه المجموعه بدل من خاص البوت ⌁≻ `'..msg.chat_id_..'`', 1, 'md')
 database:set("MAX"..bot_id..":sudo:gr",msg.chat_id_)
 end
 if text and text == "مسح مجموعه المبرمج" and tonumber(msg.sender_user_id_) == tonumber(sudo_add) then
@@ -4520,7 +4513,7 @@ local keko_text = {
 "وجهك وجه الچوب ختتف🐸😹",
 }
 keko3 = math.random(#keko_text)
-sendPhoto(msg.chat_id_, msg.id_, 0, 1, nil, result.photos_[0].sizes_[1].photo_.persistent_id_,"📷"..keko_text[keko3].."\n❖ ᎒ ᎮᏲᎧᏡᎧ ➣ "..all_photo_MAX.."\n✰ ᎒ ᎨᏧ ➣ ("..msg.sender_user_id_..")\n❖ ᎒ ᏬᏕᏋᖇ ➣ "..keko_info.."\n✰ ᎒ ᖇᎯᏁᏥ ➣ "..t..'\n • تفاعلك > '..formsgg(msguser).."\n❖ ᎒ ᗰᏕᏳ ➣ {"..user_msgs.."}\n✰ ᎒ ᏋᏧᎨᏡ ➣ {"..edit.."}\n╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍ ",msg.id_,msg.id_.."")
+sendPhoto(msg.chat_id_, msg.id_, 0, 1, nil, result.photos_[0].sizes_[1].photo_.persistent_id_,"🎭"..keko_text[keko3].."\n🌌: صورك⌁» {"..all_photo_MAX.."}\n🎫: ايديك⌁» ("..msg.sender_user_id_..")\n🚦: يوزرك⌁» "..keko_info.."\n🎖: رتبتك⌁» "..t..'\n🎚: تفاعلك⌁» '..formsgg(msguser).."\n📖: مسجاتك⌁» {"..user_msgs.."}\n📝: مسجات معدله⌁» {"..edit.."}\n╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍ ",msg.id_,msg.id_.."")
 else 
 local MAX_new_text = database:get("MAX:gr:id:text:"..bot_id..msg.chat_id_)
 local MAX_new_text = MAX_new_text:gsub('#username',(keko_info or 'لا يوجد'))
@@ -4548,7 +4541,7 @@ else
 t = 'لا شيء'
 end
 if not database:get("MAX:gr:id:text:"..bot_id..msg.chat_id_) then 
-send(msg.chat_id_, msg.id_, 1, "✰ ᎒ ᎨᏧ ➣ ("..msg.sender_user_id_..")\n❖ ᎒ ᏬᏕᏋᖇ ➣ "..keko_info.."\n✰ ᎒ ᖇᎯᏁᏥ ➣ "..t.."\n❖ ᎒ ᗰᏕᏳ ➣ <b>{"..user_msgs.."}</b>\n✰ ᎒ ᏋᏧᎨᏡ ➣ <b>{"..edit.."}</b>\n╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍", 1, 'html')
+send(msg.chat_id_, msg.id_, 1, "🎫: ايديك⌁» ("..msg.sender_user_id_..")\n🚦: يوزرك⌁» "..keko_info.."\n🎖: رتبتك⌁» "..t.."\n📖: مسجاتك⌁» <b>{"..user_msgs.."}</b>\n📝: مسجات معدله⌁» <b>{"..edit.."}</b>\n╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍", 1, 'html')
 else 
 local MAX_new_text = database:get("MAX:gr:id:text:"..bot_id..msg.chat_id_)
 local MAX_new_text = MAX_new_text:gsub('#username',(keko_info or 'لا يوجد'))

@@ -2154,7 +2154,7 @@ if database:sismember(hash, result.sender_user_id_) then
 tsX000("prore",msg,'☑┇العضو بالفعل تم رفعه ادمن')
 else
 database:sadd(hash, result.sender_user_id_)
-tsX000("prore",msg,'☑┇تم ترقيته ليصبح ادمن في المجموعه')
+tsX000("prore",msg,"🎖:خاصيه الرفع\n👮🏽‍♂️:تم ترقيته ليصبح ادمن")
 end
 end
 getMessage(msg.chat_id_, msg.reply_to_message_id_,promote_by_reply)

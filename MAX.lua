@@ -3156,11 +3156,11 @@ if text:match("^الرابط$") then
 if not database:get("MAX:mute:link:gr:"..bot_id..msg.chat_id_) then 
 function dl_cb222( t1,t2 )
 if t2.invite_link_ ~= false then 
-send(msg.chat_id_, msg.id_, 1, '📩┇ᏳᖇᎧᏬᎮ ᏝᎨᏁᏥ\n'..(t2.invite_link_ or "Error"), 1, "html")
+send(msg.chat_id_, msg.id_, 1, '📩┇رابط المجموعه...\n'..(t2.invite_link_ or "Erorr"), 1, "html")
 elseif (database:get('MAX:'..bot_id.."group:link"..msg.chat_id_)) then 
-send(msg.chat_id_, msg.id_, 1, '📩┇ᏳᖇᎧᏬᎮ ᏝᎨᏁᏥ المجموعه\n'..database:get('MAX:'..bot_id.."group:link"..msg.chat_id_), 1, "html")
+send(msg.chat_id_, msg.id_, 1, '📩┇رابط المجموعه...\n'..database:get('MAX:'..bot_id.."group:link"..msg.chat_id_), 1, "html")
 else
-send(msg.chat_id_, msg.id_, 1, '⚠️┇لا يمكني الوصل الى الرابط عليك منحي صلاحيه {دعوه المستخدمين من خلال الرابط}', 1, "html")
+send(msg.chat_id_, msg.id_, 1, '⚠️┇لا يوجد رابط اكتب {وضع رابط+الرابط} لوضع رابط جديد للمجموعه', 1, "html")
 end
 end
 tdcli_function ({
@@ -3168,7 +3168,7 @@ ID = "GetChannelFull",
 channel_id_ = getChatId(msg.chat_id_).ID
 }, dl_cb222, nil)
 else 
-send(msg.chat_id_, msg.id_, 1, '🖲┇احضر الرابط معطل', 1, "html") 
+send(msg.chat_id_, msg.id_, 1, '🖲┇الرابط معطل', 1, "html") 
 end
 end
 -----------------------------------------------------------
@@ -4529,11 +4529,11 @@ if not database:get('MAX:'..bot_id..'id:mute'..msg.chat_id_) then
 if not database:get('MAX:'..bot_id..'id:photo'..msg.chat_id_) then
 if not database:get("MAX:gr:id:text:"..bot_id..msg.chat_id_) then 
 local keko_text = {
-"رجع صورتك القديمه طالع جنك بسطال😹",
+"رجع صورتك القديمه جنك بسطال😹",
 "هاي الصوره حلوه عاشت ايدك😻♥️",
 "اهووو هم انت🐸",
 "ببكن🐸",
-"ليش مغير صورتك ",
+"ليش مغير صورتك -_-",
 "نورك عمه اعضاء الكروب😻😹",
 "شكلك مال عجايز😹😹💔",
 "ببكن علاقه جاده 😹🐸",
@@ -4541,7 +4541,7 @@ local keko_text = {
 "وجهك وجه الچوب ختتف🐸😹",
 }
 keko3 = math.random(#keko_text)
-sendPhoto(msg.chat_id_, msg.id_, 0, 1, nil, result.photos_[0].sizes_[1].photo_.persistent_id_,"📷"..keko_text[keko3].."\n❖ ᎒ ᎮᏲᎧᏡᎧ ➣ "..all_photo_MAX.."\n✰ ᎒ ᎨᏧ ➣ ("..msg.sender_user_id_..")\n❖ ᎒ ᏬᏕᏋᖇ ➣ "..keko_info.."\n✰ ᎒ ᖇᎯᏁᏥ ➣ "..t..'\n • تفاعلك > '..formsgg(msguser).."\n❖ ᎒ ᗰᏕᏳ ➣ {"..user_msgs.."}\n✰ ᎒ ᏋᏧᎨᏡ ➣ {"..edit.."}\n╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍╍ ",msg.id_,msg.id_.."")
+sendPhoto(msg.chat_id_, msg.id_, 0, 1, nil, result.photos_[0].sizes_[1].photo_.persistent_id_,"┓🎭"..keko_text[keko3].."\n┫🌌صٰـورک ⊰"..all_photo_MAX.."\n┫💳آيـديِك ⊱"..msg.sender_user_id_.."⊱\n┫🔖يـٰوزرك ⊱ "..keko_info.."\n┫👨‍✈️رتـٓبتـٰك ⊱ "..t..'\n┫👨🏼‍💻تفاعٰلٰك ⊱ '..formsgg(msguser).."\n┫ 💌مسْٰجاتٌك ⊰"..user_msgs.."⊱\n┛👨🏻‍🔧تعُٰديلاتٰٓكّ ⊰"..edit.."⊱\n╾————————╼ ",msg.id_,msg.id_.."")
 else 
 local MAX_new_text = database:get("MAX:gr:id:text:"..bot_id..msg.chat_id_)
 local MAX_new_text = MAX_new_text:gsub('#username',(keko_info or 'لا يوجد'))

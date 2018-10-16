@@ -2896,14 +2896,14 @@ end
 send(msg.chat_id_, msg.id_, 1, text, 1, 'html')
 end
 end
-if text and text == "معلومات المجموعه" and is_mod(msg) then 
+if text and text == "معلومات الكروب" and is_mod(msg) then 
 function dl_cb22( t1,t2 )
 local MAX_098 = 0
 if database:get("MAX:get:mod:"..bot_id..msg.chat_id_) then 
 t = database:get("MAX:get:mod:"..bot_id..msg.chat_id_)
 MAX_098 = tonumber(t2.member_count_) - tonumber(t)
 end
-send(msg.chat_id_, msg.id_, 1, "📟┇معلومات المجموعه\n👨┇عدد ادمنيه الكروب : "..t2.administrator_count_.."\n👥┇عدد الاعضاء : "..t2.member_count_.." | ("..MAX_098..")\n🔥┇عدد المطرودين : "..t2.kicked_count_, 1, 'md')
+send(msg.chat_id_, msg.id_, 1, "🗄: اهلا عزيزي اليك معلومات المجموعه •\n👮🏽‍♂️: عدد الادمنيه • "..t2.administrator_count_.."\n🚸: عدد الاعظاء • "..t2.member_count_.." | ("..MAX_098..")\n📛: عدد المطرودين • "..t2.kicked_count_, 1, 'md')
 database:set("MAX:get:mod:"..bot_id..msg.chat_id_,t2.member_count_)   
 end
 tdcli_function ({
@@ -2914,7 +2914,7 @@ end
 if text:match("^المكتومين$") and is_mod(msg) then
 local hash =   'MAX:'..bot_id..'muted:'..msg.chat_id_
 local list = database:smembers(hash)
-text = "🚫┇قائمة المكتومين  ،\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ \n"
+text = "🔇: قائمه المكتومين •\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ \n"
 for k,v in pairs(list) do
 local user_info = database:hgetall('MAX:'..bot_id..'user:'..v)
 if user_info and user_info.username then
@@ -2936,7 +2936,7 @@ end
 if text:match("^الاداريين$") and is_creator(msg) then
 local hash =   'MAX:'..bot_id..'owners:'..msg.chat_id_
 local list = database:smembers(hash)
-text = "🛄┇اداريين البوت  ،\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ \n"
+text = "👨‍✈️: قائمه الاداريين •\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ \n"
 for k,v in pairs(list) do
 local user_info = database:hgetall('MAX:'..bot_id..'user:'..v)
 if user_info and user_info.username then
@@ -2958,7 +2958,7 @@ end
 if text:match("^المحظورين$") and is_mod(msg) then
 local hash =   'MAX:'..bot_id..'banned:'..msg.chat_id_
 local list = database:smembers(hash)
-text = "⛔┇قائمة المحظورين  ،\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ \n"
+text = "📛:قائمة المحظورين •\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ \n"
 for k,v in pairs(list) do
 local user_info = database:hgetall('MAX:'..bot_id..'user:'..v)
 if user_info and user_info.username then
@@ -2980,7 +2980,7 @@ end
 if  msg.content_.text_:match("^قائمه العام$") and tonumber(msg.sender_user_id_) == tonumber(sudo_add) then
 local hash =   'MAX:'..bot_id..'gbanned:'
 local list = database:smembers(hash)
-text = "⛔┇قائمة الحظر العام  ،\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ \n"
+text = "📛:قائمة الحظر العام •\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ \n"
 for k,v in pairs(list) do
 local user_info = database:hgetall('MAX:'..bot_id..'user:'..v)
 if user_info and user_info.username then
@@ -3074,7 +3074,7 @@ MAX_oop = 'مميز'
 else
 MAX_oop = 'لا شيء'
 end
-texts = "💳⋮آيـديِك ∿≫ `{"..result.id_.."}`\n💼⋮رتـٓبتـٰك ∿≫ {"..MAX_oop.."}\n💬⋮مسْٰجاتٌك ∿≫ `{"..msgs.."}`\n🔧⋮تعُٰديلاتٰٓكّ ∿≫ `{"..edit.."}`"
+texts = "💳: الايدي ∿≫ `{"..result.id_.."}`\n💼: الرتبه ∿≫ {"..MAX_oop.."}\n💬:المسجات ∿≫ `{"..msgs.."}`\n🔧⋮التعديلات ∿≫ `{"..edit.."}`"
 else
 texts = "`"..result.id_.."`"
 end
@@ -3111,17 +3111,6 @@ database:set('MAX:'..bot_id..'flood:max:'..msg.chat_id_,floodmax[2])
 send(msg.chat_id_, msg.id_, 1, '☑┇تم  وضع التكرار بالطرد للعدد ~⪼  *{'..floodmax[2]..'}*', 1, 'md')
 end
 end
-if text and text == "وضع رابط" and is_admin(msg) then 
-send(msg.chat_id_, msg.id_, 1, '🖲┇ارسال الان رابط الكروب ليتم حفظه', 1, "md") 
-database:set("keko:get:url:"..bot_id..msg.chat_id_..msg.sender_user_id_,true)
-return "keko"
-end
-if text and database:get("keko:get:url:"..bot_id..msg.chat_id_..msg.sender_user_id_) and text:match("[Hh][Tt][Tt][pP]") then 
-send(msg.chat_id_, msg.id_, 1, '☑┇تم وضع الرابط : ['..text..']', 1, 'md')
-database:set('MAX:'..bot_id.."group:link"..msg.chat_id_,text)
-database:del("keko:get:url:"..bot_id..msg.chat_id_..msg.sender_user_id_,true)
-return "keko"
-end
 if (text and text == "تعطيل الاعلانات" and is_creator(msg)) then 
 if not is_sudo(msg) then 
 database:set("MAX:gr:not:ads:"..bot_id..msg.chat_id_..os.date("%x"),"ok")
@@ -3147,19 +3136,11 @@ if text:match("^الرابط$") then
 if not database:get("MAX:mute:link:gr:"..bot_id..msg.chat_id_) then 
 function dl_cb222( t1,t2 )
 if t2.invite_link_ ~= false then 
-send(msg.chat_id_, msg.id_, 1, '📮┇رابط المجموعه\n'..(t2.invite_link_ or "Error"), 1, "html")
-elseif (database:get('MAX:'..bot_id.."group:link"..msg.chat_id_) and database:get('MAX:'..bot_id.."group:link"..msg.chat_id_) ~= "لا يوجد رابط") then 
-send(msg.chat_id_, msg.id_, 1, '📮┇رابط المجموعه\n'..database:get('MAX:'..bot_id.."group:link"..msg.chat_id_), 1, "html")
+send(msg.chat_id_, msg.id_, 1, '📩┇رابط المجموعه\n'..(t2.invite_link_ or "لا يوجد رابط اكتب{وضع رابط+الرابط} لوضع رابط للمجموعه"), 1, "html")
+elseif (database:get('MAX:'..bot_id.."group:link"..msg.chat_id_)) then 
+send(msg.chat_id_, msg.id_, 1, '📩┇رابط المجموعه...\n'..database:get('MAX:'..bot_id.."group:link"..msg.chat_id_), 1, "html")
 else
-local getlink = 'https://api.telegram.org/bot'..token..'/exportChatInviteLink?chat_id='..msg.chat_id_
-local req = https.request(getlink)
-local link = json:decode(req)
-if link.ok == true then 
-send(msg.chat_id_, msg.id_, 1, '📮┇رابط المجموعه \n'..(link.result or "Error"), 1, "html")
-database:set('MAX:'..bot_id.."group:link"..msg.chat_id_,link.result)
-else 
-send(msg.chat_id_, msg.id_, 1, '⚠️┇لا يمكني الوصل الى الرابط عليك منحي صلاحيه {دعوه المستخدمين من خلال الرابط}', 1, "html")
-end
+send(msg.chat_id_, msg.id_, 1, '📩┇لا يوجد رابط اكتب {وضع الرابط+الرابط} ليتم وضع رابط جديد للمجموعه', 1, "html")
 end
 end
 tdcli_function ({
@@ -3167,7 +3148,7 @@ ID = "GetChannelFull",
 channel_id_ = getChatId(msg.chat_id_).ID
 }, dl_cb222, nil)
 else 
-send(msg.chat_id_, msg.id_, 1, '🖲┇جلب الرابط معطل', 1, "html") 
+send(msg.chat_id_, msg.id_, 1, '🖲┇احضر الرابط معطل', 1, "html") 
 end
 end
 -----------------------------------------------------------
@@ -3237,7 +3218,7 @@ if (text:match("^كشف البوتات$") or text:match("^البوتات$")) and
 local txt = {string.match(text, "^كشف البوتات$")}
 local function cb(extra,result,success)
 local list = result.members_
-text = '📊┇البوتات\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ \n'
+text = '🤖: قائمه البوتات •\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ \n'
 local n = 0
 for k,v in pairs(list) do
 if v.user_id_ ~= bot_id then

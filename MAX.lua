@@ -2355,10 +2355,10 @@ if text:match("^الغاء حظر$") and is_mod(msg) and msg.reply_to_message_id
 function unban_by_reply(extra, result, success)
 local hash =  'tshake:'..bot_id..'banned:'..msg.chat_id_
 if not database:sismember(hash, result.sender_user_id_) then
-tsX000("prore",msg,"☑┇بالفعل تم الغاء حظره من البوت")
+tsX000("prore",msg,"🚦: خاصيه التأكيد\n📛: بالفعل تم حظره من البوت  •")
 else
 database:srem(hash, result.sender_user_id_)
-tsX000("prore",msg,"☑┇تم الغاء حظره من البوت")
+tsX000("prore",msg,"🚦: خاصيه الحظر\n📛: تم حظره من البوت  •")
 end
 end
 getMessage(msg.chat_id_, msg.reply_to_message_id_,unban_by_reply)
@@ -2388,7 +2388,7 @@ end
 if text:match("^الغاء حظر (%d+)$") and is_mod(msg) then
 local apba = {string.match(text, "^(الغاء حظر) (%d+)$")}
 database:srem('MAX:'..bot_id..'banned:'..msg.chat_id_, apba[2])
-tsX000(apba[2],msg,"☑┇تم الغاء حظره من البوت") 
+tsX000(apba[2],msg,"🚦: خاصيه الحظر\n📛: تم الغاء حظره من البوت  •") 
 end
 
 if text:match("^الغاء حظر$") and is_mod(msg) and msg.reply_to_message_id_ then
@@ -2619,7 +2619,7 @@ if text:match("^كتم$") and is_mod(msg) and msg.reply_to_message_id_ ~= 0 then
 function mute_by_reply(extra, result, success)
 local hash =  'MAX:'..bot_id..'muted:'..msg.chat_id_
 if ck_mod(result.sender_user_id_, msg.chat_id_) then
-send(msg.chat_id_, msg.id_, 1, '❕┇لا تستطيع كتم \n🔘┇(اداريين،ادمنيه،مميزين)البوت', 1, 'md')
+send(msg.chat_id_, msg.id_, 1, '❗️: خاصيه التنبيه\n🎖:لا يمكنك  كتم المشرفين •, 'md')
 else
 if database:sismember(hash, result.sender_user_id_) then
 tsX000("prore",msg,"🚫┇بالفعل تم كتمه")
@@ -2636,10 +2636,10 @@ local apsi = {string.match(text, "^(كتم) @(.*)$")}
 function mute_by_username(extra, result, success)
 if result.id_ then
 if ck_mod(result.id_, msg.chat_id_) then
-send(msg.chat_id_, msg.id_, 1, '✖┇لا تستطيع كتم \n🔘┇(اداريين،ادمنيه،مميزين)البوت', 1, 'md')
+send(msg.chat_id_, msg.id_, 1, '❗️: خاصيه التنبيه\n🎖:لا يمكنك  كتم المشرفين •, 'md')
 else
 database:sadd('MAX:'..bot_id..'muted:'..msg.chat_id_, result.id_)
-texts = '👨┇العضو ⌁≻ ['..result.title_..'](t.me/'..(apsi[2] or 'MAXTAME')..')\n🚫┇تم كتمه من البوت'
+texts = '👨┇العضو ⌁≻ ['..result.title_..'](t.me/'..(apsi[2] or 'MAXTAME')..')\n🚦: خاصيه الكتم\n🔇: تم كتمه من البوت '
 end
 else
 texts = '✖┇خطاء'
@@ -2651,20 +2651,20 @@ end
 if text:match("^كتم (%d+)$") and is_mod(msg) then
 local apsi = {string.match(text, "^(كتم) (%d+)$")}
 if ck_mod(apsi[2], msg.chat_id_) then
-send(msg.chat_id_, msg.id_, 1, '✖┇لا تستطيع كتم \n🔘┇(اداريين،ادمنيه،اعضاء مميزين)البوت', 1, 'md')
+send(msg.chat_id_, msg.id_, 1, '❗️: خاصيه التنبيه\n🎖:لا يمكنك  كتم المشرفين •, 'md')
 else
 database:sadd('MAX:'..bot_id..'muted:'..msg.chat_id_, apsi[2])
-tsX000(apsi[2],msg,"🚫┇تم كتمه من البوت")
+tsX000(apsi[2],msg,"🚦: خاصيه الكتم\n🔇: تم كتمه من البوت")
 end
 end
 if text:match("^الغاء كتم$") and is_mod(msg) and msg.reply_to_message_id_ then
 function unmute_by_reply(extra, result, success)
 local hash =  'MAX:'..bot_id..'muted:'..msg.chat_id_
 if not database:sismember(hash, result.sender_user_id_) then
-tsX000("prore",msg,"🚫┇بالفعل تم الغاء كتمه من البوت")
+tsX000("prore",msg,"🚦: خاصيه التأكيد\n🔇: بالفعل تم الغاء كتمه من البوت ")
 else
 database:srem(hash, result.sender_user_id_)
-tsX000("prore",msg,"🚫┇تم الغاء كتمه من البوت")
+tsX000("prore",msg,"🚦: خاصيه الكتم\n🔇: تم الغاء كتمه من البوت ")
 end
 end
 getMessage(msg.chat_id_, msg.reply_to_message_id_,unmute_by_reply)
@@ -2674,7 +2674,7 @@ local apsi = {string.match(text, "^(الغاء كتم) @(.*)$")}
 function unmute_by_username(extra, result, success)
 if result.id_ then
 database:srem('MAX:'..bot_id..'muted:'..msg.chat_id_, result.id_)
-texts = '👨┇العضو ⌁≻ ['..result.title_..'](t.me/'..(apsi[2] or 'MAXTAME')..')\n🚫┇تم الغاء كتمه من البوت'
+texts = '👨┇العضو ⌁≻ ['..result.title_..'](t.me/'..(apsi[2] or 'MAXTAME')..')\n🚦: خاصيه الكتم\n🔇: تم الغاء كتمه من البوت'
 else
 texts = '✖┇خطاء'
 end
@@ -2686,7 +2686,7 @@ end
 if text:match("^الغاء كتم (%d+)$") and is_mod(msg) then
 local apsi = {string.match(text, "^(الغاء كتم) (%d+)$")}
 database:srem('MAX:'..bot_id..'muted:'..msg.chat_id_, apsi[2])
-tsX000(apsi[2],msg,"🚫┇تم الغاء كتمه من البوت")
+tsX000(apsi[2],msg,"🚦: خاصيه الكتم\n🔇: تم الغاء كتمه من البوت")
 end
 
 if text:match("^طرد$") and msg.reply_to_message_id_ ~=0 and is_mod(msg) then
@@ -2696,9 +2696,9 @@ return "MAX"
 end
 function kick_reply(extra, result, success)
 if ck_mod(result.sender_user_id_, msg.chat_id_) then
-send(msg.chat_id_, msg.id_, 1, '✖┇لا تستطيع طرد \n🔘┇(اداريين،ادمنيه،مميزين)البوت', 1, 'md')
+send(msg.chat_id_, msg.id_, 1, '❗️: خاصيه التنبيه\n🎖:لا يمكنك  طرد المشرفين •, 'md')
 else
-tsX000("prore",msg,"🚫┇تم طرده من المجموعه")
+tsX000("prore",msg,"📛: خاصيه الطرد\n👞: تم طرده من المجموعه •")
 chat_kick(result.chat_id_, result.sender_user_id_)
 end
 end
@@ -2713,7 +2713,7 @@ local apki = {string.match(text, "^(طرد) @(.*)$")}
 function kick_by_username(extra, result, success)
 if result.id_ then
 if ck_mod(result.id_, msg.chat_id_) then
-send(msg.chat_id_, msg.id_, 1, '✖┇لا تستطيع طرد \n🔘┇(اداريين،ادمنيه،مميزين)البوت', 1, 'md')
+send(msg.chat_id_, msg.id_, 1, '❗️: خاصيه التنبيه\n🎖:لا يمكنك  طرد المشرفين •, 'md')
 else
 texts = '👨┇العضو ⌁≻ ['..result.title_..'](t.me/'..(apki[2] or 'MAXTAME')..')\n🚫┇تم طرده من المجموعه'
 chat_kick(msg.chat_id_, result.id_)
@@ -2732,20 +2732,20 @@ return "MAX"
 end
 local apki = {string.match(text, "^(طرد) (%d+)$")}
 if ck_mod(apki[2], msg.chat_id_) then
-send(msg.chat_id_, msg.id_, 1, '✖┇لا تستطيع طرد \n🔘┇(اداريين،ادمنيه،مميزين)البوت', 1, 'md')
+send(msg.chat_id_, msg.id_, 1, '❗️: خاصيه التنبيه\n🎖:لا يمكنك  طرد المشرفين •, 'md')
 else
 chat_kick(msg.chat_id_, apki[2])
-tsX000(apki[2],msg,"🚫┇تم طرده من المجموعه")
+tsX000(apki[2],msg,"📛: خاصيه الطرد\n👞: تم طرده من المجموعه •")
 end
 end
 if text:match("^رفع اداري$") and is_creator(msg) and msg.reply_to_message_id_ then
 function setowner_by_reply(extra, result, success)
 local hash =  'MAX:'..bot_id..'owners:'..msg.chat_id_
 if database:sismember(hash, result.sender_user_id_) then
-tsX000("prore",msg,"☑┇بالفعل تم رفع اداري في البوت")
+tsX000("prore",msg,"🚦: خاصيه التأكيد\n👨‍✈️:بالفعل تم ترقيته اداري  •")
 else
 database:sadd(hash, result.sender_user_id_)
-tsX000("prore",msg,"☑┇تم ترقيته ليصبح اداري في المجموعه")
+tsX000("prore",msg,"🎖: خاصيه الرفع\n👨‍✈️: تم ترقيته اداري •")
 end
 end
 getMessage(msg.chat_id_, msg.reply_to_message_id_,setowner_by_reply)
@@ -2772,10 +2772,10 @@ if text:match("^تنزيل اداري$") and is_creator(msg) and msg.reply_to_me
 function deowner_by_reply(extra, result, success)
 local hash =  'MAX:'..bot_id..'owners:'..msg.chat_id_
 if not database:sismember(hash, result.sender_user_id_) then
-tsX000("prore",msg,"☑┇بالفعل تم تنزيله من اداريين البوت")
+tsX000("prore",msg,"🚦: خاصيه التأكيد\n👨‍✈️:بالفعل تم تنزيله من  الاداريين  •")
 else
 database:srem(hash, result.sender_user_id_)
-tsX000("prore",msg,"☑┇تم تنزيله من اداريين البوت")
+tsX000("prore",msg,"🚦: خاصيه التنزيل\n👨‍✈️:بالفعل تم تنزيله من الاداريين  •")
 end
 end
 getMessage(msg.chat_id_, msg.reply_to_message_id_,deowner_by_reply)
@@ -2786,7 +2786,7 @@ local hash =  'MAX:'..bot_id..'owners:'..msg.chat_id_
 function remowner_by_username(extra, result, success)
 if result.id_ then
 database:srem(hash, result.id_)
-texts = '👨┇العضو ⌁≻ ['..result.title_..'](t.me/'..(apow[2] or 'MAXTAME')..')\n☑┇تم تنزيله من اداريين البوت'
+texts = '👨┇العضو ⌁≻ ['..result.title_..'](t.me/'..(apow[2] or 'MAXTAME')..')\n🚦: خاصيه التنزيل\n👨‍✈️:بالفعل تم تنزيله من الاداريين  •'
 else
 texts = '✖┇خطاء'
 end
@@ -2798,12 +2798,12 @@ if text:match("^تنزيل اداري (%d+)$") and is_creator(msg) then
 local hash =  'MAX:'..bot_id..'owners:'..msg.chat_id_
 local apow = {string.match(text, "^(تنزيل اداري) (%d+)$")}
 database:srem(hash, apow[2])
-tsX000(apow[2],msg,"☑┇تم تنزيله من اداريين البوت")
+tsX000(apow[2],msg,"🚦: خاصيه التنزيل\n👨‍✈️: تم تنزيله من الاداريين •")
 end
 if text:match("^الادمنيه$") and is_owner(msg) then
 local hash =   'MAX:'..bot_id..'mods:'..msg.chat_id_
 local list = database:smembers(hash)
-text = "👥┇ادمنيه البوت ،\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ \n"
+text = "👮🏽‍♂️: قائمه الادمنيه\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ \n"
 for k,v in pairs(list) do
 local user_info = database:hgetall('MAX:'..bot_id..'user:'..v)
 if user_info and user_info.username then
@@ -2859,7 +2859,7 @@ end
 if text:match("^المميزين") and is_owner(msg) then
 local hash =   'MAX:'..bot_id..'vipgp:'..msg.chat_id_
 local list = database:smembers(hash)
-text = "👥┇مميزين البوت ،\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ \n"
+text = "💂🏼‍♀️: قائمه المميزين •\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ \n"
 for k,v in pairs(list) do
 local user_info = database:hgetall('MAX:'..bot_id..'user:'..v)
 if user_info and user_info.username then

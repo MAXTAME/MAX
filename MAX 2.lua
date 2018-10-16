@@ -912,198 +912,198 @@ if text then
 if (text == "قفل التاك") then
 local tsX_o = database:get("lock_tag:MAX"..msg.chat_id_..bot_id)
 if tsX_o then
-tsX000("lock",msg,"✔┇ التاك مقفول!")
+tsX000("lock",msg,"🚦: خاصيه التأكيد\n🔒: تم قفل التاك •")
 else
-tsX000("lock",msg,"✔┇تم قفل التاك")
+tsX000("lock",msg,"🗄: خاصيه القفل\n🔒: تم قفل التاك •")
 database:set("lock_tag:MAX"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "قفل الشارحه") then
 local tsX_o = database:get("lock_sarha:MAX"..msg.chat_id_..bot_id)
 if tsX_o then
-tsX000("lock",msg,"✔┇الشارحه مقفوله!")
+tsX000("lock",msg,"🚦: خاصيه التأكيد\n🔒: تم فتح الشارحه •")
 else
-tsX000("lock",msg,"✔┇تم قفل الشارحه")
+tsX000("lock",msg,"🗄: خاصيه القفل\n🔒: تم قفل الشارحه •")
 database:set("lock_sarha:MAX"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "قفل تعديل الميديا") then
 local tsX_o = database:get("MAX:lo:edit:new:"..bot_id..msg.chat_id_)
 if tsX_o then
-tsX000("lock",msg,"✔┇تعديل الميديا مقفول !")
+tsX000("lock",msg,"🚦: خاصيه التأكيد\n🔒: تم قفل تعديل الميديا •")
 else
-tsX000("lock",msg,"✔┇تم قفل تعديل الميديا")
+tsX000("lock",msg,"🗄: خاصيه القفل\n🔒: تم قفل تعديل الميديا •")
 database:set("MAX:lo:edit:new:"..bot_id..msg.chat_id_,"ok")
 end
 end
 if (text == "قفل الكلايش") then
 local tsX_o = database:get("lock_word:MAX"..msg.chat_id_..bot_id)
 if tsX_o then
-tsX000("lock",msg,"✔┇الكلايش مقفوله!")
+tsX000("lock",msg,"🚦: خاصيه التأكيد\n🔒: تم قفل الكلايش •")
 else
-tsX000("lock",msg,"✔┇تم قفل الكلايش")
+tsX000("lock",msg,"🗄: خاصيه القفل\n🔒: تم قفل الكلايش •")
 database:set("lock_word:MAX"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "قفل التعديل") then
 local tsX_o = database:get("lock_edit:MAX"..msg.chat_id_..bot_id)
 if tsX_o then
-tsX000("lock",msg,"✔┇التعديل مقفول!")
+tsX000("lock",msg,"🚦: خاصيه التأكيد\n🔒: تم قفل التعديل •")
 else
-tsX000("lock",msg,"✔┇تم قفل التعديل")
+tsX000("lock",msg,"🗄: خاصيه القفل\n🔒: تم قفل التعديل •")
 database:set("lock_edit:MAX"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "قفل التكرار") then
 local tsX_o = database:get("lock_lllll:MAX"..msg.chat_id_..bot_id)
 if tsX_o then
-tsX000("lock",msg,"✔┇التكرار مقفول!")
+tsX000("lock",msg,"🚦: خاصيه التأكيد\n🔒: تم قفل التكرار •")
 else
-tsX000("lock",msg,"✔┇تم قفل التكرار")
+tsX000("lock",msg,"🗄: خاصيه القفل\n🔒: تم قفل التكرار •")
 database:set("lock_lllll:MAX"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "قفل المتحركه") then
 local tsX_o = database:get("lock_gif:MAX"..msg.chat_id_..bot_id)
 if tsX_o then
-tsX000("lock",msg,"✔┇المتحركه مقفوله!")
+tsX000("lock",msg,"🚦: خاصيه التأكيد\n🔒: تم قفل المتحركه •")
 else
-tsX000("lock",msg,"✔┇تم قفل المتحركه")
+tsX000("lock",msg,"🗄: خاصيه القفل\n🔒: تم قفل المتحركه •")
 database:set("lock_gif:MAX"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "قفل الملفات") then
 local tsX_o = database:get("lock_files:MAX"..msg.chat_id_..bot_id)
 if tsX_o then
-tsX000("lock",msg,"✔┇الملفات مقفوله!")
+tsX000("lock",msg,"🚦: خاصيه التأكيد\n🔒: تم قفل الملفات •")
 else
-tsX000("lock",msg,"✔┇تم قفل الملفات")
+tsX000("lock",msg,"🗄: خاصيه القفل\n🔒: تم قفل الملفات •")
 database:set("lock_files:MAX"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "قفل الماركدون") then
 local tsX_o = database:get("lock_mark:MAX"..msg.chat_id_..bot_id)
 if tsX_o then
-tsX000("lock",msg,"✔┇الماركدون مقفول!")
+tsX000("lock",msg,"🚦: خاصيه التأكيد\n🔒: تم قفل الماركدون •")
 else
-tsX000("lock",msg,"✔┇تم قفل الماركدون")
+tsX000("lock",msg,"🗄: خاصيه القفل\n🔒: تم قفل الماركدون •")
 database:set("lock_mark:MAX"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "قفل الصور") then
 local tsX_o = database:get("lock_photo:MAX"..msg.chat_id_..bot_id)
 if tsX_o then
-tsX000("lock",msg,"✔┇الصور مقفوله!")
+tsX000("lock",msg,"🚦: خاصيه التأكيد\n🔒: تم قفل الصور •")
 else
-tsX000("lock",msg,"✔┇تم قفل الصور")
+tsX000("lock",msg,"🗄: خاصيه القفل\n🔒: تم قفل الصور •")
 database:set("lock_photo:MAX"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "قفل الملصقات") then
 local tsX_o = database:get("lock_stecker:MAX"..msg.chat_id_..bot_id)
 if tsX_o then
-tsX000("lock",msg,"✔┇الملصقات مقفوله!")
+tsX000("lock",msg,"🚦: خاصيه التأكيد\n🔒: تم قفل الملصقات •")
 else
-tsX000("lock",msg,"✔┇تم قفل الملصقات")
+tsX000("lock",msg,"🗄: خاصيه القفل\n🔒: تم قفل الملصقات •")
 database:set("lock_stecker:MAX"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "قفل الفيديو") then
 local tsX_o = database:get("lock_video:MAX"..msg.chat_id_..bot_id)
 if tsX_o then
-tsX000("lock",msg,"✔┇الفيديو مقفول!")
+tsX000("lock",msg,"🚦: خاصيه التأكيد\n🔒: تم قفل الفيديو •")
 else
-tsX000("lock",msg,"✔┇تم قفل الفيديو")
+tsX000("lock",msg,"🗄: خاصيه القفل\n🔒: تم قفل الفيديو •")
 database:set("lock_video:MAX"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "قفل الانلاين") then
 local tsX_o = database:get("lock_inline:MAX"..msg.chat_id_..bot_id)
 if tsX_o then
-tsX000("lock",msg,"✔┇الانلاين مقفول!")
+tsX000("lock",msg,"🚦: خاصيه التأكيد\n🔒: تم قفل الانلاين •")
 else
-tsX000("lock",msg,"✔┇تم قفل الانلاين")
+tsX000("lock",msg,"🗄: خاصيه القفل\n🔒: تم قفل الانلاين •")
 database:set("lock_inline:MAX"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "قفل الدردشه") then
 local tsX_o = database:get("lock_chat:MAX"..msg.chat_id_..bot_id)
 if tsX_o then
-tsX000("lock",msg,"✔┇الدردشه مقفوله!")
+tsX000("lock",msg,"🚦: خاصيه التأكيد\n🔒: تم قفل الدردشه •")
 else
-tsX000("lock",msg,"✔┇تم قفل الدردشه")
+tsX000("lock",msg,"🗄: خاصيه القفل\n🔒: تم قفل الدردشه •")
 database:set("lock_chat:MAX"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "قفل التوجيه") then
 local tsX_o = database:get("lock_fwd:MAX"..msg.chat_id_..bot_id)
 if tsX_o then
-tsX000("lock",msg,"✔┇التوجيه مقفول!")
+tsX000("lock",msg,"🚦: خاصيه التأكيد\n🔒: تم قفل التوجيه •")
 else
-tsX000("lock",msg,"✔┇تم قفل التوجيه")
+tsX000("lock",msg,"🗄: خاصيه القفل\n🔒: تم قفل التوجيه •")
 database:set("lock_fwd:MAX"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "قفل التثبيت") then
 local tsX_o = database:get("lock_pin:MAX"..msg.chat_id_..bot_id)
 if tsX_o then
-tsX000("lock",msg,"✔┇التثبيت مقفول!")
+tsX000("lock",msg,"🚦: خاصيه التأكيد\n🔒: تم قفل الثتبيت •")
 else
-tsX000("lock",msg,"✔┇تم قفل التثبيت")
+tsX000("lock",msg,"🗄: خاصيه القفل\n🔒: تم قفل التثبيت •")
 database:set("lock_pin:MAX"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "قفل الاغاني") then
 local tsX_o = database:get("lock_audeo:MAX"..msg.chat_id_..bot_id)
 if tsX_o then
-tsX000("lock",msg,"✔┇الاغاني مقفوله!")
+tsX000("lock",msg,"🚦: خاصيه التأكيد\n🔒: تم قفل الاغاني •")
 else
-tsX000("lock",msg,"✔┇تم قفل الاغاني")
+tsX000("lock",msg,"🗄: خاصيه القفل\n🔒: تم قفل الاغاني •")
 database:set("lock_audeo:MAX"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "قفل الصوت") then
 local tsX_o = database:get("lock_voice:MAX"..msg.chat_id_..bot_id)
 if tsX_o then
-tsX000("lock",msg,"✔┇الصوت مقفول!")
+tsX000("lock",msg,"🚦: خاصيه التأكيد\n🔒: تم قفل الصوت •")
 else
-tsX000("lock",msg,"✔┇تم قفل الصوت")
+tsX000("lock",msg,"🗄: خاصيه القفل\n🔒: تم قفل الصوت •")
 database:set("lock_voice:MAX"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "قفل الجهات") then
 local tsX_o = database:get("lock_contact:MAX"..msg.chat_id_..bot_id)
 if tsX_o then
-tsX000("lock",msg,"✔┇الجهات مقفوله!")
+tsX000("lock",msg,"🚦: خاصيه التأكيد\n🔒: تم قفل الجهات •")
 else
-tsX000("lock",msg,"✔┇تم قفل الجهات")
+tsX000("lock",msg,"🗄: خاصيه القفل\n🔒: تم قفل الجهات •")
 database:set("lock_contact:MAX"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "قفل العربيه") then
 local tsX_o = database:get("lock_ar:MAX"..msg.chat_id_..bot_id)
 if tsX_o then
-tsX000("lock",msg,"☑┇بالفعل تم قفل العربيه")
+tsX000("lock",msg,"🚦: خاصيه التأكيد\n🔒: تم قفل العربيه •")
 else
-tsX000("lock",msg,"☑┇تم قفل العربيه")
+tsX000("lock",msg,"🗄: خاصيه القفل\n🔒: تم قفل العربيه •")
 database:set("lock_ar:MAX"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "قفل الانكليزيه") then
 local tsX_o = database:get("lock_en:MAX"..msg.chat_id_..bot_id)
 if tsX_o then
-tsX000("lock",msg,"✔┇بالفعل تم قفل الانكليزيه")
+tsX000("lock",msg,"🚦: خاصيه التأكيد\n🔒: تم قفل الانكليزيه •")
 else
-tsX000("lock",msg,"✔┇تم قفل الانكليزيه")
+tsX000("lock",msg,"🗄: خاصيه القفل\n🔒: تم قفل الانكليزيه •")
 database:set("lock_en:MAX"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "قفل الميديا") then
 local tsX_o = database:get("lock_media:MAX"..msg.chat_id_..bot_id)
 if tsX_o then
-tsX000("lock",msg,"✔┇الميديا مقفوله!")
+tsX000("lock",msg,"🚦: خاصيه التأكيد\n🔒: تم قفل الميديا •")
 else
-tsX000("lock",msg,"✔┇تم قفل الميديا")
+tsX000("lock",msg,"🗄: خاصيه القفل\n🔒: تم قفل الميديا •")
 database:set("lock_media:MAX"..msg.chat_id_..bot_id,"ok")
 database:set("lock_audeo:MAX"..msg.chat_id_..bot_id,"ok")
 database:set("lock_video:MAX"..msg.chat_id_..bot_id,"ok")
@@ -1117,272 +1117,271 @@ end
 if (text == "قفل الروابط") then
 local tsX_o = database:get("lock_link:MAX"..msg.chat_id_..bot_id)
 if tsX_o then
-tsX000("lock",msg,"┇الروابط مقفوله!")
+tsX000("lock",msg,"🚦: خاصيه التأكيد\n🔒: تم قفل الررابط •")
 else
-tsX000("lock",msg,"┇تم قفل الروابط")
+tsX000("lock",msg,"🗄: خاصيه القفل\n🔒: تم قفل الروابط •")
 database:set("lock_link:MAX"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "قفل اليوزر") then
 local tsX_o = database:get("lock_username:MAX"..msg.chat_id_..bot_id)
 if tsX_o then
-tsX000("lock",msg,"✔┇اليوزر مقفول!")
+tsX000("lock",msg,"🚦: خاصيه التأكيد\n🔒: تم قفل اليوزر •")
 else
-tsX000("lock",msg,"✔┇تم قفل اليوزر")
+tsX000("lock",msg,"🗄: خاصيه القفل\n🔒: تم قفل اليوزر •")
 database:set("lock_username:MAX"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "قفل الاشعارات") then
 local tsX_o = database:get("lock_new:MAX"..msg.chat_id_..bot_id)
 if tsX_o then
-tsX000("lock",msg,"☑┇الاشعارات مقفوله!")
+tsX000("lock",msg,"🚦: خاصيه التأكيد تم\n🔒: قفل الاشعارات •")
 else
-tsX000("lock",msg,"☑┇تم قفل الاشعارات")
+tsX000("lock",msg,"🗄: خاصيه القفل\n🔒: تم قفل الاشعارات •")
 database:set("lock_new:MAX"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "قفل البوتات بالطرد") then
 local tsX_o = database:get("lock_botAndBan:MAX"..msg.chat_id_..bot_id)
 if tsX_o then
-tsX000("lock",msg,"✔┇البوتات بالطرد مقفوله! ")
+tsX000("lock",msg,"🚦: خاصيه التأكيد\n🔒: تم قفل البوتات بالطر •")
 else
-tsX000("lock",msg,"✔┇تم قفل البوتات بالطرد")
+tsX000("lock",msg,"🗄: خاصيه القفل\n🔒: تم قفل البوتات بالطرد •")
 database:set("lock_botAndBan:MAX"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "قفل البوتات") then
 local tsX_o = database:get("lock_bot:MAX"..msg.chat_id_..bot_id)
 if tsX_o then
-tsX000("lock",msg,"✔┇بالفعل تم قفل البوتات")
+tsX000("lock",msg,"🚦: خاصيه التأكيد\n🔒: تم قفل البوتات •")
 else
-tsX000("lock",msg,"✔┇تم قفل البوتات")
+tsX000("lock",msg,"🗄: خاصيه القفل\n🔒: تم قفل البوتات •")
 database:set("lock_bot:MAX"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "قفل بصمه الفيديو") then
 local tsX_o = database:get("lock_note:MAX"..msg.chat_id_..bot_id)
 if tsX_o then
-tsX000("lock",msg,"☑┇بالفعل تم قفل بصمه فيديو")
+tsX000("lock",msg,"🚦: خاصيه التأكيد\n🔒: تم قفل بصمه الفيديو •")
 else
-tsX000("lock",msg,"☑┇تم قفل بصمه فيديو")
+tsX000("lock",msg,"🗄: خاصيه القفل\n🔒: تم قفل بصمه الفيديو •")
 database:set("lock_note:MAX"..msg.chat_id_..bot_id,"ok")
 end
 end
 --         »»                 End MAX lock                         ««              --
---         »»               Start MAX unlock                       ««              --
 if (text == "فتح الاشعارات") then
 local tsX_o = database:get("lock_new:MAX"..msg.chat_id_..bot_id)
 if not tsX_o then
-tsX000("lock",msg,"☑┇الاشعارات مقفوله!")
+tsX000("lock",msg,"🚦: خاصيه التأكيد\n🔓: تم فتح الاشعارات•")
 else
-tsX000("lock",msg,"☑┇تم فتح الاشعارات")
+tsX000("lock",msg,"🗄: خاصيه الفتح\n🔓: تم فتح الاشعارات •")
 database:del("lock_new:MAX"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "فتح التاك") then
 local tsX_o = database:get("lock_tag:MAX"..msg.chat_id_..bot_id)
 if not tsX_o then
-tsX000("lock",msg,"☑┇بالفعل تم فتح التاك")
+tsX000("lock",msg,"🚦: خاصيه التأكيد\n🔓: تم فتح التاك•")
 else
-tsX000("lock",msg,"☑┇تم فتح التاك")
+tsX000("lock",msg,"🗄: خاصيه الفتح\n🔓: تم فتح التاك •")
 database:del("lock_tag:MAX"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "فتح الكلايش") then
 local tsX_o = database:get("lock_word:MAX"..msg.chat_id_..bot_id)
 if not tsX_o then
-tsX000("lock",msg,"☑┇بالفعل تم فتح الكلايش")
+tsX000("lock",msg,"🚦: خاصيه التأكيد\n🔓: تم فتح الكلايش•")
 else
-tsX000("lock",msg,"☑┇تم فتح الكلايش")
+tsX000("lock",msg,"🗄: خاصيه الفتح\n🔓: تم فتح الكلايش •")
 database:del("lock_word:MAX"..msg.chat_id_..bot_id)
 end
 end
 if (text == "فتح تعديل الميديا") then
 local tsX_o = database:get("MAX:lo:edit:new:"..bot_id..msg.chat_id_)
 if not tsX_o then
-tsX000("lock",msg,"☑┇بالفعل تم فتح تعديل الميديا")
+tsX000("lock",msg,"🚦: خاصيه التأكيد\n🔓: تم فتح تعديل الميديا•")
 else
-tsX000("lock",msg,"☑┇تم فتح تعديل الميديا")
+tsX000("lock",msg,"🗄: خاصيه الفتح\n🔓: تم فتح تعديل الميديا •")
 database:del("MAX:lo:edit:new:"..bot_id..msg.chat_id_)
 end
 end
 if (text == "فتح الشارحه") then
 local tsX_o = database:get("lock_sarha:MAX"..msg.chat_id_..bot_id)
 if not tsX_o then
-tsX000("lock",msg,"☑┇بالفعل تم فتح الشارحه")
+tsX000("lock",msg,"🚦: خاصيه التأكيد\n🔓: تم فتح الشارحه•")
 else
-tsX000("lock",msg,"☑┇تم فتح الشارحه")
+tsX000("lock",msg,"🗄: خاصيه الفتح\n🔓: تم فتح الشارحه •")
 database:del("lock_sarha:MAX"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "فتح التكرار") then
 local tsX_o = database:get("lock_lllll:MAX"..msg.chat_id_..bot_id)
 if not tsX_o then
-tsX000("lock",msg,"☑┇بالفعل تم فتح التكرار")
+tsX000("lock",msg,"🚦: خاصيه التأكيد\n🔓: تم فتح التكرار•")
 else
-tsX000("lock",msg,"☑┇تم فتح التكرار")
+tsX000("lock",msg,"🗄: خاصيه الفتح\n🔓: تم فتح التكرار •")
 database:del("lock_lllll:MAX"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "فتح التعديل") then
 local tsX_o = database:get("lock_edit:MAX"..msg.chat_id_..bot_id)
 if not tsX_o then
-tsX000("lock",msg,"☑┇بالفعل تم فتح التعديل")
+tsX000("lock",msg,"🚦: خاصيه التأكيد\n🔓: تم فتح التعديل•")
 else
-tsX000("lock",msg,"☑┇تم فتح التعديل")
+tsX000("lock",msg,"🗄: خاصيه الفتح\n🔓: تم فتح التعديل •")
 database:del("lock_edit:MAX"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "فتح المتحركه") then
 local tsX_o = database:get("lock_gif:MAX"..msg.chat_id_..bot_id)
 if not tsX_o then
-tsX000("lock",msg,"☑┇بالفعل تم فتح المتحركه")
+tsX000("lock",msg,"🚦: خاصيه التأكيد\n🔓: تم فتح المتحركه•")
 else
-tsX000("lock",msg,"☑┇تم فتح المتحركه")
+tsX000("lock",msg,"🗄: خاصيه الفتح\n🔓: تم فتح المتحركه •")
 database:del("lock_gif:MAX"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "فتح الملفات") then
 local tsX_o = database:get("lock_files:MAX"..msg.chat_id_..bot_id)
 if not tsX_o then
-tsX000("lock",msg,"☑┇بالفعل تم فتح الملفات")
+tsX000("lock",msg,"🚦: خاصيه التأكيد\n🔓: تم فتح الملفات•")
 else
-tsX000("lock",msg,"☑┇تم فتح الملفات")
+tsX000("lock",msg,"🗄: خاصيه الفتح\n🔓: تم فتح الملفات •")
 database:del("lock_files:MAX"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "فتح الماركدون") then
 local tsX_o = database:get("lock_mark:MAX"..msg.chat_id_..bot_id)
 if not tsX_o then
-tsX000("lock",msg,"☑┇بالفعل تم فتح الماركدون")
+tsX000("lock",msg,"🚦: خاصيه التأكيد\n🔓: تم فتح الماركدون•")
 else
-tsX000("lock",msg,"☑┇تم فتح الماركدون")
+tsX000("lock",msg,"🗄: خاصيه الفتح\n🔓: تم فتح الماركدون •")
 database:del("lock_mark:MAX"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "فتح الصور") then
 local tsX_o = database:get("lock_photo:MAX"..msg.chat_id_..bot_id)
 if not tsX_o then
-tsX000("lock",msg,"☑┇بالفعل تم فتح الصور")
+tsX000("lock",msg,"🚦: خاصيه التأكيد\n🔓: تم فتح الصور•")
 else
-tsX000("lock",msg,"☑┇تم فتح الصور")
+tsX000("lock",msg,"🗄: خاصيه الفتح\n🔓: تم فتح الصور •")
 database:del("lock_photo:MAX"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "فتح الملصقات") then
 local tsX_o = database:get("lock_stecker:MAX"..msg.chat_id_..bot_id)
 if not tsX_o then
-tsX000("lock",msg,"☑┇بالفعل تم فتح الملصقات")
+tsX000("lock",msg,"🚦: خاصيه التأكيد\n🔓: تم فتح الملصقات•")
 else
-tsX000("lock",msg,"☑┇تم فتح الملصقات")
+tsX000("lock",msg,"🗄: خاصيه الفتح\n🔓: تم فتح الملصقات •")
 database:del("lock_stecker:MAX"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "فتح الفيديو") then
 local tsX_o = database:get("lock_video:MAX"..msg.chat_id_..bot_id)
 if not tsX_o then
-tsX000("lock",msg,"☑┇بالفعل تم فتح الفيديو")
+tsX000("lock",msg,"🚦: خاصيه التأكيد\n🔓: تم فتح الفيديو•")
 else
-tsX000("lock",msg,"☑┇تم فتح الفيديو")
+tsX000("lock",msg,"🗄: خاصيه الفتح\n🔓: تم فتح الفيديو •")
 database:del("lock_video:MAX"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "فتح الانلاين") then
 local tsX_o = database:get("lock_inline:MAX"..msg.chat_id_..bot_id)
 if not tsX_o then
-tsX000("lock",msg,"☑┇بالفعل تم فتح الانلاين")
+tsX000("lock",msg,"🚦: خاصيه التأكيد\n🔓: تم فتح الانلاين•")
 else
-tsX000("lock",msg,"☑┇تم فتح الانلاين")
+tsX000("lock",msg,"🗄: خاصيه الفتح\n🔓: تم فتح الانلاين •")
 database:del("lock_inline:MAX"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "فتح الدردشه") then
 local tsX_o = database:get("lock_chat:MAX"..msg.chat_id_..bot_id)
 if not tsX_o then
-tsX000("lock",msg,"☑┇بالفعل تم فتح الدردشه")
+tsX000("lock",msg,"🚦: خاصيه التأكيد\n🔓: تم فتح الدردشه•")
 else
-tsX000("lock",msg,"☑┇تم فتح الدردشه")
+tsX000("lock",msg,"🗄: خاصيه الفتح\n🔓: تم فتح الدردشه •")
 database:del("lock_chat:MAX"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "فتح التوجيه") then
 local tsX_o = database:get("lock_fwd:MAX"..msg.chat_id_..bot_id)
 if not tsX_o then
-tsX000("lock",msg,"☑┇بالفعل تم فتح التوجيه")
+tsX000("lock",msg,"🚦: خاصيه التأكيد\n🔓: تم فتح التوجيه•")
 else
-tsX000("lock",msg,"☑┇تم فتح التوجيه")
+tsX000("lock",msg,"🗄: خاصيه الفتح\n🔓: تم فتح التوجيه •")
 database:del("lock_fwd:MAX"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "فتح التثبيت") then
 local tsX_o = database:get("lock_pin:MAX"..msg.chat_id_..bot_id)
 if not tsX_o then
-tsX000("lock",msg,"☑┇بالفعل تم فتح التثبيت")
+tsX000("lock",msg,"🚦: خاصيه التأكيد\n🔓: تم فتح التثبيت•")
 else
-tsX000("lock",msg,"☑┇تم فتح التثبيت")
+tsX000("lock",msg,"🗄: خاصيه الفتح\n🔓: تم فتح التثبيت •")
 database:del("lock_pin:MAX"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "فتح الاغاني") then
 local tsX_o = database:get("lock_audeo:MAX"..msg.chat_id_..bot_id)
 if not tsX_o then
-tsX000("lock",msg,"☑┇بالفعل تم فتح الاغاني")
+tsX000("lock",msg,"🚦: خاصيه التأكيد\n🔓: تم فتح الاغاني•")
 else
-tsX000("lock",msg,"☑┇تم فتح الاغاني")
+tsX000("lock",msg,"🗄: خاصيه الفتح\n🔓: تم فتح الاغاني •")
 database:del("lock_audeo:MAX"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "فتح الصوت") then
 local tsX_o = database:get("lock_voice:MAX"..msg.chat_id_..bot_id)
 if not tsX_o then
-tsX000("lock",msg,"☑┇بالفعل تم فتح الصوت")
+tsX000("lock",msg,"🚦: خاصيه التأكيد\n🔓: تم فتح الصوت•")
 else
-tsX000("lock",msg,"☑┇تم فتح الصوت")
+tsX000("lock",msg,"🗄: خاصيه الفتح\n🔓: تم فتح الصوت •")
 database:del("lock_voice:MAX"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "فتح البوتات بالطرد") then
 local tsX_o = database:get("lock_botAndBan:MAX"..msg.chat_id_..bot_id)
 if not tsX_o then
-tsX000("lock",msg,"☑┇بالفعل تم فتح البوتات بالطرد")
+tsX000("lock",msg,"🚦: خاصيه التأكيد\n🔓: تم فتح البوتات بالطرد•")
 else
-tsX000("lock",msg,"☑┇تم فتح البوتات بالطرد")
+tsX000("lock",msg,"🗄: خاصيه الفتح\n🔓: تم فتح البوتات بالطرد •")
 database:del("lock_botAndBan:MAX"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "فتح الجهات") then
 local tsX_o = database:get("lock_contact:MAX"..msg.chat_id_..bot_id)
 if not tsX_o then
-tsX000("lock",msg,"☑┇بالفعل تم فتح الجهات")
+tsX000("lock",msg,"🚦: خاصيه التأكيد\n🔓: تم فتح الجهات•")
 else
-tsX000("lock",msg,"☑┇تم فتح الجهات")
+tsX000("lock",msg,"🗄: خاصيه الفتح\n🔓: تم فتح الجهات •")
 database:del("lock_contact:MAX"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "فتح العربيه") then
 local tsX_o = database:get("lock_ar:MAX"..msg.chat_id_..bot_id)
 if not tsX_o then
-tsX000("lock",msg,"☑┇بالفعل تم فتح العربيه")
+tsX000("lock",msg,"🚦: خاصيه التأكيد\n🔓: تم فتح العربيه•")
 else
-tsX000("lock",msg,"☑┇تم فتح العربيه")
+tsX000("lock",msg,"🗄: خاصيه الفتح\n🔓: تم فتح العربيه •")
 database:del("lock_ar:MAX"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "فتح الانكليزيه") then
 local tsX_o = database:get("lock_en:MAX"..msg.chat_id_..bot_id)
 if not tsX_o then
-tsX000("lock",msg,"☑┇الانكليزيه مفتوحه")
+tsX000("lock",msg,"🚦: خاصيه التأكيد\n🔓: تم فتح الانكليزيه•")
 else
-tsX000("lock",msg,"☑┇تم فتح الانكليزيه")
+tsX000("lock",msg,"🗄: خاصيه الفتح\n🔓: تم فتح الانكليزيه •")
 database:del("lock_en:MAX"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "فتح الميديا") then
 local tsX_o = database:get("lock_media:MAX"..msg.chat_id_..bot_id)
 if not tsX_o then
-tsX000("lock",msg,"☑┇بالفعل تم فتح الميديا")
+tsX000("lock",msg,"🚦: خاصيه التأكيد\n🔓: تم فتح الميديا•")
 else
-tsX000("lock",msg,"☑┇تم فتح الميديا")
+tsX000("lock",msg,"🗄: خاصيه الفتح\n🔓: تم فتح الميديا •")
 database:del("lock_media:MAX"..msg.chat_id_..bot_id,"ok")
 database:del("lock_audeo:MAX"..msg.chat_id_..bot_id,"ok")
 database:del("lock_video:MAX"..msg.chat_id_..bot_id,"ok")
@@ -1396,36 +1395,36 @@ end
 if (text == "فتح اليوزر") then
 local tsX_o = database:get("lock_username:MAX"..msg.chat_id_..bot_id)
 if not tsX_o then
-tsX000("lock",msg,"☑┇بالفعل تم فتح اليوزر")
+tsX000("lock",msg,"🚦: خاصيه التأكيد\n🔓: تم فتح اليوزر•")
 else
-tsX000("lock",msg,"☑┇تم فتح اليوزر")
+tsX000("lock",msg,"🗄: خاصيه الفتح\n🔓: تم فتح اليوزر •")
 database:del("lock_username:MAX"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "فتح بصمه الفيديو") then
 local tsX_o = database:get("lock_note:MAX"..msg.chat_id_..bot_id)
 if not tsX_o then
-tsX000("lock",msg,"☑┇بالفعل تم فتح بصمه فيديو")
+tsX000("lock",msg,"🚦: خاصيه التأكيد\n🔓: تم فتح بصمه الفيديو•")
 else
-tsX000("lock",msg,"☑┇تم فتح بصمه فيديو")
+tsX000("lock",msg,"🗄: خاصيه الفتح\n🔓: تم فتح بصمه الفيديو •")
 database:del("lock_note:MAX"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "فتح الروابط") then
 local tsX_o = database:get("lock_link:MAX"..msg.chat_id_..bot_id)
 if not tsX_o then
-tsX000("lock",msg,"☑┇بالفعل تم فتح الروابط")
+tsX000("lock",msg,"🚦: خاصيه التأكيد\n🔓: تم فتح الررابط•")
 else
-tsX000("lock",msg,"☑┇تم فتح الروابط")
+tsX000("lock",msg,"🗄: خاصيه الفتح\n🔓: تم فتح الروابط •")
 database:del("lock_link:MAX"..msg.chat_id_..bot_id,"ok")
 end
 end
 if (text == "فتح البوتات") then
 local tsX_o = database:get("lock_bot:MAX"..msg.chat_id_..bot_id)
 if not tsX_o then
-tsX000("lock",msg,"☑┇بالفعل تم فتح البوتات")
+tsX000("lock",msg,"🚦: خاصيه التأكيد\n🔓: تم فتح البوتات•")
 else
-tsX000("lock",msg,"☑┇تم فتح البوتات")
+tsX000("lock",msg,"🗄: خاصيه الفتح\n🔓: تم فتح البوتات •")
 database:del("lock_bot:MAX"..msg.chat_id_..bot_id,"ok")
 end
 end  --         »»               End MAX unlock                       ««              --

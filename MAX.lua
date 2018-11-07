@@ -376,23 +376,23 @@ end
 function formsgg(msgs) 
 local taha = ''  
 if msgs < 100 then 
-taha = 'كلش ضعيف 😫' 
+taha = '5%' 
 elseif msgs < 500 then 
-taha = 'ضعيف 😨' 
+taha = '10%' 
 elseif msgs < 1500 then 
-taha = 'غير متفاعل 😒' 
-elseif msgs < 5000 then 
-taha = 'متوسط 😎' 
-elseif msgs < 10000 then 
-taha = 'متفاعل 😘' 
+taha = '20%' 
+elseif msgs < 3000 then 
+taha = '30%' 
+elseif msgs < 8000 then 
+taha = '50%' 
 elseif msgs < 50000 then 
-taha = 'قمة التفاعل 😍' 
+taha = '60%' 
 elseif msgs < 90000 then 
-taha = 'ملك التفاعل 😻'  
+taha = '80%'  
 elseif msgs < 100000 then 
-taha = 'اسطورة التفاعل 🍃' 
+taha = '90%' 
 elseif msgs < 1000000 then 
-taha = 'متفاعل نار كلش 🔥' 
+taha = '100%' 
 end 
 return taha 
 end
@@ -3504,40 +3504,40 @@ bot.channel_get_admins(msg.chat_id_,cb)
 end
 if text:match("^الاعدادات$") and is_mod(msg) then
 if database:get("lock_media:MAX"..msg.chat_id_..bot_id) then
-mute_all = '✔┇'
+mute_all = 'تم التفعيل»'
 else
-mute_all = '✖┇'
+mute_all = 'غير مفعل»'
 end
 ------------
 if database:get("lock_chat:MAX"..msg.chat_id_..bot_id) then
-mute_text = '✔┇'
+mute_text = 'تم التفعيل»'
 else
-mute_text = '✖┇'
+mute_text = 'غير مفعل»'
 end
 ------------
 if database:get("lock_photo:MAX"..msg.chat_id_..bot_id) then
-mute_photo = '✔┇'
+mute_photo = 'تم التفعيل»'
 else
-mute_photo = '✖┇'
+mute_photo = 'غير مفعل»'
 end
 ------------
 if database:get("lock_video:MAX"..msg.chat_id_..bot_id) then
-mute_video = '✔┇'
+mute_video = 'تم التفعيل»'
 else
-mute_video = '✖┇'
+mute_video = 'غير مفعل»'
 end
 if database:get("lock_note:MAX"..msg.chat_id_..bot_id) then
-mute_note = '✔┇'
+mute_note = 'تم التفعيل»'
 else
-mute_note = '✖┇'
+mute_note = 'غير مفعل»'
 end
-------------
+-----------
 if database:get("lock_gif:MAX"..msg.chat_id_..bot_id) then
-mute_gifs = '✔┇'
+mute_gifs = 'تم التفعيل»'
 else
-mute_gifs = '✖┇'
+mute_gifs = 'غير مفعل»'
 end
-------------
+-----------
 if not database:get('MAX:'..bot_id..'flood:max:'..msg.chat_id_) then
 flood_m = 10
 else
@@ -3550,164 +3550,164 @@ flood_t = database:get( 'MAX:'..bot_id..'flood:time:'..msg.chat_id_)
 end
 ------------
 if database:get("lock_audeo:MAX"..msg.chat_id_..bot_id) then
-mute_music = '✔┇'
+mute_music = 'تم التفعيل»'
 else
-mute_music = '✖┇'
+mute_music = 'غير مفعل»'
 end
 ------------
 if database:get("lock_bot:MAX"..msg.chat_id_..bot_id) then
-mute_bots = '✔┇'
+mute_bots = 'تم التفعيل»'
 else
-mute_bots = '✖┇'
+mute_bots = 'غير مفعل»'
 end
 
 if database:get("lock_botAndBan:MAX"..msg.chat_id_..bot_id) then
-mute_botsb = '✔┇'
+mute_botsb = 'تم التفعيل»'
 else
-mute_botsb = '✖┇'
+mute_botsb = 'غير مفعل»'
 end
 if database:get("lock_lllll:MAX"..msg.chat_id_..bot_id) then
-mute_flood = '✔┇'
+mute_flood = 'تم التفعيل»'
 else
-mute_flood = '✖┇'
+mute_flood = 'غير مفعل»'
 end
 ------------
 if database:get("lock_inline:MAX"..msg.chat_id_..bot_id) then
-mute_in = '✔┇'
+mute_in = 'تم التفعيل»'
 else
-mute_in = '✖┇'
+mute_in = 'غير مفعل»'
 end
 ------------
 if database:get("lock_voice:MAX"..msg.chat_id_..bot_id) then
-mute_voice = '✔┇'
+mute_voice = 'تم التفعيل»'
 else
-mute_voice = '✖┇'
+mute_voice = 'غير مفعل»'
 end
 ------------
 if database:get("lock_edit:MAX"..msg.chat_id_..bot_id) then
-mute_edit = '✔┇'
+mute_edit = 'تم التفعيل»'
 else
-mute_edit = '✖┇'
+mute_edit = 'غير مفعل»'
 end
 ------------
 if database:get("lock_link:MAX"..msg.chat_id_..bot_id) then
-mute_links = '✔┇'
+mute_links = 'تم التفعيل»'
 else
-mute_links = '✖┇'
+mute_links = 'غير مفعل»'
 end
 ------------
 if database:get("lock_pin:MAX"..msg.chat_id_..bot_id) then
-lock_pin = '✔┇'
+lock_pin = 'تم التفعيل»'
 else
-lock_pin = '✖┇'
+lock_pin = 'غير مفعل»'
 end
 
 if database:get("lock_files:MAX"..msg.chat_id_..bot_id) then
-mute_doc = '✔┇'
+mute_doc = 'تم التفعيل»'
 else
-mute_doc = '✖┇'
+mute_doc = 'غير مفعل»'
 end
 
 if database:get("lock_mark:MAX"..msg.chat_id_..bot_id) then
-mute_mdd = '✔┇'
+mute_mdd = 'تم التفعيل»'
 else
-mute_mdd = '✖┇'
+mute_mdd = 'غير مفعل»'
 end
 ------------
 if database:get("lock_stecker:MAX"..msg.chat_id_..bot_id) then
-lock_sticker = '✔┇'
+lock_sticker = 'تم التفعيل»'
 else
-lock_sticker = '✖┇'
+lock_sticker = 'غير مفعل»'
 end
 ------------
 if database:get("lock_new:MAX"..msg.chat_id_..bot_id) then
-lock_tgservice = '✔┇'
+lock_tgservice = 'تم التفعيل»'
 else
-lock_tgservice = '✖┇'
+lock_tgservice = 'غير مفعل»'
 end
 ------------
 if database:get("lock_tag:MAX"..msg.chat_id_..bot_id) then
-lock_htag = '✔┇'
+lock_htag = 'تم التفعيل»'
 else
-lock_htag = '✖┇'
+lock_htag = 'غير مفعل»'
 end
 
 if database:get("lock_sarha:MAX"..msg.chat_id_..bot_id) then
-lock_cmd = '✔┇'
+lock_cmd = 'تم التفعيل»'
 else
-lock_cmd = '✖┇'
+lock_cmd = 'غير مفعل»'
 end
 ------------
 if database:get("lock_username:MAX"..msg.chat_id_..bot_id) then
-lock_tag = '✔┇'
+lock_tag = 'تم التفعيل»'
 else
-lock_tag = '✖┇'
+lock_tag = 'غير مفعل»'
 end
 ------------
 if database:get("lock_contact:MAX"..msg.chat_id_..bot_id) then
-lock_contact = '✔┇'
+lock_contact = 'تم التفعيل»'
 else
-lock_contact = '✖┇'
+lock_contact = 'غير مفعل»'
 end
 ------------
 if database:get("lock_en:MAX"..msg.chat_id_..bot_id) then
-lock_english = '✔┇'
+lock_english = 'تم التفعيل»'
 else
-lock_english = '✖┇'
+lock_english = 'غير مفعل»'
 end
 ------------
 if database:get("lock_ar:MAX"..msg.chat_id_..bot_id) then
-lock_persian = '✔┇'
+lock_persian = 'تم التفعيل»'
 else
-lock_persian = '✖┇'
+lock_persian = 'غير مفعل»'
 end
 ------------
 if database:get("lock_fwd:MAX"..msg.chat_id_..bot_id) then
-lock_forward = '✔┇'
+lock_forward = 'تم التفعيل»'
 else
-lock_forward = '✖┇'
+lock_forward = 'غير مفعل»'
 end
 
 if database:get('MAX:'..bot_id..'rep:mute'..msg.chat_id_) then
-lock_rep = '✔┇'
+lock_rep = 'تم التفعيل»'
 else
-lock_rep = '✖┇'
+lock_rep = 'غير مفعل»'
 end
 ------------
 if database:get('MAX:'..bot_id..'repsudo:mute'..msg.chat_id_) then
-lock_repsudo = '✔┇'
+lock_repsudo = 'تم التفعيل»'
 else
-lock_repsudo = '✖┇'
+lock_repsudo = 'غير مفعل»'
 end
 ------------
 if database:get('MAX:'..bot_id..'repowner:mute'..msg.chat_id_) then
-lock_repowner = '✔┇'
+lock_repowner = 'تم التفعيل»'
 else
-lock_repowner = '✖┇'
+lock_repowner = 'غير مفعل»'
 end
 ------------
 if database:get('MAX:'..bot_id..'id:mute'..msg.chat_id_) then
-lock_id = '✔┇'
+lock_id = 'تم التفعيل»'
 else
-lock_id = '✖┇'
+lock_id = 'غير مفعل»'
 end
 ------------
 if database:get('MAX:'..bot_id..'pin:mute'..msg.chat_id_) then
-lock_pind = '✔┇'
+lock_pind = 'تم التفعيل»'
 else
-lock_pind = '✖┇'
+lock_pind = 'غير مفعل»'
 end
 ------------
 if database:get('MAX:'..bot_id..'id:mute'..msg.chat_id_) then
-lock_id_photo = '✔┇'
+lock_id_photo = 'تم التفعيل»'
 else
-lock_id_photo = '✖┇'
+lock_id_photo = 'غير مفعل»'
 end
 ------------
 if database:get( 'MAX:'..bot_id.."welcome"..msg.chat_id_) then
-send_welcome = '✔┇'
+send_welcome = 'تم التفعيل»'
 else
-send_welcome = '✖┇'
+send_welcome = 'غير مفعل»'
 end
 ------------
 local ex = database:ttl( 'MAX:'..bot_id.."charge:"..msg.chat_id_)
@@ -3717,7 +3717,7 @@ else
 exp_dat = math.floor(ex / 86400) + 1
 end
 ------------
-local TXT = "🗑┇اعدادات المجموعه بالمسح\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ \n✔┇⌁≻ مفعل\n✖┇⌁≻ معطل\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ \n"
+local TXT = "🚸┇اعدادات اوامر «قفل وفتح»\n╾———▾———╼\n✔┇⌁≻ مفعل\n✖┇⌁≻ معطل\n╾———▾———╼\n"
 ..mute_all.."الميديا".."\n"
 ..mute_links.." الروابط".."\n"
 ..mute_edit .." التعديل".."\n"
@@ -3750,10 +3750,10 @@ local TXT = "🗑┇اعدادات المجموعه بالمسح\n┉ ┉ ┉ �
 ..lock_pind.."خاصية التثبيت".."\n"
 ..lock_id_photo.."الايدي بالصوره".."\n"
 ..send_welcome.." الترحيب".."\n"
-.."┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉  \n"
-..'🔗┇عدد التكرار : '..flood_m..'\n'
-..'🔗┇زمن التكرار : '..flood_m..'\n'
-..'🔗┇انقضاء البوت: '..exp_dat..' يوم \n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉'
+.."╾———▾———╼\n"
+..'🚸» عدد التكرار : '..flood_m..'\n'
+..'🚦» زمن التكرار : '..flood_m..'\n'
+..'🚸» انقضاء البوت: '..exp_dat..' من آلآيام \n╾———▾———╼'
 send(msg.chat_id_, msg.id_, 1, TXT, 1, 'md')
 end
 
@@ -4575,7 +4575,7 @@ local keko_text = {
 "وجهك وجه الچوب ختتف🐸😹",
 }
 keko3 = math.random(#keko_text)
-sendPhoto(msg.chat_id_, msg.id_, 0, 1, nil, result.photos_[0].sizes_[1].photo_.persistent_id_,"┓🎭"..keko_text[keko3].."\n┫🌌صٰـورک ⊰"..all_photo_MAX.."\n┫💳آيـديِك ⊱"..msg.sender_user_id_.."⊱\n┫🔖يـٰوزرك ⊱ "..keko_info.."\n┫👨‍✈️رتـٓبتـٰك ⊱ "..t..'\n┫👨🏼‍💻تفاعٰلٰك ⊱ '..formsgg(msguser).."\n┫ 💌مسْٰجاتٌك ⊰"..user_msgs.."⊱\n┛👨🏻‍🔧تعُٰديلاتٰٓكّ ⊰"..edit.."⊱\n╾————————╼ ",msg.id_,msg.id_.."")
+sendPhoto(msg.chat_id_, msg.id_, 0, 1, nil, result.photos_[0].sizes_[1].photo_.persistent_id_,"🌌┋"..keko_text[keko3].."\n📡┋رتبتك~⊱ "..t..'\n💳┋ايديك~⊱ "..msg.sender_user_id_.."\n🚸┋معرفك~⊱ "..keko_info.."\n🌟┋تفاعلك~⊱ {'..formsgg(msguser).."}\n💌┋رسائلك~⊱ {"..user_msgs.."}\n📝┋تعديلاتك~⊱ {"..edit.."}",msg.id_,msg.id_.."")
 else 
 local MAX_new_text = database:get("MAX:gr:id:text:"..bot_id..msg.chat_id_)
 local MAX_new_text = MAX_new_text:gsub('#username',(keko_info or 'لا يوجد'))
@@ -4798,7 +4798,7 @@ local text =  [[
 
 ‎👨🏼‍💻 ⌁≻م4اوامر المبرمجين
 ﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎
-📡 ┇Ch ~» @MAXTAME
+قناتنا ~» @MAXTAME
 ]]
 send(msg.chat_id_, msg.id_, 1, (help or text), 1, 'html')
 end
@@ -4849,7 +4849,7 @@ local text =  [[
 ♠️┇ 《 قفل / فتح 》 التكرار
 ♠️┇ 《 قفل / فتح》 الكلايش
 ﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎
-CH:- @MAXTAME
+قناتنا ~» @MAXTAME
 ]]
 send(msg.chat_id_, msg.id_, 1, (h1 or text), 1, 'html')
 end
@@ -4869,53 +4869,53 @@ end
 if (text:match("^م2$") or text == "م٢") and is_mod(msg) then
 local h2 = redis:get('MAX:'..bot_id..'h2')
 local text =  [[
-👮┇اوامر الادمنيه
-﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎
-⚜️┇ 《 كتم/الغاء 》كتم
-⚜️┇ 《 حظر/الغاء》حظر
-⚜️┇ 《 طرد او شحت》
-⚜️┇ 《 منع/الغاء منع》  +الكلمه
-⚜️┇ 《 المحظورين 》
-⚜️┇ 《 المكتومين 》
-⚜️┇ 《 قائمه المنع 》
-﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎
-🕳┇ 《 تثبيت/الغاء تثبيت 》
-🕳┇ 《 الاعدادات 》
-﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎
-⚜️┇ 《 الرابط 》
-⚜️┇ 《 القوانين 》
-﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎
-🕳┇ 《 وضع/حذف/احضر 》 الترحيب
-🕳┇ 《 تفعيل/تعطيل 》 الترحيب
-🕳┇ 《 تفعيل/تعطيل الابلاغ 》
-🕳┇ 《 تعين عدد الابلاغ 》 + العدد
-﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎
-⚜️┇ 《 معلومات 》+ ايدي
-⚜️┇ 《 الحساب 》+ ايدي
-⚜️┇ 《 كرر 》+ الكلمه
-﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎
-🕳┇《 ايدي 》
-🕳┇《 جهاتي 》
-🕳┇《 تعديلاتي 》
-🕳┇《 رسائلي 》
-🕳┇《 ابلاغ 》
-🕳┇《 الكروب 》
-﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎
-⚜️┇《 وضع اسم 》
-⚜️┇《 وضع رابط 》
-⚜️┇《 وضع صوره 》
-⚜️┇《 وضع وصف 》
-⚜️┇《 وضع قوانين 》
-﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎
-🕳┇ 《 مسح قائمه المنع 》
-🕳┇ 《 مسح مالمحظورين 》
-🕳┇ 《 مسح المكتومين 》
-🕳┇ 《 مسح القوانين 》
-🕳┇ 《 مسح البوتات 》
-🕳┇ 《 مسح الصوره 》
-🕳┇ 《 مسح الرابط 》
-﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎
-📡 ┇Ch ~» @MAXTAME
+🚧 | اوامر الادمنيه
+➖➖➖➖➖➖➖➖➖➖➖➖
+🚦 |《كتم/الغاء كتم
+🚦 |  حظر/الغاءحظر
+🚦 | طرد / شحت
+🚦 | منع/الغاء منع +الكلمه
+🚦 | المحظورين 
+🚦 | المكتومين 
+🚦 | قائمه المنع 
+➖➖➖➖➖➖➖➖➖➖➖➖
+🚦 | تثبيت/الغاء تثبيت 
+🚦 | الاعدادات 
+➖➖➖➖➖➖➖➖➖➖➖➖
+🚦 | الرابط 
+🚦 | القوانين 
+➖➖➖➖➖➖➖➖➖➖➖➖
+🚦 | وضع/حذف/احضر  الترحيب
+🚦 | تفعيل/تعطيل  الترحيب
+🚦 | تفعيل/تعطيل الابلاغ 
+🚦 | تعين عدد الابلاغ  + العدد
+➖➖➖➖➖➖➖➖➖➖➖➖
+🚦 | معلومات + ايدي
+🚦 | الحساب + ايدي
+🚦 | كرر + الكلمه
+➖➖➖➖➖➖➖➖➖➖➖➖
+🚦 | ايدي 
+🚦 | جهاتي 
+🚦 | تعديلاتي 
+🚦 | رسائلي 
+🚦 | ابلاغ 
+🚦 | الكروب 
+➖➖➖➖➖➖➖➖➖➖➖➖
+🚦 | وضع اسم 》
+🚦 | وضع رابط 》
+🚦 | وضع صوره 》
+🚦 | وضع وصف 》
+🚦 | وضع قوانين 
+➖➖➖➖➖➖➖➖➖➖➖➖
+🚦 | مسح قائمه المنع 
+🚦 | مسح مالمحظورين
+🚦 | مسح المكتومين
+🚦 | مسح القوانين 
+🚦 | مسح البوتات 
+🚦 | مسح الصوره 
+🚦 | مسح الرابط 
+➖➖➖➖➖➖➖➖➖➖➖➖
+قناتنا ~» @MAXTAME
 ]]
 send(msg.chat_id_, msg.id_, 1, (h2 or text), 1, 'html')
 end
@@ -4935,40 +4935,40 @@ end
 if (text:match("^م3$") or text == "م٣") and is_mod(msg) then
 local h3 = redis:get('MAX:'..bot_id..'h3')
 local text =  [[
-👨‍✈️┇اوامر المنشئين و الادارين
-﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎
-♦️┇ 《 وضع》تكرار + العدد
-♦️┇ 《 وضع》زمن التكرار + العدد
-﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎
-▪️┇ 《 رفع تنزيل 》اداري
-▪️┇ 《 رفع تنزيل 》ادمن
-▪️┇ 《 رفع تنزيل 》مميز
-﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎
-♦️┇ 《 تفعيل/تعطيل 》الايدي بالصوره
-♦️┇ 《 تفعيل/تعطيل 》الايدي
-♦️┇ 《 تفعيل/تعطيل 》ردود المبرمج
-♦️┇ 《 تفعيل/تعطيل 》ردود الاداري
-♦️┇ 《 تفعيل/تعطيل 》 التثبيت
-♦️┇ 《 تفعيل/تعطيل 》 اطردني
-﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎
-◾️┇ 《 رفع/تنزيل 》الادمنيه
-◾️┇ 《 اضف/حذف 》 رد
-◾️┇ 《 الادمنيه》لعرض الادمنيه
-◾️┇ردود الاداري 
-◾️┇ادمنيه المجموعه
-◾️┇ المميزين
-◾️┇ 《 مسح + عدد 》 لمسح الرسائل
-◾️┇ 《 تنزيل الاداريين》الاداريين
-◾️┇ 《 طرد المتروكين 》المحذوفين
-◾️┇ 《 الغاء حظر الكل 》 لفك الحظر عن الكل
-﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎
-♦️┇ 《 تعين/مسح 》ايدي
-♦┇ا 《 ضف/مسح 》صلاحيه
-♦┇ 《 اضف/مسح 》امر+اسم الامر المظاف
-♦┇ 《 تفعيل/تعطيل 》الحظر
-♦┇ 《 تفعيل/تعطيل 》الطرد 
+👨‍✈️ : اوامر المنشئين و الادارين
+- - - - - - - - - - - - - - - - - - - - - - - -
+🚦 : وضع تكرار + العدد
+🚦 : وضع زمن التكرار + العدد
+- - - - - - - - - - - - - - - - - - - - - - - -
+🚦 : رفع تنزيل اداري
+🚦 : رفع تنزيل ادمن
+🚦 : رفع تنزيل مميز
+- - - - - - - - - - - - - - - - - - - - - - - -
+🚦 : تفعيل/تعطيل الايدي بالصوره
+🚦 : تفعيل/تعطيل الايدي
+🚦 : تفعيل/تعطيل ردود المبرمج
+🚦 : تفعيل/تعطيل ردود الاداري
+🚦 : تفعيل/تعطيل  التثبيت
+🚦 : تفعيل/تعطيل  اطردني
+- - - - - - - - - - - - - - - - - - - - - - - -
+🚦 : رفع/مسح الادمنيه
+🚦 : اضف/مسح  رد
+🚦 : الادمنيه~لعرض الادمنيه
+🚦 : ردود الاداري 
+🚦 : ادمنيه الكروب
+🚦 : المميزين
+🚦 : مسح + عدد  لمسح الرسائل
+🚦 : مسح الاداريين
+🚦 : طرد المتروكين ~المحذوفين
+🚦 : الغاء حظر الكل/لفك الحظر عن الكل
+- - - - - - - - - - - - - - - - - - - - - - - -
+🚦 :تعين/مسح ايدي
+🚦 : ضف/مسح صلاحيه
+🚦 : اضف/مسح امر+اسم الامر المظاف
+🚦 : تفعيل/تعطيل الحظر
+🚦 : تفعيل/تعطيل الطرد 
 ﹎﹎﹎﹎﹎﹎﹎﹎
-Ch ~» @MAXTAME
+قناتنا ~» @MAXTAME 🖥
 ]]
 send(msg.chat_id_, msg.id_, 1, (h3 or text), 1, 'html')
 end
@@ -4990,73 +4990,80 @@ end
 if (text:match("^م4$") or text == "م٤") and is_sudo(msg) then
 local h4 = redis:get('MAX:'..bot_id..'h4')
 local text =  [[
-🚸┇ اوامر المبرمجين
-﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎
-◾️┇《تفعيل/تعطيل》
-◾️┇《تفعيل/تعطيل》المغادره
-️◾️┇《تفعيل/تعطيل》الاذاعه
-◾️┇《تفعيل/تعطيل》البوت الخدمي
-💠┇《اضف/مسح》رد للكل
-💠┇《ردود المطور》
-💠┇《تغير امر المطور》
-💠┇《تغير/مسح》امر المطور بالكليشه
-💠┇《تعين/مسح》مجموعه المطور 
-💠┇《عدد الكروبات》
-﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎
-◾️┇《حظر/الغاء حظر》عام
-◾️┇《كتم/الغاء كتم》 عام
-◾️┇《المحظورين عام》
-◾️┇《المكتومين عام》
-﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎
-💠┇《رفع/تنزيل》مبرمج
-💠┇《رفع/تنزيل》منشئ
-💠┇《رفع/تنزيل》اداري
-💠┇《رفع/تنزيل》ادمن
-💠┇《المبرمجين》
-💠┇《المنشئين》
-💠┇《الادارين》
-💠┇《الادمنيه》
-﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎
-◾️┇《استعادة》الاوامر
-◾️┇《مسح》ردود المطور
-◾️┇《مسح》المبرمجين
-◾️┇《الغاء》المحظورين عام
-◾️┇《تنزيل》الاداريين
-◾️┇《تنزيل》الادمنيه
-◾️┇《تنزيل》المنشئين
-◾️┇《الغاء》المكتومين عام
-﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎
-💠┇تغير امر《الاوامر/م1/م2/م3/م4》
-💠┇《اذاعه》
-💠┇《الملفات》
-💠┇تفعيل/تعطيل ملف+اسم الملف
-💠┇《رفع》《حذف》《احضر》+اسم الملف
-💠┇مسح الملفات
-﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎
-◾️┇تغير نص الانلاين+النص
-◾️┇تغير رابط الانلاين+الرابط
-◾️┇《تفعيل/تعطيل》الانلاين
-﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎
-CH:- @MAXTAME
-
+رين+👨🏽‍🎤 : اوامر المبرمجين
+➖➖➖➖➖➖➖➖➖➖➖➖
+🗃 : تفعيل/تعطيل 
+🗃 : تفعيل/تعطيل المغادره
+🗃 : تفعيل/تعطيل الاذاعه
+🗃 : تفعيل/تعطيل البوت الخدمي
+🗃 : تعين الاعضاء + رقم
+🗃 : اضف/مسح رد للكل
+🗃 : ردود المبرمج
+🗃 : تغير رقم المبرمج
+🗃 : تغير/مسح كليشه المبرمج
+🗃 : تعين/مسح مجموعه المطور 
+🗃 : الكروبات
+➖➖➖➖➖➖➖➖➖➖➖➖
+🗃 : حظر/الغاء حظر عام
+🗃 : كتم/الغاء كتم  عام
+🗃 : المحظورين عام
+🗃 : المكتومين عام
+➖➖➖➖➖➖➖➖➖➖➖➖
+🗃 : رفع/تنزيل مبرمج
+🗃 : رفع/تنزيل منشئ
+🗃 : رفع/تنزيل اداري
+🗃 : رفع/تنزيل ادمن
+🗃 : المبرمجين
+🗃 : المنشئين
+🗃 : الادارين
+🗃 : الادمنيه 
+➖➖➖➖➖➖➖➖➖➖➖➖
+🗃 : استعادة الاوامر
+🗃 : مسح ردود المبرمج
+🗃 : مسح المبرمجين
+🗃 : الغاء المحظورين عام
+🗃 : تنزيل الاداريين
+🗃 : تنزيل الادمنيه
+🗃 : تنزيل المنشئين
+🗃 : الغاء المكتومين عام ➖➖➖➖➖➖➖➖➖➖➖➖
+🗃 : تغير امرالاوامر/م1/م2/م3/م4
+🗃 : اذاعه
+🗃 : الملفات
+🗃 : تفعيل/تعطيل ملف+اسم الملف
+🗃 : رفع حذف احضر+اسم الملف
+🗃 : مسح الملفات
+➖➖➖➖➖➖➖➖➖➖➖➖
+🗃 : تغير نص الانلاين+النص
+🗃 : تغير رابط الانلاين+الرابط
+🗃 : تفعيل/تعطيل الانلاين
+➖➖➖➖➖➖➖➖➖➖➖➖
+قناتنا ~> @MAXTAME
 ]]
 send(msg.chat_id_, msg.id_, 1, (h4 or text), 1, 'html')
 end
-if text:match("^اصدار$") or text:match("^ماكس$") or text:match("^السورس$") or text:match("^سورس$") then
+if text:match("^اصدار$") or text:match("^با سورس$") or text:match("^السورس$") or text:match("^سورس$") then
 local text =  [[
-🗳 ┇ سـورس مــــآكـس
+❖
+🚦┋آهلا بك في سورس مآكـس..🚸
+
+~طريقه آلتنصيب
+⇊⇊⇊
+
 `git clone https://github.com/MAXTAME/MAX && cd MAX && chmod +x install.sh && ./install.sh`
-
-🔱┇ كـود التـشغـيل
-`./MAX/mx`
-
-🔸┇اضغط علكود ليتم النسخ عندك
-🔸┇الصقه بالترمنال وانتر انتظر يتنصب
-🔹┇بعده يطـلب مـعلومات بآلترمـنآل 
-🔹┇تدخل مـعلومـآتك مـن توكن وآيـديـك
-🌟┇ومبروك نصبت سورس مــآكـس تيجي جديد
-
-📡┇<a href="https://telegram.me/MAXTAME">قناه السورس</a>
+——————————————
+🚸┋طريقة تنصيب السورس....
+⌬ فقط أضغط على الكود ليتم نسخه.
+⚜️┋ثم الصق بالترمنال وانتر وانتظر يتنصب.
+بعدها يطلب منك تخلي المعلومات منك.
+⚠️┋ بعد كل معلومه انتر.
+——————————————
+1┐ آولا تدخل توكن البوت ثم انتر.
+2┘ ثانيا واخيرآ ايدي المبرمج ثم انتر
+——————————————
+🎗┋مبروك عليك تنصب السورس...🍂
+➖➖➖➖➖ ➖➖➖➖➖
+📜 ┋للاستفسار راسل المبرمج
+🚦┋<a href="https://telegram.me/MAXTAME">قناه السورس</a>
 📁┇<a href="https://telegram.me/MAXFILE">ملفات السورس</a>
 💬┇<a href="t.me/K_111BOT">بوت تواصل السورس</a> 
 ]]

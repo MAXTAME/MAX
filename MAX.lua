@@ -3310,12 +3310,12 @@ add = (tonumber(database:get('MAX:'..bot_id..'user:add'..msg.chat_id_..':'..msg.
 send(msg.chat_id_, msg.id_, 1, "📨┇عدد جهاتك ⌁≻ *{"..add.."}*\n📨┇سيتم حذف العدد بعد هذه الرساله", 1, 'md')
 database:del('MAX:'..bot_id..'user:add'..msg.chat_id_..':'..msg.sender_user_id_)
 end
-if text:match("^حذف تعديلاتي$") then
+if text:match("^مسح تعديلاتي$") then
 edit = (tonumber(database:get('MAX:'..bot_id..'user:editmsg'..msg.chat_id_..':'..msg.sender_user_id_)) or 0)
 send(msg.chat_id_, msg.id_, 1, "📨┇عدد تعديلاتك ~⪼ *{"..edit.."}*\n📨┇سيتم حذف العدد بعد هذه الرساله", 1, 'md')
 database:del('MAX:'..bot_id..'user:editmsg'..msg.chat_id_..':'..msg.sender_user_id_)
 end
-if text:match("^(عدد التعديلات)$") or text:match("^(تعديلاتي)$") then
+if text:match("^(تعديلاتي)$") or text:match("^(تعديلاتي)$") then
 local edit = database:get('MAX:'..bot_id..'user:editmsg'..msg.chat_id_..':'..msg.sender_user_id_) or 0
 send(msg.chat_id_, msg.id_, 1, "📨┇عدد تعديلاتك ~⪼ *{"..edit.."}*", 1, 'md')
 end
@@ -4563,19 +4563,17 @@ if not database:get('MAX:'..bot_id..'id:mute'..msg.chat_id_) then
 if not database:get('MAX:'..bot_id..'id:photo'..msg.chat_id_) then
 if not database:get("MAX:gr:id:text:"..bot_id..msg.chat_id_) then 
 local keko_text = {
-"رجع صورتك القديمه جنك بسطال😹",
-"هاي الصوره حلوه عاشت ايدك😻♥️",
+"طالع جنك بسطال😹",
+"ديله لتلح😹🐸",
 "اهووو هم انت🐸",
-"ببكن🐸",
+"نتخاصص🐸",
 "ليش مغير صورتك -_-",
-"نورك عمه اعضاء الكروب😻😹",
 "شكلك مال عجايز😹😹💔",
 "ببكن علاقه جاده 😹🐸",
-"وجهك چنه ماعون ومن عابت هل عيون😹",
 "وجهك وجه الچوب ختتف🐸😹",
 }
 keko3 = math.random(#keko_text)
-sendPhoto(msg.chat_id_, msg.id_, 0, 1, nil, result.photos_[0].sizes_[1].photo_.persistent_id_,"🌌┋"..keko_text[keko3].."\n💳┋ايديك~⊱"..msg.sender_user_id_.."\n📡┋رتبتك~⊱ "..t..'\n🚸┋معرفك~⊱ "..keko_info.."\n🌟┋تفاعلك~⊱ {'..formsgg(msguser).."}\n💌┋رسائلك~⊱ {"..user_msgs.."}\n📝┋تعديلاتك~⊱ {"..edit.."}",msg.id_,msg.id_.."")
+sendPhoto(msg.chat_id_, msg.id_, 0, 1, nil, result.photos_[0].sizes_[1].photo_.persistent_id_,"🌌┋"..keko_text[keko3].."\n💳┋ايديك~⊱"..msg.sender_user_id_.."\n📡┋رتبتك~⊱ "..t..'\n🌟┋تفاعلك~⊱ {'..formsgg(msguser).."}\n🚸┋معرفك~⊱ "..keko_info.."\n💌┋رسائلك~⊱ {"..user_msgs.."}\n📝┋تعديلاتك~⊱ {"..edit.."}",msg.id_,msg.id_.."")
 else 
 local MAX_new_text = database:get("MAX:gr:id:text:"..bot_id..msg.chat_id_)
 local MAX_new_text = MAX_new_text:gsub('#username',(keko_info or 'لا يوجد'))

@@ -2,7 +2,7 @@
 BY : MAXTAME
 Channel Files : https://t.me/MAXFILE
 ]]
-local function keko_MAX(data)
+local function keko_Tshake(data)
     JSON = (loadfile  "./libs/dkjson.lua")()
     local msg = data.message_
     text = msg.content_.text_
@@ -35,17 +35,17 @@ function is_mod(msg)
 user_id = msg.sender_user_id_
 chat_id = msg.chat_id_
 local var = false
-local mod = database:sismember('MAX:'..bot_id..'mods:'..chat_id, user_id)  
-local admin = database:sismember('MAX:'..bot_id..'admins:', user_id)  
-local owner = database:sismember('MAX:'..bot_id..'owners:'..chat_id, user_id)
-local creator = database:sismember('MAX:'..bot_id..'creator:'..chat_id, user_id)  
+local mod = database:sismember('Tshake:'..bot_id..'mods:'..chat_id, user_id)  
+local admin = database:sismember('Tshake:'..bot_id..'admins:', user_id)  
+local owner = database:sismember('Tshake:'..bot_id..'owners:'..chat_id, user_id)
+local creator = database:sismember('Tshake:'..bot_id..'creator:'..chat_id, user_id)  
 if mod then var = true end
 if owner then var = true end
 if creator then var = true end
 if admin then var = true end
 for k,v in pairs(sudo_users) do
 if user_id == v then var = true end end
-local keko_add_sudo = redis:get('MAX:'..bot_id..'sudoo'..user_id..'')
+local keko_add_sudo = redis:get('Tshake:'..bot_id..'sudoo'..user_id..'')
 if keko_add_sudo then var = true end
 return var
 end
@@ -160,7 +160,7 @@ end
 end
 end
     return {
-        keko_MAX = keko_MAX,
+        keko_Tshake = keko_Tshake,
     }
     --[[
     BY : MAXTAME

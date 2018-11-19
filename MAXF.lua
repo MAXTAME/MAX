@@ -1,8 +1,8 @@
 --[[
-BY : MAXTAME
-Channel Files : https://t.me/MAXFILE
+BY : @maxtame من تخمط اذکر اسمی
+Channel Files : https://t.me/@ii8ili
 ]]
-local function keko_MAX(data)
+local function keko_tshake(data)
     JSON = (loadfile  "./libs/dkjson.lua")()
     local msg = data.message_
     text = msg.content_.text_
@@ -35,17 +35,17 @@ function is_mod(msg)
 user_id = msg.sender_user_id_
 chat_id = msg.chat_id_
 local var = false
-local mod = database:sismember('MAX:'..bot_id..'mods:'..chat_id, user_id)  
-local admin = database:sismember('MAX:'..bot_id..'admins:', user_id)  
-local owner = database:sismember('MAX:'..bot_id..'owners:'..chat_id, user_id)
-local creator = database:sismember('MAX:'..bot_id..'creator:'..chat_id, user_id)  
+local mod = database:sismember('tshake:'..bot_id..'mods:'..chat_id, user_id)  
+local admin = database:sismember('tshake:'..bot_id..'admins:', user_id)  
+local owner = database:sismember('tshake:'..bot_id..'owners:'..chat_id, user_id)
+local creator = database:sismember('tshake:'..bot_id..'creator:'..chat_id, user_id)  
 if mod then var = true end
 if owner then var = true end
 if creator then var = true end
 if admin then var = true end
 for k,v in pairs(sudo_users) do
 if user_id == v then var = true end end
-local keko_add_sudo = redis:get('MAX:'..bot_id..'sudoo'..user_id..'')
+local keko_add_sudo = redis:get('tshake:'..bot_id..'sudoo'..user_id..'')
 if keko_add_sudo then var = true end
 return var
 end
@@ -61,32 +61,32 @@ local ikeko = database:get("keko:bantext"..bot_id..msg.chat_id_)
 if (ikeko and ikeko == 'keko') then
 if (not is_mod(msg) and text) then 
 local keko = { -- the List By : t.me/r_rrt
-        '۶۵',
-        '۴۵',
-        '۶۴', -- the List By : t.me/r_rrt
-        '۶۳',
-        'مک',
-        'زدن',
+        '۸',
+        '۰',
+        '۴', -- the List By : t.me/r_rrt
+        '۶',
+        '۳',
+        '۲',
         'سکس',
         'xxnx',
         'XXNX',
         'xxxn',
         'سکسی',
         'کسی',
-        'دخترا',
-        'دیوث',
-        'کلیپشن',
-        'خوششون',
-        'میدا',
+        'چ',
+        'گ',
+        'ک',
+        'خوشم',
+        'پ',
         'های',
         'که',
-        'بدانیم',
-        'باید',
+        'سلام',
+        'ژب',
         'عرب',
         'از',
-        'زناشویی',
-        'رابطه',
-        'آموزش',
+        'زب',
+        'پ',
+        'ؤ',
         'زنا',
         'شویی',
         'اپ',
@@ -95,23 +95,23 @@ local keko = { -- the List By : t.me/r_rrt
         'گن',
         'نیک',
         'زوکن',
-        'آیت', -- the List By : t.me/r_rrt
-        'صوتی',
-        'دانلودریگان',
+        'ک', -- the List By : t.me/r_rrt
+        'ی',
+        'ئ',
         'با',
         'گپی',
-        'بسیارزیبا',
+        'ه',
         'هر',
-        'روز',
+        'چ',
         '۵۰۰',
         'خونه',
         'فیلم',
         'ایرونی',
-        'کصمو',
+        'ق',
         'داغه',
         '18+',
         '۱۸+',
-        'میخوی',
+        'بخوی',
         'ایرانی',
         'XXX',
         'كيرى',
@@ -119,7 +119,7 @@ local keko = { -- the List By : t.me/r_rrt
         'پ',
         'اینچا',
         'بی ناموس',
-        'کسکش',
+        'کسک',
         'كير خوار',
         'كسليس',
         'ننه گوزو',
@@ -160,10 +160,10 @@ end
 end
 end
     return {
-        keko_MAX = keko_MAX,
+        keko_MAX = keko_tshake,
     }
     --[[
-    BY : MAXTAME
-    Channel Files : https://t.me/MAXFILE
+    BY : @maxtame من تخمطه اذکر اسمی
+    Channel Files : https://t.me/ii8ili
     ]]
     

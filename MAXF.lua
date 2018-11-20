@@ -3,34 +3,34 @@ BY : @maxtame من تخمط اذکر اسمی
 Channel Files : https://t.me/@ii8ili
 ]]
 local function keko_tshake(data)
-    JSON = (loadfile  "./libs/dkjson.lua")()
-    local msg = data.message_
-    text = msg.content_.text_
-    redis = (loadfile "./libs/redis.lua")()
-    database = Redis.connect('127.0.0.1', 6379)
-    sudos = dofile('sudo.lua')
-    HTTPS = require("ssl.https")
-    bot_id_keko = {string.match(token, "^(%d+)(:)(.*)")}
-    bot_id = tonumber(bot_id_keko[1])
-    local function send(chat_id, reply_to_message_id, disable_notification, text, disable_web_page_preview, parse_mode)
-        local TextParseMode = {ID = "TextParseModeMarkdown"}
-        tdcli_function ({
-          ID = "SendMessage",
-          chat_id_ = chat_id,
-          reply_to_message_id_ = reply_to_message_id,
-          disable_notification_ = disable_notification,
-          from_background_ = 1,
-          reply_markup_ = nil,
-          input_message_content_ = {
-          ID = "InputMessageText",
-          text_ = text,
-          disable_web_page_preview_ = disable_web_page_preview,
-          clear_draft_ = 0,
-          entities_ = {},
-          parse_mode_ = TextParseMode,
-          },
-          }, dl_cb, nil)
-          end
+JSON = (loadfile  "./libs/dkjson.lua")()
+local msg = data.message_
+text = msg.content_.text_
+redis = (loadfile "./libs/redis.lua")()
+database = Redis.connect('127.0.0.1', 6379)
+sudos = dofile('sudo.lua')
+HTTPS = require("ssl.https")
+bot_id_keko = {string.match(token, "^(%d+)(:)(.*)")}
+bot_id = tonumber(bot_id_keko[1])
+local function send(chat_id, reply_to_message_id, disable_notification, text, disable_web_page_preview, parse_mode)
+local TextParseMode = {ID = "TextParseModeMarkdown"}
+tdcli_function ({
+ID = "SendMessage",
+chat_id_ = chat_id,
+reply_to_message_id_ = reply_to_message_id,
+disable_notification_ = disable_notification,
+from_background_ = 1,
+reply_markup_ = nil,
+input_message_content_ = {
+ID = "InputMessageText",
+text_ = text,
+disable_web_page_preview_ = disable_web_page_preview,
+clear_draft_ = 0,
+entities_ = {},
+parse_mode_ = TextParseMode,
+},
+}, dl_cb, nil)
+end
 function is_mod(msg)
 user_id = msg.sender_user_id_
 chat_id = msg.chat_id_
@@ -61,95 +61,93 @@ local ikeko = database:get("keko:bantext"..bot_id..msg.chat_id_)
 if (ikeko and ikeko == 'keko') then
 if (not is_mod(msg) and text) then 
 local keko = { -- the List By : t.me/r_rrt
-        '۸',
-        '۰',
-        '۴', -- the List By : t.me/r_rrt
-        '۶',
-        '۳',
-        '۲',
-        'سکس',
-        'xxnx',
-        'XXNX',
-        'xxxn',
-        'سکسی',
-        'کسی',
-        'چ',
-        'گ',
-        'ک',
-        'خوشم',
-        'پ',
-        'های',
-        'که',
-        'سلام',
-        'ژب',
-        'عرب',
-        'از',
-        'زب',
-        'پ',
-        'ؤ',
-        'زنا',
-        'شویی',
-        'اپ',
-        'بالا',
-        'کن',
-        'گن',
-        'نیک',
-        'زوکن',
-        'ک', -- the List By : t.me/r_rrt
-        'ی',
-        'ئ',
-        'با',
-        'گپی',
-        'ه',
-        'هر',
-        'چ',
-        '۵۰۰',
-        'خونه',
-        'فیلم',
-        'ایرونی',
-        'ق',
-        'داغه',
-        '18+',
-        '۱۸+',
-        'بخوی',
-        'ایرانی',
-        'XXX',
-        'كيرى',
-        'كيرى كن امك',
-        'پ',
-        'اینچا',
-        'بی ناموس',
-        'کسک',
-        'كير خوار',
-        'كسليس',
-        'ننه گوزو',
-        'ننه كسكش',
-        'بی پدر',
-        'پدر کونی',
-        'كسننه',
-        'جنده',
-        'مادره جنده',
-        'بي ناموس',
-        'بي شرف',
-        'كسننت',
-        'بي پدر ومادر',
-        'خواهر جنده',
-        'ننه كونى',
-        'پسر کونی',
-        'کیرم تو مادرت',
-        'کیرم تو خانوادت',-- the List By : t.me/r_rrt
-        'پدر سگ',
-        'پدر کونی',
-        'خواهرت گاییدم',
-        'مادرت گاییدم'
+'۸',
+'۰',
+'۴', -- the List By : t.me/r_rrt
+'۶',
+'۳',
+'سکس',
+'xxnx',
+'XXNX',
+'xxxn',
+'سکسی',
+'کسی',
+'چ',
+'گ',
+'ک',
+'خوشم',
+'پ',
+'های',
+'که',
+'سلام',
+'ژب',
+'عرب',
+'از',
+'زب',
+'پ',
+'ؤ',
+'زنا',
+'شویی',
+'اپ',
+'بالا',
+'کن',
+'گن',
+'نیک',
+'زوکن',
+'ک', -- the List By : t.me/r_rrt
+'ی',
+'ئ',
+'با',
+'گپی',
+'ه',
+'هر',
+'چ',
+'۵۰۰',
+'خونه',
+'فیلم',
+'ایرونی',
+'ق',
+'داغه',
+'18+',
+'۱۸+',
+'بخوی',
+'ایرانی',
+'XXX',
+'كيرى',
+'كيرى كن امك',
+'پ',
+'اینچا',
+'بی ناموس',
+'کسک',
+'كير خوار',
+'ننه گوزو',
+'ننه كسكش',
+'بی پدر',
+'پدر کونی',
+'كسننه',
+'جنده',
+'مادره جنده',
+'بي ناموس',
+'بي شرف',
+'كسنت',
+'بي پدر ومادر',
+'خواهر جنده',
+'ننه كونى',
+'پسر کونی',
+'کیرم تو مادرت',
+'کیرم تو خانوادت',-- the List By : t.me/r_rrt
+'پدر سگ',
+'پدر کونی',
+'خواهرت گاییدم',
+'مادرت گاییدم'
 } -- the List By : t.me/r_rrt
 function delete_msg(chatid,mid)
-    tdcli_function ({
-    ID="DeleteMessages",
-    chat_id_=chatid,
-    message_ids_=mid
-    },
-    dl_cb, nil)
+tdcli_function ({
+ID="DeleteMessages",
+chat_id_=chatid,
+message_ids_=mid
+},
+dl_cb, nil)
 end
 for i,v in ipairs(keko) do
 if text:match("^()("..v..")(.*)$") then 
@@ -159,11 +157,11 @@ end
 end
 end
 end
-    return {
-        keko_MAX = keko_tshake,
-    }
-    --[[
-    BY : @maxtame من تخمطه اذکر اسمی
-    Channel Files : https://t.me/ii8ili
-    ]]
+return {
+keko_tshake = keko_tshake,
+}
+--[[
+BY : @maxtame من تخمطه اذکر اسمی
+Channel Files : https://t.me/ii8ili
+]]
     

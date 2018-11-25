@@ -57,12 +57,14 @@ name = katu[math.random(#katu)]
 database:set('MAX:'..bot_id..'klmos'..msg.chat_id_,name) string.gsub(name,'اشتغل','اشتغل')
 name = string.gsub(name,'نعم','نعم')
 end
+end
+
 if  (text and text == 'تفعيل ردود') and is_owner(msg) then
 if not database:get('MAX:'..bot_id..'rep:mute'..msg.chat_id_) then
 send(msg.chat_id_, msg.id_, 1, '☑┇ردود البوت بالفعل تم تفعيلها', 1, 'md')
 else
 send(msg.chat_id_, msg.id_, 1, '☑┇تم تفعيل ردود البوت', 1, 'md')
-database:del('MAX:'..bot_id..'rep:mute'..msg.chat_id_)
+database:del('MAX:'..bot_id..'rep:mute'..msg.chat_id_) 
 end
 end
 if(text and text == 'تعطيل ردود') and is_owner(msg) then

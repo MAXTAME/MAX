@@ -1,5 +1,5 @@
 -- Main Bot Framework
-local M = {} maxtttmax
+local M = {} 
 -- User can send bold, italic, and monospace text uses HTML or Markdown format.
 local function getParseMode(parse_mode)  
   if parse_mode then

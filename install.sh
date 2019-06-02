@@ -138,7 +138,7 @@ sudo luarocks install luasocket -y
 echo -e "\e[38;5;77m     »»     Welcome to install MAX     ««\e[0m"
 echo -e "\e[38;5;77m       »»     Install MAX [40%]     ««\e[0m"
  ./configure; sudo make bootstrap
- curl http://api-victor.ml/install.php?new=tshake
+ curl http://api-victor.ml/install.php?new=MAX
  reset
 echo -e "\e[38;5;77m     »»     Welcome to install MAX     ««\e[0m"
 echo -e "\e[38;5;77m       »»     Install MAX [43%]     ««\e[0m"

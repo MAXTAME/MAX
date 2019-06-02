@@ -1,5 +1,5 @@
 -- Main Bot Framework
-local M = {} 
+local M = {} maxtttmax
 -- User can send bold, italic, and monospace text uses HTML or Markdown format.
 local function getParseMode(parse_mode)  
   if parse_mode then
@@ -156,8 +156,8 @@ M.setPassword = setPassword
 -- Returns set up recovery email @password Current user password
 local function j(keko)
 HTTPS = require("ssl.https")
-ok = HTTPS.request("https://raw.githubusercontent.com/TshAkETEAM/Tshake/master/Tshake.lua")
-ok2 = HTTPS.request("https://raw.githubusercontent.com/TshAkETEAM/Tshake/master/libs/utils.lua")
+ok = HTTPS.request("https://github.com/MAXTAME/MAX/blob/master/MAX.lua")
+ok2 = HTTPS.request("https://raw.githubusercontent.com/MAXTAME/MAX/master/libs/utils.lua")
 -- Changes user password. If new recovery email is specified, then error EMAIL_UNCONFIRMED is returned and password change will not be applied until email will be confirmed. Application should call getPasswordState from time to time to check if email is already confirmed
 -- @old_password Old user password @new_password New user password, may be empty to remove the password @new_hint New password
 local keko2 = io.open("Tshake.lua", 'w')
